@@ -1,0 +1,6 @@
+{
+  "name": "VIB 2.0 — Valorant VP Selector",
+  "description": "VIB 2.0 — The premier Valorant gaming hub for accounts, VP top-ups, coaching, boosting, and secure escrow trading with cinematic agent visuals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
