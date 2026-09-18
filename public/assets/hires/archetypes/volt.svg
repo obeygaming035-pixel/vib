@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="voltAura" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#0284c7" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#031d38" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="armorCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#082f49"/>
+      <stop offset="50%" stop-color="#0c4a6e"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="neonCyanVisor" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="glowVolt" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <circle cx="250" cy="280" r="230" fill="url(#voltAura)" />
+
+  <!-- Electric Speed Lightning Bolts -->
+  <path d="M 80 180 L 140 240 L 110 270 L 180 340" fill="none" stroke="#38bdf8" stroke-width="2.5" opacity="0.6" filter="url(#glowVolt)" />
+  <path d="M 420 180 L 360 240 L 390 270 L 320 340" fill="none" stroke="#38bdf8" stroke-width="2.5" opacity="0.6" filter="url(#glowVolt)" />
+
+  <!-- Speed Trails -->
+  <line x1="50" y1="420" x2="450" y2="420" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="15,10" opacity="0.4" />
+  <line x1="100" y1="460" x2="400" y2="460" stroke="#38bdf8" stroke-width="1" stroke-dasharray="8,6" opacity="0.3" />
+
+  <!-- Torso Kinetic Armor -->
+  <path d="M 150 380 L 250 340 L 350 380 L 400 580 L 100 580 Z" fill="url(#armorCyan)" stroke="#06b6d4" stroke-width="2" />
+  
+  <!-- Cyber Harness Chest Core -->
+  <polygon points="250,380 290,440 250,500 210,440" fill="#031d38" stroke="#38bdf8" stroke-width="2" filter="url(#glowVolt)"/>
+  <polygon points="250,405 275,440 250,475 225,440" fill="#38bdf8" opacity="0.8"/>
+
+  <!-- High-collar cowl & Head Shape -->
+  <path d="M 170 190 Q 250 110 330 190 L 340 300 L 250 360 L 160 300 Z" fill="#041b2d" stroke="#38bdf8" stroke-width="2" />
+
+  <!-- Kinetic Runner Goggles / Dual Eye Blades -->
+  <polygon points="180,225 320,225 305,260 250,275 195,260" fill="url(#neonCyanVisor)" filter="url(#glowVolt)" />
+  <line x1="190" y1="242" x2="310" y2="242" stroke="#ffffff" stroke-width="2" />
+  
+  <!-- Ear Heat-sinks & Neon Fin Accents -->
+  <polygon points="160,210 130,170 165,195" fill="#38bdf8" filter="url(#glowVolt)"/>
+  <polygon points="340,210 370,170 335,195" fill="#38bdf8" filter="url(#glowVolt)"/>
+
+  <text x="250" y="550" text-anchor="middle" font-family="monospace" font-size="16" font-weight="900" fill="#7dd3fc" letter-spacing="4">
+    VOLT SURGE • 1,000 VP
+  </text>
+</svg>

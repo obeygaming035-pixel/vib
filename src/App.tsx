@@ -15,10 +15,33 @@ import { Currency, CartItem } from './types';
 import { soundFx } from './utils/audio';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<ClientPage>('home');
+  const getInitialPage = (): ClientPage => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const p = params.get('page') as ClientPage;
+      if (p && ['home', 'profiles', 'vp', 'vp-catalog', 'services'].includes(p)) {
+        return p;
+      }
+    } catch {}
+    return 'home';
+  };
+
+  const [currentPage, setCurrentPage] = useState<ClientPage>(getInitialPage);
   const [currency, setCurrency] = useState<Currency>('INR');
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
+  React.useEffect(() => {
+    const onPopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const p = (params.get('page') as ClientPage) || 'home';
+      if (['home', 'profiles', 'vp', 'vp-catalog', 'services'].includes(p)) {
+        setCurrentPage(p);
+      }
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
 
   // Cart state
   const [cartItems, setCartItems] = useState<CartItem[]>([]);

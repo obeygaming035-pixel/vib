@@ -6,3 +6,13 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Verification & test artifacts
+comp_*.png
+current_*.png
+slice_*.png
+test_*.png
+thumb_*.jpg
+playwright_test.png
+side_by_side_top.png
+vib_pdf_text.txt

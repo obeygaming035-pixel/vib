@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   ShieldCheck,
   Check,
-  Zap,
   Headphones,
   Crown,
   CreditCard,
@@ -10,10 +9,16 @@ import {
   ShoppingCart,
   ChevronDown,
   MessageSquare,
+  Sparkles,
+  Zap,
+  Globe,
+  Star,
+  CheckCircle2,
 } from 'lucide-react';
 import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
 import { ClientPage } from './Header';
+import { soundFx } from '../../utils/audio';
 
 interface ClientIndianVPPageProps {
   currency: Currency;
@@ -30,298 +35,498 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
 }) => {
   const [inStockOnly, setInStockOnly] = useState(true);
   const [popularOnly, setPopularOnly] = useState(false);
+  const [bestValueOnly, setBestValueOnly] = useState(false);
+  const [discountedOnly, setDiscountedOnly] = useState(false);
   const [priceMax, setPriceMax] = useState(200000);
+  const [sortBy, setSortBy] = useState('recommended');
 
+  // Exact 13 VP packs matching Reference 2
   const vpPacks = [
-    { id: 'in-475', vp: '475 VP', priceINR: 499, originalINR: 599, img: '/assets/client/vp-coins-1.png' },
-    { id: 'in-1000', vp: '1,000 VP', priceINR: 999, originalINR: 1199, img: '/assets/client/vp-coins-2.png' },
-    { id: 'in-2050', vp: '2,050 VP', priceINR: 1899, originalINR: 2199, img: '/assets/client/vp-coins-3.png' },
-    { id: 'in-3650', vp: '3,650 VP', priceINR: 3199, originalINR: 3799, badge: 'POPULAR', img: '/assets/client/vp-coins-large.png' },
-    { id: 'in-5350', vp: '5,350 VP', priceINR: 4499, originalINR: 5199, img: '/assets/client/vp-coins-large.png' },
-    { id: 'in-7400', vp: '7,400 VP', priceINR: 6199, originalINR: 7199, img: '/assets/client/vp-coins-large.png' },
-    { id: 'in-11000', vp: '11,000 VP', priceINR: 8999, originalINR: 10499, badge: 'BEST VALUE', img: '/assets/client/vp-coins-large.png' },
-    { id: 'in-14650', vp: '14,650 VP', priceINR: 11999, originalINR: 13999, img: '/assets/client/vp-coins-large.png' },
-    { id: 'in-22000', vp: '22,000 VP', priceINR: 17999, originalINR: 20999, img: '/assets/client/vp-coins-large.png' },
-    { id: 'in-44000', vp: '44,000 VP', priceINR: 34999, originalINR: 41999, img: '/assets/client/vp-coins-large.png' },
-    { id: 'in-66000', vp: '66,000 VP', priceINR: 49999, originalINR: 59999, img: '/assets/client/vp-coins-large.png' },
-    { id: 'in-110000', vp: '110,000 VP', priceINR: 79999, originalINR: 96999, img: '/assets/client/vp-coins-large.png' },
-    { id: 'in-220000', vp: '220,000 VP', priceINR: 149999, originalINR: 189999, badge: 'EXCLUSIVE', img: '/assets/client/vp-coins-large.png' },
+    { id: 'in-475', vp: '475 VP', priceINR: 499, originalINR: 599, badge: null },
+    { id: 'in-1000', vp: '1,000 VP', priceINR: 999, originalINR: 1199, badge: null },
+    { id: 'in-2050', vp: '2,050 VP', priceINR: 1899, originalINR: 2199, badge: null },
+    { id: 'in-3650', vp: '3,650 VP', priceINR: 3199, originalINR: 3799, badge: 'POPULAR', badgeType: 'amber' },
+    { id: 'in-5350', vp: '5,350 VP', priceINR: 4499, originalINR: 5199, badge: null },
+    { id: 'in-7400', vp: '7,400 VP', priceINR: 6199, originalINR: 7199, badge: null },
+    { id: 'in-11000', vp: '11,000 VP', priceINR: 8999, originalINR: 10499, badge: 'BEST VALUE', badgeType: 'amber' },
+    { id: 'in-14650', vp: '14,650 VP', priceINR: 11999, originalINR: 13999, badge: null },
+    { id: 'in-22000', vp: '22,000 VP', priceINR: 17999, originalINR: 20999, badge: null },
+    { id: 'in-44000', vp: '44,000 VP', priceINR: 34999, originalINR: 41999, badge: null },
+    { id: 'in-66000', vp: '66,000 VP', priceINR: 49999, originalINR: 59999, badge: null },
+    { id: 'in-110000', vp: '110,000 VP', priceINR: 79999, originalINR: 96999, badge: null },
+    { id: 'in-220000', vp: '220,000 VP', priceINR: 149999, originalINR: 189999, badge: 'EXCLUSIVE', badgeType: 'cyan' },
   ];
 
   const handleBuy = (pack: typeof vpPacks[0]) => {
+    soundFx.playClickSound();
     onOpenCheckout(`${pack.vp} (Indian Region Top-Up)`, pack.priceINR);
   };
 
+  const handleAddToCartClick = (pack: typeof vpPacks[0]) => {
+    soundFx.playClickSound();
+    onAddToCart({
+      id: pack.id,
+      title: `${pack.vp} Indian Region`,
+      subtitle: 'Official Top-Up',
+      priceINR: pack.priceINR,
+      type: 'vp',
+      image: '/assets/hires/vp_coins_stack.png',
+      quantity: 1,
+    });
+  };
+
+  // Filter packs
+  const filteredPacks = vpPacks.filter((p) => {
+    if (p.priceINR > priceMax) return false;
+    if (popularOnly && p.badge !== 'POPULAR') return false;
+    if (bestValueOnly && p.badge !== 'BEST VALUE') return false;
+    return true;
+  });
+
+  const IndiaFlag = ({ className = "w-4 h-3" }: { className?: string }) => (
+    <span className={`${className} rounded-sm inline-flex flex-col overflow-hidden border border-white/20 shadow-sm flex-shrink-0`}>
+      <span className="h-1/3 bg-[#FF9933] w-full" />
+      <span className="h-1/3 bg-white w-full flex items-center justify-center relative">
+        <span className="w-1.5 h-1.5 rounded-full border-[0.5px] border-[#000080] bg-[#000080]/30 flex items-center justify-center" />
+      </span>
+      <span className="h-1/3 bg-[#128807] w-full" />
+    </span>
+  );
+
+  const PhilippinesFlag = ({ className = "w-4 h-3" }: { className?: string }) => (
+    <span className={`${className} rounded-sm inline-flex relative overflow-hidden border border-white/20 shadow-sm flex-shrink-0`}>
+      <span className="h-1/2 bg-[#0038A8] w-full" />
+      <span className="h-1/2 bg-[#CE1126] w-full" />
+      <span className="absolute left-0 top-0 bottom-0 w-[45%] bg-white [clip-path:polygon(0_0,100%_50%,0_100%)] flex items-center justify-center">
+        <span className="w-1 h-1 rounded-full bg-[#FCD116]" />
+      </span>
+    </span>
+  );
+
   return (
-    <div className="w-full bg-[#07070d] text-white selection:bg-fuchsia-600 selection:text-white space-y-10 pb-16">
-      {/* Breadcrumbs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <div className="flex items-center gap-2 text-xs text-gray-500">
-          <button onClick={() => onNavigate('home')} className="hover:text-white transition-colors cursor-pointer">
+    <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-7 sm:space-y-9 pb-16">
+      {/* Breadcrumbs matching Reference 2 */}
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3">
+        <div className="flex items-center gap-2 text-xs text-gray-400 font-medium">
+          <button
+            onClick={() => onNavigate('home')}
+            className="hover:text-purple-400 transition-colors cursor-pointer text-gray-400"
+          >
             Home
           </button>
-          <span>&gt;</span>
-          <button onClick={() => onNavigate('vp')} className="hover:text-white transition-colors cursor-pointer">
+          <span className="text-gray-600">&gt;</span>
+          <button
+            onClick={() => onNavigate('vp')}
+            className="hover:text-purple-400 transition-colors cursor-pointer text-gray-400"
+          >
             VP Packs
           </button>
-          <span>&gt;</span>
-          <span className="text-gray-300 font-medium">Indian VP Packs</span>
+          <span className="text-gray-600">&gt;</span>
+          <span className="text-purple-400 font-medium">Indian VP Packs</span>
         </div>
       </div>
 
-      {/* 1. HERO SECTION (Matching Image 4) */}
-      <section className="relative w-full overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-          {/* Left Hero Details */}
+      {/* ========================================================================= */}
+      {/* 1. HERO SECTION (Matching Reference 2) */}
+      {/* ========================================================================= */}
+      <section className="relative w-full overflow-hidden pt-1">
+        {/* Ambient atmospheric purple glows */}
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[500px] bg-purple-700/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute -bottom-10 left-10 w-[450px] h-[350px] bg-fuchsia-800/10 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
+          {/* Left Column */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fuchsia-600/20 text-fuchsia-300 border border-fuchsia-500/30 text-xs font-semibold">
-              <span className="text-sm">🇮🇳</span>
-              <span>INDIAN VP PACKS</span>
+            {/* Top pill */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#20103a] border border-purple-500/30 text-xs text-purple-300 font-semibold shadow-md">
+              <IndiaFlag className="w-4 h-3" />
+              <span className="tracking-wide">INDIAN VP PACKS</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl font-black uppercase text-white leading-tight">
-              PREMIUM VP PACKS
-            </h1>
+            {/* Headline */}
+            <div className="space-y-0.5">
+              <h1 className="text-4xl sm:text-5xl lg:text-[50px] xl:text-[56px] font-black uppercase tracking-tight text-white leading-tight font-rajdhani">
+                PREMIUM VP PACKS
+              </h1>
+            </div>
 
-            <p className="text-gray-300 text-sm max-w-xl">
+            {/* Subtitle */}
+            <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-normal max-w-xl">
               Official top-up • Safe &amp; Secure • Instant Processing
             </p>
 
-            {/* 4 Micro Pills */}
-            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-gray-300">
-              <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-fuchsia-400" />
-                <span>Verified Source</span>
+            {/* 4 Trust Micro Pills */}
+            <div className="flex flex-wrap items-center gap-2.5 pt-1 text-xs text-gray-200">
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 flex items-center gap-2 shadow-md">
+                <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
+                <span className="font-medium">Verified Source</span>
               </div>
-              <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
-                <Check className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Best Prices</span>
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 flex items-center gap-2 shadow-md">
+                <Check className="w-3.5 h-3.5 text-purple-400" />
+                <span className="font-medium">Best Prices</span>
               </div>
-              <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
-                <CreditCard className="w-3.5 h-3.5 text-blue-400" />
-                <span>Manual Verification</span>
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 flex items-center gap-2 shadow-md">
+                <CreditCard className="w-3.5 h-3.5 text-purple-400" />
+                <span className="font-medium">Manual Verification</span>
               </div>
-              <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 flex items-center gap-2 shadow-md">
                 <Headphones className="w-3.5 h-3.5 text-purple-400" />
-                <span>24/7 Support</span>
+                <span className="font-medium">24/7 Support</span>
               </div>
             </div>
           </div>
 
-          {/* Right Visual: Glowing 3D VP Chest with Graffiti (Matching Image 4) */}
-          <div className="lg:col-span-5 flex justify-center items-center relative min-h-[340px]">
-            <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-fuchsia-600/30 via-purple-600/30 to-pink-500/20 blur-3xl animate-pulse" />
+          {/* Right Column: 3D Valorant Supply Crate & VP Coins with Graffiti */}
+          <div className="lg:col-span-5 relative flex items-center justify-center min-h-[380px]">
+            <div className="absolute w-80 h-80 rounded-full bg-gradient-to-tr from-purple-600/30 via-fuchsia-500/25 to-pink-500/15 blur-[75px] pointer-events-none" />
 
-            {/* Stylized Graffiti Text from Image 3 */}
-            <div className="absolute right-2 top-4 select-none pointer-events-none opacity-40 text-right z-0">
-              <div className="font-marker text-2xl sm:text-3xl text-purple-300 rotate-[-8deg] drop-shadow-[0_0_12px_rgba(168,85,247,0.8)]">
+            {/* Stylized Graffiti Text matching Reference 2 */}
+            <div className="absolute right-0 top-3 select-none pointer-events-none z-10 text-right space-y-0.5">
+              <div className="font-marker text-lg sm:text-xl text-[#e879f9] -rotate-8 drop-shadow-[0_0_12px_rgba(232,121,249,0.85)] tracking-wider">
                 FUEL YOUR
               </div>
-              <div className="font-marker text-2xl sm:text-3xl text-fuchsia-400 rotate-[-6deg] drop-shadow-[0_0_12px_rgba(232,85,222,0.8)]">
+              <div className="font-marker text-lg sm:text-xl text-[#f0abfc] -rotate-8 drop-shadow-[0_0_12px_rgba(240,171,252,0.85)] tracking-wider -mt-1 font-bold">
                 EXPERIENCE
               </div>
-              <div className="font-marker text-lg sm:text-xl text-purple-300 rotate-[-8deg] mt-2">
+              <div className="font-marker text-sm sm:text-base text-purple-300 -rotate-8 drop-shadow-[0_0_10px_rgba(192,132,252,0.8)] tracking-wider mt-1.5">
                 SAME GAME.
               </div>
-              <div className="font-marker text-2xl sm:text-3xl text-fuchsia-500 font-bold rotate-[-10deg]">
+              <div className="font-marker text-base sm:text-lg text-[#e879f9] -rotate-8 drop-shadow-[0_0_12px_rgba(232,121,249,0.85)] tracking-wider -mt-1">
                 MORE
               </div>
-              <div className="font-marker text-xl sm:text-2xl text-purple-400 font-bold rotate-[-12deg]">
+              <div className="font-marker text-lg sm:text-xl text-[#d946ef] -rotate-8 drop-shadow-[0_0_15px_rgba(217,70,239,0.9)] tracking-wider font-bold -mt-1">
                 POSSIBILITIES.
               </div>
             </div>
 
+            {/* Glowing 3D Supply Crate */}
             <img
-              src="/assets/client/vp-crate.png"
-              alt="Glowing 3D VP Chest"
-              className="relative z-10 w-full max-w-sm h-auto object-contain filter drop-shadow-[0_0_35px_rgba(168,85,247,0.6)]"
+              src="/assets/hires/vp_hero_crate.png"
+              alt="Valorant Supply Crate & VP Coins"
+              className="relative z-0 w-full max-w-[500px] h-auto object-contain drop-shadow-[0_0_40px_rgba(168,85,247,0.5)] transform scale-105"
             />
           </div>
         </div>
       </section>
 
-      {/* 2. MAIN 2-COLUMN CATALOG LAYOUT (Matching Image 4) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left Sidebar (Matching Image 4) */}
-          <div className="lg:col-span-3 space-y-5">
-            {/* Categories */}
-            <div className="p-4 rounded-2xl bg-[#0c0c16] border border-white/10 space-y-2">
-              <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 font-bold mb-1">
+      {/* ========================================================================= */}
+      {/* 2. MAIN 2-COLUMN CATALOG LAYOUT (Matching Reference 2) */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+          {/* ------------------------------------------------------------- */}
+          {/* Left Sidebar (col-span-3)                                     */}
+          {/* ------------------------------------------------------------- */}
+          <div className="lg:col-span-3 space-y-4">
+            {/* CATEGORIES */}
+            <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] space-y-2.5 shadow-md">
+              <div className="text-[11px] font-mono uppercase tracking-[0.18em] text-gray-400 font-bold">
                 CATEGORIES
               </div>
               <button
                 onClick={() => onNavigate('vp-catalog')}
-                className="w-full p-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white font-bold text-xs flex items-center gap-2 cursor-pointer shadow-md text-left"
+                className="w-full p-2.5 rounded-lg text-white font-bold text-xs flex items-center gap-2.5 cursor-pointer shadow-md text-left transition-all"
+                style={{
+                  background: 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)',
+                  boxShadow: '0 0 15px rgba(124, 58, 237, 0.4)',
+                }}
               >
-                <span>🇮🇳</span>
-                <span>Indian VP Packs</span>
+                <IndiaFlag className="w-4 h-3" />
+                <span className="font-rajdhani text-sm font-extrabold tracking-wide">Indian VP Packs</span>
               </button>
               <button
                 onClick={() => onNavigate('vp')}
-                className="w-full p-2.5 rounded-xl hover:bg-white/5 text-gray-300 font-medium text-xs flex items-center gap-2 cursor-pointer transition-colors text-left"
+                className="w-full p-2.5 rounded-lg bg-white/[0.03] hover:bg-white/[0.07] border border-white/5 text-gray-300 font-medium text-xs flex items-center gap-2.5 cursor-pointer transition-colors text-left"
               >
-                <span>🇵🇭</span>
-                <span>Philippines VP Packs</span>
+                <PhilippinesFlag className="w-4 h-3" />
+                <span className="font-rajdhani text-sm font-semibold tracking-wide">Philippines VP Packs</span>
               </button>
               <button
                 onClick={() => onNavigate('vp')}
-                className="w-full p-2.5 rounded-xl hover:bg-white/5 text-gray-300 font-medium text-xs flex items-center gap-2 cursor-pointer transition-colors text-left"
+                className="w-full p-2.5 rounded-lg bg-white/[0.03] hover:bg-white/[0.07] border border-white/5 text-gray-300 font-medium text-xs flex items-center gap-2.5 cursor-pointer transition-colors text-left"
               >
-                <span>🌐</span>
-                <span>Other Regions (On Request)</span>
+                <Globe className="w-4 h-4 text-purple-400" />
+                <span className="font-rajdhani text-sm font-semibold tracking-wide">Other Regions (On Request)</span>
               </button>
             </div>
 
-            {/* Filters */}
-            <div className="p-4 rounded-2xl bg-[#0c0c16] border border-white/10 space-y-4">
-              <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 font-bold">
+            {/* FILTERS */}
+            <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] space-y-4 shadow-md">
+              <div className="text-[11px] font-mono uppercase tracking-[0.18em] text-gray-400 font-bold">
                 FILTERS
               </div>
 
-              <div>
-                <div className="flex justify-between text-xs text-gray-300 mb-1">
-                  <span>Price Range</span>
-                  <span className="text-fuchsia-400 font-bold">₹0 – ₹{priceMax.toLocaleString('en-IN')}</span>
-                </div>
+              {/* Price Range */}
+              <div className="space-y-1.5">
+                <div className="text-xs text-gray-300 font-medium">Price Range</div>
                 <input
                   type="range"
-                  min="400"
+                  min="499"
                   max="150000"
                   step="1000"
                   value={priceMax}
                   onChange={(e) => setPriceMax(Number(e.target.value))}
-                  className="w-full accent-fuchsia-500 cursor-pointer"
+                  className="w-full accent-purple-500 cursor-pointer h-1.5 bg-white/10 rounded-lg"
                 />
+                <div className="text-[11px] font-mono text-purple-300">
+                  ₹0 – ₹{priceMax >= 150000 ? '20,000+' : priceMax.toLocaleString('en-IN')}
+                </div>
               </div>
 
-              {/* Checkbox Features */}
-              <div className="space-y-2 text-xs text-gray-300">
-                <label className="flex items-center gap-2 cursor-pointer">
+              {/* Sort By */}
+              <div className="space-y-1.5">
+                <div className="text-xs text-gray-300 font-medium">Sort By</div>
+                <div className="relative">
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="w-full p-2 rounded-lg bg-[#141026] border border-white/10 text-xs text-gray-200 appearance-none pr-8 cursor-pointer focus:outline-none focus:border-purple-500"
+                  >
+                    <option value="recommended">Recommended</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="vp-high">Most VP</option>
+                  </select>
+                  <ChevronDown className="w-3.5 h-3.5 text-gray-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Features Checkboxes */}
+              <div className="space-y-2 pt-1 border-t border-white/5">
+                <div className="text-xs text-gray-300 font-medium">Features</div>
+                <label className="flex items-center gap-2.5 text-xs text-gray-300 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={inStockOnly}
                     onChange={(e) => setInStockOnly(e.target.checked)}
-                    className="accent-fuchsia-500 rounded"
+                    className="accent-purple-500 rounded cursor-pointer"
                   />
                   <span>In Stock</span>
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer">
+                <label className="flex items-center gap-2.5 text-xs text-gray-300 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={popularOnly}
                     onChange={(e) => setPopularOnly(e.target.checked)}
-                    className="accent-fuchsia-500 rounded"
+                    className="accent-purple-500 rounded cursor-pointer"
                   />
-                  <span>Popular Packs</span>
+                  <span>Popular</span>
+                </label>
+                <label className="flex items-center gap-2.5 text-xs text-gray-300 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={bestValueOnly}
+                    onChange={(e) => setBestValueOnly(e.target.checked)}
+                    className="accent-purple-500 rounded cursor-pointer"
+                  />
+                  <span>Best Value</span>
+                </label>
+                <label className="flex items-center gap-2.5 text-xs text-gray-300 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={discountedOnly}
+                    onChange={(e) => setDiscountedOnly(e.target.checked)}
+                    className="accent-purple-500 rounded cursor-pointer"
+                  />
+                  <span>Discounted</span>
                 </label>
               </div>
             </div>
 
-            {/* Need A Custom Amount Card */}
-            <div className="p-4 rounded-2xl bg-[#120e24] border border-fuchsia-500/30 space-y-3">
-              <h4 className="font-bold text-sm text-white">NEED A CUSTOM AMOUNT?</h4>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Can't find the VP amount you need? Contact us on WhatsApp for custom bulk requests.
+            {/* NEED A CUSTOM AMOUNT? Card */}
+            <div className="p-4 rounded-xl bg-gradient-to-b from-[#180e2e] to-[#0c0a18] border border-purple-500/35 space-y-3 shadow-lg relative overflow-hidden">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-purple-900/30 border border-purple-500/20 p-1">
+                  <img
+                    src="/assets/hires/vp_coins_stack.png"
+                    alt="VP Coins"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h4 className="font-black text-xs uppercase text-white font-rajdhani tracking-wide">
+                  NEED A CUSTOM AMOUNT?
+                </h4>
+              </div>
+              <p className="text-[11px] text-gray-300 leading-relaxed">
+                Can't find the VP amount you need? Contact us on WhatsApp for custom requests.
               </p>
               <a
                 href="https://wa.me/919999999999"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
+                className="w-full py-2 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md"
               >
-                <span>WhatsApp Us</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <MessageSquare className="w-3.5 h-3.5 fill-black" />
+                <span>WhatsApp Us →</span>
               </a>
             </div>
 
-            {/* Online hours */}
-            <div className="p-4 rounded-2xl bg-[#0c0c16] border border-white/10 space-y-2 text-xs text-gray-400">
-              <div className="flex items-center gap-2 text-white font-bold">
-                <Headphones className="w-4 h-4 text-fuchsia-400" />
-                <span>WE ARE ONLINE 9 AM – 9 PM</span>
+            {/* WE ARE ONLINE Card */}
+            <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] space-y-2.5 shadow-md">
+              <div className="flex items-center gap-2.5 text-white">
+                <Headphones className="w-4 h-4 text-purple-400" />
+                <div>
+                  <div className="text-[10px] font-mono tracking-wider text-gray-400 uppercase">WE ARE ONLINE</div>
+                  <div className="font-extrabold text-xs text-white">9 AM – 9 PM</div>
+                </div>
               </div>
-              <p className="text-[11px]">For orders outside this time, please contact us on WhatsApp.</p>
+              <p className="text-[11px] text-gray-400 leading-snug">
+                For orders outside this time, please contact us on WhatsApp.
+              </p>
+              <a
+                href="https://wa.me/919999999999"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-1.5 rounded-lg bg-[#261545] hover:bg-purple-600 text-purple-200 hover:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors border border-purple-500/30 cursor-pointer"
+              >
+                <span>WhatsApp Us →</span>
+              </a>
+            </div>
+
+            {/* 4 Trust Badges List below sidebar (Matching Reference 2) */}
+            <div className="p-3.5 rounded-xl bg-[#0c0a18] border border-white/[0.08] space-y-2.5 shadow-md text-xs text-gray-300">
+              <div className="flex items-center gap-2.5">
+                <ShieldCheck className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                <span className="text-[11px] font-medium">100% Secure Transactions</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Check className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                <span className="text-[11px] font-medium">Verified Process</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <CreditCard className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                <span className="text-[11px] font-medium">Multiple Payment Options</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Zap className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                <span className="text-[11px] font-medium">Fast &amp; Reliable Delivery</span>
+              </div>
             </div>
           </div>
 
-          {/* Right Main Grid (Matching Image 4) */}
+          {/* ------------------------------------------------------------- */}
+          {/* Right Main Catalog Area (col-span-9)                          */}
+          {/* ------------------------------------------------------------- */}
           <div className="lg:col-span-9 space-y-4">
-            {/* Top Bar */}
-            <div className="p-4 rounded-2xl bg-[#0c0c16] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🇮🇳</span>
-                  <h3 className="font-bold text-base text-white">Indian VP Packs</h3>
-                </div>
-                <p className="text-xs text-gray-400 mt-0.5 max-w-xl">
-                  Choose from our wide range of Indian region VP packs. All packs are sourced through official channels and delivered safely to your account after verification.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-full whitespace-nowrap">
-                <Crown className="w-4 h-4 text-amber-400" />
-                <span>Trusted by 50,000+ Users</span>
-              </div>
-            </div>
-
-            {/* 13 VP Packs Grid in 5 Columns */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3">
-              {vpPacks
-                .filter((p) => p.priceINR <= priceMax)
-                .map((pack) => (
-                  <div
-                    key={pack.id}
-                    className="p-3.5 rounded-2xl bg-[#0d0d18] border border-white/10 hover:border-fuchsia-500/50 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-lg relative"
-                  >
-                    {pack.badge && (
-                      <span className="absolute top-2 right-2 text-[8px] font-bold px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">
-                        {pack.badge}
-                      </span>
-                    )}
-
-                    <div className="w-12 h-12 rounded-xl bg-black/40 flex items-center justify-center mb-2 overflow-hidden group-hover:scale-105 transition-transform">
-                      <img src={pack.img} alt={pack.vp} className="w-10 h-10 object-contain" />
-                    </div>
-
-                    <div className="space-y-1">
-                      <div className="font-black text-sm text-white">{pack.vp}</div>
-                      <div className="font-bold text-xs text-fuchsia-400">
-                        {formatCurrencyPrice(pack.priceINR, currency)}
-                      </div>
-                      <div className="text-[10px] text-gray-500 line-through font-mono">
-                        {formatCurrencyPrice(pack.originalINR, currency)}
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => handleBuy(pack)}
-                      className="w-full mt-3 py-1.5 rounded-xl bg-purple-600/30 hover:bg-purple-600 text-white font-bold text-xs transition-colors cursor-pointer"
-                    >
-                      Buy Now
-                    </button>
-                  </div>
-                ))}
-
-              {/* Banner card filling remaining space */}
-              <div className="col-span-2 rounded-2xl overflow-hidden border border-fuchsia-500/30 shadow-lg relative">
-                <img
-                  src="/assets/client/vp-rifle-banner.png"
-                  alt="More Value More Wins"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            {/* Custom Amount Bar */}
-            <div className="p-4 rounded-2xl bg-[#0e0d1c] border border-fuchsia-500/30 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-fuchsia-600/20 flex items-center justify-center text-fuchsia-400">
-                  <MessageSquare className="w-5 h-5" />
+            {/* Top Bar: Indian VP Packs Category Header */}
+            <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-md">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-xl bg-purple-900/30 border border-purple-500/30 flex items-center justify-center flex-shrink-0 shadow-inner">
+                  <IndiaFlag className="w-6 h-4" />
                 </div>
                 <div>
-                  <div className="font-bold text-sm text-white">Looking for a different amount?</div>
-                  <div className="text-xs text-gray-400">
+                  <h3 className="font-extrabold text-base text-white font-rajdhani">
+                    Indian VP Packs
+                  </h3>
+                  <p className="text-[11px] text-gray-400 mt-0.5 max-w-xl leading-relaxed">
+                    Choose from our wide range of Indian region VP packs. All packs are sourced through official channels and delivered safely to your account after verification.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 text-xs font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/25 px-3 py-1.5 rounded-xl whitespace-nowrap self-start sm:self-center shadow-sm">
+                <Crown className="w-4 h-4 text-amber-400" />
+                <div className="text-left">
+                  <div className="text-[10px] text-gray-400 font-mono">Trusted by</div>
+                  <div className="font-extrabold text-white text-xs">50,000+ Users</div>
+                </div>
+              </div>
+            </div>
+
+            {/* 13 VP Packs Grid + 1 Wide Banner in 5-Column Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3">
+              {filteredPacks.map((pack) => (
+                <div
+                  key={pack.id}
+                  className="p-3 rounded-xl bg-[#0c0a18] border border-white/[0.08] hover:border-purple-500/50 transition-all duration-300 flex flex-col items-center text-center justify-between group shadow-md hover:shadow-[0_0_18px_rgba(168,85,247,0.2)] relative min-h-[175px]"
+                >
+                  {/* Badge */}
+                  {pack.badge && (
+                    <span
+                      className={`absolute top-2 right-2 text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-wider font-rajdhani shadow-sm ${
+                        pack.badgeType === 'cyan'
+                          ? 'bg-sky-500 text-black'
+                          : 'bg-[#f59e0b] text-black'
+                      }`}
+                    >
+                      {pack.badge}
+                    </span>
+                  )}
+
+                  {/* 3D Shiny Metallic VP Coin Stack */}
+                  <div className="w-20 h-20 rounded-lg flex items-center justify-center my-0.5 group-hover:scale-105 transition-transform duration-300">
+                    <img
+                      src="/assets/hires/vp_coins_stack.png"
+                      alt={pack.vp}
+                      className="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(168,85,247,0.4)]"
+                    />
+                  </div>
+
+                  {/* Pack Title & Pricing */}
+                  <div className="space-y-0.5 w-full">
+                    <div className="font-black text-sm text-white font-rajdhani tracking-wide">
+                      {pack.vp}
+                    </div>
+                    <div className="font-extrabold text-xs text-purple-300 font-rajdhani">
+                      {formatCurrencyPrice(pack.priceINR, currency)}
+                    </div>
+                    <div className="text-[10px] text-gray-500 line-through font-mono">
+                      {formatCurrencyPrice(pack.originalINR, currency)}
+                    </div>
+                  </div>
+
+                  {/* Buy Now Button */}
+                  <button
+                    onClick={() => handleBuy(pack)}
+                    className="w-full mt-2.5 py-1 rounded-lg bg-[#251342] hover:bg-[#7c3aed] text-white font-extrabold text-[11px] transition-colors cursor-pointer border border-purple-500/30 flex items-center justify-center gap-1.5 shadow-sm font-rajdhani uppercase tracking-wider"
+                  >
+                    <ShoppingCart className="w-3 h-3" />
+                    <span>Buy Now</span>
+                  </button>
+                </div>
+              ))}
+
+              {/* 14th Element: Wide 2-Column Banner "MORE VALUE MORE WINS" (Matching Reference 2) */}
+              <div className="col-span-2 rounded-xl overflow-hidden bg-gradient-to-r from-[#170a2c] via-[#120822] to-[#0d0618] border border-purple-500/35 p-4 flex flex-col justify-between relative shadow-lg min-h-[175px]">
+                {/* Background ambient glow */}
+                <div className="absolute right-0 top-0 w-36 h-36 bg-purple-600/20 blur-2xl pointer-events-none" />
+
+                {/* Angled Graffiti Text: MORE VALUE MORE WINS */}
+                <div className="relative z-10 space-y-0.5 select-none pointer-events-none">
+                  <div className="font-marker text-base sm:text-lg text-[#f472b6] -rotate-6 drop-shadow-[0_0_10px_rgba(244,114,182,0.9)]">
+                    MORE VALUE
+                  </div>
+                  <div className="font-marker text-lg sm:text-xl text-[#e879f9] -rotate-6 drop-shadow-[0_0_12px_rgba(232,121,249,0.9)] font-bold -mt-1">
+                    MORE WINS
+                  </div>
+                </div>
+
+                {/* Weapon artwork resting on supply box */}
+                <div className="relative z-10 w-full flex items-end justify-end mt-2">
+                  <img
+                    src="/assets/items/vandal-rgx.png"
+                    alt="Valorant Vandal"
+                    className="w-48 h-auto object-contain filter drop-shadow-[0_0_15px_rgba(168,85,247,0.7)] transform -rotate-3"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Custom Amount Callout Bar (Matching Reference 2) */}
+            <div className="p-4 rounded-xl bg-gradient-to-r from-[#170d2c] via-[#100920] to-[#0a0614] border border-purple-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-md">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-purple-900/30 border border-purple-500/30 p-1">
+                  <img
+                    src="/assets/hires/vp_coins_stack.png"
+                    alt="VP Coins"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div>
+                  <div className="font-black text-sm text-white font-rajdhani">
+                    Looking for a different amount?
+                  </div>
+                  <div className="text-[11px] text-gray-300">
                     We can help with custom VP orders. Contact us on WhatsApp with your required amount.
                   </div>
                 </div>
@@ -331,96 +536,118 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
                 href="https://wa.me/919999999999"
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold whitespace-nowrap cursor-pointer"
+                className="px-4 py-2 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-xs whitespace-nowrap cursor-pointer shadow-md flex items-center gap-1.5 transition-all"
               >
-                Request on WhatsApp &gt;
+                <MessageSquare className="w-3.5 h-3.5 fill-black" />
+                <span>Request on WhatsApp →</span>
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. BOTTOM SECTION: How It Works & Why Choose VIB (Matching Image 4) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* ========================================================================= */}
+      {/* 3. BOTTOM SECTION: How It Works & Why Choose VIB (Matching Reference 2)   */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Left Card: How It Works */}
-          <div className="p-6 rounded-3xl bg-[#0d0d18] border border-white/10 space-y-4">
-            <div className="flex items-center gap-2">
-              <ShoppingCart className="w-5 h-5 text-fuchsia-400" />
-              <h3 className="font-black text-lg text-white">How It Works</h3>
+          <div className="p-6 rounded-2xl bg-[#0c0a18] border border-white/[0.08] space-y-4 shadow-md">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                <ShoppingCart className="w-4 h-4" />
+              </div>
+              <h3 className="font-extrabold text-base text-white font-rajdhani tracking-wide">
+                How It Works
+              </h3>
             </div>
             <p className="text-xs text-gray-400">Get your VP in 4 simple steps.</p>
 
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="p-3 rounded-xl bg-white/5 space-y-1">
-                <div className="font-bold text-xs text-fuchsia-400">1. Select Pack</div>
-                <div className="text-[11px] text-gray-400">Choose your VP pack.</div>
+            {/* 4 Steps in a single horizontal row matching Reference 2 */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              <div className="space-y-1.5">
+                <div className="w-7 h-7 rounded-full bg-purple-900/40 border border-purple-500/40 text-purple-300 text-xs font-bold flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+                  1
+                </div>
+                <div className="font-bold text-xs text-white font-rajdhani">Select Pack</div>
+                <div className="text-[10px] text-gray-400 leading-tight">Choose your VP pack.</div>
               </div>
-              <div className="p-3 rounded-xl bg-white/5 space-y-1">
-                <div className="font-bold text-fuchsia-400 text-xs">2. Provide Details</div>
-                <div className="text-[11px] text-gray-400">Share your Riot ID and Tag.</div>
+
+              <div className="space-y-1.5">
+                <div className="w-7 h-7 rounded-full bg-purple-900/40 border border-purple-500/40 text-purple-300 text-xs font-bold flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+                  2
+                </div>
+                <div className="font-bold text-xs text-white font-rajdhani">Provide Details</div>
+                <div className="text-[10px] text-gray-400 leading-tight">Share your Riot ID and Tag.</div>
               </div>
-              <div className="p-3 rounded-xl bg-white/5 space-y-1">
-                <div className="font-bold text-fuchsia-400 text-xs">3. Make Payment</div>
-                <div className="text-[11px] text-gray-400">Complete payment via UPI/Card.</div>
+
+              <div className="space-y-1.5">
+                <div className="w-7 h-7 rounded-full bg-purple-900/40 border border-purple-500/40 text-purple-300 text-xs font-bold flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+                  3
+                </div>
+                <div className="font-bold text-xs text-white font-rajdhani">Make Payment</div>
+                <div className="text-[10px] text-gray-400 leading-tight">Complete the payment using available methods.</div>
               </div>
-              <div className="p-3 rounded-xl bg-white/5 space-y-1">
-                <div className="font-bold text-emerald-400 text-xs">4. Verification &amp; Delivery</div>
-                <div className="text-[11px] text-gray-400">We verify and credit your account.</div>
+
+              <div className="space-y-1.5">
+                <div className="w-7 h-7 rounded-full bg-purple-900/40 border border-purple-500/40 text-purple-300 text-xs font-bold flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+                  4
+                </div>
+                <div className="font-bold text-xs text-white font-rajdhani">Verification &amp; Delivery</div>
+                <div className="text-[10px] text-gray-400 leading-tight">We verify your payment and deliver your VP.</div>
               </div>
             </div>
           </div>
 
-          {/* Right Card: Why Choose VIB? with Omen Visual */}
-          <div className="p-6 rounded-3xl bg-[#0d0d18] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="space-y-3 flex-1">
+          {/* Right Card: Why Choose VIB? with Hooded Agent Artwork */}
+          <div className="p-6 rounded-2xl bg-[#0c0a18] border border-white/[0.08] flex items-center justify-between gap-4 shadow-md relative overflow-hidden">
+            <div className="space-y-3 flex-1 relative z-10">
               <div className="flex items-center gap-2">
-                <Crown className="w-5 h-5 text-amber-400" />
-                <h3 className="font-black text-lg text-white">Why Choose VIB?</h3>
+                <Star className="w-4 h-4 text-purple-400 fill-purple-400/30" />
+                <h3 className="font-extrabold text-base text-white font-rajdhani tracking-wide">
+                  Why Choose VIB?
+                </h3>
               </div>
 
-              <div className="space-y-1.5 text-xs text-gray-300">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-xs text-gray-300">
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
+                  <Check className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                   <span>Official &amp; Legitimate Source</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
+                  <Check className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                   <span>Competitive Pricing</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
+                  <Check className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                   <span>Secure &amp; Verified Process</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
+                  <Check className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                   <span>Multiple Payment Options</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
+                  <Check className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                   <span>Fast Delivery</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400" />
+                  <Check className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                   <span>Dedicated Support</span>
                 </div>
               </div>
             </div>
 
-            {/* Omen graphic with graffiti matching Image 3 */}
-            <div className="w-32 sm:w-44 flex items-center justify-center relative">
-              <div className="absolute right-0 bottom-2 pointer-events-none select-none text-right opacity-35 z-0">
-                <div className="font-marker text-sm text-purple-400 rotate-[-12deg]">PLAY</div>
-                <div className="font-marker text-base text-fuchsia-400 rotate-[-10deg]">UPGRADE</div>
-                <div className="font-marker text-lg text-purple-300 font-bold rotate-[-8deg]">BELONG</div>
+            {/* Hooded Agent Graphic & Graffiti matching Reference 2 */}
+            <div className="w-36 h-36 flex items-center justify-center relative flex-shrink-0">
+              <div className="absolute right-0 bottom-2 pointer-events-none select-none text-right z-10 space-y-0.5">
+                <div className="font-marker text-xs text-purple-400 -rotate-12 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)]">PLAY</div>
+                <div className="font-marker text-xs text-fuchsia-400 -rotate-10 drop-shadow-[0_0_8px_rgba(232,121,249,0.8)]">UPGRADE</div>
+                <div className="font-marker text-sm text-purple-300 font-bold -rotate-8 drop-shadow-[0_0_10px_rgba(192,132,252,0.9)]">BELONG</div>
               </div>
               <img
-                src="/assets/client/vp-omen-security.png"
-                alt="Omen Security"
-                className="w-full object-contain filter drop-shadow-[0_0_20px_rgba(147,51,234,0.5)] relative z-10"
-                onError={(e) => {
-                  e.currentTarget.src = '/assets/agents/omen.png';
-                }}
+                src="/assets/hires/profiles/card1_omen.jpg"
+                alt="VIB Security Agent"
+                className="w-28 h-28 object-cover rounded-xl border border-purple-500/30 filter drop-shadow-[0_0_20px_rgba(147,51,234,0.5)] opacity-85"
               />
             </div>
           </div>

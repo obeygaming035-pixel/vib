@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="shadowAura" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#6d28d9" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#140628" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="armorVoid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2e1065"/>
+      <stop offset="50%" stop-color="#3b0764"/>
+      <stop offset="100%" stop-color="#581c87"/>
+    </linearGradient>
+    <linearGradient id="voidVisor" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="50%" stop-color="#f5f3ff"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <filter id="glowShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <circle cx="250" cy="280" r="230" fill="url(#shadowAura)" />
+
+  <!-- Spectral Void Tendrils & Smoke -->
+  <path d="M 60 480 Q 140 360 180 430 T 260 380 T 440 460" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.3" filter="url(#glowShadow)" />
+  <path d="M 100 240 Q 150 160 120 100" fill="none" stroke="#8b5cf6" stroke-width="2.5" opacity="0.5" filter="url(#glowShadow)" />
+  <path d="M 400 240 Q 350 160 380 100" fill="none" stroke="#8b5cf6" stroke-width="2.5" opacity="0.5" filter="url(#glowShadow)" />
+
+  <!-- Shadow Assassin Robes & Pauldrons -->
+  <path d="M 140 380 L 250 330 L 360 380 L 410 580 L 90 580 Z" fill="url(#armorVoid)" stroke="#8b5cf6" stroke-width="2" />
+  
+  <!-- Deep Obsidian Assassin Hood -->
+  <path d="M 160 170 Q 250 70 340 170 L 360 330 L 250 370 L 140 330 Z" fill="#090214" stroke="#a78bfa" stroke-width="2" />
+  
+  <!-- Inner Hood Shadow Void -->
+  <path d="M 180 200 Q 250 140 320 200 L 330 300 L 250 335 L 170 300 Z" fill="#030008" />
+
+  <!-- Twin Spectral Slit Eyes (Glowing Violet) -->
+  <line x1="210" y1="240" x2="235" y2="245" stroke="#c4b5fd" stroke-width="4" stroke-linecap="round" filter="url(#glowShadow)" />
+  <line x1="290" y1="240" x2="265" y2="245" stroke="#c4b5fd" stroke-width="4" stroke-linecap="round" filter="url(#glowShadow)" />
+  <circle cx="250" cy="275" r="3" fill="#a78bfa" filter="url(#glowShadow)"/>
+
+  <text x="250" y="550" text-anchor="middle" font-family="monospace" font-size="16" font-weight="900" fill="#ddd6fe" letter-spacing="4">
+    VOID WRAITH • 5,350 VP
+  </text>
+</svg>

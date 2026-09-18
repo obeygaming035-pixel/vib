@@ -206,12 +206,12 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </nav>
 
-        {/* Right Controls: Search, Cart, Login, Sign Up */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* Right Controls: Search, Cart, Login, Sign Up matching Reference */}
+        <div className="flex items-center gap-2.5 sm:gap-3">
           {/* Glass Search Input */}
           <form
             onSubmit={handleSearchSubmit}
-            className="hidden md:flex items-center relative rounded-full border border-white/10 bg-white/5 hover:border-white/20 focus-within:border-fuchsia-500/80 focus-within:shadow-[0_0_12px_rgba(192,38,211,0.25)] transition-all w-48 xl:w-56"
+            className="hidden md:flex items-center relative rounded-full border border-white/15 bg-black/40 hover:border-white/25 focus-within:border-purple-500/80 focus-within:shadow-[0_0_12px_rgba(168,85,247,0.3)] transition-all w-48 xl:w-56"
           >
             <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 pointer-events-none" />
             <input
@@ -223,55 +223,16 @@ export const Header: React.FC<HeaderProps> = ({
             />
           </form>
 
-          {/* Currency Switcher */}
-          <div className="hidden sm:flex items-center bg-white/5 rounded-full border border-white/10 p-0.5 text-xs font-semibold">
-            {(['INR', 'USD', 'EUR'] as Currency[]).map((curr) => (
-              <button
-                key={curr}
-                type="button"
-                onClick={() => {
-                  onCurrencyChange(curr);
-                  soundFx.playClickSound();
-                }}
-                className={`px-2 py-0.5 rounded-full transition-all cursor-pointer ${
-                  currency === curr
-                    ? 'bg-fuchsia-600 text-white shadow-sm'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                {curr === 'INR' ? '₹' : curr === 'USD' ? '$' : '€'}
-              </button>
-            ))}
-          </div>
-
-          {/* Sound Audio Toggle */}
-          <button
-            type="button"
-            onClick={() => {
-              onToggleSound();
-              soundFx.enabled = !soundEnabled;
-              if (!soundEnabled) soundFx.playClickSound();
-            }}
-            title={soundEnabled ? 'Mute Interface Sound' : 'Enable Futuristic UI Audio'}
-            className="p-2 rounded-full border border-white/10 hover:border-white/20 text-gray-400 hover:text-white transition-all bg-white/5 cursor-pointer"
-          >
-            {soundEnabled ? (
-              <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
-            ) : (
-              <VolumeX className="w-3.5 h-3.5" />
-            )}
-          </button>
-
           {/* Shopping Cart Icon with Counter */}
           <button
             type="button"
             onClick={onOpenCart}
-            className="relative p-2 rounded-full border border-white/10 hover:border-white/25 text-gray-300 hover:text-white transition-all bg-white/5 cursor-pointer"
+            className="relative p-2 rounded-full text-gray-300 hover:text-white transition-all hover:bg-white/5 cursor-pointer"
             title="Cart"
           >
-            <ShoppingCart className="w-3.5 h-3.5 text-gray-300 hover:text-fuchsia-300" />
+            <ShoppingCart className="w-4 h-4 text-gray-300 hover:text-purple-300" />
             {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 min-w-[17px] h-[17px] flex items-center justify-center text-[9px] font-bold rounded-full bg-fuchsia-500 text-white shadow-[0_0_8px_#c026d3] px-1 animate-pulse">
+              <span className="absolute -top-1 -right-1 min-w-[16px] h-[16px] flex items-center justify-center text-[9px] font-bold rounded-full bg-purple-600 text-white shadow-[0_0_8px_#9333ea] px-1">
                 {cartCount}
               </span>
             )}
@@ -281,20 +242,16 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             type="button"
             onClick={() => onOpenAuth('login')}
-            className="text-xs font-semibold px-2.5 py-1 text-gray-300 hover:text-white transition-colors cursor-pointer hidden sm:block"
+            className="text-xs font-semibold px-3.5 py-1.5 rounded-lg border border-white/15 bg-[#121020] hover:bg-[#1a172e] hover:border-white/25 text-gray-200 transition-colors cursor-pointer hidden sm:block"
           >
             Login
           </button>
 
-          {/* Sign Up Button (glowing purple pill matching mockup) */}
+          {/* Sign Up Button (solid purple pill matching reference) */}
           <button
             type="button"
             onClick={() => onOpenAuth('signup')}
-            className="text-xs font-bold px-4 py-1.5 rounded-full text-white transition-all transform hover:scale-105 active:scale-95 cursor-pointer shadow-md flex items-center gap-1.5"
-            style={{
-              background: 'linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #c026d3 100%)',
-              boxShadow: '0 0 16px rgba(168, 85, 247, 0.45)',
-            }}
+            className="text-xs font-bold px-4 py-1.5 rounded-lg text-white bg-[#8b5cf6] hover:bg-[#7c3aed] shadow-[0_0_15px_rgba(139,92,246,0.45)] transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer flex items-center gap-1.5"
           >
             <span>Sign Up</span>
           </button>

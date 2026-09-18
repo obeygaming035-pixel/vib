@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="ignisAura" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#c2410c" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#2a0802" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="armorOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#431407"/>
+      <stop offset="50%" stop-color="#7c2d12"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+    <linearGradient id="flameVisor" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="50%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <filter id="glowIgnis" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <circle cx="250" cy="280" r="230" fill="url(#ignisAura)" />
+
+  <!-- Rising Ember Sparks -->
+  <circle cx="120" cy="220" r="4" fill="#fb923c" filter="url(#glowIgnis)" />
+  <circle cx="160" cy="150" r="3" fill="#fdba74" />
+  <circle cx="380" cy="200" r="5" fill="#fb923c" filter="url(#glowIgnis)" />
+  <circle cx="340" cy="130" r="3" fill="#fef08a" />
+  <circle cx="250" cy="80" r="4" fill="#f97316" filter="url(#glowIgnis)" />
+
+  <!-- Heavy Combat Torso & Heat-Vent Plating -->
+  <path d="M 150 380 L 250 340 L 350 380 L 400 580 L 100 580 Z" fill="url(#armorOrange)" stroke="#f97316" stroke-width="2" />
+  
+  <!-- Heat Vents (Glowing Orange Slits) -->
+  <g stroke="#f97316" stroke-width="3" filter="url(#glowIgnis)">
+    <line x1="190" y1="420" x2="230" y2="440" />
+    <line x1="190" y1="450" x2="230" y2="470" />
+    <line x1="310" y1="420" x2="270" y2="440" />
+    <line x1="310" y1="450" x2="270" y2="470" />
+  </g>
+
+  <!-- Cyber Samurai Mask & Horn Crest -->
+  <path d="M 170 180 Q 250 100 330 180 L 340 310 L 250 370 L 160 310 Z" fill="#2e0b04" stroke="#f97316" stroke-width="2" />
+
+  <!-- Molten Crest Horns -->
+  <polygon points="210,130 250,50 255,120" fill="#f97316" filter="url(#glowIgnis)" />
+  <polygon points="290,130 250,50 245,120" fill="#f97316" filter="url(#glowIgnis)" />
+
+  <!-- Flame Blade Visor -->
+  <polygon points="185,220 315,220 290,265 250,285 210,265" fill="url(#flameVisor)" filter="url(#glowIgnis)" />
+  <line x1="195" y1="240" x2="305" y2="240" stroke="#ffffff" stroke-width="2" />
+
+  <text x="250" y="550" text-anchor="middle" font-family="monospace" font-size="16" font-weight="900" fill="#fdba74" letter-spacing="4">
+    IGNIS BLADE • 2,050 VP
+  </text>
+</svg>
