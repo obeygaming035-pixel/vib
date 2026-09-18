@@ -6,7 +6,12 @@
     --font-rajdhani: 'Rajdhani', sans-serif;
     --font-chakra: 'Chakra Petch', sans-serif;
     --font-marker: 'Permanent Marker', cursive;
+    --font-inter: 'Inter', sans-serif;
   }
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
 }
 
 .font-teko {

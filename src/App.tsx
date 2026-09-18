@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
-import { Navbar } from './components/Navbar';
-import { HomePage } from './components/home/HomePage';
-import { DigitalProfilesPage } from './components/profiles/DigitalProfilesPage';
-import { VPPacksPage } from './components/vp/VPPacksPage';
-import { VPSelector } from './components/VPSelector';
+import { Header, ClientPage } from './components/client/Header';
+import { Footer } from './components/client/Footer';
+import { ClientHomePage } from './components/client/ClientHomePage';
+import { ClientProfilesPage } from './components/client/ClientProfilesPage';
+import { ClientVPOverviewPage } from './components/client/ClientVPOverviewPage';
+import { ClientIndianVPPage } from './components/client/ClientIndianVPPage';
+import { ClientServicesPage } from './components/client/ClientServicesPage';
 import { CartDrawer } from './components/CartDrawer';
-import { VP_PACKAGES } from './data/packages';
-import { Currency, AppPage, CartItem } from './types';
 import { CheckoutModal } from './components/CheckoutModal';
 import { DiscordModal } from './components/home/DiscordModal';
 import { EscrowModal } from './components/home/EscrowModal';
+import { VP_PACKAGES } from './data/packages';
+import { Currency, CartItem } from './types';
 import { soundFx } from './utils/audio';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<AppPage>('home');
+  const [currentPage, setCurrentPage] = useState<ClientPage>('home');
   const [currency, setCurrency] = useState<Currency>('INR');
   const [soundEnabled, setSoundEnabled] = useState(false);
-  const [vpInitialIndex, setVpInitialIndex] = useState(0);
-  const [use3DVPSelector, setUse3DVPSelector] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Shopping Cart state
+  // Cart state
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -31,9 +31,6 @@ export default function App() {
   >(undefined);
   const [isDiscordModalOpen, setIsDiscordModalOpen] = useState(false);
   const [isEscrowModalOpen, setIsEscrowModalOpen] = useState(false);
-
-  // Active theme color for VP page
-  const [currentThemeColor, setCurrentThemeColor] = useState(VP_PACKAGES[0].theme.primaryColor);
 
   const handleAddToCart = (item: CartItem) => {
     soundFx.playClickSound();
@@ -58,58 +55,8 @@ export default function App() {
     setCartItems([]);
   };
 
-  const handleNavigate = (page: AppPage, pkgIndex?: number) => {
-    soundFx.playClickSound();
-
-    if (page === 'support' || page === 'community') {
-      setIsDiscordModalOpen(true);
-      return;
-    }
-
-    if (page === 'vp') {
-      if (pkgIndex !== undefined) {
-        setVpInitialIndex(pkgIndex);
-        setCurrentThemeColor(VP_PACKAGES[pkgIndex].theme.primaryColor);
-        setUse3DVPSelector(true);
-      } else {
-        setUse3DVPSelector(false);
-      }
-      setCurrentPage('vp');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    if (page === 'profiles' || page === 'marketplace') {
-      setCurrentPage('profiles');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    if (page === 'rankup') {
-      handleOpenCustomCheckout('Competitive Rankup Boost Service', 2499);
-      return;
-    }
-
-    if (page === 'services') {
-      setCurrentPage('home');
-      setTimeout(() => {
-        const el = document.getElementById('services');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-      return;
-    }
-
-    // Default to home
-    setCurrentPage('home');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleOpenCustomCheckout = (title?: string, price?: number) => {
-    if (title && price) {
-      setCheckoutCustomItem({ title, priceINR: price });
-    } else {
-      setCheckoutCustomItem(undefined);
-    }
+  const handleOpenCustomCheckout = (title: string, price: number) => {
+    setCheckoutCustomItem({ title, priceINR: price });
     setIsCheckoutOpen(true);
   };
 
@@ -118,82 +65,102 @@ export default function App() {
     const totalINR = cartItems.reduce((sum, item) => sum + item.priceINR * item.quantity, 0);
     const itemNames = cartItems.map((i) => `${i.title} (x${i.quantity})`).join(', ');
     setIsCartOpen(false);
-    handleOpenCustomCheckout(`Cart Order: ${itemNames}`, totalINR);
+    handleOpenCustomCheckout(`Cart Checkout: ${itemNames}`, totalINR);
+  };
+
+  const handleNavigate = (page: ClientPage) => {
+    soundFx.playClickSound();
+
+    if (page === 'community' || page === 'support') {
+      setIsDiscordModalOpen(true);
+      return;
+    }
+
+    if (page === 'rankup') {
+      handleOpenCustomCheckout('Competitive Rankup Boost Service', 2499);
+      return;
+    }
+
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleAuth = (mode: 'login' | 'signup') => {
+    handleOpenCustomCheckout(mode === 'login' ? 'Account Portal Login' : 'New User Registration', 0);
   };
 
   return (
-    <div className="min-h-screen bg-[#070a10] text-white flex flex-col justify-between relative overflow-x-hidden font-chakra selection:bg-fuchsia-600 selection:text-white">
-      {/* Top Header Navigation */}
-      <Navbar
-        currentThemeColor={currentThemeColor}
+    <div className="min-h-screen bg-[#07070d] text-white flex flex-col justify-between relative overflow-x-hidden font-inter selection:bg-fuchsia-600 selection:text-white">
+      {/* Top Header Navigation matching exact mockups */}
+      <Header
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
         currency={currency}
         onCurrencyChange={setCurrency}
-        soundEnabled={soundEnabled}
-        onToggleSound={() => setSoundEnabled((prev) => !prev)}
-        onOpenCheckout={(title, price) => handleOpenCustomCheckout(title, price)}
-        activePage={currentPage}
-        onNavigate={handleNavigate}
         cartCount={cartItems.reduce((s, i) => s + i.quantity, 0)}
         onOpenCart={() => setIsCartOpen(true)}
-        onSearchQuery={(q) => {
+        onOpenAuth={handleAuth}
+        soundEnabled={soundEnabled}
+        onToggleSound={() => setSoundEnabled((prev) => !prev)}
+        onSearch={(q) => {
           setSearchQuery(q);
           setCurrentPage('profiles');
         }}
       />
 
-      {/* Main Content Area */}
+      {/* Main Page Content */}
       <main className="flex-1 w-full">
         {currentPage === 'home' && (
-          <HomePage
+          <ClientHomePage
             currency={currency}
             onNavigate={handleNavigate}
-            onOpenCheckout={handleOpenCustomCheckout}
             onAddToCart={handleAddToCart}
-            onOpenDiscordModal={() => setIsDiscordModalOpen(true)}
-            onOpenEscrowModal={() => setIsEscrowModalOpen(true)}
+            onOpenCheckout={handleOpenCustomCheckout}
           />
         )}
 
         {currentPage === 'profiles' && (
-          <DigitalProfilesPage
+          <ClientProfilesPage
             currency={currency}
-            onNavigateHome={() => handleNavigate('home')}
+            onNavigate={handleNavigate}
             onAddToCart={handleAddToCart}
-            onDirectBuy={handleOpenCustomCheckout}
-            initialSearchQuery={searchQuery}
+            onOpenCheckout={handleOpenCustomCheckout}
+            searchQuery={searchQuery}
           />
         )}
 
         {currentPage === 'vp' && (
-          use3DVPSelector ? (
-            <div className="w-full flex flex-col justify-center">
-              <div className="max-w-7xl mx-auto px-4 py-3 w-full flex justify-end">
-                <button
-                  onClick={() => setUse3DVPSelector(false)}
-                  className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-chakra font-bold text-gray-300 hover:text-white cursor-pointer"
-                >
-                  ← Back to VP Pack Catalog
-                </button>
-              </div>
-              <VPSelector
-                currency={currency}
-                initialIndex={vpInitialIndex}
-                onActiveChange={(pkg) => setCurrentThemeColor(pkg.theme.primaryColor)}
-              />
-            </div>
-          ) : (
-            <VPPacksPage
-              currency={currency}
-              onNavigateHome={() => handleNavigate('home')}
-              onAddToCart={handleAddToCart}
-              onDirectBuy={handleOpenCustomCheckout}
-              onSwitchTo3DStage={() => setUse3DVPSelector(true)}
-            />
-          )
+          <ClientVPOverviewPage
+            currency={currency}
+            onNavigate={handleNavigate}
+            onAddToCart={handleAddToCart}
+            onOpenCheckout={handleOpenCustomCheckout}
+          />
+        )}
+
+        {currentPage === 'vp-catalog' && (
+          <ClientIndianVPPage
+            currency={currency}
+            onNavigate={handleNavigate}
+            onAddToCart={handleAddToCart}
+            onOpenCheckout={handleOpenCustomCheckout}
+          />
+        )}
+
+        {currentPage === 'services' && (
+          <ClientServicesPage
+            currency={currency}
+            onNavigate={handleNavigate}
+            onAddToCart={handleAddToCart}
+            onOpenCheckout={handleOpenCustomCheckout}
+          />
         )}
       </main>
 
-      {/* Shopping Cart Drawer */}
+      {/* Client Footer matching all mockups */}
+      <Footer onNavigate={handleNavigate} />
+
+      {/* Slide-over Shopping Cart Drawer */}
       <CartDrawer
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -204,23 +171,25 @@ export default function App() {
         currency={currency}
       />
 
-      {/* Global Modals */}
+      {/* Checkout / Payment Modal */}
       <CheckoutModal
         isOpen={isCheckoutOpen}
         onClose={() => {
           setIsCheckoutOpen(false);
           setCheckoutCustomItem(undefined);
         }}
-        pkg={VP_PACKAGES[vpInitialIndex]}
+        pkg={VP_PACKAGES[0]}
         customItem={checkoutCustomItem}
         currency={currency}
       />
 
+      {/* Community Discord Modal */}
       <DiscordModal
         isOpen={isDiscordModalOpen}
         onClose={() => setIsDiscordModalOpen(false)}
       />
 
+      {/* Escrow Middleman Modal */}
       <EscrowModal
         isOpen={isEscrowModalOpen}
         onClose={() => setIsEscrowModalOpen(false)}
