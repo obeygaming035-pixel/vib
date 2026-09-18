@@ -379,58 +379,105 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           </div>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {featuredProfiles.map((p) => {
-            const isFav = favoriteIds.includes(p.id);
-            return (
-              <div
-                key={p.id}
-                className="rounded-2xl bg-[#0d0d18] border border-white/10 hover:border-fuchsia-500/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-lg"
-              >
-                {/* Image Banner */}
-                <div className="relative aspect-[16/9] w-full bg-black/50 overflow-hidden">
-                  <img
-                    src={p.banner}
-                    alt={p.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-2.5 left-2.5">
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${p.badgeColor}`}>
-                      {p.badge}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => toggleFavorite(p.id)}
-                    className="absolute top-2.5 right-2.5 p-1.5 rounded-full bg-black/60 hover:bg-black/80 text-white transition-colors cursor-pointer"
-                  >
-                    <Heart className={`w-3.5 h-3.5 ${isFav ? 'fill-rose-500 text-rose-500' : 'text-gray-300'}`} />
-                  </button>
-                </div>
+        {/* 4 Cards Grid with Side Carousel Buttons matching Image 5 */}
+        <div className="relative">
+          {/* Left Arrow Button */}
+          <button
+            type="button"
+            aria-label="Previous"
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-[#120e24] border border-purple-500/40 hover:bg-purple-600 hover:border-purple-400 flex items-center justify-center text-gray-300 hover:text-white transition-all shadow-lg cursor-pointer hidden md:flex"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
 
-                {/* Info */}
-                <div className="p-4 space-y-2">
-                  <h3 className="font-bold text-sm text-white group-hover:text-fuchsia-300 transition-colors">
-                    {p.title}
-                  </h3>
-                  <div className="text-xs text-gray-400 leading-snug">
-                    {p.sub}
-                  </div>
-                </div>
+          {/* Right Arrow Button */}
+          <button
+            type="button"
+            aria-label="Next"
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-[#120e24] border border-purple-500/40 hover:bg-purple-600 hover:border-purple-400 flex items-center justify-center text-gray-300 hover:text-white transition-all shadow-lg cursor-pointer hidden md:flex"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
 
-                {/* Price & CTA */}
-                <div className="p-4 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
-                  <div>
-                    <div className="text-[10px] text-gray-500 line-through font-mono">
-                      {formatCurrencyPrice(p.originalPriceINR, currency)}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {featuredProfiles.map((p) => {
+              const isFav = favoriteIds.includes(p.id);
+              return (
+                <div
+                  key={p.id}
+                  className="rounded-2xl bg-[#0c0c16] border border-white/10 hover:border-fuchsia-500/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl"
+                >
+                  {/* Image Banner Container */}
+                  <div className="relative aspect-[16/10] w-full bg-black/70 overflow-hidden">
+                    <img
+                      src={p.banner}
+                      alt={p.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+
+                    {/* Badge on left */}
+                    <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10">
+                      <span className={`text-[10px] font-black px-2.5 py-0.5 rounded-full border ${p.badgeColor} shadow-md uppercase tracking-wide`}>
+                        {p.badge}
+                      </span>
                     </div>
-                    <div className="font-black text-base text-white">
-                      {formatCurrencyPrice(p.priceINR, currency)}
-                    </div>
-                  </div>
 
-                  <div className="flex items-center gap-1.5">
+                    {/* Red PLAY tag on Card 1 & 2 */}
+                    {(p.id === 'p-a1023' || p.id === 'p-b4481') && (
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-red-600 px-3 py-0.5 rounded-b-md text-[9px] font-black text-white tracking-widest uppercase shadow">
+                        PLAY
+                      </div>
+                    )}
+
+                    {/* Kuronami / Singularity sub-banner label */}
+                    {p.id === 'p-d3091' && (
+                      <div className="absolute top-2.5 left-1/2 -translate-x-1/2 text-[9px] font-mono tracking-widest text-cyan-300 font-bold bg-black/60 px-2 py-0.5 rounded border border-cyan-500/30">
+                        KURONAMI
+                      </div>
+                    )}
+
+                    {/* Heart button */}
                     <button
+                      type="button"
+                      onClick={() => toggleFavorite(p.id)}
+                      className="absolute top-2.5 right-2.5 p-1.5 rounded-full bg-black/60 hover:bg-black/80 text-white transition-colors cursor-pointer z-10"
+                    >
+                      <Heart className={`w-3.5 h-3.5 ${isFav ? 'fill-rose-500 text-rose-500' : 'text-gray-300'}`} />
+                    </button>
+
+                    {/* 6 Mini Weapon Skin Slots overlay at bottom of banner matching Image 5 */}
+                    <div className="absolute bottom-1.5 inset-x-2 bg-black/60 backdrop-blur-sm rounded-lg p-1 border border-white/10 grid grid-cols-6 gap-1 z-10">
+                      {['🔫', '⚡', '🎯', '🗡️', '🔥', '💎'].map((icon, i) => (
+                        <div key={i} className="aspect-square rounded bg-white/5 border border-white/10 flex items-center justify-center text-[10px] text-gray-300 hover:bg-white/10 transition-colors">
+                          {icon}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Info */}
+                  <div className="p-4 space-y-1">
+                    <h3 className="font-black text-sm text-white group-hover:text-fuchsia-300 transition-colors">
+                      {p.title}
+                    </h3>
+                    <div className="text-xs text-gray-400">
+                      {p.sub}
+                    </div>
+                  </div>
+
+                  {/* Price & Single Purple Cart Button matching Image 5 */}
+                  <div className="p-4 pt-2 border-t border-white/5 flex items-center justify-between gap-2">
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-black text-lg text-fuchsia-400">
+                        {formatCurrencyPrice(p.priceINR, currency)}
+                      </span>
+                      <span className="text-xs text-gray-500 line-through font-mono">
+                        {formatCurrencyPrice(p.originalPriceINR, currency)}
+                      </span>
+                    </div>
+
+                    <button
+                      type="button"
                       onClick={() =>
                         onAddToCart({
                           id: p.id,
@@ -442,23 +489,16 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                           quantity: 1,
                         })
                       }
-                      className="p-2 rounded-xl bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 border border-purple-500/30 transition-colors cursor-pointer"
+                      className="p-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white shadow-[0_0_12px_rgba(168,85,247,0.4)] transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                       title="Add to Cart"
                     >
                       <ShoppingCart className="w-4 h-4" />
                     </button>
-
-                    <button
-                      onClick={() => onOpenCheckout(p.title, p.priceINR)}
-                      className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white font-bold text-xs uppercase cursor-pointer"
-                    >
-                      Buy Now
-                    </button>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 

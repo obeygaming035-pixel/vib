@@ -206,11 +206,23 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
               </div>
             </div>
 
-            <img
-              src="/assets/client/vib-3d-monolith.png"
-              alt="VIB 3D Monolith"
-              className="relative z-10 w-full max-w-md h-auto object-contain filter drop-shadow-[0_0_35px_rgba(168,85,247,0.6)]"
-            />
+            <div className="relative z-10 w-full max-w-md flex flex-col items-center">
+              <img
+                src="/assets/client/vib-3d-monolith.png"
+                alt="VIB 3D Monolith"
+                className="w-full h-auto object-contain filter drop-shadow-[0_0_35px_rgba(168,85,247,0.6)]"
+              />
+              <div className="text-[10px] font-mono tracking-widest text-purple-300 uppercase opacity-75 text-center mt-1">
+                A SAFER DIGITAL ECOSYSTEM FOR A STRONGER TOMORROW
+              </div>
+            </div>
+
+            {/* Step indicator on far right edge matching Image 2 */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 space-y-3 text-right text-[10px] font-mono text-gray-500 hidden xl:block z-10">
+              <div className="text-fuchsia-400 font-bold">— 01</div>
+              <div>02</div>
+              <div>03</div>
+            </div>
           </div>
         </div>
       </section>

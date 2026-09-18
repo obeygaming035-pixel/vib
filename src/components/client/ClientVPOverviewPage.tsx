@@ -123,19 +123,22 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             <div className="relative w-full max-w-md aspect-square flex items-center justify-center min-h-[360px]">
               <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-fuchsia-600/30 via-purple-600/30 to-pink-500/20 blur-3xl animate-pulse" />
 
-              {/* Stylized Graffiti Text from Image 5 */}
+              {/* Stylized Graffiti Text from Image 4 */}
               <div className="absolute right-2 top-4 select-none pointer-events-none opacity-40 text-right z-0">
-                <div className="font-marker text-xl sm:text-2xl text-purple-300 rotate-[-8deg] drop-shadow-[0_0_12px_rgba(168,85,247,0.8)]">
-                  MORE VP.
+                <div className="font-marker text-xl sm:text-2xl text-purple-300 rotate-[-12deg] drop-shadow-[0_0_12px_rgba(168,85,247,0.8)]">
+                  PLAY
                 </div>
-                <div className="font-marker text-2xl sm:text-3xl text-fuchsia-400 rotate-[-6deg] drop-shadow-[0_0_12px_rgba(232,85,222,0.8)] mt-1">
-                  MORE SKINS.
+                <div className="font-marker text-2xl sm:text-3xl text-fuchsia-400 rotate-[-10deg] drop-shadow-[0_0_12px_rgba(232,85,222,0.8)] mt-1">
+                  UPGRADE
                 </div>
-                <div className="font-marker text-xl sm:text-2xl text-purple-400 rotate-[-10deg] mt-2">
-                  MORE POWER.
+                <div className="font-marker text-2xl sm:text-3xl text-fuchsia-500 font-bold rotate-[-8deg] mt-1">
+                  BELONG
                 </div>
-                <div className="font-marker text-2xl sm:text-3xl text-fuchsia-500 font-bold rotate-[-12deg] mt-2">
-                  LEVEL UP.
+                <div className="font-marker text-sm sm:text-base text-purple-300 rotate-[-6deg] mt-3">
+                  SAME GAME...
+                </div>
+                <div className="font-marker text-lg sm:text-xl text-fuchsia-400 font-bold rotate-[-6deg]">
+                  MORE POSSIBILITIES.
                 </div>
               </div>
 

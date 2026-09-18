@@ -202,18 +202,23 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
           </p>
         </div>
 
-        {/* 2 Big Chooser Cards */}
+        {/* 2 Big Chooser Cards with Background Art matching Image 1 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Card 1: Lifetime Guaranteed Profiles (Gold Border) */}
           <div
             onClick={() => setSelectedMarketplace('guaranteed')}
-            className={`p-6 sm:p-7 rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group space-y-6 ${
+            className={`relative overflow-hidden p-6 sm:p-7 rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group space-y-6 ${
               selectedMarketplace === 'guaranteed'
                 ? 'bg-[#14101e] border-amber-500/80 shadow-[0_0_30px_rgba(245,158,11,0.25)] ring-1 ring-amber-500/40'
                 : 'bg-[#0d0d18] border-white/10 hover:border-amber-500/50'
             }`}
           >
-            <div className="space-y-4">
+            {/* Ambient character art from Image 1 */}
+            <div className="absolute left-0 bottom-0 w-36 h-36 opacity-30 pointer-events-none select-none z-0">
+              <img src="/assets/client/card-guaranteed-art.png" alt="" className="w-full h-full object-contain" />
+            </div>
+
+            <div className="space-y-4 relative z-10">
               <div className="flex items-center justify-between">
                 <Crown className="w-8 h-8 text-amber-400" />
                 <div className="w-9 h-9 rounded-full border border-white/20 group-hover:bg-amber-500 group-hover:border-amber-500 flex items-center justify-center text-white transition-all">
@@ -250,7 +255,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
             </div>
 
             {/* Sub-box */}
-            <div className="p-3 rounded-2xl bg-black/40 border border-white/5 flex items-center justify-between text-[11px] text-gray-400">
+            <div className="p-3 rounded-2xl bg-black/40 border border-white/5 flex items-center justify-between text-[11px] text-gray-400 relative z-10">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-amber-400 flex-shrink-0" />
                 <span>Profiles in this section are covered by VIB's lifetime guarantee subject to our terms and conditions.</span>
@@ -262,13 +267,18 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
           {/* Card 2: Public Listings (Blue Border) */}
           <div
             onClick={() => setSelectedMarketplace('public')}
-            className={`p-6 sm:p-7 rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group space-y-6 ${
+            className={`relative overflow-hidden p-6 sm:p-7 rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group space-y-6 ${
               selectedMarketplace === 'public'
                 ? 'bg-[#0f1424] border-cyan-500/80 shadow-[0_0_30px_rgba(6,182,212,0.25)] ring-1 ring-cyan-500/40'
                 : 'bg-[#0d0d18] border-white/10 hover:border-cyan-500/50'
             }`}
           >
-            <div className="space-y-4">
+            {/* Ambient character art from Image 1 */}
+            <div className="absolute right-0 top-0 w-44 h-44 opacity-25 pointer-events-none select-none z-0">
+              <img src="/assets/client/card-public-art.png" alt="" className="w-full h-full object-contain" />
+            </div>
+
+            <div className="space-y-4 relative z-10">
               <div className="flex items-center justify-between">
                 <Users className="w-8 h-8 text-cyan-400" />
                 <div className="w-9 h-9 rounded-full border border-white/20 group-hover:bg-cyan-500 group-hover:border-cyan-500 flex items-center justify-center text-white transition-all">
@@ -305,7 +315,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
             </div>
 
             {/* Sub-box */}
-            <div className="p-3 rounded-2xl bg-black/40 border border-white/5 flex items-center justify-between text-[11px] text-gray-400">
+            <div className="p-3 rounded-2xl bg-black/40 border border-white/5 flex items-center justify-between text-[11px] text-gray-400 relative z-10">
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-cyan-400 flex-shrink-0" />
                 <span>These are community listings. Sellers are not verified by VIB. You can use our escrow service for protection.</span>
@@ -376,6 +386,15 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                   >
                     <Heart className={`w-3.5 h-3.5 ${isFav ? 'fill-rose-500 text-rose-500' : 'text-gray-300'}`} />
                   </button>
+                </div>
+
+                {/* 5 Mini Weapon Skin Slots row matching Image 1 */}
+                <div className="px-3 pt-2 grid grid-cols-5 gap-1">
+                  {['🔫', '⚡', '🎯', '🗡️', '🔥'].map((icon, i) => (
+                    <div key={i} className="aspect-square rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-[10px] text-gray-300">
+                      {icon}
+                    </div>
+                  ))}
                 </div>
 
                 {/* Details */}

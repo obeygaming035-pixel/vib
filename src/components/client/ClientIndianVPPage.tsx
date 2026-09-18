@@ -112,19 +112,22 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
           <div className="lg:col-span-5 flex justify-center items-center relative min-h-[340px]">
             <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-fuchsia-600/30 via-purple-600/30 to-pink-500/20 blur-3xl animate-pulse" />
 
-            {/* Stylized Graffiti Text from Image 4 */}
-            <div className="absolute right-2 top-4 select-none pointer-events-none opacity-35 text-right z-0">
-              <div className="font-marker text-xl sm:text-2xl text-purple-300 rotate-[-8deg] drop-shadow-[0_0_12px_rgba(168,85,247,0.8)]">
-                FUEL YOUR ARSENAL
+            {/* Stylized Graffiti Text from Image 3 */}
+            <div className="absolute right-2 top-4 select-none pointer-events-none opacity-40 text-right z-0">
+              <div className="font-marker text-2xl sm:text-3xl text-purple-300 rotate-[-8deg] drop-shadow-[0_0_12px_rgba(168,85,247,0.8)]">
+                FUEL YOUR
               </div>
-              <div className="font-marker text-lg sm:text-xl text-fuchsia-400 rotate-[-6deg] drop-shadow-[0_0_12px_rgba(232,85,222,0.8)] mt-0.5">
+              <div className="font-marker text-2xl sm:text-3xl text-fuchsia-400 rotate-[-6deg] drop-shadow-[0_0_12px_rgba(232,85,222,0.8)]">
+                EXPERIENCE
+              </div>
+              <div className="font-marker text-lg sm:text-xl text-purple-300 rotate-[-8deg] mt-2">
                 SAME GAME.
               </div>
-              <div className="font-marker text-xl sm:text-2xl text-purple-400 rotate-[-10deg] mt-2">
-                MORE POSSIBILITIES.
+              <div className="font-marker text-2xl sm:text-3xl text-fuchsia-500 font-bold rotate-[-10deg]">
+                MORE
               </div>
-              <div className="font-marker text-2xl sm:text-3xl text-fuchsia-500 font-bold rotate-[-12deg] mt-1">
-                TOP UP NOW.
+              <div className="font-marker text-xl sm:text-2xl text-purple-400 font-bold rotate-[-12deg]">
+                POSSIBILITIES.
               </div>
             </div>
 
@@ -404,12 +407,17 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
               </div>
             </div>
 
-            {/* Omen graphic */}
-            <div className="w-32 sm:w-40 flex justify-center">
+            {/* Omen graphic with graffiti matching Image 3 */}
+            <div className="w-32 sm:w-44 flex items-center justify-center relative">
+              <div className="absolute right-0 bottom-2 pointer-events-none select-none text-right opacity-35 z-0">
+                <div className="font-marker text-sm text-purple-400 rotate-[-12deg]">PLAY</div>
+                <div className="font-marker text-base text-fuchsia-400 rotate-[-10deg]">UPGRADE</div>
+                <div className="font-marker text-lg text-purple-300 font-bold rotate-[-8deg]">BELONG</div>
+              </div>
               <img
                 src="/assets/client/vp-omen-security.png"
                 alt="Omen Security"
-                className="w-full object-contain filter drop-shadow-[0_0_20px_rgba(147,51,234,0.5)]"
+                className="w-full object-contain filter drop-shadow-[0_0_20px_rgba(147,51,234,0.5)] relative z-10"
                 onError={(e) => {
                   e.currentTarget.src = '/assets/agents/omen.png';
                 }}
