@@ -17,8 +17,11 @@ import {
   RefreshCw,
   MoreHorizontal,
   Crown,
-  Sparkles,
   Award,
+  Instagram,
+  Disc as Discord,
+  Youtube,
+  Send,
 } from 'lucide-react';
 import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
@@ -148,7 +151,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             {/* 4 Stats Badges matching Image 3 */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4">
               <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2">
-                <Users className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                <Crown className="w-4 h-4 text-purple-400 flex-shrink-0" />
                 <div>
                   <div className="font-bold text-xs text-white">50K+</div>
                   <div className="text-[10px] text-gray-400">Happy Users</div>
@@ -182,31 +185,57 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           </div>
 
           {/* Right Column: Hero Art with Assassin & Graffiti Text (Matching Image 3) */}
-          <div className="lg:col-span-5 flex justify-center items-center relative">
-            <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
-              {/* Radial glow */}
-              <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-fuchsia-600/30 via-purple-600/30 to-pink-500/20 blur-3xl animate-pulse" />
+          <div className="lg:col-span-5 flex justify-center items-center relative min-h-[380px]">
+            {/* Luminous Core Glow */}
+            <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-fuchsia-600/30 via-purple-600/30 to-pink-500/20 blur-3xl animate-pulse" />
 
-              {/* Assassin Hero Art */}
-              <img
-                src="/assets/client/hero-assassin.png"
-                alt="VIB Hero Assassin"
-                className="relative z-10 w-full h-full object-contain filter drop-shadow-[0_0_35px_rgba(168,85,247,0.6)]"
-              />
-
-              {/* Right Vertical Categories */}
-              <div className="absolute right-0 top-6 space-y-1 text-right text-[9px] font-mono tracking-widest text-gray-400 hidden xl:block">
-                <div>PROFILES</div>
-                <div>SERVICES</div>
-                <div>COMMUNITY</div>
-                <div>OPPORTUNITIES</div>
+            {/* Stylized Graffiti Phrases behind hero matching Image 3 */}
+            <div className="absolute -left-6 top-8 select-none pointer-events-none opacity-40 z-0">
+              <div className="font-marker text-2xl sm:text-3xl text-fuchsia-400 rotate-[-10deg] drop-shadow-[0_0_15px_rgba(232,85,222,0.8)]">
+                LEVEL UP
               </div>
+              <div className="font-marker text-xl sm:text-2xl text-purple-300 rotate-[-8deg] drop-shadow-[0_0_15px_rgba(168,85,247,0.8)] mt-0.5">
+                YOUR GAME
+              </div>
+              <div className="font-marker text-3xl sm:text-4xl text-fuchsia-500 font-bold rotate-[-12deg] drop-shadow-[0_0_20px_rgba(192,38,211,1)]">
+                WITH VIB
+              </div>
+            </div>
+
+            <div className="absolute right-2 bottom-6 select-none pointer-events-none opacity-35 text-right z-0">
+              <div className="font-marker text-lg sm:text-xl text-purple-400 rotate-[-12deg]">
+                PLAY
+              </div>
+              <div className="font-marker text-lg sm:text-xl text-purple-400 rotate-[-10deg]">
+                TRADE
+              </div>
+              <div className="font-marker text-lg sm:text-xl text-purple-400 rotate-[-8deg]">
+                UPGRADE
+              </div>
+              <div className="font-marker text-xl sm:text-2xl text-fuchsia-400 font-bold rotate-[-6deg]">
+                BELONG
+              </div>
+            </div>
+
+            {/* Assassin Hero Art */}
+            <img
+              src="/assets/client/hero-assassin.png"
+              alt="VIB Hero Assassin"
+              className="relative z-10 w-full max-w-sm sm:max-w-md h-auto object-contain filter drop-shadow-[0_0_35px_rgba(168,85,247,0.6)]"
+            />
+
+            {/* Right Vertical Categories from Image 3 */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 space-y-4 text-right text-[9px] font-mono tracking-widest text-gray-500 hidden xl:block z-10">
+              <div className="hover:text-fuchsia-400 transition-colors">PROFILES</div>
+              <div className="hover:text-fuchsia-400 transition-colors">SERVICES</div>
+              <div className="hover:text-fuchsia-400 transition-colors">COMMUNITY</div>
+              <div className="hover:text-fuchsia-400 transition-colors">OPPORTUNITIES</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. 8 GLOWING SERVICE CARDS (Matching Image 3) */}
+      {/* 2. 8 GLOWING SERVICE CARDS ROW (Matching Image 3) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
           {[
@@ -215,7 +244,6 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               title: 'Digital Profiles',
               sub: 'Verified & Secure',
               img: '/assets/agents/reyna.png',
-              isAgent: true,
               active: true,
               page: 'profiles' as ClientPage,
             },
@@ -626,7 +654,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 Connect, trade, learn and grow with thousands of members.
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center gap-3">
+              <div className="pt-2 flex flex-wrap items-center gap-4">
                 <button
                   type="button"
                   onClick={() => onNavigate('community')}
@@ -635,6 +663,46 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                   <span>Join Our Community</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
+
+                {/* Social icons matching Image 3 */}
+                <div className="flex items-center gap-2.5">
+                  <a
+                    href="https://discord.gg"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Discord"
+                    className="w-9 h-9 rounded-full bg-[#1b1536] hover:bg-[#5865F2] flex items-center justify-center text-gray-300 hover:text-white transition-colors"
+                  >
+                    <Discord className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Instagram"
+                    className="w-9 h-9 rounded-full bg-[#1b1536] hover:bg-pink-600 flex items-center justify-center text-gray-300 hover:text-white transition-colors"
+                  >
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://t.me"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Telegram"
+                    className="w-9 h-9 rounded-full bg-[#1b1536] hover:bg-sky-500 flex items-center justify-center text-gray-300 hover:text-white transition-colors"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href="https://youtube.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="YouTube"
+                    className="w-9 h-9 rounded-full bg-[#1b1536] hover:bg-red-600 flex items-center justify-center text-gray-300 hover:text-white transition-colors"
+                  >
+                    <Youtube className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
 

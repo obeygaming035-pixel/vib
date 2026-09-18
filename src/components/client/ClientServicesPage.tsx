@@ -186,21 +186,31 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
             </div>
           </div>
 
-          {/* Right Visual: 3D VIB Monolith on Rock Base (Matching Image 2) */}
-          <div className="lg:col-span-5 flex justify-center items-center relative">
-            <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
-              <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-fuchsia-600/30 via-purple-600/30 to-pink-500/20 blur-3xl animate-pulse" />
-              <img
-                src="/assets/client/vib-3d-monolith.png"
-                alt="VIB 3D Monolith"
-                className="relative z-10 w-full h-full object-contain filter drop-shadow-[0_0_35px_rgba(168,85,247,0.6)]"
-              />
-              <div className="absolute right-0 top-6 space-y-1 text-right text-[9px] font-mono tracking-widest text-gray-400 hidden xl:block">
-                <div>PEOPLE</div>
-                <div>PLATFORMS</div>
-                <div>POSSIBILITIES</div>
+          {/* Right Visual: 3D VIB Monolith on Rock Base with Graffiti (Matching Image 2) */}
+          <div className="lg:col-span-5 flex justify-center items-center relative min-h-[360px]">
+            <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-fuchsia-600/30 via-purple-600/30 to-pink-500/20 blur-3xl animate-pulse" />
+
+            {/* Stylized Graffiti Text from Image 2 */}
+            <div className="absolute right-2 top-4 select-none pointer-events-none opacity-40 text-right z-0">
+              <div className="font-marker text-xl sm:text-2xl text-purple-300 rotate-[-8deg] drop-shadow-[0_0_12px_rgba(168,85,247,0.8)]">
+                PEOPLE.
+              </div>
+              <div className="font-marker text-2xl sm:text-3xl text-fuchsia-400 rotate-[-6deg] drop-shadow-[0_0_12px_rgba(232,85,222,0.8)] mt-1">
+                PLATFORMS.
+              </div>
+              <div className="font-marker text-xl sm:text-2xl text-purple-400 rotate-[-10deg] mt-2">
+                POSSIBILITIES.
+              </div>
+              <div className="font-marker text-lg sm:text-xl text-fuchsia-500 font-bold rotate-[-12deg] mt-2">
+                A SAFER TOMORROW.
               </div>
             </div>
+
+            <img
+              src="/assets/client/vib-3d-monolith.png"
+              alt="VIB 3D Monolith"
+              className="relative z-10 w-full max-w-md h-auto object-contain filter drop-shadow-[0_0_35px_rgba(168,85,247,0.6)]"
+            />
           </div>
         </div>
       </section>

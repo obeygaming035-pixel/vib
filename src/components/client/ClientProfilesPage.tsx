@@ -11,6 +11,10 @@ import {
   ShoppingCart,
   ChevronLeft,
   ChevronRight,
+  Instagram,
+  Disc as Discord,
+  Youtube,
+  Send,
 } from 'lucide-react';
 import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
@@ -155,16 +159,31 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
             </div>
           </div>
 
-          {/* Right Hero Art: Jett with Crystal Daggers & Glowing Graffiti (Matching Image 1) */}
-          <div className="lg:col-span-5 flex justify-center items-center relative">
-            <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
-              <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-fuchsia-600/30 via-purple-600/30 to-pink-500/20 blur-3xl animate-pulse" />
-              <img
-                src="/assets/client/hero-profiles-jett.png"
-                alt="Jett Daggers"
-                className="relative z-10 w-full h-full object-contain filter drop-shadow-[0_0_35px_rgba(168,85,247,0.6)]"
-              />
+          {/* Right Hero Art: Jett with Crystal Daggers & Graffiti (Matching Image 1) */}
+          <div className="lg:col-span-5 flex justify-center items-center relative min-h-[360px]">
+            <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-fuchsia-600/30 via-purple-600/30 to-pink-500/20 blur-3xl animate-pulse" />
+
+            {/* Stylized Graffiti Text from Image 1 */}
+            <div className="absolute right-2 top-6 select-none pointer-events-none opacity-40 text-right z-0">
+              <div className="font-marker text-xl sm:text-2xl text-purple-300 rotate-[-8deg] drop-shadow-[0_0_12px_rgba(168,85,247,0.8)]">
+                MORE PLAYSTYLES
+              </div>
+              <div className="font-marker text-xl sm:text-2xl text-fuchsia-400 rotate-[-6deg] drop-shadow-[0_0_12px_rgba(232,85,222,0.8)] mt-0.5">
+                MORE POSSIBILITIES.
+              </div>
+              <div className="font-marker text-lg sm:text-xl text-purple-400 rotate-[-10deg] mt-3">
+                FIND. TRADE.
+              </div>
+              <div className="font-marker text-2xl sm:text-3xl text-fuchsia-500 font-bold rotate-[-12deg]">
+                LEVEL UP.
+              </div>
             </div>
+
+            <img
+              src="/assets/client/hero-profiles-jett.png"
+              alt="Jett Daggers"
+              className="relative z-10 w-full max-w-sm sm:max-w-md h-auto object-contain filter drop-shadow-[0_0_35px_rgba(168,85,247,0.6)]"
+            />
           </div>
         </div>
       </section>
@@ -419,23 +438,48 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
 
       {/* 4. JOIN THE VIB COMMUNITY Banner (Matching Image 1) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-[#0e0d1c] border border-fuchsia-500/30 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
-          <div className="space-y-2 text-center md:text-left">
-            <h3 className="text-2xl sm:text-3xl font-black uppercase text-white">
-              JOIN THE VIB COMMUNITY
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-400">
-              Connect, trade, learn and grow with thousands of members.
-            </p>
-          </div>
+        <div className="rounded-3xl bg-[#0e0d1c] border border-fuchsia-500/30 overflow-hidden shadow-2xl relative">
+          <div className="grid grid-cols-1 md:grid-cols-12 items-center">
+            <div className="md:col-span-3 hidden md:block">
+              <img
+                src="/assets/client/profiles-community-banner.png"
+                alt="Community Agent"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div className="md:col-span-9 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="space-y-2 text-center sm:text-left">
+                <h3 className="text-2xl sm:text-3xl font-black uppercase text-white">
+                  JOIN THE VIB COMMUNITY
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-400">
+                  Connect, trade, learn and grow with thousands of members.
+                </p>
+                <div className="flex items-center gap-3 pt-1 justify-center sm:justify-start">
+                  <a href="https://discord.gg" target="_blank" rel="noreferrer" className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-white">
+                    <Discord className="w-3.5 h-3.5" />
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-white">
+                    <Instagram className="w-3.5 h-3.5" />
+                  </a>
+                  <a href="https://t.me" target="_blank" rel="noreferrer" className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-white">
+                    <Send className="w-3 h-3" />
+                  </a>
+                  <a href="https://youtube.com" target="_blank" rel="noreferrer" className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-white">
+                    <Youtube className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
 
-          <button
-            onClick={() => onNavigate('community')}
-            className="px-6 py-3 rounded-full bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 hover:scale-105 transition-all shadow-[0_0_15px_rgba(192,38,211,0.4)] cursor-pointer whitespace-nowrap"
-          >
-            <span>Join Now</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+              <button
+                onClick={() => onNavigate('community')}
+                className="px-6 py-3 rounded-full bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 hover:scale-105 transition-all shadow-[0_0_15px_rgba(192,38,211,0.4)] cursor-pointer whitespace-nowrap"
+              >
+                <span>Join Now</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
