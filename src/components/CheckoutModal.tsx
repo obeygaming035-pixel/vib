@@ -206,7 +206,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               {/* Security guarantee */}
               <div className="flex items-center gap-2 p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs">
                 <ShieldCheck className="w-4 h-4 shrink-0" />
-                <span>Riot Games Authorized Merchant API • Zero Ban Guarantee</span>
+                <span>Riot Games Authorized Merchant API • Instant Delivery Guarantee</span>
               </div>
 
               {/* Submit CTA */}

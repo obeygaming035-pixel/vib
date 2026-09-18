@@ -5,8 +5,8 @@ export const WhyVIBSection: React.FC = () => {
   const guarantees = [
     {
       icon: ShieldCheck,
-      title: '0% Ban Rate Guarantee',
-      desc: 'All VP vouchers and boosting workflows use Riot-compliant API channels and private residential VPN connections.',
+      title: 'Refund & Replacement Guarantee',
+      desc: 'All VP vouchers and account deliveries are backed by our replacement guarantee with direct 24/7 resolution support.',
       color: '#c026d3',
     },
     {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, ShieldCheck } from 'lucide-react';
+import { ArrowUp, ShieldCheck, Heart, MessageSquare } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -15,40 +15,90 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/5">
           {/* Brand Col */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => onNavigate('home')}>
-              <div className="relative w-9 h-9 rounded-lg bg-gradient-to-tr from-fuchsia-600 via-purple-600 to-cyan-500 p-[1.5px] shadow-lg shadow-fuchsia-500/20">
-                <div className="w-full h-full bg-[#090d16] rounded-[7px] flex items-center justify-center">
-                  <svg viewBox="0 0 32 32" className="w-5 h-5" fill="none">
-                    <path d="M4 6L14 26L18 26L28 6H22L16 19L10 6H4Z" fill="#c026d3" />
-                    <circle cx="16" cy="9" r="2.5" fill="#ffffff" />
-                  </svg>
-                </div>
-              </div>
+              <img
+                src="/assets/client/vib-logo.png"
+                alt="VIB Logo"
+                className="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(192,38,211,0.5)]"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
               <div>
-                <span className="font-teko font-bold text-2xl tracking-wider text-white">
+                <span className="font-chakra font-black text-2xl tracking-wider text-white">
                   VIB <span className="text-fuchsia-400">2.0</span>
                 </span>
-                <span className="block text-[9px] font-chakra tracking-[0.25em] text-gray-400 -mt-1">
-                  VALORANT DIGITAL SERVICES
+                <span className="block text-[9px] font-chakra tracking-[0.25em] text-gray-400 -mt-0.5 uppercase">
+                  Esports Digital Services
                 </span>
               </div>
             </div>
 
-            <p className="font-rajdhani text-sm text-gray-400 max-w-sm mt-4 leading-relaxed">
-              The premier destination for Valorant players. Official VP vouchers, verified smurfs & high-elo accounts, radiant coaching, and secure escrow trading.
+            <p className="font-rajdhani text-sm text-gray-400 max-w-sm leading-relaxed">
+              India's leading platform for verified Valorant accounts, fast VP top-ups, competitive rank-up, and escrow-guaranteed peer trades.
             </p>
 
-            <div className="flex items-center gap-2 mt-5 text-xs font-chakra text-gray-500 uppercase tracking-widest">
+            <div className="flex items-center gap-2 text-xs font-chakra text-gray-400 uppercase tracking-widest">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>All Systems Operational • 24/7 Service</span>
             </div>
+
+            <div className="pt-1 flex items-center gap-2 text-xs font-rajdhani text-emerald-400">
+              <ShieldCheck className="w-4 h-4" />
+              <span>Covered by VIB Refund & Replacement Guarantee</span>
+            </div>
           </div>
 
-          {/* Quick Links 1: Products */}
+          {/* Quick Links 1: Digital Profiles */}
           <div>
             <h4 className="font-chakra font-bold text-sm text-white uppercase tracking-wider mb-4">
-              Products
+              Marketplace
+            </h4>
+            <ul className="flex flex-col gap-2.5 text-sm font-rajdhani text-gray-400">
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('profiles')}
+                  className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
+                >
+                  All Digital Profiles
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('profiles')}
+                  className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
+                >
+                  Guaranteed Profiles
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('profiles')}
+                  className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
+                >
+                  Public Listings
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('profiles')}
+                  className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
+                >
+                  Radiant & Immortal Tier
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Quick Links 2: VP & Services */}
+          <div>
+            <h4 className="font-chakra font-bold text-sm text-white uppercase tracking-wider mb-4">
+              Services
             </h4>
             <ul className="flex flex-col gap-2.5 text-sm font-rajdhani text-gray-400">
               <li>
@@ -57,16 +107,25 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={() => onNavigate('vp')}
                   className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
                 >
-                  VP Top-Up Selector
+                  Indian VP Top-Up
                 </button>
               </li>
               <li>
                 <button
                   type="button"
-                  onClick={() => onNavigate('marketplace')}
+                  onClick={() => onNavigate('vp')}
                   className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
                 >
-                  Valorant Accounts Vault
+                  Philippines VP Packs
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('rankup')}
+                  className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
+                >
+                  Rankup Boosting
                 </button>
               </li>
               <li>
@@ -75,113 +134,69 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={() => onNavigate('services')}
                   className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
                 >
-                  Rank-Up & Boosting
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('services')}
-                  className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
-                >
-                  Pro VOD & Aim Coaching
+                  Profile Exchange & Escrow
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Quick Links 2: Community & Membership */}
+          {/* Quick Links 3: Trust & Legal */}
           <div>
             <h4 className="font-chakra font-bold text-sm text-white uppercase tracking-wider mb-4">
-              Ecosystem
+              Trust & Support
             </h4>
             <ul className="flex flex-col gap-2.5 text-sm font-rajdhani text-gray-400">
               <li>
                 <button
                   type="button"
-                  onClick={() => onNavigate('trading-club')}
-                  className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
-                >
-                  Trading Club & Escrow
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('experience')}
-                  className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
-                >
-                  VIB Experience VIP Program
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
                   onClick={() => onNavigate('support')}
                   className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
                 >
-                  Help Center & Ticket Desk
+                  24/7 Discord Support
                 </button>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('support')}
-                  className="hover:text-fuchsia-300 transition-colors cursor-pointer text-left"
+                <a
+                  href="https://wa.me/919999999999"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-fuchsia-300 transition-colors text-left"
                 >
-                  Dispute & Escrow Rules
-                </button>
+                  WhatsApp Concierge
+                </a>
+              </li>
+              <li>
+                <span className="hover:text-fuchsia-300 transition-colors cursor-pointer">
+                  Escrow Terms
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-fuchsia-300 transition-colors cursor-pointer">
+                  Refund & Replacement Terms
+                </span>
               </li>
             </ul>
           </div>
-
-          {/* Trust & Certifications */}
-          <div>
-            <h4 className="font-chakra font-bold text-sm text-white uppercase tracking-wider mb-4">
-              Security Guarantee
-            </h4>
-            <div className="flex flex-col gap-3 text-xs font-rajdhani text-gray-400">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>256-Bit SSL Encrypted Checkout</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Direct Digital Fulfillment</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Zero Recall Lifetime Policy</span>
-              </div>
-
-              <button
-                type="button"
-                onClick={scrollToTop}
-                className="mt-3 inline-flex items-center gap-2 text-xs font-chakra font-bold uppercase tracking-wider text-fuchsia-400 hover:text-fuchsia-300 cursor-pointer"
-              >
-                <span>Back to Top</span>
-                <ArrowUp className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
         </div>
 
-        {/* Bottom Bar: Matching Image 1 "PLAY • IMPROVE • TRADE • BELONG" */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-chakra text-gray-500">
-          <div>
-            © 2026 VIB 2.0. All Rights Reserved. Not affiliated with or endorsed by Riot Games, Inc.
-          </div>
-
-          <div className="tracking-[0.25em] text-gray-400 uppercase font-bold text-center">
-            PLAY • IMPROVE • TRADE • BELONG
+        {/* Bottom Disclaimer & Copyright */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-rajdhani text-gray-500">
+          <div className="max-w-2xl text-center md:text-left">
+            <p>
+              Disclaimer: VIB is an independent platform and is not endorsed by, directly affiliated with, maintained, or sponsored by Riot Games, Inc. Valorant is a registered trademark of Riot Games, Inc.
+            </p>
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="hover:text-gray-300 transition-colors cursor-pointer">Privacy Policy</span>
-            <span>•</span>
-            <span className="hover:text-gray-300 transition-colors cursor-pointer">Terms of Service</span>
-            <span>•</span>
-            <span className="hover:text-gray-300 transition-colors cursor-pointer">Refund Policy</span>
+            <span>© 2026 VIB Digital Services. All rights reserved.</span>
+            <button
+              type="button"
+              onClick={scrollToTop}
+              aria-label="Scroll to top"
+              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors cursor-pointer"
+            >
+              <ArrowUp className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </div>

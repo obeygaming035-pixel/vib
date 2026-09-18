@@ -38,7 +38,7 @@ export const VPPreview: React.FC<VPPreviewProps> = ({
               </span>
             </h2>
             <p className="font-rajdhani text-base sm:text-lg text-gray-300 max-w-2xl mt-3">
-              Direct riot digital vouchers delivered in real time. Valid for all regional servers including India, APAC, Europe & NA with 0% risk of account penalties.
+              Direct riot digital vouchers delivered in real time. Valid for all regional servers including India, APAC, Europe & NA with instant automated delivery.
             </p>
           </div>
 

@@ -93,7 +93,7 @@ export const RankUpPreview: React.FC<RankUpPreviewProps> = ({
                       >
                         {s.badge}
                       </span>
-                      <span className="text-xs font-chakra text-gray-400">0% Ban Rate</span>
+                      <span className="text-xs font-chakra text-gray-400">Safe & Verified</span>
                     </div>
 
                     <h4 className="font-chakra font-bold text-lg text-white group-hover:text-fuchsia-200 transition-colors">

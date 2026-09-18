@@ -140,7 +140,7 @@ export const MarketplacePreview: React.FC<MarketplacePreviewProps> = ({
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>0% Recall Rate Guarantee with Free Replacement</span>
+                  <span>Refund & Replacement Guarantee with Free Support</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />

@@ -116,7 +116,7 @@ export const PopularServices: React.FC<PopularServicesProps> = ({
             </span>
           </div>
           <div className="absolute bottom-2 left-4 text-[10px] font-chakra text-purple-300/80 uppercase tracking-wider">
-            Verified Middleman • 0% Risk
+            Verified Middleman • Escrow Protected
           </div>
         </div>
       ),
