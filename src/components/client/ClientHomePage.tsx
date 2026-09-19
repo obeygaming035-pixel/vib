@@ -29,6 +29,9 @@ import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
 import { ClientPage } from './Header';
 import { soundFx } from '../../utils/audio';
+import { RankProgressionCalculator } from '../home/RankProgressionCalculator';
+import { WhyChooseVIBSection } from '../home/WhyChooseVIBSection';
+import { CompleteServicesShowcase } from '../home/CompleteServicesShowcase';
 
 interface ClientHomePageProps {
   currency: Currency;
@@ -167,10 +170,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               </button>
             </div>
 
-            {/* 4 Trust Metrics Strip (Single clean horizontal bar with vertical dividers) */}
-            <div className="rounded-xl bg-[#0c0a18]/85 border border-white/[0.09] p-2.5 sm:p-3 max-w-xl flex items-center justify-between gap-1 shadow-xl backdrop-blur-md">
-              <div className="flex items-center gap-2 px-1.5">
-                <div className="w-7 h-7 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+            {/* 4 Trust Metrics Strip (Responsive 2x2 grid on mobile, horizontal row on desktop) */}
+            <div className="rounded-xl bg-[#0c0a18]/85 border border-white/[0.09] p-2.5 sm:p-3 max-w-xl grid grid-cols-2 sm:flex sm:items-center sm:justify-between gap-2.5 sm:gap-1 shadow-xl backdrop-blur-md">
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-7 h-7 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0">
                   <Users className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -179,10 +182,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 </div>
               </div>
 
-              <div className="w-px h-7 bg-white/10" />
+              <div className="hidden sm:block w-px h-7 bg-white/10" />
 
-              <div className="flex items-center gap-2 px-1.5">
-                <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 flex-shrink-0">
                   <Star className="w-3.5 h-3.5 fill-amber-400/30" />
                 </div>
                 <div>
@@ -191,10 +194,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 </div>
               </div>
 
-              <div className="w-px h-7 bg-white/10" />
+              <div className="hidden sm:block w-px h-7 bg-white/10" />
 
-              <div className="flex items-center gap-2 px-1.5">
-                <div className="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0">
                   <ShieldCheck className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -203,10 +206,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 </div>
               </div>
 
-              <div className="w-px h-7 bg-white/10" />
+              <div className="hidden sm:block w-px h-7 bg-white/10" />
 
-              <div className="flex items-center gap-2 px-1.5">
-                <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 flex-shrink-0">
                   <Headphones className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -342,7 +345,16 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           ].map((item) => (
             <div
               key={item.id}
-              onClick={() => onNavigate(item.page)}
+              onClick={() => {
+                if (item.id === 'rankup') {
+                  const el = document.getElementById('rankup-service');
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                    return;
+                  }
+                }
+                onNavigate(item.page);
+              }}
               className={`p-3 rounded-2xl transition-all duration-300 cursor-pointer flex flex-col items-center text-center group relative overflow-hidden ${
                 item.active
                   ? 'bg-gradient-to-b from-[#1c1438] to-[#0c0919] border-2 border-purple-500 shadow-[0_0_18px_rgba(168,85,247,0.45)]'
@@ -585,260 +597,24 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. PREMIUM DIGITAL PROFILES SPOTLIGHT (Matching Reference 4) */}
+      {/* 4. RANKUP WITH VIB: INTERACTIVE PROGRESSION CALCULATOR */}
+      {/* (Client Feedback: "Rankup with VIB and description for rankup service") */}
       {/* ========================================================================= */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-r from-[#0b0916] via-[#100d22] to-[#0b0916] border border-purple-500/25 p-5 lg:p-6 relative overflow-hidden shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            {/* Left side: Character + Headline + Checklist + Button */}
-            <div className="lg:col-span-5 flex items-center gap-5">
-              <div className="w-28 sm:w-32 flex-shrink-0 flex items-center justify-center">
-                <img
-                  src="/assets/agents/yoru.png"
-                  alt="Agent"
-                  className="w-full h-auto object-contain filter drop-shadow-[0_0_25px_rgba(168,85,247,0.8)]"
-                />
-              </div>
-
-              <div className="space-y-3">
-                <div>
-                  <div className="text-[10px] font-mono tracking-[0.25em] text-[#e879f9] uppercase font-bold">
-                    PREMIUM
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-black uppercase text-white leading-tight font-rajdhani">
-                    DIGITAL PROFILES
-                  </h3>
-                </div>
-
-                <div className="space-y-1.5 text-xs text-gray-300">
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </div>
-                    <span>Handpicked &amp; Verified</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </div>
-                    <span>Multiple Tiers &amp; Budgets</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </div>
-                    <span>Safe &amp; Secure Process</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </div>
-                    <span>Lifetime Support (Our Profiles)</span>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => onNavigate('profiles')}
-                  className="px-4 py-2 rounded-full bg-[#120f26] border border-purple-500/50 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 hover:bg-purple-600/30 hover:border-purple-400 transition-all shadow-[0_0_12px_rgba(168,85,247,0.3)] cursor-pointer"
-                >
-                  <span>View All Profiles</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Right: 3 Interactive Sub-Panels (Matching Reference 4) */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {/* Panel 1: SKINS COLLECTION */}
-              <div className="rounded-xl border border-white/10 bg-[#080612] p-3 flex flex-col justify-between shadow-lg min-h-[200px]">
-                <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                  <span className="text-[10px] font-mono tracking-wider text-gray-300 font-bold uppercase">
-                    SKINS COLLECTION
-                  </span>
-                  <div className="flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-1.5 pt-2">
-                  {[
-                    { name: 'Prime Vandal', color: 'border-amber-500/40 text-amber-300 bg-amber-500/5' },
-                    { name: 'Reaver Vandal', color: 'border-purple-500/40 text-purple-300 bg-purple-500/5' },
-                    { name: 'RGX Blade', color: 'border-emerald-500/40 text-emerald-300 bg-emerald-500/5' },
-                    { name: 'Ion Phantom', color: 'border-cyan-500/40 text-cyan-300 bg-cyan-500/5' },
-                    { name: 'Glitchpop', color: 'border-fuchsia-500/40 text-fuchsia-300 bg-fuchsia-500/5' },
-                    { name: 'Kuronami', color: 'border-indigo-500/40 text-indigo-300 bg-indigo-500/5' },
-                  ].map((sk, idx) => (
-                    <div
-                      key={idx}
-                      className={`p-1.5 rounded border ${sk.color} flex flex-col items-center justify-center text-center`}
-                    >
-                      <div className="w-6 h-1 rounded bg-current opacity-70 mb-1" />
-                      <span className="text-[9px] font-semibold leading-tight truncate w-full">
-                        {sk.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Panel 2: RANK HISTORY */}
-              <div className="rounded-xl border border-white/10 bg-[#080612] p-3 flex flex-col items-center justify-between shadow-lg text-center min-h-[200px]">
-                <div className="w-full flex items-center justify-between pb-2 border-b border-white/10 text-left">
-                  <span className="text-[10px] font-mono tracking-wider text-gray-300 font-bold uppercase">
-                    RANK HISTORY
-                  </span>
-                  <span className="text-[9px] text-purple-400 font-bold">PEAK</span>
-                </div>
-                <div className="py-2 flex flex-col items-center justify-center">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500/20 via-fuchsia-500/20 to-purple-600/30 border border-amber-400/60 flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.5)]">
-                    <Crown className="w-8 h-8 text-amber-400 fill-amber-400/50" />
-                  </div>
-                  <span className="text-sm font-black tracking-widest text-white mt-1.5 uppercase font-rajdhani">
-                    RADIANT
-                  </span>
-                </div>
-                <div className="w-full grid grid-cols-6 gap-1 pt-1.5 border-t border-white/10">
-                  {['IRON', 'BRZ', 'SLV', 'GLD', 'PLT', 'IMM'].map((r, i) => (
-                    <div key={i} className="text-[7px] text-gray-400 font-mono font-bold">
-                      {r}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Panel 3: PLAYER CARD */}
-              <div className="rounded-xl border border-white/10 bg-[#080612] p-3 flex flex-col justify-between shadow-lg min-h-[200px]">
-                <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                  <span className="text-[10px] font-mono tracking-wider text-gray-300 font-bold uppercase">
-                    PLAYER CARD
-                  </span>
-                  <span className="text-[9px] text-emerald-400 font-bold">VERIFIED</span>
-                </div>
-                <div className="py-2 flex items-center justify-center">
-                  <div className="w-16 h-24 rounded-lg bg-gradient-to-b from-purple-700 via-indigo-900 to-black border border-purple-400/40 p-1 flex flex-col items-center justify-between shadow-[0_0_15px_rgba(168,85,247,0.4)]">
-                    <Sparkles className="w-3.5 h-3.5 text-purple-300 mt-1" />
-                    <div className="text-[8px] font-black text-white text-center leading-tight uppercase font-rajdhani">
-                      VIB ELITE
-                    </div>
-                    <div className="w-8 h-1 rounded bg-fuchsia-400 mb-1" />
-                  </div>
-                </div>
-                <div className="text-[9px] text-gray-400 text-center truncate">
-                  Prime Collection Full Access
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section id="rankup-service" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <RankProgressionCalculator currency={currency} />
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. OUR SERVICES: Single row of 6 cards (Matching Reference 4) */}
+      {/* 5. WHY CHOOSE VIB: 6 TRUST & COMPLIANCE PILLARS */}
+      {/* (Client Feedback: "Need something different like Why Choose VIB") */}
       {/* ========================================================================= */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-3.5">
-        <div className="flex items-center justify-between">
-          <div className="flex items-baseline gap-2">
-            <h2 className="text-xl font-bold text-white flex items-center gap-2">
-              <Users className="w-4 h-4 text-purple-400" />
-              <span>Our Services</span>
-            </h2>
-            <span className="text-xs text-gray-400 font-normal">
-              Everything you need, in one place.
-            </span>
-          </div>
+      <WhyChooseVIBSection />
 
-          <button
-            type="button"
-            onClick={() => onNavigate('services')}
-            className="px-3.5 py-1 rounded-full border border-purple-500/30 hover:border-purple-400 bg-[#0e0b1a] text-xs font-semibold text-gray-200 hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <span>View All Services</span>
-            <ArrowRight className="w-3 h-3 text-purple-400" />
-          </button>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          {[
-            {
-              title: 'VP Packs',
-              desc: 'Flexible payment plans for your in-game currency needs.',
-              iconType: 'coins',
-              action: () => onNavigate('vp'),
-            },
-            {
-              title: 'Rankup Service',
-              desc: 'Professional assistance to enhance your profile progress.',
-              iconType: 'crest',
-              action: () => onNavigate('rankup'),
-            },
-            {
-              title: 'Region Support',
-              desc: 'Guidance for region conversion and profile setup.',
-              iconType: 'shield',
-              action: () => onNavigate('services'),
-            },
-            {
-              title: 'Profile Promotion',
-              desc: 'Get more visibility for your profiles with our promotional plans.',
-              iconType: 'analytics',
-              action: () => onNavigate('services'),
-            },
-            {
-              title: 'Coaching',
-              desc: 'Learn from experienced players and improve your skills.',
-              iconType: 'users',
-              action: () => onNavigate('services'),
-            },
-            {
-              title: 'Profile Exchange',
-              desc: 'A safer way to trade profiles with escrow support.',
-              iconType: 'arrows',
-              action: () => onNavigate('services'),
-            },
-          ].map((srv, idx) => (
-            <div
-              key={idx}
-              onClick={srv.action}
-              className="p-3.5 rounded-2xl bg-[#0b0916] border border-white/[0.08] hover:border-purple-500/40 hover:bg-[#120e24] transition-all duration-300 cursor-pointer group flex flex-col justify-between min-h-[155px]"
-            >
-              <div>
-                <div className="w-9 h-9 rounded-xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center mb-2 text-purple-400 group-hover:scale-105 transition-transform">
-                  {srv.iconType === 'coins' ? (
-                    <div className="w-6 h-6 rounded-full border border-purple-400 bg-gradient-to-tr from-purple-900 to-indigo-800 flex items-center justify-center text-[9px] font-bold text-white shadow-[0_0_8px_rgba(168,85,247,0.5)]">
-                      V
-                    </div>
-                  ) : srv.iconType === 'crest' ? (
-                    <Award className="w-5 h-5 text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
-                  ) : srv.iconType === 'shield' ? (
-                    <ShieldCheck className="w-5 h-5 text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
-                  ) : srv.iconType === 'analytics' ? (
-                    <BarChart3 className="w-5 h-5 text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
-                  ) : srv.iconType === 'users' ? (
-                    <Users className="w-5 h-5 text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
-                  ) : (
-                    <RefreshCw className="w-5 h-5 text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
-                  )}
-                </div>
-
-                <h3 className="font-bold text-xs text-white group-hover:text-purple-300 transition-colors leading-tight">
-                  {srv.title}
-                </h3>
-                <p className="text-[10px] text-gray-400 mt-1 leading-relaxed">
-                  {srv.desc}
-                </p>
-              </div>
-
-              <div className="pt-2 flex justify-end">
-                <div className="w-6 h-6 rounded-full bg-white/5 group-hover:bg-purple-600 flex items-center justify-center text-gray-400 group-hover:text-white transition-all">
-                  <ArrowRight className="w-3 h-3" />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* ========================================================================= */}
+      {/* 6. COMPLETE SERVICES SHOWCASE (ALL 8 SERVICES DIRECTLY) */}
+      {/* (Client Feedback: "2 our services. Remove one of them. Also don't keep view all services instead show all services") */}
+      {/* ========================================================================= */}
+      <CompleteServicesShowcase onNavigate={onNavigate} />
 
       {/* ========================================================================= */}
       {/* 6. BECOME A PART OF VIB COMMUNITY BANNER (Matching Reference 4) */}

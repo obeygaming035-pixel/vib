@@ -76,13 +76,27 @@ export const Header: React.FC<HeaderProps> = ({
           {/* 3D Metallic VIB Logo */}
           <div
             onClick={() => handleNav('home')}
-            className="flex items-center gap-2 cursor-pointer group select-none flex-shrink-0"
+            className="flex items-center gap-2.5 cursor-pointer group select-none flex-shrink-0"
           >
-            <img
-              src="/assets/client/vib-logo.png"
-              alt="VIB Logo"
-              className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-[0_0_12px_rgba(192,38,211,0.6)] group-hover:scale-105 transition-transform"
-            />
+            <div className="relative flex items-center justify-center h-8 sm:h-9">
+              <div className="absolute inset-0 bg-purple-600/30 blur-md rounded-full pointer-events-none scale-125" />
+              <img
+                src="/assets/hires/vib_logo_metallic_hires.png"
+                alt="VIB Logo"
+                className="h-8 sm:h-9 w-auto object-contain relative z-10 drop-shadow-[0_0_12px_rgba(168,85,247,0.7)] group-hover:scale-105 transition-transform"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/assets/client/vib-logo.png';
+                }}
+              />
+            </div>
+            <div className="hidden xl:flex flex-col">
+              <span className="text-[10px] font-mono tracking-widest uppercase text-purple-300 font-bold leading-tight">
+                DIGITAL SERVICES
+              </span>
+              <span className="text-[8px] font-mono tracking-wider text-white/50 leading-tight">
+                EST. 2024 • MSME VERIFIED
+              </span>
+            </div>
           </div>
         </div>
 

@@ -100,7 +100,15 @@ export default function App() {
     }
 
     if (page === 'rankup') {
-      handleOpenCustomCheckout('Competitive Rankup Boost Service', 2499);
+      if (currentPage !== 'home') {
+        setCurrentPage('home');
+      }
+      setTimeout(() => {
+        const el = document.getElementById('rankup-service');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
       return;
     }
 

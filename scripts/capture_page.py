@@ -79,11 +79,23 @@ if __name__ == "__main__":
     
     target_url = urls.get(page_name, "http://localhost:3000/")
     out_capture = f"current_{page_name}.png"
+    out_mobile = f"current_{page_name}_mobile.png"
     out_top = f"comp_{page_name}_top.png"
     out_bottom = f"comp_{page_name}_bottom.png"
     
-    capture(target_url, out_capture)
+    # Capture Desktop 1440px
+    capture(target_url, out_capture, width=1440, height=900)
+    # Capture Mobile 390px
+    capture(target_url, out_mobile, width=390, height=844)
     
     ref_file = refs.get(page_name)
     if ref_file and os.path.exists(ref_file):
         make_comparison(ref_file, out_capture, out_top, out_bottom)
+
+    # Copy to artifacts directory
+    import shutil
+    art_dir = r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec"
+    for f in [out_capture, out_mobile, out_top, out_bottom]:
+        if os.path.exists(f):
+            shutil.copy2(f, os.path.join(art_dir, f))
+    print("Copied images to artifacts directory")

@@ -18,14 +18,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-white/5">
           {/* Logo + Tagline */}
           <div className="flex items-center gap-3">
-            <img
-              src="/assets/client/vib-logo.png"
-              alt="VIB Logo"
-              className="w-8 h-8 object-contain drop-shadow-[0_0_10px_rgba(192,38,211,0.5)]"
-            />
+            <div className="relative flex items-center justify-center h-8">
+              <div className="absolute inset-0 bg-purple-600/30 blur-md rounded-full pointer-events-none scale-125" />
+              <img
+                src="/assets/hires/vib_logo_metallic_hires.png"
+                alt="VIB Logo"
+                className="h-8 w-auto object-contain relative z-10 drop-shadow-[0_0_12px_rgba(168,85,247,0.7)]"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/assets/client/vib-logo.png';
+                }}
+              />
+            </div>
             <div>
               <span className="font-bold text-sm text-white">Digital Services Platform</span>
-              <span className="block text-[11px] text-gray-500">Built for a Global Community</span>
+              <span className="block text-[11px] text-gray-500">Built for a Global Community • MSME Verified</span>
             </div>
           </div>
 
@@ -107,6 +113,26 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             >
               <Send className="w-3.5 h-3.5" />
             </a>
+          </div>
+        </div>
+
+        {/* Official VIB Contact & Verification Strip */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 py-2.5 px-4 rounded-xl bg-purple-950/20 border border-purple-500/20 text-[11px] text-gray-300">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4">
+            <span className="flex items-center gap-1.5">
+              <span className="text-gray-400">WhatsApp:</span>
+              <strong className="text-white">+91 9181801766</strong>
+            </span>
+            <span className="hidden sm:inline text-gray-600">•</span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-gray-400">Email:</span>
+              <strong className="text-white">teamvibofficial@gmail.com</strong>
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-0.5 rounded-full bg-purple-500/20 border border-purple-500/40 text-[10px] font-mono font-semibold text-purple-300">
+              MSME UDYAM REGISTERED • 100% MANUAL HUMAN ESCROW
+            </span>
           </div>
         </div>
 
