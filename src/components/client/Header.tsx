@@ -89,14 +89,6 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
               />
             </div>
-            <div className="hidden xl:flex flex-col">
-              <span className="text-[10px] font-mono tracking-widest uppercase text-purple-300 font-bold leading-tight">
-                DIGITAL SERVICES
-              </span>
-              <span className="text-[8px] font-mono tracking-wider text-white/50 leading-tight">
-                EST. 2024 • MSME VERIFIED
-              </span>
-            </div>
           </div>
         </div>
 
