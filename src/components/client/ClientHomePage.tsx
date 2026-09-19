@@ -269,14 +269,18 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               <div className="w-4 h-0.5 bg-purple-500 ml-auto mt-2" />
             </div>
 
-            {/* Futuristic Tech-Gaming Operative Visual */}
-            <div className="relative z-0 flex items-center justify-center">
+            {/* Futuristic Tech-Gaming Operative Visual - Seamlessly Blended */}
+            <div className="relative z-0 flex items-center justify-center w-full max-w-[430px]">
+              {/* Diffuse ambient purple glow behind operative */}
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-700/40 via-fuchsia-600/20 to-transparent blur-[70px] rounded-full pointer-events-none transform scale-110" />
+              
               <img
                 src="/assets/hires/vib_tech_gaming_hero.png"
                 alt="VIB Tech-Gaming Operative"
-                className="relative z-10 w-full max-w-[430px] h-auto object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.7)] transform scale-105"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/assets/hires/vib_tech_gaming_hero.jpg';
+                className="relative z-10 w-full h-auto object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.7)] transform scale-105 select-none pointer-events-none"
+                style={{
+                  maskImage: 'radial-gradient(ellipse 88% 88% at 50% 50%, black 55%, rgba(0,0,0,0.6) 75%, transparent 100%)',
+                  WebkitMaskImage: 'radial-gradient(ellipse 88% 88% at 50% 50%, black 55%, rgba(0,0,0,0.6) 75%, transparent 100%)',
                 }}
               />
             </div>
