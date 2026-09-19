@@ -142,15 +142,22 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
             {/* Subtitle */}
             <p className="text-gray-300 text-[13px] leading-relaxed font-normal max-w-xl">
-              Digital Profiles &nbsp;|&nbsp; VP Packs &nbsp;|&nbsp; Rank Progression &nbsp;|&nbsp; Profile Services <br className="hidden sm:inline" />
-              Promotions &nbsp;|&nbsp; Community Marketplace &nbsp;|&nbsp; And More – All in One Place.
+              Digital Profiles &nbsp;|&nbsp; VP Packs &nbsp;|&nbsp; Rank Progression &nbsp;|&nbsp; Region Conversion <br className="hidden sm:inline" />
+              Account Rentals &nbsp;|&nbsp; Safe Escrow &nbsp;|&nbsp; Pro Coaching &nbsp;|&nbsp; And More – All in One Place.
             </p>
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-3 pt-0.5">
               <button
                 type="button"
-                onClick={() => onNavigate('services')}
+                onClick={() => {
+                  const el = document.getElementById('services');
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                    return;
+                  }
+                  onNavigate('services');
+                }}
                 className="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer shadow-lg flex items-center gap-2"
                 style={{
                   background: 'linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #c026d3 100%)',
@@ -262,155 +269,22 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               <div className="w-4 h-0.5 bg-purple-500 ml-auto mt-2" />
             </div>
 
-            {/* Cyberpunk Sniper Heroine */}
-            <img
-              src="/assets/hires/hero_sniper_girl_flipped.png"
-              alt="VIB Esports Heroine"
-              className="relative z-0 w-full max-w-[430px] h-auto object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.6)] transform scale-105"
-            />
+            {/* Futuristic Tech-Gaming Operative Visual */}
+            <div className="relative z-0 flex items-center justify-center">
+              <img
+                src="/assets/hires/vib_tech_gaming_hero.png"
+                alt="VIB Tech-Gaming Operative"
+                className="relative z-10 w-full max-w-[430px] h-auto object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.7)] transform scale-105"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/assets/hires/vib_tech_gaming_hero.jpg';
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 2. 8 QUICK-CATEGORY CARDS ROW (Matching Reference 4) */}
-      {/* ========================================================================= */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-          {[
-            {
-              id: 'profiles',
-              title: 'Digital Profiles',
-              sub: 'Verified & Secure',
-              avatar: '/assets/agents/reyna.png',
-              active: true,
-              page: 'profiles' as ClientPage,
-            },
-            {
-              id: 'vp',
-              title: 'VP Packs',
-              sub: 'Flexible Plans',
-              iconType: 'coins',
-              active: false,
-              page: 'vp' as ClientPage,
-            },
-            {
-              id: 'rankup',
-              title: 'Rankup Service',
-              sub: 'Boost Your Progress',
-              iconType: 'crest',
-              active: false,
-              page: 'rankup' as ClientPage,
-            },
-            {
-              id: 'exchange',
-              title: 'Profile Exchange',
-              sub: 'Trade Safely',
-              iconType: 'exchange',
-              active: false,
-              page: 'services' as ClientPage,
-            },
-            {
-              id: 'region',
-              title: 'Region Support',
-              sub: 'More Possibilities',
-              iconType: 'globe',
-              active: false,
-              page: 'services' as ClientPage,
-            },
-            {
-              id: 'promotion',
-              title: 'Profile Promotion',
-              sub: 'Get Noticed',
-              iconType: 'megaphone',
-              active: false,
-              page: 'services' as ClientPage,
-            },
-            {
-              id: 'coaching',
-              title: 'Coaching',
-              sub: 'Learn & Improve',
-              iconType: 'coaching',
-              active: false,
-              page: 'services' as ClientPage,
-            },
-            {
-              id: 'more',
-              title: 'More Services',
-              sub: 'Explore All',
-              iconType: 'dots',
-              active: false,
-              page: 'services' as ClientPage,
-            },
-          ].map((item) => (
-            <div
-              key={item.id}
-              onClick={() => {
-                if (item.id === 'rankup') {
-                  const el = document.getElementById('rankup-service');
-                  if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' });
-                    return;
-                  }
-                }
-                onNavigate(item.page);
-              }}
-              className={`p-3 rounded-2xl transition-all duration-300 cursor-pointer flex flex-col items-center text-center group relative overflow-hidden ${
-                item.active
-                  ? 'bg-gradient-to-b from-[#1c1438] to-[#0c0919] border-2 border-purple-500 shadow-[0_0_18px_rgba(168,85,247,0.45)]'
-                  : 'bg-[#0b0916] border border-white/[0.08] hover:border-purple-500/40 hover:bg-[#120f24]'
-              }`}
-            >
-              <div className="w-10 h-10 rounded-xl bg-black/40 border border-white/5 flex items-center justify-center mb-2 overflow-hidden group-hover:scale-110 transition-transform flex-shrink-0">
-                {item.avatar ? (
-                  <img
-                    src={item.avatar}
-                    alt={item.title}
-                    className="w-9 h-9 object-contain drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]"
-                  />
-                ) : item.iconType === 'coins' ? (
-                  <div className="relative flex items-center justify-center">
-                    <div className="w-6 h-6 rounded-full border border-cyan-400 bg-gradient-to-tr from-purple-800 to-cyan-700 flex items-center justify-center text-[9px] font-black text-white shadow-[0_0_8px_rgba(56,189,248,0.5)]">
-                      V
-                    </div>
-                  </div>
-                ) : item.iconType === 'crest' ? (
-                  <div className="text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]">
-                    <Award className="w-5 h-5" />
-                  </div>
-                ) : item.iconType === 'exchange' ? (
-                  <div className="text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]">
-                    <RefreshCw className="w-5 h-5" />
-                  </div>
-                ) : item.iconType === 'globe' ? (
-                  <div className="text-blue-400 drop-shadow-[0_0_8px_rgba(96,165,250,0.6)]">
-                    <Globe2 className="w-5 h-5" />
-                  </div>
-                ) : item.iconType === 'megaphone' ? (
-                  <div className="text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]">
-                    <Megaphone className="w-5 h-5" />
-                  </div>
-                ) : item.iconType === 'coaching' ? (
-                  <div className="text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]">
-                    <GraduationCap className="w-5 h-5" />
-                  </div>
-                ) : (
-                  <div className="text-purple-400">
-                    <MoreHorizontal className="w-5 h-5" />
-                  </div>
-                )}
-              </div>
 
-              <div className="font-bold text-xs text-white group-hover:text-purple-300 transition-colors leading-tight">
-                {item.title}
-              </div>
-              <div className="text-[10px] text-gray-400 mt-0.5 leading-tight font-medium">
-                {item.sub}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* ========================================================================= */}
       {/* 3. FEATURED: Explore Digital Profiles (Matching Reference 4) */}
