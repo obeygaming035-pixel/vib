@@ -187,13 +187,18 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
-          {/* Hero Art positioned right next to the text inside max-w-[1360px] with seamless 4-way alpha blending */}
-          <div className="relative w-full md:w-[460px] lg:w-[480px] xl:w-[500px] h-[260px] sm:h-[280px] lg:h-[300px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
+          {/* Hero Art: Panoramic scene with city & graffiti, compact size close to text with STRICTLY 0 OUTLINES */}
+          <div className="relative w-full md:w-[480px] lg:w-[540px] xl:w-[580px] h-[250px] sm:h-[270px] lg:h-[290px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
             <img
-              src="/assets/hires/hero_banner_feathered.png"
+              src="/assets/hires/hero_banner_panoramic_blend.png"
               alt="VIB Digital Profiles Heroine"
               className="w-full h-full object-contain object-right select-none pointer-events-none opacity-95"
             />
+            {/* 4-Way Gradient Overlays ensuring mathematically zero outlines */}
+            <div className="absolute inset-y-0 left-0 w-24 sm:w-32 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent pointer-events-none z-[1]" />
+            <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-[#05040a] to-transparent pointer-events-none z-[1]" />
+            <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#05040a] to-transparent pointer-events-none z-[1]" />
+            <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#05040a] to-transparent pointer-events-none z-[1]" />
           </div>
         </div>
       </section>
