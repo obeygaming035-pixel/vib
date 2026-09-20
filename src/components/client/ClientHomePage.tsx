@@ -17,11 +17,13 @@ import {
   Star,
   MessageSquare,
   Sparkles,
+  Zap,
 } from 'lucide-react';
 import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
 import { ClientPage } from './Header';
 import { soundFx } from '../../utils/audio';
+import { RankProgressionCalculator } from '../home/RankProgressionCalculator';
 
 interface ClientHomePageProps {
   currency: Currency;
@@ -142,25 +144,12 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       {/* ========================================================================= */}
       <section className="relative w-full overflow-hidden min-h-[250px] sm:min-h-[280px] lg:min-h-[310px] flex items-center pt-1 pb-1">
         {/* Ambient atmospheric purple lighting */}
-        <div className="absolute top-1/3 right-1/4 w-[380px] h-[260px] bg-purple-600/20 rounded-full blur-[100px] pointer-events-none z-[1]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/4 w-[450px] h-[280px] bg-purple-600/20 rounded-full blur-[100px] pointer-events-none z-[1]" />
         <div className="absolute bottom-0 left-10 w-[300px] h-[180px] bg-fuchsia-800/15 rounded-full blur-[70px] pointer-events-none z-[1]" />
 
-        {/* Right-aligned Hero Art container matching reference scene without overpowering the screen */}
-        <div className="absolute top-0 right-0 bottom-0 w-full sm:w-[46%] lg:w-[42%] max-w-[460px] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-end">
-          <img
-            src="/assets/hires/hero_banner_full.jpg"
-            alt="VIB Digital Profiles Heroine"
-            className="w-full h-full object-cover object-right select-none pointer-events-none opacity-90 scale-95"
-          />
-          {/* Smooth feathering gradient on the left boundary */}
-          <div className="absolute inset-y-0 left-0 w-28 sm:w-40 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
-          {/* Subtle top/bottom edge softening */}
-          <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-[#05040a] to-transparent z-[1]" />
-          <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#05040a] to-transparent z-[1]" />
-        </div>
-
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-4 sm:py-6">
-          <div className="max-w-xl lg:max-w-xl space-y-3">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-4 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Left Text Content */}
+          <div className="max-w-xl lg:max-w-xl space-y-3 z-10">
             {/* Main Headline (2 lines matching reference exactly) */}
             <div className="space-y-0.5">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
@@ -195,6 +184,17 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 <span className="font-medium text-[11px]">Dedicated Support</span>
               </div>
             </div>
+          </div>
+
+          {/* Hero Art positioned right next to the text inside max-w-[1360px] */}
+          <div className="relative w-full md:w-[460px] lg:w-[500px] h-[260px] sm:h-[290px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
+            <img
+              src="/assets/hires/hero_banner_full.jpg"
+              alt="VIB Digital Profiles Heroine"
+              className="w-full h-full object-cover object-right select-none pointer-events-none opacity-90 scale-95 [mask-image:linear-gradient(to_right,transparent_0%,black_20%,black_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_20%,black_100%)]"
+            />
+            {/* Smooth feathering gradient on the left boundary */}
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#05040a] to-transparent z-[1]" />
           </div>
         </div>
       </section>
@@ -444,7 +444,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 key={p.id}
                 className="rounded-xl bg-[#0c0a18] border border-white/[0.08] hover:border-purple-500/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
               >
-                {/* Character preview card top with close-up bust */}
+                {/* Character preview card top with authentic reference artwork */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#100c1e]">
                   <img
                     src={p.avatarImg}
@@ -452,23 +452,16 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
 
-                  {/* Top Left Badge: FEATURED (Amber pill) */}
-                  <div className="absolute top-2 left-2">
-                    <span className="text-[9px] font-extrabold tracking-wider px-2 py-0.5 rounded-md bg-[#f59e0b] text-black font-rajdhani uppercase shadow-md">
-                      {p.badge}
-                    </span>
-                  </div>
-
-                  {/* Top Right: Heart Toggle */}
+                  {/* Top Right: Heart Toggle Hotspot */}
                   <button
+                    type="button"
                     onClick={() => toggleFav(p.id)}
-                    className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/50 hover:bg-black/80 text-white transition-colors cursor-pointer border border-white/10 backdrop-blur-sm"
+                    className="absolute top-1.5 right-1.5 w-7 h-7 flex items-center justify-center rounded-lg cursor-pointer hover:bg-white/10 transition-colors"
+                    title={isFav ? 'Remove from favorites' : 'Add to favorites'}
                   >
-                    <Heart
-                      className={`w-3.5 h-3.5 ${
-                        isFav ? 'fill-rose-500 text-rose-500' : 'text-gray-300'
-                      }`}
-                    />
+                    {isFav && (
+                      <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500 drop-shadow-[0_0_8px_rgba(244,63,94,0.8)]" />
+                    )}
                   </button>
                 </div>
 
@@ -550,7 +543,27 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. JOIN THE VIB COMMUNITY Banner (Matching Reference Image)               */}
+      {/* 4. RANKUP SERVICE: Interactive Rank-to-Rank Progression Calculator       */}
+      {/* ========================================================================= */}
+      <section id="rankup-service" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4 pt-2">
+        <div className="space-y-1">
+          <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.22em] text-[#e879f9] uppercase font-semibold">
+            <Zap className="w-3.5 h-3.5 text-[#e879f9]" />
+            <span>RANK-UP SERVICE &amp; ESTIMATOR</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-rajdhani">
+            Competitive Rank Progression Calculator
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-400">
+            Select your current rank and target rank to get an instant accurate price estimate and book with verified Radiant specialists.
+          </p>
+        </div>
+
+        <RankProgressionCalculator currency={currency} />
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. JOIN THE VIB COMMUNITY Banner (Matching Reference Image)               */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl bg-gradient-to-r from-[#190e33] via-[#120a22] to-[#0c0817] border border-purple-500/30 overflow-hidden shadow-2xl relative min-h-[105px] flex items-center">
