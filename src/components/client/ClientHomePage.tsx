@@ -1,37 +1,27 @@
 import React, { useState } from 'react';
 import {
   ShieldCheck,
-  Star,
+  Check,
   Users,
   Headphones,
+  Crown,
   ArrowRight,
-  ChevronLeft,
-  ChevronRight,
   Heart,
   ShoppingCart,
-  Check,
-  Globe2,
-  Megaphone,
-  GraduationCap,
-  RefreshCw,
-  MoreHorizontal,
-  Crown,
-  Award,
+  ChevronLeft,
+  ChevronRight,
   Instagram,
   Disc as Discord,
   Youtube,
   Send,
+  Star,
+  MessageSquare,
   Sparkles,
-  BarChart3,
-  TrendingUp,
 } from 'lucide-react';
 import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
 import { ClientPage } from './Header';
 import { soundFx } from '../../utils/audio';
-import { RankProgressionCalculator } from '../home/RankProgressionCalculator';
-import { WhyChooseVIBSection } from '../home/WhyChooseVIBSection';
-import { CompleteServicesShowcase } from '../home/CompleteServicesShowcase';
 
 interface ClientHomePageProps {
   currency: Currency;
@@ -46,406 +36,497 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
   onAddToCart,
   onOpenCheckout,
 }) => {
-  const [featuredTab, setFeaturedTab] = useState<'featured' | 'our' | 'community'>('featured');
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
+  const [selectedMarketplace, setSelectedMarketplace] = useState<'guaranteed' | 'public'>('guaranteed');
 
-  const toggleFavorite = (id: string) => {
+  const toggleFav = (id: string) => {
     soundFx.playClickSound();
     setFavoriteIds((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
     );
   };
 
-  const featuredProfiles = [
+  // 5 Real Featured Profiles strictly matching Reference Image media_1789878444993.jpg
+  const profiles = [
     {
-      id: 'p-a1023',
+      id: 'p-immortal-310',
       badge: 'FEATURED',
-      badgeType: 'featured',
-      playBadge: true,
-      title: 'Profile #A1023',
-      sub: 'Immortal 1 • 210+ Skins • Prime',
-      priceINR: 4999,
-      originalPriceINR: 6999,
-      image: '/assets/items/vandal-rgx.png',
-      imageGlow: 'from-purple-950/80 via-fuchsia-950/30 to-[#0c0919]',
-      subBanner: null,
+      title: 'Immortal Profile',
+      sub: 'Level 310 • 20+ Skins',
+      rankName: 'Immortal',
+      rankColor: 'text-[#f43f5e] bg-[#f43f5e]/10 border-[#f43f5e]/30',
+      priceINR: 24999,
+      originalPriceINR: 32999,
+      avatarImg: '/assets/hires/profiles/card1_omen.jpg',
+      weapons: [
+        { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
+        { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
+        { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
+        { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/40' },
+      ],
     },
     {
-      id: 'p-b4481',
-      badge: 'HOT',
-      badgeType: 'hot',
-      playBadge: true,
-      title: 'Profile #B4481',
-      sub: 'Radiant • 350+ Skins • Full Access',
-      priceINR: 12499,
-      originalPriceINR: 16999,
-      image: '/assets/hires/singularity_mask.png',
-      imageGlow: 'from-indigo-950/80 via-purple-950/30 to-[#0c0919]',
-      subBanner: 'SINGULARITY',
+      id: 'p-ascendant-205',
+      badge: 'FEATURED',
+      title: 'Ascendant Profile',
+      sub: 'Level 205 • Prime Collection',
+      rankName: 'Ascendant',
+      rankColor: 'text-[#10b981] bg-[#10b981]/10 border-[#10b981]/30',
+      priceINR: 14999,
+      originalPriceINR: 19999,
+      avatarImg: '/assets/hires/profiles/card2_reyna.jpg',
+      weapons: [
+        { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
+        { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
+        { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
+        { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/40' },
+      ],
     },
     {
-      id: 'p-c7710',
-      badge: 'POPULAR',
-      badgeType: 'popular',
-      playBadge: false,
-      title: 'Profile #C7710',
-      sub: 'Ascendant 3 • 120+ Skins • Prime',
-      priceINR: 3999,
-      originalPriceINR: 5999,
-      image: '/assets/items/phantom-rgx.png',
-      imageGlow: 'from-cyan-950/80 via-purple-950/30 to-[#0c0919]',
-      subBanner: null,
+      id: 'p-radiant-420',
+      badge: 'FEATURED',
+      title: 'Radiant Profile',
+      sub: 'Level 420 • Full Access',
+      rankName: 'Radiant',
+      rankColor: 'text-[#fbbf24] bg-[#fbbf24]/10 border-[#fbbf24]/30',
+      priceINR: 59999,
+      originalPriceINR: 89999,
+      avatarImg: '/assets/hires/profiles/card3_phoenix.jpg',
+      weapons: [
+        { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/50' },
+        { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/50' },
+        { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/50' },
+        { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/50' },
+      ],
     },
     {
-      id: 'p-d3091',
-      badge: 'EXCLUSIVE',
-      badgeType: 'exclusive',
-      playBadge: false,
-      title: 'Profile #D3091',
-      sub: 'Immortal 2 • 180+ Skins • Prime',
-      priceINR: 7999,
-      originalPriceINR: 11999,
-      image: '/assets/items/vandal-reaper.png',
-      imageGlow: 'from-violet-950/90 via-indigo-950/40 to-[#0c0919]',
-      subBanner: 'KURONAMI',
+      id: 'p-diamond-180',
+      badge: 'FEATURED',
+      title: 'Diamond Profile',
+      sub: 'Level 180 • Multiple Skins',
+      rankName: 'Diamond',
+      rankColor: 'text-[#c084fc] bg-[#c084fc]/10 border-[#c084fc]/30',
+      priceINR: 8999,
+      originalPriceINR: 14999,
+      avatarImg: '/assets/hires/profiles/card4_viper.jpg',
+      weapons: [
+        { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
+        { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
+        { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
+        { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/40' },
+      ],
+    },
+    {
+      id: 'p-ascendant-250',
+      badge: 'FEATURED',
+      title: 'Ascendant Profile',
+      sub: 'Level 250 • Rare Skins',
+      rankName: 'Ascendant',
+      rankColor: 'text-[#10b981] bg-[#10b981]/10 border-[#10b981]/30',
+      priceINR: 16999,
+      originalPriceINR: 24999,
+      avatarImg: '/assets/hires/profiles/card5_yoru.jpg',
+      weapons: [
+        { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
+        { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/40' },
+        { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
+        { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
+      ],
     },
   ];
 
   return (
-    <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-7 sm:space-y-9 pb-12">
-      {/* ========================================================================= */}
-      {/* 1. HERO SECTION (Matching Reference 4) */}
-      {/* ========================================================================= */}
-      <section className="relative w-full pt-3 sm:pt-4 pb-2 overflow-hidden">
-        {/* Ambient atmospheric purple glows */}
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-purple-700/15 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute -bottom-10 left-10 w-[500px] h-[400px] bg-fuchsia-800/10 rounded-full blur-[100px] pointer-events-none" />
+    <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-8 sm:space-y-10 pb-16">
+      {/* Breadcrumb Navigation matching Reference Image media_1789878444993.jpg */}
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3">
+        <div className="flex items-center gap-2 text-xs text-gray-400 font-medium">
+          <button
+            onClick={() => onNavigate('home')}
+            className="hover:text-purple-400 transition-colors cursor-pointer text-gray-400"
+          >
+            Home
+          </button>
+          <span className="text-gray-600">&gt;</span>
+          <span className="text-purple-400 font-medium">Digital Profiles</span>
+        </div>
+      </div>
 
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center relative z-10">
-          {/* Left Column: Headline, Subtitle, CTAs, 4 Metrics */}
-          <div className="lg:col-span-7 space-y-3.5">
-            {/* Top pill */}
-            <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.22em] text-[#e879f9] uppercase font-semibold">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#e879f9]" />
-              <span>TRUSTED • SECURE • COMMUNITY DRIVEN</span>
-            </div>
+      {/* ========================================================================= */}
+      {/* 1. HERO SECTION (Matching Reference Image media_1789878444993.jpg)       */}
+      {/* ========================================================================= */}
+      <section className="relative w-full overflow-hidden pt-2">
+        {/* Ambient atmospheric purple glow */}
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[500px] bg-purple-700/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute -bottom-10 left-10 w-[450px] h-[350px] bg-fuchsia-800/15 rounded-full blur-[100px] pointer-events-none" />
 
-            {/* Main Headline (2 lines matching reference exactly, condensed font) */}
-            <div className="space-y-0.5">
-              <h1 className="text-3xl sm:text-4xl lg:text-[36px] xl:text-[40px] font-extrabold uppercase tracking-tight text-white leading-tight font-rajdhani">
-                INDIA'S MOST TRUSTED
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center relative z-10">
+          {/* Left Column: Headline, Subtitle, 4 Trust Badges */}
+          <div className="lg:col-span-6 space-y-4">
+            {/* Main Headline (2 lines matching reference exactly) */}
+            <div className="space-y-1">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
+                EXPLORE
               </h1>
-              <div className="text-3xl sm:text-4xl lg:text-[36px] xl:text-[40px] font-extrabold uppercase tracking-tight leading-tight font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-[#e879f9] via-[#c084fc] to-[#a855f7] drop-shadow-[0_0_25px_rgba(192,38,211,0.5)]">
-                ESPORTS DIGITAL SERVICE PLATFORM
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-[#f3e8ff] via-[#d946ef] to-[#a855f7] drop-shadow-[0_0_25px_rgba(217,70,239,0.55)]">
+                DIGITAL PROFILES
               </div>
             </div>
 
             {/* Subtitle */}
-            <p className="text-gray-300 text-[13px] leading-relaxed font-normal max-w-xl">
-              Digital Profiles &nbsp;|&nbsp; VP Packs &nbsp;|&nbsp; Rank Progression &nbsp;|&nbsp; Region Conversion <br className="hidden sm:inline" />
-              Account Rentals &nbsp;|&nbsp; Safe Escrow &nbsp;|&nbsp; Pro Coaching &nbsp;|&nbsp; And More – All in One Place.
+            <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-normal max-w-lg">
+              Find your next competitive identity. Choose a marketplace below to start browsing verified profiles or community listings.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-0.5">
-              <button
-                type="button"
-                onClick={() => {
-                  const el = document.getElementById('services');
-                  if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' });
-                    return;
-                  }
-                  onNavigate('services');
-                }}
-                className="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer shadow-lg flex items-center gap-2"
-                style={{
-                  background: 'linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #c026d3 100%)',
-                  boxShadow: '0 0 24px rgba(168, 85, 247, 0.45)',
-                }}
-              >
-                <span>Explore Services</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('profiles')}
-                className="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-gray-200 hover:text-white transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer border border-white/20 bg-[#0c0a18]/90 hover:bg-white/5 hover:border-white/35"
-              >
-                Browse Profiles
-              </button>
-            </div>
-
-            {/* 4 Trust Metrics Strip (Responsive 2x2 grid on mobile, horizontal row on desktop) */}
-            <div className="rounded-xl bg-[#0c0a18]/85 border border-white/[0.09] p-2.5 sm:p-3 max-w-xl grid grid-cols-2 sm:flex sm:items-center sm:justify-between gap-2.5 sm:gap-1 shadow-xl backdrop-blur-md">
-              <div className="flex items-center gap-2 px-1">
-                <div className="w-7 h-7 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0">
-                  <Users className="w-3.5 h-3.5" />
-                </div>
-                <div>
-                  <div className="font-extrabold text-xs text-white leading-tight">50K+</div>
-                  <div className="text-[10px] text-gray-400 leading-tight">Happy Users</div>
-                </div>
+            {/* 4 Trust Micro Pills */}
+            <div className="flex flex-wrap items-center gap-2.5 pt-2">
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+                <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
+                <span className="font-medium">Safe &amp; Secure</span>
               </div>
-
-              <div className="hidden sm:block w-px h-7 bg-white/10" />
-
-              <div className="flex items-center gap-2 px-1">
-                <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 flex-shrink-0">
-                  <Star className="w-3.5 h-3.5 fill-amber-400/30" />
-                </div>
-                <div>
-                  <div className="font-extrabold text-xs text-white leading-tight">4.9/5</div>
-                  <div className="text-[10px] text-gray-400 leading-tight">User Rating</div>
-                </div>
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+                <Check className="w-3.5 h-3.5 text-purple-400" />
+                <span className="font-medium">Verified Process</span>
               </div>
-
-              <div className="hidden sm:block w-px h-7 bg-white/10" />
-
-              <div className="flex items-center gap-2 px-1">
-                <div className="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                </div>
-                <div>
-                  <div className="font-extrabold text-xs text-white leading-tight">100%</div>
-                  <div className="text-[10px] text-gray-400 leading-tight">Secure Transactions</div>
-                </div>
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+                <Users className="w-3.5 h-3.5 text-purple-400" />
+                <span className="font-medium">Active Community</span>
               </div>
-
-              <div className="hidden sm:block w-px h-7 bg-white/10" />
-
-              <div className="flex items-center gap-2 px-1">
-                <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 flex-shrink-0">
-                  <Headphones className="w-3.5 h-3.5" />
-                </div>
-                <div>
-                  <div className="font-extrabold text-xs text-white leading-tight">24/7</div>
-                  <div className="text-[10px] text-gray-400 leading-tight">Customer Support</div>
-                </div>
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+                <Headphones className="w-3.5 h-3.5 text-purple-400" />
+                <span className="font-medium">Dedicated Support</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Hero Character Visual & Angled Typography */}
-          <div className="lg:col-span-5 relative flex items-center justify-center min-h-[400px]">
-            <div className="absolute w-80 h-80 rounded-full bg-gradient-to-tr from-purple-600/35 via-fuchsia-500/25 to-pink-500/15 blur-[75px] pointer-events-none" />
+          {/* Right Column: Hero Art matching Reference Image */}
+          <div className="lg:col-span-6 relative flex items-center justify-end min-h-[360px] sm:min-h-[420px]">
+            {/* Glowing violet backdrops */}
+            <div className="absolute w-96 h-96 rounded-full bg-gradient-to-tr from-purple-600/35 via-fuchsia-500/30 to-pink-500/20 blur-[85px] pointer-events-none" />
 
-            {/* Stylized Graffiti Phrases (Matching Reference 4) */}
-            <div className="absolute left-0 top-10 select-none pointer-events-none z-10">
-              <div className="font-marker text-2xl sm:text-3xl text-fuchsia-400 -rotate-12 drop-shadow-[0_0_12px_rgba(232,121,249,0.9)] tracking-wider">
-                LEVEL UP
+            {/* Realistic 3D Crystal Blade Rogue Heroine matching Reference Image */}
+            <img
+              src="/assets/hires/profiles_crystal_assassin.png"
+              alt="VIB Digital Profiles Heroine"
+              className="relative z-0 w-full max-w-[620px] h-auto object-contain drop-shadow-[0_0_40px_rgba(168,85,247,0.55)] transform scale-105 select-none pointer-events-none"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 2. CHOOSE A MARKETPLACE (Matching Reference Image media_1789878444993.jpg) */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        {/* Section Header */}
+        <div className="space-y-1">
+          <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.22em] text-[#e879f9] uppercase font-semibold">
+            <MessageSquare className="w-3.5 h-3.5 text-[#e879f9]" />
+            <span>CHOOSE A MARKETPLACE</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-rajdhani">
+            Where would you like to browse?
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-400">
+            We offer two separate marketplaces. Choose the one that fits your needs.
+          </p>
+        </div>
+
+        {/* 2 Large Marketplace Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {/* ------------------------------------------------------------- */}
+          {/* Card A: Lifetime Guaranteed Profiles (Gold Border & Theme)    */}
+          {/* ------------------------------------------------------------- */}
+          <div className="flex flex-col space-y-2">
+            <div
+              onClick={() => setSelectedMarketplace('guaranteed')}
+              className={`relative overflow-hidden p-6 sm:p-7 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group min-h-[250px] ${
+                selectedMarketplace === 'guaranteed'
+                  ? 'bg-gradient-to-br from-[#1b1625] via-[#130f1c] to-[#0d0914] border-amber-500/80 shadow-[0_0_35px_rgba(245,158,11,0.22)]'
+                  : 'bg-[#0e0c18] border-white/10 hover:border-amber-500/50'
+              }`}
+            >
+              {/* Background ambient character art (Hooded Assassin with golden rim lighting) */}
+              <div className="absolute left-1 bottom-0 w-44 h-44 opacity-40 pointer-events-none select-none z-0">
+                <img
+                  src="/assets/hires/card_guaranteed_agent.png"
+                  alt="Guaranteed Agent"
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <div className="font-marker text-2xl sm:text-3xl text-purple-300 -rotate-8 drop-shadow-[0_0_12px_rgba(192,132,252,0.9)] tracking-wider -mt-1">
-                YOUR GAME
-              </div>
-              <div className="font-marker text-3xl sm:text-4xl text-fuchsia-500 -rotate-12 drop-shadow-[0_0_18px_rgba(217,70,239,1)] tracking-wider font-bold">
-                WITH <span className="text-white drop-shadow-[0_0_15px_#a855f7]">VIB</span>
+
+              {/* Card Header Content */}
+              <div className="space-y-4 relative z-10">
+                <div className="flex items-center justify-between">
+                  <Crown className="w-8 h-8 text-amber-400 drop-shadow-[0_0_12px_rgba(245,158,11,0.6)]" />
+                  <div className="w-9 h-9 rounded-full border border-amber-500/40 bg-amber-500/10 group-hover:bg-amber-500 group-hover:text-black flex items-center justify-center text-amber-400 transition-all">
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex items-center gap-3">
+                    <h3 className="font-black text-xl sm:text-2xl text-white font-rajdhani">
+                      <span className="text-amber-400">Lifetime</span> Guaranteed Profiles
+                    </h3>
+                    <span className="text-[10px] font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-[#7c3aed] text-white shadow-[0_0_10px_rgba(124,58,237,0.5)]">
+                      VERIFIED BY VIB
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-300 mt-2 leading-relaxed max-w-md">
+                    Handpicked and verified profiles with lifetime guarantee from VIB. Secure, reliable and worry-free.
+                  </p>
+                </div>
+
+                {/* 3 Pills */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5">
+                    <Star className="w-3 h-3 text-amber-400" />
+                    <span>Lifetime Guarantee</span>
+                  </span>
+                  <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5">
+                    <ShieldCheck className="w-3 h-3 text-amber-400" />
+                    <span>Verified &amp; Checked</span>
+                  </span>
+                  <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5">
+                    <Headphones className="w-3 h-3 text-amber-400" />
+                    <span>Direct Support</span>
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Right edge angled graffiti text: PLAY TRADE UPGRADE BELONG */}
-            <div className="absolute right-3 bottom-6 select-none pointer-events-none z-10 text-right space-y-0.5">
-              <div className="font-marker text-lg text-purple-400 -rotate-12 drop-shadow-[0_0_8px_rgba(168,85,247,0.7)]">
-                PLAY
+            {/* Sub-strip matching Reference Image */}
+            <div className="p-3.5 rounded-xl bg-[#0e0c18] border border-white/5 flex items-center justify-between text-xs text-gray-400">
+              <div className="flex items-center gap-2.5">
+                <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <span className="text-[11px] text-gray-300">
+                  Profiles in this section are covered by VIB's lifetime guarantee subject to our terms and conditions.
+                </span>
               </div>
-              <div className="font-marker text-lg text-purple-400 -rotate-10 drop-shadow-[0_0_8px_rgba(168,85,247,0.7)]">
-                TRADE
+              <button
+                type="button"
+                onClick={() => onNavigate('profiles')}
+                className="text-amber-400 font-semibold text-[11px] ml-3 whitespace-nowrap hover:underline flex items-center gap-1 cursor-pointer"
+              >
+                <span>Learn More</span>
+                <ArrowRight className="w-3 h-3" />
+              </button>
+            </div>
+          </div>
+
+          {/* ------------------------------------------------------------- */}
+          {/* Card B: Public Listings (Blue Border & Theme)                 */}
+          {/* ------------------------------------------------------------- */}
+          <div className="flex flex-col space-y-2">
+            <div
+              onClick={() => setSelectedMarketplace('public')}
+              className={`relative overflow-hidden p-6 sm:p-7 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group min-h-[250px] ${
+                selectedMarketplace === 'public'
+                  ? 'bg-gradient-to-br from-[#0c1426] via-[#090f1d] to-[#070b16] border-sky-500/80 shadow-[0_0_35px_rgba(14,165,233,0.22)]'
+                  : 'bg-[#0e0c18] border-white/10 hover:border-sky-500/50'
+              }`}
+            >
+              {/* Background ambient character art (Cyber Blue Agent) */}
+              <div className="absolute right-0 top-0 w-48 h-48 opacity-40 pointer-events-none select-none z-0">
+                <img
+                  src="/assets/hires/card_public_agent.png"
+                  alt="Public Cyber Agent"
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <div className="font-marker text-lg text-purple-400 -rotate-8 drop-shadow-[0_0_8px_rgba(168,85,247,0.7)]">
-                UPGRADE
-              </div>
-              <div className="font-marker text-xl text-fuchsia-400 font-bold -rotate-6 drop-shadow-[0_0_12px_rgba(232,121,249,0.9)]">
-                BELONG
+
+              {/* Card Header Content */}
+              <div className="space-y-4 relative z-10">
+                <div className="flex items-center justify-between">
+                  <Users className="w-8 h-8 text-sky-400 drop-shadow-[0_0_12px_rgba(14,165,233,0.6)]" />
+                  <div className="w-9 h-9 rounded-full border border-sky-500/40 bg-sky-500/10 group-hover:bg-sky-500 group-hover:text-black flex items-center justify-center text-sky-400 transition-all">
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex items-center gap-3">
+                    <h3 className="font-black text-xl sm:text-2xl text-white font-rajdhani">
+                      Public Listings
+                    </h3>
+                    <span className="text-[10px] font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-[#0369a1] text-sky-200 border border-sky-400/40 shadow-[0_0_10px_rgba(3,105,161,0.5)]">
+                      COMMUNITY MARKETPLACE
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-300 mt-2 leading-relaxed max-w-md">
+                    Listings posted by our community members. More variety, more options.
+                  </p>
+                </div>
+
+                {/* 3 Pills */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5">
+                    <Star className="w-3 h-3 text-sky-400" />
+                    <span>Wide Variety</span>
+                  </span>
+                  <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5">
+                    <MessageSquare className="w-3 h-3 text-sky-400" />
+                    <span>Direct Contact</span>
+                  </span>
+                  <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5">
+                    <ShieldCheck className="w-3 h-3 text-sky-400" />
+                    <span>Optional Escrow</span>
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Vertical Micro Navigation on Far Right */}
-            <div className="absolute right-0 top-6 space-y-3 text-right text-[9px] font-mono tracking-[0.2em] text-gray-500 hidden xl:block z-10 select-none">
-              <div className="text-gray-400 font-bold">PROFILES</div>
-              <div>SERVICES</div>
-              <div>COMMUNITY</div>
-              <div>OPPORTUNITIES</div>
-              <div className="w-4 h-0.5 bg-purple-500 ml-auto mt-2" />
-            </div>
-
-            {/* Futuristic Tech-Gaming Operative Visual - Full Character Visible, Zero Square Outline */}
-            <div className="relative z-0 flex items-center justify-center w-full max-w-[430px]">
-              {/* Diffuse ambient purple glow behind operative */}
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-700/35 via-fuchsia-600/15 to-transparent blur-[65px] rounded-full pointer-events-none transform scale-110" />
-              
-              <img
-                src="/assets/hires/vib_tech_gaming_hero.png"
-                alt="VIB Tech-Gaming Operative"
-                className="relative z-10 w-full h-auto object-contain drop-shadow-[0_0_25px_rgba(168,85,247,0.6)] transform scale-105 select-none pointer-events-none"
-              />
+            {/* Sub-strip matching Reference Image */}
+            <div className="p-3.5 rounded-xl bg-[#0e0c18] border border-white/5 flex items-center justify-between text-xs text-gray-400">
+              <div className="flex items-center gap-2.5">
+                <div className="w-7 h-7 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 flex-shrink-0">
+                  <Users className="w-4 h-4" />
+                </div>
+                <span className="text-[11px] text-gray-300">
+                  These are community listings. Sellers are not verified by VIB. You can contact the seller directly and use our optional escrow service for transaction protection.
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => onNavigate('profiles')}
+                className="text-sky-400 font-semibold text-[11px] ml-3 whitespace-nowrap hover:underline flex items-center gap-1 cursor-pointer"
+              >
+                <span>Learn More</span>
+                <ArrowRight className="w-3 h-3" />
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-
-
       {/* ========================================================================= */}
-      {/* 3. FEATURED: Explore Digital Profiles (Matching Reference 4) */}
+      {/* 3. FEATURED LISTINGS: Handpicked Featured Profiles (Matching Reference)   */}
       {/* ========================================================================= */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-3.5">
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center gap-1.5 text-amber-400 text-[11px] font-mono tracking-[0.2em] font-bold uppercase mb-0.5">
-              <Crown className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-              <span>FEATURED</span>
+            <div className="flex items-center gap-1.5 text-[11px] font-mono tracking-[0.22em] text-amber-400 uppercase font-semibold">
+              <Crown className="w-3.5 h-3.5 text-amber-400" />
+              <span>FEATURED LISTINGS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2">
-              <span>Explore</span>
-              <span className="text-purple-400">Digital Profiles</span>
-              <ArrowRight className="w-5 h-5 text-purple-400" />
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-rajdhani">
+              Handpicked Featured Profiles
             </h2>
+            <p className="text-xs text-gray-400">
+              Premium profiles from our marketplace
+            </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="flex items-center bg-[#0d0a18] p-1 rounded-full border border-white/10 text-xs font-semibold">
-              {(['featured', 'our', 'community'] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setFeaturedTab(tab)}
-                  className={`px-4 py-1 rounded-full transition-all cursor-pointer capitalize ${
-                    featuredTab === tab
-                      ? 'bg-purple-600 text-white shadow-[0_0_10px_rgba(147,51,234,0.5)]'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  {tab === 'our' ? 'Our Profiles' : tab === 'community' ? 'Community Listings' : 'Featured'}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                className="w-7 h-7 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                type="button"
-                className="w-7 h-7 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => onNavigate('profiles')}
+              className="px-4 py-1.5 rounded-xl bg-[#23153c] border border-purple-500/40 text-xs font-bold text-purple-200 hover:bg-purple-600 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
+            >
+              <span>View All Featured</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <button className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer">
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer">
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
-        <div className="relative">
-          <button
-            type="button"
-            aria-label="Previous"
-            className="absolute -left-3.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-[#120e24] border border-purple-500/40 hover:bg-purple-600 hover:border-purple-400 flex items-center justify-center text-gray-300 hover:text-white transition-all shadow-lg cursor-pointer hidden md:flex"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
+        {/* 5 Cards Row (Matching Reference Image exactly) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
+          {profiles.map((p) => {
+            const isFav = favoriteIds.includes(p.id);
+            return (
+              <div
+                key={p.id}
+                className="rounded-xl bg-[#0c0a18] border border-white/[0.08] hover:border-purple-500/50 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
+              >
+                {/* Character preview card top with close-up bust */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#100c1e]">
+                  <img
+                    src={p.avatarImg}
+                    alt={p.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
 
-          <button
-            type="button"
-            aria-label="Next"
-            className="absolute -right-3.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-[#120e24] border border-purple-500/40 hover:bg-purple-600 hover:border-purple-400 flex items-center justify-center text-gray-300 hover:text-white transition-all shadow-lg cursor-pointer hidden md:flex"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
+                  {/* Top Left Badge: FEATURED (Amber pill) */}
+                  <div className="absolute top-2 left-2">
+                    <span className="text-[9px] font-extrabold tracking-wider px-2 py-0.5 rounded-md bg-[#f59e0b] text-black font-rajdhani uppercase shadow-md">
+                      {p.badge}
+                    </span>
+                  </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {featuredProfiles.map((p) => {
-              const isFav = favoriteIds.includes(p.id);
-              return (
-                <div
-                  key={p.id}
-                  className="rounded-2xl bg-[#0d0b1a] border border-white/[0.08] hover:border-purple-500/40 transition-all duration-300 overflow-hidden flex flex-col justify-between group shadow-xl"
-                >
-                  <div className={`relative h-40 w-full bg-gradient-to-b ${p.imageGlow} flex items-center justify-center overflow-hidden p-3 border-b border-white/[0.06]`}>
-                    <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10">
-                      {p.badgeType === 'featured' && (
-                        <span className="text-[9px] font-black px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 uppercase tracking-wide">
-                          FEATURED
-                        </span>
-                      )}
-                      {p.badgeType === 'hot' && (
-                        <span className="text-[9px] font-black px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40 uppercase tracking-wide">
-                          HOT
-                        </span>
-                      )}
-                      {p.badgeType === 'popular' && (
-                        <span className="text-[9px] font-black px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/40 uppercase tracking-wide">
-                          POPULAR
-                        </span>
-                      )}
-                      {p.badgeType === 'exclusive' && (
-                        <span className="text-[9px] font-black px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40 uppercase tracking-wide">
-                          EXCLUSIVE
-                        </span>
-                      )}
-                    </div>
-
-                    {p.playBadge && (
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-red-600 px-3 py-0.5 rounded-b text-[8px] font-black text-white tracking-widest uppercase shadow">
-                        PLAY
-                      </div>
-                    )}
-
-                    {p.subBanner && (
-                      <div className="absolute top-2.5 left-1/2 -translate-x-1/2 text-[9px] font-mono tracking-widest text-cyan-300 font-bold bg-black/60 px-2 py-0.5 rounded border border-cyan-500/30">
-                        {p.subBanner}
-                      </div>
-                    )}
-
-                    <button
-                      type="button"
-                      onClick={() => toggleFavorite(p.id)}
-                      className="absolute top-2.5 right-2.5 p-1.5 rounded-full bg-black/50 hover:bg-black/80 text-white transition-colors cursor-pointer z-10"
-                    >
-                      <Heart className={`w-3.5 h-3.5 ${isFav ? 'fill-rose-500 text-rose-500' : 'text-gray-400'}`} />
-                    </button>
-
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      className="w-4/5 max-h-24 object-contain filter drop-shadow-[0_0_15px_rgba(168,85,247,0.6)] group-hover:scale-105 transition-transform duration-300"
+                  {/* Top Right: Heart Toggle */}
+                  <button
+                    onClick={() => toggleFav(p.id)}
+                    className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/50 hover:bg-black/80 text-white transition-colors cursor-pointer border border-white/10 backdrop-blur-sm"
+                  >
+                    <Heart
+                      className={`w-3.5 h-3.5 ${
+                        isFav ? 'fill-rose-500 text-rose-500' : 'text-gray-300'
+                      }`}
                     />
+                  </button>
+                </div>
 
-                    <div className="absolute bottom-1.5 inset-x-2 bg-black/70 backdrop-blur-sm rounded-lg py-1 px-1.5 border border-white/10 grid grid-cols-6 gap-1 z-10">
-                      {[1, 2, 3, 4, 5, 6].map((i) => (
-                        <div
-                          key={i}
-                          className="h-3.5 rounded bg-white/5 border border-white/10 flex items-center justify-center hover:bg-purple-600/20 transition-colors"
-                          title={`Weapon Slot #${i}`}
-                        >
-                          <div className="w-2 h-0.5 rounded-full bg-purple-400/60" />
-                        </div>
-                      ))}
+                {/* 4 Weapon Skin Preview Slots (Matching Reference exactly) */}
+                <div className="px-2.5 pt-2 grid grid-cols-4 gap-1">
+                  {p.weapons.map((w, idx) => (
+                    <div
+                      key={idx}
+                      className={`h-7 rounded-md bg-[#131024] border ${w.border} p-0.5 flex items-center justify-center overflow-hidden shadow-sm`}
+                    >
+                      <img
+                        src={w.img}
+                        alt="Weapon"
+                        className="w-full h-full object-contain filter drop-shadow-[0_0_4px_rgba(0,0,0,0.8)]"
+                      />
                     </div>
+                  ))}
+                </div>
+
+                {/* Profile Details */}
+                <div className="p-3 space-y-1.5">
+                  <h3 className="font-extrabold text-sm text-white group-hover:text-purple-300 transition-colors font-rajdhani">
+                    {p.title}
+                  </h3>
+                  <div className="text-[11px] text-gray-400 leading-snug">
+                    {p.sub}
+                  </div>
+                  <div>
+                    <span
+                      className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${p.rankColor}`}
+                    >
+                      <Crown className="w-2.5 h-2.5" />
+                      <span>{p.rankName}</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Pricing and Action Buttons */}
+                <div className="p-3 pt-2 border-t border-white/5 space-y-2">
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-base font-black text-white font-rajdhani">
+                      {formatCurrencyPrice(p.priceINR, currency)}
+                    </span>
+                    <span className="text-[10px] text-gray-500 line-through font-mono">
+                      {formatCurrencyPrice(p.originalPriceINR, currency)}
+                    </span>
                   </div>
 
-                  <div className="p-3.5 space-y-1">
-                    <h3 className="font-bold text-sm text-white group-hover:text-purple-300 transition-colors">
-                      {p.title}
-                    </h3>
-                    <div className="text-xs text-gray-400 font-medium">
-                      {p.sub}
-                    </div>
-                  </div>
-
-                  <div className="p-3.5 pt-2 border-t border-white/[0.06] flex items-center justify-between gap-2">
-                    <div className="flex items-baseline gap-2">
-                      <span className="font-black text-base text-white">
-                        {formatCurrencyPrice(p.priceINR, currency)}
-                      </span>
-                      <span className="text-xs text-gray-500 line-through font-mono">
-                        {formatCurrencyPrice(p.originalPriceINR, currency)}
-                      </span>
-                    </div>
-
+                  <div className="flex items-center gap-1.5">
                     <button
-                      type="button"
+                      onClick={() => onOpenCheckout(p.title, p.priceINR)}
+                      className="flex-1 py-1.5 rounded-lg bg-[#2a174a] hover:bg-[#7c3aed] text-white text-xs font-bold transition-all cursor-pointer text-center border border-purple-500/30"
+                    >
+                      View Details
+                    </button>
+                    <button
                       onClick={() =>
                         onAddToCart({
                           id: p.id,
@@ -453,153 +534,154 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                           subtitle: p.sub,
                           priceINR: p.priceINR,
                           type: 'profile',
-                          image: p.image,
+                          image: p.avatarImg,
                           quantity: 1,
                         })
                       }
-                      className="p-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white shadow-[0_0_12px_rgba(147,51,234,0.4)] transition-all transform hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center"
+                      className="p-1.5 rounded-lg bg-[#7c3aed] hover:bg-[#9333ea] text-white transition-colors cursor-pointer shadow-md"
                       title="Add to Cart"
                     >
                       <ShoppingCart className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. RANKUP WITH VIB: INTERACTIVE PROGRESSION CALCULATOR */}
-      {/* (Client Feedback: "Rankup with VIB and description for rankup service") */}
-      {/* ========================================================================= */}
-      <section id="rankup-service" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <RankProgressionCalculator currency={currency} />
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 5. WHY CHOOSE VIB: 6 TRUST & COMPLIANCE PILLARS */}
-      {/* (Client Feedback: "Need something different like Why Choose VIB") */}
-      {/* ========================================================================= */}
-      <WhyChooseVIBSection />
-
-      {/* ========================================================================= */}
-      {/* 6. COMPLETE SERVICES SHOWCASE (ALL 8 SERVICES DIRECTLY) */}
-      {/* (Client Feedback: "2 our services. Remove one of them. Also don't keep view all services instead show all services") */}
-      {/* ========================================================================= */}
-      <CompleteServicesShowcase onNavigate={onNavigate} />
-
-      {/* ========================================================================= */}
-      {/* 6. BECOME A PART OF VIB COMMUNITY BANNER (Matching Reference 4) */}
+      {/* 4. JOIN THE VIB COMMUNITY Banner (Matching Reference Image)               */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-r from-[#0c081e] via-[#150a2e] to-[#0c081e] border border-purple-500/30 overflow-hidden relative shadow-2xl p-5 sm:p-7 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="absolute right-1/4 top-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="rounded-2xl bg-gradient-to-r from-[#190e33] via-[#120a22] to-[#0c0817] border border-purple-500/30 overflow-hidden shadow-2xl relative min-h-[105px] flex items-center">
+          {/* Ambient glow */}
+          <div className="absolute left-10 top-0 w-60 h-full bg-purple-600/20 blur-3xl pointer-events-none" />
 
-          {/* Left Details */}
-          <div className="space-y-3 max-w-md relative z-10">
-            <div className="text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-semibold">
-              BECOME A PART OF
+          {/* Left side: Full-height Character cutout artwork with smooth edge fade */}
+          <div className="absolute left-0 top-0 bottom-0 w-44 sm:w-56 overflow-hidden pointer-events-none select-none z-0">
+            <img
+              src="/assets/agents/jett.png"
+              alt="Community Agent"
+              className="w-full h-full object-cover object-top scale-125 transform translate-y-2 opacity-85"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#120a22]/60 to-[#120a22]" />
+          </div>
+
+          <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-5 sm:p-6 pl-36 sm:pl-56 gap-5">
+            <div className="space-y-1 text-left">
+              <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-rajdhani tracking-wide">
+                JOIN THE VIB COMMUNITY
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-300">
+                Connect, trade, learn and grow with thousands of members.
+              </p>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight leading-tight font-rajdhani">
-              VIB COMMUNITY
-            </h2>
-            <p className="text-xs text-gray-300 leading-relaxed">
-              Connect, trade, learn and grow with thousands of members.
-            </p>
 
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={() => onNavigate('community')}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 hover:scale-105 transition-all shadow-[0_0_15px_rgba(168,85,247,0.4)] cursor-pointer"
-              >
-                <span>Join Our Community</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-
-              <div className="flex items-center gap-2">
+            {/* Right side: Social icons & Join button */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2.5">
                 <a
                   href="https://discord.gg"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Discord"
-                  className="w-8 h-8 rounded-full bg-[#1b1536] hover:bg-[#5865F2] flex items-center justify-center text-gray-300 hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-lg bg-[#5865F2]/20 border border-[#5865F2]/40 flex items-center justify-center text-[#5865F2] hover:bg-[#5865F2] hover:text-white transition-all shadow-sm"
+                  title="Discord"
                 >
-                  <Discord className="w-3.5 h-3.5" />
+                  <Discord className="w-4 h-4" />
                 </a>
                 <a
                   href="https://instagram.com"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Instagram"
-                  className="w-8 h-8 rounded-full bg-[#1b1536] hover:bg-pink-600 flex items-center justify-center text-gray-300 hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-lg bg-[#E1306C]/20 border border-[#E1306C]/40 flex items-center justify-center text-[#E1306C] hover:bg-[#E1306C] hover:text-white transition-all shadow-sm"
+                  title="Instagram"
                 >
-                  <Instagram className="w-3.5 h-3.5" />
+                  <Instagram className="w-4 h-4" />
                 </a>
                 <a
                   href="https://t.me"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Telegram"
-                  className="w-8 h-8 rounded-full bg-[#1b1536] hover:bg-sky-500 flex items-center justify-center text-gray-300 hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-lg bg-[#229ED9]/20 border border-[#229ED9]/40 flex items-center justify-center text-[#229ED9] hover:bg-[#229ED9] hover:text-white transition-all shadow-sm"
+                  title="Telegram"
                 >
-                  <Send className="w-3 h-3" />
+                  <Send className="w-3.5 h-3.5" />
                 </a>
                 <a
                   href="https://youtube.com"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="YouTube"
-                  className="w-8 h-8 rounded-full bg-[#1b1536] hover:bg-red-600 flex items-center justify-center text-gray-300 hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-lg bg-[#FF0000]/20 border border-[#FF0000]/40 flex items-center justify-center text-[#FF0000] hover:bg-[#FF0000] hover:text-white transition-all shadow-sm"
+                  title="YouTube"
                 >
-                  <Youtube className="w-3.5 h-3.5" />
+                  <Youtube className="w-4 h-4" />
                 </a>
               </div>
+
+              <button
+                onClick={() => onNavigate('community')}
+                className="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer shadow-lg flex items-center gap-2 whitespace-nowrap"
+                style={{
+                  background: 'linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #c026d3 100%)',
+                  boxShadow: '0 0 20px rgba(168, 85, 247, 0.45)',
+                }}
+              >
+                <span>Join Now</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. 4 TRUST CARDS STRIP (Matching Reference Image exactly)                 */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          {/* Card 1 */}
+          <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] flex items-center gap-3.5 shadow-md">
+            <div className="w-11 h-11 rounded-full bg-purple-900/35 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0 shadow-[0_0_15px_rgba(168,85,247,0.25)]">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="font-extrabold text-xs text-white">Secure Platform</div>
+              <div className="text-[11px] text-gray-400">Your safety is our priority.</div>
             </div>
           </div>
 
-          {/* Right Visual Composition: Silhouette + Brush text + Shield */}
-          <div className="flex items-center justify-end gap-6 relative z-10 w-full lg:w-auto">
-            <div className="relative hidden md:flex items-center justify-center opacity-85">
-              <div className="flex -space-x-8 items-end">
-                <img
-                  src="/assets/agents/omen.png"
-                  alt="Member"
-                  className="w-24 h-28 object-contain filter brightness-50 contrast-125 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]"
-                />
-                <img
-                  src="/assets/agents/clove.png"
-                  alt="Member"
-                  className="w-28 h-32 object-contain filter brightness-60 contrast-125 z-10 drop-shadow-[0_0_20px_rgba(217,70,239,0.6)]"
-                />
-                <img
-                  src="/assets/agents/phoenix.png"
-                  alt="Member"
-                  className="w-24 h-28 object-contain filter brightness-50 contrast-125"
-                />
-              </div>
+          {/* Card 2 */}
+          <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] flex items-center gap-3.5 shadow-md">
+            <div className="w-11 h-11 rounded-full bg-purple-900/35 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0 shadow-[0_0_15px_rgba(168,85,247,0.25)]">
+              <Headphones className="w-5 h-5" />
             </div>
-
-            <div className="text-right select-none pointer-events-none">
-              <div className="font-marker text-base sm:text-lg text-fuchsia-400 -rotate-8 drop-shadow-[0_0_10px_rgba(232,121,249,0.8)] tracking-wider">
-                SAME PASSION
-              </div>
-              <div className="font-marker text-xs sm:text-sm text-purple-300 -rotate-6 drop-shadow-[0_0_8px_rgba(192,132,252,0.8)] tracking-wider">
-                A BIGGER COMMUNITY
-              </div>
+            <div>
+              <div className="font-extrabold text-xs text-white">24/7 Support</div>
+              <div className="text-[11px] text-gray-400">We're here to help.</div>
             </div>
+          </div>
 
-            <div className="flex items-center gap-3 pl-2 border-l border-white/10">
-              <div className="w-12 h-14 rounded-xl bg-gradient-to-b from-purple-600/30 to-purple-950/60 border-2 border-purple-400/80 flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.6)]">
-                <ShieldCheck className="w-8 h-8 text-purple-300 drop-shadow-[0_0_10px_#c084fc]" />
-              </div>
-              <div className="text-left font-black text-xs uppercase tracking-wider text-white leading-tight max-w-[100px] font-rajdhani">
-                SAFE <br />
-                SECURE <br />
-                <span className="text-[10px] text-gray-400 font-semibold font-sans">AND BUILT FOR PLAYERS</span>
-              </div>
+          {/* Card 3 */}
+          <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] flex items-center gap-3.5 shadow-md">
+            <div className="w-11 h-11 rounded-full bg-purple-900/35 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0 shadow-[0_0_15px_rgba(168,85,247,0.25)]">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="font-extrabold text-xs text-white">Trusted by 50,000+</div>
+              <div className="text-[11px] text-gray-400">A growing community.</div>
+            </div>
+          </div>
+
+          {/* Card 4 */}
+          <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] flex items-center gap-3.5 shadow-md">
+            <div className="w-11 h-11 rounded-full bg-purple-900/35 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0 shadow-[0_0_15px_rgba(168,85,247,0.25)]">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="font-extrabold text-xs text-white">Multiple Payment Options</div>
+              <div className="text-[11px] text-gray-400">UPI, Bank Transfer and more.</div>
             </div>
           </div>
         </div>

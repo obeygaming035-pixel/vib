@@ -152,7 +152,7 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
                 </div>
               </div>
               <a
-                href="https://wa.me/919999999999"
+                href="https://wa.me/919181801766?text=Hello%20VIB%20Team%2C%20I%20need%20assistance%20with%20VP%20packs"
                 target="_blank"
                 rel="noreferrer"
                 className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold text-[11px] shadow-sm transition-colors whitespace-nowrap cursor-pointer"
@@ -162,7 +162,7 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             </div>
 
             {/* High-Res Hero Renders with Graffiti Overlay */}
-            <div className="relative w-full max-w-[560px] h-[380px] sm:h-[440px] flex items-center justify-center overflow-hidden rounded-2xl">
+            <div className="relative w-full max-w-[560px] h-[380px] sm:h-[440px] flex items-center justify-center rounded-2xl">
               {/* Neon Pink Graffiti on Bottom-Right */}
               <div className="absolute right-2 bottom-6 pointer-events-none select-none text-right z-20 space-y-0.5">
                 <div className="font-marker text-base sm:text-lg text-purple-400 -rotate-12 drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]">
@@ -182,11 +182,11 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
                 </div>
               </div>
 
-              {/* High-Res Omen with Floating VP Coins */}
+              {/* High-Res 3D Cinematic Omen with Floating VP Coins */}
               <img
                 src="/assets/hires/vp_landing_hero.png"
-                alt="VIB VP Master"
-                className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(168,85,247,0.45)] relative z-10"
+                alt="VIB VP Master Omen"
+                className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(168,85,247,0.5)] relative z-10 select-none pointer-events-none"
               />
             </div>
           </div>

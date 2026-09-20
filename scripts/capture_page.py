@@ -70,7 +70,7 @@ if __name__ == "__main__":
     }
     
     refs = {
-        "home": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1789733196979.jpg",
+        "home": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1789878444993.jpg",
         "profiles": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1789733196998.jpg",
         "vp-catalog": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1789733196988.jpg",
         "vp": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1789733197006.jpg",
