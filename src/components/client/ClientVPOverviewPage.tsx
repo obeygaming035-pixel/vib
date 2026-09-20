@@ -92,7 +92,7 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
           {/* Left Hero Details */}
-          <div className="lg:col-span-6 space-y-4">
+          <div className="lg:col-span-5 space-y-4">
             <div className="text-[11px] font-mono tracking-[0.22em] text-[#e879f9] uppercase font-bold">
               PREMIUM VP TOP-UP SERVICE
             </div>
@@ -138,55 +138,21 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             </div>
           </div>
 
-          {/* Right Hero Graphic: Omen with floating coins and online card */}
-          <div className="lg:col-span-6 relative flex flex-col items-end">
-            {/* Top Right Floating Help Box */}
-            <div className="w-full max-w-[280px] p-3 rounded-2xl bg-[#0e0a1e]/90 border border-purple-500/30 backdrop-blur-md shadow-xl flex items-center justify-between gap-3 relative z-20 mb-1">
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
-                  <Headphones className="w-4 h-4" />
-                </div>
-                <div className="text-left">
-                  <div className="text-[10px] text-gray-400 font-mono">WE ARE ONLINE</div>
-                  <div className="font-extrabold text-xs text-white">9 AM – 9 PM</div>
-                </div>
-              </div>
+          {/* Right Hero Graphic: Cinematic Dark Omen with floating coins & online card matching reference */}
+          <div className="lg:col-span-7 relative flex flex-col items-end">
+            <div className="relative w-full max-w-[780px] h-[360px] sm:h-[440px] lg:h-[500px] xl:h-[540px] flex items-center justify-end">
+              <img
+                src="/assets/hires/vp_landing_hero.png"
+                alt="VIB VP Master Omen"
+                className="w-full h-full object-contain object-right filter drop-shadow-[0_0_40px_rgba(168,85,247,0.4)] relative z-10 select-none pointer-events-none"
+              />
+              {/* Clickable WhatsApp overlay over the "WhatsApp Us" button in the graphic */}
               <a
                 href="https://wa.me/919181801766?text=Hello%20VIB%20Team%2C%20I%20need%20assistance%20with%20VP%20packs"
                 target="_blank"
                 rel="noreferrer"
-                className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold text-[11px] shadow-sm transition-colors whitespace-nowrap cursor-pointer"
-              >
-                WhatsApp Us →
-              </a>
-            </div>
-
-            {/* High-Res Hero Renders with Graffiti Overlay */}
-            <div className="relative w-full max-w-[560px] h-[380px] sm:h-[440px] flex items-center justify-center rounded-2xl">
-              {/* Neon Pink Graffiti on Bottom-Right */}
-              <div className="absolute right-2 bottom-6 pointer-events-none select-none text-right z-20 space-y-0.5">
-                <div className="font-marker text-base sm:text-lg text-purple-400 -rotate-12 drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]">
-                  PLAY
-                </div>
-                <div className="font-marker text-lg sm:text-xl text-fuchsia-400 -rotate-10 drop-shadow-[0_0_10px_rgba(232,121,249,0.9)]">
-                  UPGRADE
-                </div>
-                <div className="font-marker text-xl sm:text-2xl text-purple-300 font-bold -rotate-8 drop-shadow-[0_0_12px_rgba(192,132,252,1)]">
-                  BELONG
-                </div>
-                <div className="pt-2 font-marker text-xs sm:text-sm text-purple-400 -rotate-6">
-                  SAME GAME...
-                </div>
-                <div className="font-marker text-xs sm:text-sm text-fuchsia-300 font-bold -rotate-6">
-                  MORE POSSIBILITIES.
-                </div>
-              </div>
-
-              {/* High-Res 3D Cinematic Omen with Floating VP Coins */}
-              <img
-                src="/assets/hires/vp_landing_hero.png"
-                alt="VIB VP Master Omen"
-                className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(168,85,247,0.5)] relative z-10 select-none pointer-events-none"
+                className="absolute top-[30%] right-[3%] w-[130px] h-[38px] z-20 rounded-lg cursor-pointer hover:bg-purple-500/20 transition-colors"
+                title="WhatsApp Us"
               />
             </div>
           </div>

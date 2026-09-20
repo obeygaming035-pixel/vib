@@ -278,13 +278,14 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                   : 'bg-[#0e0c18] border-white/10 hover:border-amber-500/50'
               }`}
             >
-              {/* Background ambient character art (Hooded Assassin with golden rim lighting) */}
-              <div className="absolute left-1 bottom-0 w-44 h-44 opacity-40 pointer-events-none select-none z-0">
+              {/* Full background ambient character art (Hooded Assassin with golden rim lighting) */}
+              <div className="absolute inset-y-0 left-0 w-full sm:w-[55%] overflow-hidden pointer-events-none select-none z-0">
                 <img
                   src="/assets/hires/card_guaranteed_agent.png"
                   alt="Guaranteed Agent"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover object-left opacity-90"
                 />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#130f1c]/70 to-[#0d0914]" />
               </div>
 
               {/* Card Header Content */}
@@ -361,13 +362,14 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                   : 'bg-[#0e0c18] border-white/10 hover:border-sky-500/50'
               }`}
             >
-              {/* Background ambient character art (Cyber Blue Agent looking over shoulder) */}
-              <div className="absolute right-0 top-0 w-48 h-48 opacity-40 pointer-events-none select-none z-0">
+              {/* Full background ambient character art (Cyber Blue Agent looking over shoulder) */}
+              <div className="absolute inset-y-0 right-0 w-full sm:w-[55%] overflow-hidden pointer-events-none select-none z-0">
                 <img
                   src="/assets/hires/card_public_agent.png"
                   alt="Public Cyber Agent"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover object-right opacity-90"
                 />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#090f1d]/70 to-[#070b16]" />
               </div>
 
               {/* Card Header Content */}

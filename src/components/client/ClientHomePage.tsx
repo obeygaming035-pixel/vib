@@ -154,57 +154,57 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Matching Reference Image media_1789878444993.jpg)       */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden min-h-[460px] sm:min-h-[500px] lg:min-h-[520px] flex items-center">
+      <section className="relative w-full overflow-hidden min-h-[380px] sm:min-h-[420px] lg:min-h-[450px] flex items-center">
         {/* Ambient atmospheric purple lighting */}
-        <div className="absolute top-1/3 right-1/4 w-[600px] h-[450px] bg-purple-600/20 rounded-full blur-[130px] pointer-events-none z-[1]" />
-        <div className="absolute bottom-0 left-10 w-[450px] h-[300px] bg-fuchsia-800/15 rounded-full blur-[100px] pointer-events-none z-[1]" />
+        <div className="absolute top-1/3 right-1/4 w-[500px] h-[380px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none z-[1]" />
+        <div className="absolute bottom-0 left-10 w-[400px] h-[260px] bg-fuchsia-800/15 rounded-full blur-[90px] pointer-events-none z-[1]" />
 
         {/* Right-aligned Hero Art container matching 16:9 reference scene without top/bottom clipping */}
-        <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[60%] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-end">
+        <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[54%] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-end">
           <img
             src="/assets/hires/hero_banner_full.jpg"
             alt="VIB Digital Profiles Heroine"
             className="w-full h-full object-cover object-center select-none pointer-events-none opacity-95"
           />
           {/* Smooth feathering gradient on the left boundary */}
-          <div className="absolute inset-y-0 left-0 w-44 sm:w-64 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
+          <div className="absolute inset-y-0 left-0 w-40 sm:w-60 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
           {/* Subtle top/bottom edge softening */}
           <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#05040a] to-transparent z-[1]" />
           <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#05040a] to-transparent z-[1]" />
         </div>
 
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-8 sm:py-12">
-          <div className="max-w-xl lg:max-w-2xl space-y-4">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-6 sm:py-9">
+          <div className="max-w-xl lg:max-w-xl space-y-3.5">
             {/* Main Headline (2 lines matching reference exactly) */}
             <div className="space-y-1">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
                 EXPLORE
               </h1>
-              <div className="text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-none font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-[#f3e8ff] via-[#d946ef] to-[#a855f7] drop-shadow-[0_0_35px_rgba(217,70,239,0.65)]">
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-[#f3e8ff] via-[#d946ef] to-[#a855f7] drop-shadow-[0_0_30px_rgba(217,70,239,0.65)]">
                 DIGITAL PROFILES
               </div>
             </div>
 
             {/* Subtitle */}
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-normal max-w-lg">
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal max-w-lg">
               Find your next competitive identity. Choose a marketplace below to start browsing verified profiles or community listings.
             </p>
 
             {/* 4 Trust Micro Pills */}
-            <div className="flex flex-wrap items-center gap-2.5 pt-2">
-              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <div className="px-3 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
                 <span className="font-medium">Safe &amp; Secure</span>
               </div>
-              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+              <div className="px-3 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <Check className="w-3.5 h-3.5 text-purple-400" />
                 <span className="font-medium">Verified Process</span>
               </div>
-              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+              <div className="px-3 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <Users className="w-3.5 h-3.5 text-purple-400" />
                 <span className="font-medium">Active Community</span>
               </div>
-              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+              <div className="px-3 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <Headphones className="w-3.5 h-3.5 text-purple-400" />
                 <span className="font-medium">Dedicated Support</span>
               </div>
@@ -245,13 +245,14 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                   : 'bg-[#0e0c18] border-white/10 hover:border-amber-500/50'
               }`}
             >
-              {/* Background ambient character art (Hooded Assassin with golden rim lighting) */}
-              <div className="absolute left-1 bottom-0 w-48 h-48 opacity-60 pointer-events-none select-none z-0">
+              {/* Full background ambient character art (Hooded Assassin with golden rim lighting) */}
+              <div className="absolute inset-y-0 left-0 w-full sm:w-[58%] overflow-hidden pointer-events-none select-none z-0">
                 <img
                   src="/assets/hires/card_guaranteed_agent.png"
                   alt="Guaranteed Agent"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover object-left opacity-80"
                 />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#130f1c]/75 to-[#0d0914]" />
               </div>
 
               {/* Card Header Content */}
@@ -328,13 +329,14 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                   : 'bg-[#0e0c18] border-white/10 hover:border-sky-500/50'
               }`}
             >
-              {/* Background ambient character art (Cyber Blue Agent) */}
-              <div className="absolute right-0 top-0 w-52 h-52 opacity-60 pointer-events-none select-none z-0">
+              {/* Full background ambient character art (Cyber Blue Agent) */}
+              <div className="absolute inset-y-0 right-0 w-full sm:w-[58%] overflow-hidden pointer-events-none select-none z-0">
                 <img
                   src="/assets/hires/card_public_agent.png"
                   alt="Public Cyber Agent"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover object-right opacity-80"
                 />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#090f1d]/75 to-[#070b16]" />
               </div>
 
               {/* Card Header Content */}
