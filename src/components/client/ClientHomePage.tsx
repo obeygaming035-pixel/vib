@@ -186,15 +186,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
-          {/* Hero Art positioned right next to the text inside max-w-[1360px] */}
-          <div className="relative w-full md:w-[460px] lg:w-[500px] h-[260px] sm:h-[290px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
+          {/* Hero Art positioned right next to the text inside max-w-[1360px] with seamless 4-way alpha blending */}
+          <div className="relative w-full md:w-[480px] lg:w-[520px] h-[270px] sm:h-[300px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
             <img
-              src="/assets/hires/hero_banner_full.jpg"
+              src="/assets/hires/hero_banner_feathered.png"
               alt="VIB Digital Profiles Heroine"
-              className="w-full h-full object-cover object-right select-none pointer-events-none opacity-90 scale-95 [mask-image:linear-gradient(to_right,transparent_0%,black_20%,black_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_20%,black_100%)]"
+              className="w-full h-full object-contain object-right select-none pointer-events-none opacity-95"
             />
-            {/* Smooth feathering gradient on the left boundary */}
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#05040a] to-transparent z-[1]" />
           </div>
         </div>
       </section>
@@ -232,13 +230,12 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               }`}
             >
               {/* Full background ambient character art (Hooded Assassin with golden rim lighting) */}
-              <div className="absolute inset-y-0 left-0 w-full sm:w-[50%] overflow-hidden pointer-events-none select-none z-0">
+              <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
                 <img
-                  src="/assets/hires/card_guaranteed_agent.png"
+                  src="/assets/hires/card_guaranteed_bg.png"
                   alt="Guaranteed Agent"
-                  className="w-full h-full object-cover object-left opacity-75 [mask-image:linear-gradient(to_right,black_30%,transparent_95%)] [-webkit-mask-image:linear-gradient(to_right,black_30%,transparent_95%)]"
+                  className="h-full w-auto object-cover object-left opacity-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#130f1c]/80 to-[#0d0914]" />
               </div>
 
               {/* Card Header Content */}
@@ -319,13 +316,12 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               }`}
             >
               {/* Full background ambient character art (Cyber Blue Agent) */}
-              <div className="absolute inset-y-0 right-0 w-full sm:w-[50%] overflow-hidden pointer-events-none select-none z-0">
+              <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden flex justify-end">
                 <img
-                  src="/assets/hires/card_public_agent.png"
+                  src="/assets/hires/card_public_bg.png"
                   alt="Public Cyber Agent"
-                  className="w-full h-full object-cover object-right opacity-80 [mask-image:linear-gradient(to_left,black_30%,transparent_95%)] [-webkit-mask-image:linear-gradient(to_left,black_30%,transparent_95%)]"
+                  className="h-full w-auto object-cover object-right opacity-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#090f1d]/80 to-[#070b16]" />
               </div>
 
               {/* Card Header Content */}
@@ -446,23 +442,34 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               >
                 {/* Character preview card top with authentic reference artwork */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#100c1e]">
+                  {/* Top Left: FEATURED Badge matching reference */}
+                  <div className="absolute top-2 left-2 z-10 px-2 py-0.5 rounded bg-[#f59e0b] text-black font-black text-[9px] tracking-wider uppercase shadow-md pointer-events-none select-none">
+                    FEATURED
+                  </div>
+
+                  {/* Top Right: Heart Toggle Button */}
+                  <button
+                    type="button"
+                    onClick={() => toggleFav(p.id)}
+                    className="absolute top-2 right-2 w-6 h-6 flex items-center justify-center rounded-lg cursor-pointer bg-black/40 hover:bg-black/60 border border-white/10 transition-colors z-10"
+                    title={isFav ? 'Remove from favorites' : 'Add to favorites'}
+                  >
+                    <Heart
+                      className={`w-3.5 h-3.5 ${
+                        isFav
+                          ? 'fill-rose-500 text-rose-500 drop-shadow-[0_0_8px_rgba(244,63,94,0.8)]'
+                          : 'text-white/80'
+                      }`}
+                    />
+                  </button>
+
                   <img
                     src={p.avatarImg}
                     alt={p.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-
-                  {/* Top Right: Heart Toggle Hotspot */}
-                  <button
-                    type="button"
-                    onClick={() => toggleFav(p.id)}
-                    className="absolute top-1.5 right-1.5 w-7 h-7 flex items-center justify-center rounded-lg cursor-pointer hover:bg-white/10 transition-colors"
-                    title={isFav ? 'Remove from favorites' : 'Add to favorites'}
-                  >
-                    {isFav && (
-                      <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500 drop-shadow-[0_0_8px_rgba(244,63,94,0.8)]" />
-                    )}
-                  </button>
+                  {/* Subtle bottom gradient for smooth transition */}
+                  <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-[#0c0a18] to-transparent pointer-events-none" />
                 </div>
 
                 {/* 4 Weapon Skin Preview Slots (Matching Reference exactly) */}
