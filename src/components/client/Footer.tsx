@@ -116,25 +116,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Official VIB Contact & Verification Strip */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 py-2.5 px-4 rounded-xl bg-purple-950/20 border border-purple-500/20 text-[11px] text-gray-300">
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4">
-            <span className="flex items-center gap-1.5">
-              <span className="text-gray-400">WhatsApp:</span>
-              <strong className="text-white">+91 9181801766</strong>
-            </span>
-            <span className="hidden sm:inline text-gray-600">•</span>
-            <span className="flex items-center gap-1.5">
-              <span className="text-gray-400">Email:</span>
-              <strong className="text-white">teamvibofficial@gmail.com</strong>
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-full bg-purple-500/20 border border-purple-500/40 text-[10px] font-mono font-semibold text-purple-300">
-              MSME UDYAM REGISTERED • 100% MANUAL HUMAN ESCROW
-            </span>
-          </div>
-        </div>
 
         {/* Bottom Row: Made with in India, Legal Disclaimer, Trust Trade Grow */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-gray-500 text-center md:text-left">

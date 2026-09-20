@@ -154,20 +154,33 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Matching Reference Image media_1789878444993.jpg)       */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden pt-2">
-        {/* Ambient atmospheric purple glow */}
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[500px] bg-purple-700/20 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute -bottom-10 left-10 w-[450px] h-[350px] bg-fuchsia-800/15 rounded-full blur-[100px] pointer-events-none" />
+      <section className="relative w-full overflow-hidden min-h-[460px] sm:min-h-[500px] lg:min-h-[520px] flex items-center">
+        {/* Ambient atmospheric purple lighting */}
+        <div className="absolute top-1/3 right-1/4 w-[600px] h-[450px] bg-purple-600/20 rounded-full blur-[130px] pointer-events-none z-[1]" />
+        <div className="absolute bottom-0 left-10 w-[450px] h-[300px] bg-fuchsia-800/15 rounded-full blur-[100px] pointer-events-none z-[1]" />
 
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center relative z-10">
-          {/* Left Column: Headline, Subtitle, 4 Trust Badges */}
-          <div className="lg:col-span-6 space-y-4">
+        {/* Right-aligned Hero Art container matching 16:9 reference scene without top/bottom clipping */}
+        <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[60%] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-end">
+          <img
+            src="/assets/hires/hero_banner_full.jpg"
+            alt="VIB Digital Profiles Heroine"
+            className="w-full h-full object-cover object-center select-none pointer-events-none opacity-95"
+          />
+          {/* Smooth feathering gradient on the left boundary */}
+          <div className="absolute inset-y-0 left-0 w-44 sm:w-64 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
+          {/* Subtle top/bottom edge softening */}
+          <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#05040a] to-transparent z-[1]" />
+          <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#05040a] to-transparent z-[1]" />
+        </div>
+
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-8 sm:py-12">
+          <div className="max-w-xl lg:max-w-2xl space-y-4">
             {/* Main Headline (2 lines matching reference exactly) */}
             <div className="space-y-1">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
                 EXPLORE
               </h1>
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-[#f3e8ff] via-[#d946ef] to-[#a855f7] drop-shadow-[0_0_25px_rgba(217,70,239,0.55)]">
+              <div className="text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-none font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-[#f3e8ff] via-[#d946ef] to-[#a855f7] drop-shadow-[0_0_35px_rgba(217,70,239,0.65)]">
                 DIGITAL PROFILES
               </div>
             </div>
@@ -179,36 +192,23 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
             {/* 4 Trust Micro Pills */}
             <div className="flex flex-wrap items-center gap-2.5 pt-2">
-              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
                 <span className="font-medium">Safe &amp; Secure</span>
               </div>
-              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <Check className="w-3.5 h-3.5 text-purple-400" />
                 <span className="font-medium">Verified Process</span>
               </div>
-              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <Users className="w-3.5 h-3.5 text-purple-400" />
                 <span className="font-medium">Active Community</span>
               </div>
-              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 text-xs text-gray-200 flex items-center gap-2 shadow-md">
+              <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <Headphones className="w-3.5 h-3.5 text-purple-400" />
                 <span className="font-medium">Dedicated Support</span>
               </div>
             </div>
-          </div>
-
-          {/* Right Column: Hero Art matching Reference Image */}
-          <div className="lg:col-span-6 relative flex items-center justify-end min-h-[360px] sm:min-h-[420px]">
-            {/* Glowing violet backdrops */}
-            <div className="absolute w-96 h-96 rounded-full bg-gradient-to-tr from-purple-600/35 via-fuchsia-500/30 to-pink-500/20 blur-[85px] pointer-events-none" />
-
-            {/* Realistic 3D Crystal Blade Rogue Heroine matching Reference Image */}
-            <img
-              src="/assets/hires/profiles_crystal_assassin.png"
-              alt="VIB Digital Profiles Heroine"
-              className="relative z-0 w-full max-w-[620px] h-auto object-contain drop-shadow-[0_0_40px_rgba(168,85,247,0.55)] transform scale-105 select-none pointer-events-none"
-            />
           </div>
         </div>
       </section>
@@ -241,12 +241,12 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               onClick={() => setSelectedMarketplace('guaranteed')}
               className={`relative overflow-hidden p-6 sm:p-7 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group min-h-[250px] ${
                 selectedMarketplace === 'guaranteed'
-                  ? 'bg-gradient-to-br from-[#1b1625] via-[#130f1c] to-[#0d0914] border-amber-500/80 shadow-[0_0_35px_rgba(245,158,11,0.22)]'
+                  ? 'bg-gradient-to-br from-[#1b1625] via-[#130f1c] to-[#0d0914] border-2 border-amber-500/80 shadow-[0_0_35px_rgba(245,158,11,0.25)]'
                   : 'bg-[#0e0c18] border-white/10 hover:border-amber-500/50'
               }`}
             >
               {/* Background ambient character art (Hooded Assassin with golden rim lighting) */}
-              <div className="absolute left-1 bottom-0 w-44 h-44 opacity-40 pointer-events-none select-none z-0">
+              <div className="absolute left-1 bottom-0 w-48 h-48 opacity-60 pointer-events-none select-none z-0">
                 <img
                   src="/assets/hires/card_guaranteed_agent.png"
                   alt="Guaranteed Agent"
@@ -257,8 +257,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               {/* Card Header Content */}
               <div className="space-y-4 relative z-10">
                 <div className="flex items-center justify-between">
-                  <Crown className="w-8 h-8 text-amber-400 drop-shadow-[0_0_12px_rgba(245,158,11,0.6)]" />
-                  <div className="w-9 h-9 rounded-full border border-amber-500/40 bg-amber-500/10 group-hover:bg-amber-500 group-hover:text-black flex items-center justify-center text-amber-400 transition-all">
+                  <Crown className="w-9 h-9 text-amber-400 drop-shadow-[0_0_12px_rgba(245,158,11,0.7)]" />
+                  <div className="w-9 h-9 rounded-full border border-amber-500/50 bg-amber-500/10 group-hover:bg-amber-500 group-hover:text-black flex items-center justify-center text-amber-400 transition-all">
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -308,7 +308,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               <button
                 type="button"
                 onClick={() => onNavigate('profiles')}
-                className="text-amber-400 font-semibold text-[11px] ml-3 whitespace-nowrap hover:underline flex items-center gap-1 cursor-pointer"
+                className="text-purple-400 font-semibold text-[11px] ml-3 whitespace-nowrap hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <span>Learn More</span>
                 <ArrowRight className="w-3 h-3" />
@@ -324,12 +324,12 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               onClick={() => setSelectedMarketplace('public')}
               className={`relative overflow-hidden p-6 sm:p-7 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group min-h-[250px] ${
                 selectedMarketplace === 'public'
-                  ? 'bg-gradient-to-br from-[#0c1426] via-[#090f1d] to-[#070b16] border-sky-500/80 shadow-[0_0_35px_rgba(14,165,233,0.22)]'
+                  ? 'bg-gradient-to-br from-[#0c1426] via-[#090f1d] to-[#070b16] border-2 border-sky-500/80 shadow-[0_0_35px_rgba(14,165,233,0.25)]'
                   : 'bg-[#0e0c18] border-white/10 hover:border-sky-500/50'
               }`}
             >
               {/* Background ambient character art (Cyber Blue Agent) */}
-              <div className="absolute right-0 top-0 w-48 h-48 opacity-40 pointer-events-none select-none z-0">
+              <div className="absolute right-0 top-0 w-52 h-52 opacity-60 pointer-events-none select-none z-0">
                 <img
                   src="/assets/hires/card_public_agent.png"
                   alt="Public Cyber Agent"
@@ -340,8 +340,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               {/* Card Header Content */}
               <div className="space-y-4 relative z-10">
                 <div className="flex items-center justify-between">
-                  <Users className="w-8 h-8 text-sky-400 drop-shadow-[0_0_12px_rgba(14,165,233,0.6)]" />
-                  <div className="w-9 h-9 rounded-full border border-sky-500/40 bg-sky-500/10 group-hover:bg-sky-500 group-hover:text-black flex items-center justify-center text-sky-400 transition-all">
+                  <Users className="w-9 h-9 text-sky-400 drop-shadow-[0_0_12px_rgba(14,165,233,0.7)]" />
+                  <div className="w-9 h-9 rounded-full border border-sky-500/50 bg-sky-500/10 group-hover:bg-sky-500 group-hover:text-black flex items-center justify-center text-sky-400 transition-all">
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -367,7 +367,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                     <span>Wide Variety</span>
                   </span>
                   <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5">
-                    <MessageSquare className="w-3 h-3 text-sky-400" />
+                    <Users className="w-3 h-3 text-sky-400" />
                     <span>Direct Contact</span>
                   </span>
                   <span className="text-[10px] font-medium px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5">
@@ -391,7 +391,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               <button
                 type="button"
                 onClick={() => onNavigate('profiles')}
-                className="text-sky-400 font-semibold text-[11px] ml-3 whitespace-nowrap hover:underline flex items-center gap-1 cursor-pointer"
+                className="text-purple-400 font-semibold text-[11px] ml-3 whitespace-nowrap hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <span>Learn More</span>
                 <ArrowRight className="w-3 h-3" />
@@ -400,6 +400,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           </div>
         </div>
       </section>
+
 
       {/* ========================================================================= */}
       {/* 3. FEATURED LISTINGS: Handpicked Featured Profiles (Matching Reference)   */}
@@ -560,16 +561,16 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           <div className="absolute left-10 top-0 w-60 h-full bg-purple-600/20 blur-3xl pointer-events-none" />
 
           {/* Left side: Full-height Character cutout artwork with smooth edge fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-44 sm:w-56 overflow-hidden pointer-events-none select-none z-0">
+          <div className="absolute left-0 top-0 bottom-0 w-48 sm:w-64 overflow-hidden pointer-events-none select-none z-0">
             <img
-              src="/assets/agents/jett.png"
+              src="/assets/hires/community_agent_cinematic.png"
               alt="Community Agent"
-              className="w-full h-full object-cover object-top scale-125 transform translate-y-2 opacity-85"
+              className="w-full h-full object-cover object-top opacity-95"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#120a22]/60 to-[#120a22]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#120a22]/40 to-[#120a22]" />
           </div>
 
-          <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-5 sm:p-6 pl-36 sm:pl-56 gap-5">
+          <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-5 sm:p-6 pl-40 sm:pl-64 gap-5">
             <div className="space-y-1 text-left">
               <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-rajdhani tracking-wide">
                 JOIN THE VIB COMMUNITY
