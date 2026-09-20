@@ -62,38 +62,40 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#07070d]/95 backdrop-blur-xl border-b border-white/10 px-4 sm:px-6 lg:px-8 py-3 transition-colors">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-        {/* Left: Hamburger & Brand */}
-        <div className="flex items-center gap-3 sm:gap-4">
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="lg:hidden p-1.5 text-gray-400 hover:text-white rounded-lg transition-colors cursor-pointer"
-          >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        {/* Left: Brand & Navigation Links grouped together */}
+        <div className="flex items-center gap-5 xl:gap-7">
+          {/* Hamburger & Brand */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="lg:hidden p-1.5 text-gray-400 hover:text-white rounded-lg transition-colors cursor-pointer"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
 
-          {/* 3D Metallic VIB Logo */}
-          <div
-            onClick={() => handleNav('home')}
-            className="flex items-center gap-2.5 cursor-pointer group select-none flex-shrink-0"
-          >
-            <div className="relative flex items-center justify-center h-8 sm:h-9">
-              <div className="absolute inset-0 bg-purple-600/30 blur-md rounded-full pointer-events-none scale-125" />
-              <img
-                src="/assets/hires/vib_logo_metallic_hires.png"
-                alt="VIB Logo"
-                className="h-8 sm:h-9 w-auto object-contain relative z-10 drop-shadow-[0_0_12px_rgba(168,85,247,0.7)] group-hover:scale-105 transition-transform"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/assets/client/vib-logo.png';
-                }}
-              />
+            {/* 3D Metallic VIB Logo */}
+            <div
+              onClick={() => handleNav('home')}
+              className="flex items-center gap-2.5 cursor-pointer group select-none flex-shrink-0"
+            >
+              <div className="relative flex items-center justify-center h-8 sm:h-9">
+                <div className="absolute inset-0 bg-purple-600/30 blur-md rounded-full pointer-events-none scale-125" />
+                <img
+                  src="/assets/hires/vib_logo_metallic_hires.png"
+                  alt="VIB Logo"
+                  className="h-8 sm:h-9 w-auto object-contain relative z-10 drop-shadow-[0_0_12px_rgba(168,85,247,0.7)] group-hover:scale-105 transition-transform"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/assets/client/vib-logo.png';
+                  }}
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Center: Exact Navigation Links from Mockups */}
-        <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 text-[13px] font-medium text-gray-300">
+          {/* Navigation Links positioned close to the logo */}
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 text-[13px] font-medium text-gray-300">
           <button
             type="button"
             onClick={() => handleNav('home')}
@@ -199,6 +201,7 @@ export const Header: React.FC<HeaderProps> = ({
             Support
           </button>
         </nav>
+      </div>
 
         {/* Right Controls: Search, Cart, Login, Sign Up matching Reference */}
         <div className="flex items-center gap-2.5 sm:gap-3">

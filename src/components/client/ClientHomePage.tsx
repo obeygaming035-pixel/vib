@@ -18,12 +18,13 @@ import {
   MessageSquare,
   Sparkles,
   Zap,
+  Shield,
+  CreditCard,
 } from 'lucide-react';
 import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
 import { ClientPage } from './Header';
 import { soundFx } from '../../utils/audio';
-import { RankProgressionCalculator } from '../home/RankProgressionCalculator';
 
 interface ClientHomePageProps {
   currency: Currency;
@@ -186,13 +187,15 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
-          {/* Hero Art positioned right next to the text inside max-w-[1360px] with seamless 4-way alpha blending */}
-          <div className="relative w-full md:w-[480px] lg:w-[520px] h-[270px] sm:h-[300px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
+          {/* Panoramic Hero Art: Preserves maximum artwork without hard borders */}
+          <div className="relative w-full md:w-[560px] lg:w-[640px] xl:w-[700px] h-[280px] sm:h-[310px] lg:h-[330px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0 overflow-hidden">
             <img
-              src="/assets/hires/hero_banner_feathered.png"
+              src="/assets/hires/hero_banner_panoramic.png"
               alt="VIB Digital Profiles Heroine"
-              className="w-full h-full object-contain object-right select-none pointer-events-none opacity-95"
+              className="w-full h-full object-cover object-right select-none pointer-events-none opacity-95"
             />
+            {/* Soft edge gradient overlay on the left */}
+            <div className="absolute inset-y-0 left-0 w-32 sm:w-48 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
           </div>
         </div>
       </section>
@@ -550,27 +553,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. RANKUP SERVICE: Interactive Rank-to-Rank Progression Calculator       */}
-      {/* ========================================================================= */}
-      <section id="rankup-service" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4 pt-2">
-        <div className="space-y-1">
-          <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.22em] text-[#e879f9] uppercase font-semibold">
-            <Zap className="w-3.5 h-3.5 text-[#e879f9]" />
-            <span>RANK-UP SERVICE &amp; ESTIMATOR</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-rajdhani">
-            Competitive Rank Progression Calculator
-          </h2>
-          <p className="text-xs sm:text-sm text-gray-400">
-            Select your current rank and target rank to get an instant accurate price estimate and book with verified Radiant specialists.
-          </p>
-        </div>
-
-        <RankProgressionCalculator currency={currency} />
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 5. JOIN THE VIB COMMUNITY Banner (Matching Reference Image)               */}
+      {/* 4. JOIN THE VIB COMMUNITY Banner (Matching Reference Image)               */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl bg-gradient-to-r from-[#190e33] via-[#120a22] to-[#0c0817] border border-purple-500/30 overflow-hidden shadow-2xl relative min-h-[105px] flex items-center">
@@ -655,51 +638,51 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. 4 TRUST CARDS STRIP (Matching Reference Image exactly)                 */}
+      {/* 5. 4 TRUST CARDS STRIP (Matching VIB Master Requirements Specifications)  */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-          {/* Card 1 */}
+          {/* Card 1: Secure-Link Delivery */}
           <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] flex items-center gap-3.5 shadow-md">
             <div className="w-11 h-11 rounded-full bg-purple-900/35 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0 shadow-[0_0_15px_rgba(168,85,247,0.25)]">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <div className="font-extrabold text-xs text-white">Secure Platform</div>
-              <div className="text-[11px] text-gray-400">Your safety is our priority.</div>
+              <div className="font-extrabold text-xs text-white">Secure-Link Delivery</div>
+              <div className="text-[11px] text-gray-400">Encrypted credential delivery</div>
             </div>
           </div>
 
-          {/* Card 2 */}
+          {/* Card 2: Dedicated Support */}
           <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] flex items-center gap-3.5 shadow-md">
             <div className="w-11 h-11 rounded-full bg-purple-900/35 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0 shadow-[0_0_15px_rgba(168,85,247,0.25)]">
               <Headphones className="w-5 h-5" />
             </div>
             <div>
-              <div className="font-extrabold text-xs text-white">24/7 Support</div>
-              <div className="text-[11px] text-gray-400">We're here to help.</div>
+              <div className="font-extrabold text-xs text-white">Dedicated Support</div>
+              <div className="text-[11px] text-gray-400">Live executive &amp; order assistance</div>
             </div>
           </div>
 
-          {/* Card 3 */}
+          {/* Card 3: Escrow Protected */}
           <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] flex items-center gap-3.5 shadow-md">
             <div className="w-11 h-11 rounded-full bg-purple-900/35 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0 shadow-[0_0_15px_rgba(168,85,247,0.25)]">
-              <Sparkles className="w-5 h-5" />
+              <Shield className="w-5 h-5" />
             </div>
             <div>
-              <div className="font-extrabold text-xs text-white">Trusted by 50,000+</div>
-              <div className="text-[11px] text-gray-400">A growing community.</div>
+              <div className="font-extrabold text-xs text-white">Escrow Protected</div>
+              <div className="text-[11px] text-gray-400">Safe community trade mediation</div>
             </div>
           </div>
 
-          {/* Card 4 */}
+          {/* Card 4: Flexible Payment Plans */}
           <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] flex items-center gap-3.5 shadow-md">
             <div className="w-11 h-11 rounded-full bg-purple-900/35 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0 shadow-[0_0_15px_rgba(168,85,247,0.25)]">
-              <ShieldCheck className="w-5 h-5" />
+              <CreditCard className="w-5 h-5" />
             </div>
             <div>
-              <div className="font-extrabold text-xs text-white">Multiple Payment Options</div>
-              <div className="text-[11px] text-gray-400">UPI, Bank Transfer and more.</div>
+              <div className="font-extrabold text-xs text-white">Flexible Payment Plans</div>
+              <div className="text-[11px] text-gray-400">Manual UPI, QR &amp; Bank Transfer</div>
             </div>
           </div>
         </div>

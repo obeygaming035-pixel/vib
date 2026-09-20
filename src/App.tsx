@@ -6,6 +6,7 @@ import { ClientProfilesPage } from './components/client/ClientProfilesPage';
 import { ClientVPOverviewPage } from './components/client/ClientVPOverviewPage';
 import { ClientIndianVPPage } from './components/client/ClientIndianVPPage';
 import { ClientServicesPage } from './components/client/ClientServicesPage';
+import { ClientRankupPage } from './components/client/ClientRankupPage';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { DiscordModal } from './components/home/DiscordModal';
@@ -19,7 +20,7 @@ export default function App() {
     try {
       const params = new URLSearchParams(window.location.search);
       const p = params.get('page') as ClientPage;
-      if (p && ['home', 'vp', 'vp-catalog', 'services'].includes(p)) {
+      if (p && ['home', 'vp', 'vp-catalog', 'services', 'rankup'].includes(p)) {
         return p;
       }
     } catch {}
@@ -35,7 +36,7 @@ export default function App() {
     const onPopState = () => {
       const params = new URLSearchParams(window.location.search);
       const p = (params.get('page') as ClientPage) || 'home';
-      if (['home', 'vp', 'vp-catalog', 'services'].includes(p)) {
+      if (['home', 'vp', 'vp-catalog', 'services', 'rankup'].includes(p)) {
         setCurrentPage(p);
       } else {
         setCurrentPage('home');
@@ -98,19 +99,6 @@ export default function App() {
 
     if (page === 'community' || page === 'support') {
       setIsDiscordModalOpen(true);
-      return;
-    }
-
-    if (page === 'rankup') {
-      if (currentPage !== 'home') {
-        setCurrentPage('home');
-      }
-      setTimeout(() => {
-        const el = document.getElementById('rankup-service');
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
       return;
     }
 
@@ -191,6 +179,14 @@ export default function App() {
             currency={currency}
             onNavigate={handleNavigate}
             onAddToCart={handleAddToCart}
+            onOpenCheckout={handleOpenCustomCheckout}
+          />
+        )}
+
+        {currentPage === 'rankup' && (
+          <ClientRankupPage
+            currency={currency}
+            onNavigate={handleNavigate}
             onOpenCheckout={handleOpenCustomCheckout}
           />
         )}
