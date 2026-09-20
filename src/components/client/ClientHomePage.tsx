@@ -187,15 +187,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
-          {/* Panoramic Hero Art: Preserves maximum artwork without hard borders */}
-          <div className="relative w-full md:w-[560px] lg:w-[640px] xl:w-[700px] h-[280px] sm:h-[310px] lg:h-[330px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0 overflow-hidden">
+          {/* Hero Art positioned right next to the text inside max-w-[1360px] with seamless 4-way alpha blending */}
+          <div className="relative w-full md:w-[460px] lg:w-[480px] xl:w-[500px] h-[260px] sm:h-[280px] lg:h-[300px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
             <img
-              src="/assets/hires/hero_banner_panoramic.png"
+              src="/assets/hires/hero_banner_feathered.png"
               alt="VIB Digital Profiles Heroine"
-              className="w-full h-full object-cover object-right select-none pointer-events-none opacity-95"
+              className="w-full h-full object-contain object-right select-none pointer-events-none opacity-95"
             />
-            {/* Soft edge gradient overlay on the left */}
-            <div className="absolute inset-y-0 left-0 w-32 sm:w-48 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
           </div>
         </div>
       </section>
