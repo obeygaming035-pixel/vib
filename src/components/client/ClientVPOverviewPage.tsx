@@ -138,22 +138,49 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             </div>
           </div>
 
-          {/* Right Hero Graphic: Cinematic Dark Omen with floating coins & online card matching reference */}
+          {/* Right Hero Graphic: Cinematic Dark Omen with floating coins & crisp HTML online card matching reference */}
           <div className="lg:col-span-7 relative flex flex-col items-end">
-            <div className="relative w-full max-w-[780px] h-[360px] sm:h-[440px] lg:h-[500px] xl:h-[540px] flex items-center justify-end">
+            <div className="relative w-full max-w-[720px] h-[360px] sm:h-[420px] lg:h-[480px] flex items-center justify-end">
               <img
                 src="/assets/hires/vp_landing_hero.png"
                 alt="VIB VP Master Omen"
-                className="w-full h-full object-contain object-right filter drop-shadow-[0_0_40px_rgba(168,85,247,0.4)] relative z-10 select-none pointer-events-none"
+                className="w-full h-full object-contain object-right select-none pointer-events-none drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]"
               />
-              {/* Clickable WhatsApp overlay over the "WhatsApp Us" button in the graphic */}
-              <a
-                href="https://wa.me/919181801766?text=Hello%20VIB%20Team%2C%20I%20need%20assistance%20with%20VP%20packs"
-                target="_blank"
-                rel="noreferrer"
-                className="absolute top-[30%] right-[3%] w-[130px] h-[38px] z-20 rounded-lg cursor-pointer hover:bg-purple-500/20 transition-colors"
-                title="WhatsApp Us"
-              />
+
+              {/* Crisp HTML/CSS "WE ARE ONLINE" Card matching reference */}
+              <div className="absolute top-3 sm:top-6 right-2 sm:right-6 z-20 bg-[#120a22]/85 backdrop-blur-md border border-purple-500/35 rounded-2xl p-3 sm:p-4 shadow-[0_0_25px_rgba(168,85,247,0.25)] max-w-[210px] sm:max-w-[230px]">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-full bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-300 flex-shrink-0">
+                    <Headphones className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <div className="text-[9px] font-mono tracking-wider text-purple-300 uppercase font-semibold">WE ARE ONLINE</div>
+                    <div className="text-xs font-bold text-white">9 AM - 9 PM</div>
+                  </div>
+                </div>
+                <p className="text-[10px] text-gray-300 mt-2 leading-tight">
+                  For orders outside this time, please contact us on WhatsApp.
+                </p>
+                <a
+                  href="https://wa.me/919181801766?text=Hello%20VIB%20Team%2C%20I%20need%20assistance%20with%20VP%20packs"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2.5 w-full py-1.5 px-3 rounded-lg bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white text-[11px] font-bold flex items-center justify-center gap-1.5 shadow-[0_0_12px_rgba(168,85,247,0.4)] transition-all cursor-pointer"
+                >
+                  <span>WhatsApp Us</span>
+                  <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
+
+              {/* Purple Neon Graffiti Text */}
+              <div className="absolute bottom-6 sm:bottom-10 right-3 sm:right-6 z-20 pointer-events-none select-none text-right hidden sm:block">
+                <div className="text-lg sm:text-xl font-black italic tracking-wider text-[#d946ef] drop-shadow-[0_0_15px_rgba(217,70,239,0.8)] font-rajdhani">
+                  PLAY. UPGRADE. BELONG.
+                </div>
+                <div className="text-[10px] sm:text-xs font-extrabold italic tracking-widest text-[#a855f7] drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] font-rajdhani mt-0.5">
+                  SAME GAME. MORE POSSIBILITIES.
+                </div>
+              </div>
             </div>
           </div>
         </div>

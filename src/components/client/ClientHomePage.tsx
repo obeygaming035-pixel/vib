@@ -57,7 +57,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       rankColor: 'text-[#f43f5e] bg-[#f43f5e]/10 border-[#f43f5e]/30',
       priceINR: 24999,
       originalPriceINR: 32999,
-      avatarImg: '/assets/hires/profiles/card1_omen.jpg',
+      avatarImg: '/assets/hires/profiles/card1_exact.jpg',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
         { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
@@ -74,7 +74,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       rankColor: 'text-[#10b981] bg-[#10b981]/10 border-[#10b981]/30',
       priceINR: 14999,
       originalPriceINR: 19999,
-      avatarImg: '/assets/hires/profiles/card2_reyna.jpg',
+      avatarImg: '/assets/hires/profiles/card2_exact.jpg',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
         { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
@@ -91,7 +91,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       rankColor: 'text-[#fbbf24] bg-[#fbbf24]/10 border-[#fbbf24]/30',
       priceINR: 59999,
       originalPriceINR: 89999,
-      avatarImg: '/assets/hires/profiles/card3_phoenix.jpg',
+      avatarImg: '/assets/hires/profiles/card3_exact.jpg',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/50' },
         { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/50' },
@@ -108,7 +108,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       rankColor: 'text-[#c084fc] bg-[#c084fc]/10 border-[#c084fc]/30',
       priceINR: 8999,
       originalPriceINR: 14999,
-      avatarImg: '/assets/hires/profiles/card4_viper.jpg',
+      avatarImg: '/assets/hires/profiles/card4_exact.jpg',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
         { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
@@ -125,7 +125,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       rankColor: 'text-[#10b981] bg-[#10b981]/10 border-[#10b981]/30',
       priceINR: 16999,
       originalPriceINR: 24999,
-      avatarImg: '/assets/hires/profiles/card5_yoru.jpg',
+      avatarImg: '/assets/hires/profiles/card5_exact.jpg',
       weapons: [
         { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
         { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/40' },
@@ -137,56 +137,42 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
   return (
     <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-8 sm:space-y-10 pb-16">
-      {/* Breadcrumb Navigation matching Reference Image media_1789878444993.jpg */}
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-3">
-        <div className="flex items-center gap-2 text-xs text-gray-400 font-medium">
-          <button
-            onClick={() => onNavigate('home')}
-            className="hover:text-purple-400 transition-colors cursor-pointer text-gray-400"
-          >
-            Home
-          </button>
-          <span className="text-gray-600">&gt;</span>
-          <span className="text-purple-400 font-medium">Digital Profiles</span>
-        </div>
-      </div>
-
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Matching Reference Image media_1789878444993.jpg)       */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden min-h-[380px] sm:min-h-[420px] lg:min-h-[450px] flex items-center">
+      <section className="relative w-full overflow-hidden min-h-[250px] sm:min-h-[280px] lg:min-h-[310px] flex items-center pt-1 pb-1">
         {/* Ambient atmospheric purple lighting */}
-        <div className="absolute top-1/3 right-1/4 w-[500px] h-[380px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none z-[1]" />
-        <div className="absolute bottom-0 left-10 w-[400px] h-[260px] bg-fuchsia-800/15 rounded-full blur-[90px] pointer-events-none z-[1]" />
+        <div className="absolute top-1/3 right-1/4 w-[380px] h-[260px] bg-purple-600/20 rounded-full blur-[100px] pointer-events-none z-[1]" />
+        <div className="absolute bottom-0 left-10 w-[300px] h-[180px] bg-fuchsia-800/15 rounded-full blur-[70px] pointer-events-none z-[1]" />
 
-        {/* Right-aligned Hero Art container matching 16:9 reference scene without top/bottom clipping */}
-        <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[54%] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-end">
+        {/* Right-aligned Hero Art container matching reference scene without overpowering the screen */}
+        <div className="absolute top-0 right-0 bottom-0 w-full sm:w-[46%] lg:w-[42%] max-w-[460px] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-end">
           <img
             src="/assets/hires/hero_banner_full.jpg"
             alt="VIB Digital Profiles Heroine"
-            className="w-full h-full object-cover object-center select-none pointer-events-none opacity-95"
+            className="w-full h-full object-cover object-right select-none pointer-events-none opacity-90 scale-95"
           />
           {/* Smooth feathering gradient on the left boundary */}
-          <div className="absolute inset-y-0 left-0 w-40 sm:w-60 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
+          <div className="absolute inset-y-0 left-0 w-28 sm:w-40 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
           {/* Subtle top/bottom edge softening */}
-          <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#05040a] to-transparent z-[1]" />
-          <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#05040a] to-transparent z-[1]" />
+          <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-[#05040a] to-transparent z-[1]" />
+          <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#05040a] to-transparent z-[1]" />
         </div>
 
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-6 sm:py-9">
-          <div className="max-w-xl lg:max-w-xl space-y-3.5">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-4 sm:py-6">
+          <div className="max-w-xl lg:max-w-xl space-y-3">
             {/* Main Headline (2 lines matching reference exactly) */}
-            <div className="space-y-1">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
+            <div className="space-y-0.5">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
                 EXPLORE
               </h1>
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-[#f3e8ff] via-[#d946ef] to-[#a855f7] drop-shadow-[0_0_30px_rgba(217,70,239,0.65)]">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-none font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-[#f3e8ff] via-[#d946ef] to-[#a855f7] drop-shadow-[0_0_25px_rgba(217,70,239,0.6)]">
                 DIGITAL PROFILES
               </div>
             </div>
 
             {/* Subtitle */}
-            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal max-w-lg">
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal max-w-md">
               Find your next competitive identity. Choose a marketplace below to start browsing verified profiles or community listings.
             </p>
 
@@ -194,19 +180,19 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             <div className="flex flex-wrap items-center gap-2 pt-1">
               <div className="px-3 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
-                <span className="font-medium">Safe &amp; Secure</span>
+                <span className="font-medium text-[11px]">Safe &amp; Secure</span>
               </div>
               <div className="px-3 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <Check className="w-3.5 h-3.5 text-purple-400" />
-                <span className="font-medium">Verified Process</span>
+                <span className="font-medium text-[11px]">Verified Process</span>
               </div>
               <div className="px-3 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <Users className="w-3.5 h-3.5 text-purple-400" />
-                <span className="font-medium">Active Community</span>
+                <span className="font-medium text-[11px]">Active Community</span>
               </div>
               <div className="px-3 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <Headphones className="w-3.5 h-3.5 text-purple-400" />
-                <span className="font-medium">Dedicated Support</span>
+                <span className="font-medium text-[11px]">Dedicated Support</span>
               </div>
             </div>
           </div>
@@ -246,13 +232,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               }`}
             >
               {/* Full background ambient character art (Hooded Assassin with golden rim lighting) */}
-              <div className="absolute inset-y-0 left-0 w-full sm:w-[58%] overflow-hidden pointer-events-none select-none z-0">
+              <div className="absolute inset-y-0 left-0 w-full sm:w-[50%] overflow-hidden pointer-events-none select-none z-0">
                 <img
                   src="/assets/hires/card_guaranteed_agent.png"
                   alt="Guaranteed Agent"
-                  className="w-full h-full object-cover object-left opacity-80"
+                  className="w-full h-full object-cover object-left opacity-75 [mask-image:linear-gradient(to_right,black_30%,transparent_95%)] [-webkit-mask-image:linear-gradient(to_right,black_30%,transparent_95%)]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#130f1c]/75 to-[#0d0914]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#130f1c]/80 to-[#0d0914]" />
               </div>
 
               {/* Card Header Content */}
@@ -308,7 +294,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               </div>
               <button
                 type="button"
-                onClick={() => onNavigate('profiles')}
+                onClick={() => {
+                  const el = document.getElementById('featured-profiles');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="text-purple-400 font-semibold text-[11px] ml-3 whitespace-nowrap hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <span>Learn More</span>
@@ -330,13 +319,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               }`}
             >
               {/* Full background ambient character art (Cyber Blue Agent) */}
-              <div className="absolute inset-y-0 right-0 w-full sm:w-[58%] overflow-hidden pointer-events-none select-none z-0">
+              <div className="absolute inset-y-0 right-0 w-full sm:w-[50%] overflow-hidden pointer-events-none select-none z-0">
                 <img
                   src="/assets/hires/card_public_agent.png"
                   alt="Public Cyber Agent"
-                  className="w-full h-full object-cover object-right opacity-80"
+                  className="w-full h-full object-cover object-right opacity-80 [mask-image:linear-gradient(to_left,black_30%,transparent_95%)] [-webkit-mask-image:linear-gradient(to_left,black_30%,transparent_95%)]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#090f1d]/75 to-[#070b16]" />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#090f1d]/80 to-[#070b16]" />
               </div>
 
               {/* Card Header Content */}
@@ -392,7 +381,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               </div>
               <button
                 type="button"
-                onClick={() => onNavigate('profiles')}
+                onClick={() => {
+                  const el = document.getElementById('featured-profiles');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="text-purple-400 font-semibold text-[11px] ml-3 whitespace-nowrap hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <span>Learn More</span>
@@ -407,7 +399,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       {/* ========================================================================= */}
       {/* 3. FEATURED LISTINGS: Handpicked Featured Profiles (Matching Reference)   */}
       {/* ========================================================================= */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <section id="featured-profiles" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -425,7 +417,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
           <div className="flex items-center gap-2">
             <button
-              onClick={() => onNavigate('profiles')}
+              onClick={() => {
+                const el = document.getElementById('featured-profiles');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="px-4 py-1.5 rounded-xl bg-[#23153c] border border-purple-500/40 text-xs font-bold text-purple-200 hover:bg-purple-600 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
             >
               <span>View All Featured</span>

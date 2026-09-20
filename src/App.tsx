@@ -19,7 +19,7 @@ export default function App() {
     try {
       const params = new URLSearchParams(window.location.search);
       const p = params.get('page') as ClientPage;
-      if (p && ['home', 'profiles', 'vp', 'vp-catalog', 'services'].includes(p)) {
+      if (p && ['home', 'vp', 'vp-catalog', 'services'].includes(p)) {
         return p;
       }
     } catch {}
@@ -35,8 +35,10 @@ export default function App() {
     const onPopState = () => {
       const params = new URLSearchParams(window.location.search);
       const p = (params.get('page') as ClientPage) || 'home';
-      if (['home', 'profiles', 'vp', 'vp-catalog', 'services'].includes(p)) {
+      if (['home', 'vp', 'vp-catalog', 'services'].includes(p)) {
         setCurrentPage(p);
+      } else {
+        setCurrentPage('home');
       }
     };
     window.addEventListener('popstate', onPopState);
@@ -112,6 +114,12 @@ export default function App() {
       return;
     }
 
+    if (page === 'profiles') {
+      setCurrentPage('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -135,7 +143,7 @@ export default function App() {
         onToggleSound={() => setSoundEnabled((prev) => !prev)}
         onSearch={(q) => {
           setSearchQuery(q);
-          setCurrentPage('profiles');
+          setCurrentPage('home');
         }}
       />
 

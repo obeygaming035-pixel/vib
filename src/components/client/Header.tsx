@@ -108,18 +108,6 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             type="button"
-            onClick={() => handleNav('profiles')}
-            className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
-              currentPage === 'profiles'
-                ? 'bg-[#8a2be2]/30 text-white font-semibold border border-[#9333ea]/50 shadow-[0_0_10px_rgba(147,51,234,0.3)]'
-                : 'hover:text-white hover:bg-white/5'
-            }`}
-          >
-            Digital Profiles
-          </button>
-
-          <button
-            type="button"
             onClick={() => handleNav('vp')}
             className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
               currentPage === 'vp' || currentPage === 'vp-catalog'
@@ -284,12 +272,6 @@ export const Header: React.FC<HeaderProps> = ({
               className={`p-2 rounded-lg text-left ${currentPage === 'home' ? 'bg-fuchsia-600/30 text-white font-bold' : 'text-gray-300 hover:bg-white/5'}`}
             >
               Home
-            </button>
-            <button
-              onClick={() => handleNav('profiles')}
-              className={`p-2 rounded-lg text-left ${currentPage === 'profiles' ? 'bg-fuchsia-600/30 text-white font-bold' : 'text-gray-300 hover:bg-white/5'}`}
-            >
-              Digital Profiles
             </button>
             <button
               onClick={() => handleNav('vp')}
