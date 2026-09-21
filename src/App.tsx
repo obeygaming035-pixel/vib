@@ -20,7 +20,7 @@ export default function App() {
     try {
       const params = new URLSearchParams(window.location.search);
       const p = params.get('page') as ClientPage;
-      if (p && ['home', 'vp', 'vp-catalog', 'services', 'rankup'].includes(p)) {
+      if (p && ['home', 'profiles', 'vp', 'vp-catalog', 'services', 'rankup'].includes(p)) {
         return p;
       }
     } catch {}
@@ -36,7 +36,7 @@ export default function App() {
     const onPopState = () => {
       const params = new URLSearchParams(window.location.search);
       const p = (params.get('page') as ClientPage) || 'home';
-      if (['home', 'vp', 'vp-catalog', 'services', 'rankup'].includes(p)) {
+      if (['home', 'profiles', 'vp', 'vp-catalog', 'services', 'rankup'].includes(p)) {
         setCurrentPage(p);
       } else {
         setCurrentPage('home');

@@ -156,6 +156,15 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-4 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left Text Content */}
           <div className="max-w-xl lg:max-w-xl space-y-3 z-10">
+            {/* Breadcrumb matching reference media_1789878444993.jpg */}
+            <div className="text-xs text-gray-400 font-medium flex items-center gap-1.5 select-none">
+              <span className="hover:text-gray-200 cursor-pointer transition-colors" onClick={() => onNavigate('home')}>
+                Home
+              </span>
+              <span className="text-gray-600">&gt;</span>
+              <span className="text-purple-400 font-semibold">Digital Profiles</span>
+            </div>
+
             {/* Main Headline (2 lines matching reference exactly) */}
             <div className="space-y-0.5">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
@@ -192,12 +201,12 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
-          {/* Hero Art: Cinematic blend matching media_1789991734324.png with current compact shape, size, and position */}
-          <div className="relative w-full md:w-[480px] lg:w-[540px] xl:w-[580px] h-[240px] sm:h-[270px] lg:h-[290px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
+          {/* Hero Art: Cinematic blend matching media_1789991734324.png with strictly 0 outlines and unclipped graffiti */}
+          <div className="relative w-full md:w-[540px] lg:w-[620px] xl:w-[680px] h-[270px] sm:h-[300px] lg:h-[330px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
             <img
               src="/assets/hires/hero_banner_cinematic_blend.png"
               alt="VIB Digital Profiles Heroine"
-              className="w-full h-full object-contain object-right select-none pointer-events-none opacity-95 [mask-image:radial-gradient(ellipse_95%_90%_at_65%_50%,black_45%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_95%_90%_at_65%_50%,black_45%,transparent_100%)]"
+              className="w-full h-full object-contain object-right select-none pointer-events-none"
             />
           </div>
         </div>
