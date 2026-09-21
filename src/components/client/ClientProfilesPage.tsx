@@ -59,14 +59,14 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       title: 'Immortal Profile',
       sub: 'Level 310 • 20+ Skins',
       rankName: 'Immortal',
-      rankColor: 'text-[#f43f5e] bg-[#f43f5e]/10 border-[#f43f5e]/30',
+      rankIcon: '/assets/hires/ranks/immortal.png',
+      slot1RankGlow: 'border-[#f43f5e]/40 shadow-[0_0_8px_rgba(244,63,94,0.3)]',
       priceINR: 24999,
       originalPriceINR: 32999,
-      avatarImg: '/assets/hires/profiles/card1_omen.jpg',
+      avatarImg: '/assets/hires/profiles/card1_ref_immortal.png',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
         { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
-        { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
         { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/40' },
       ],
     },
@@ -76,15 +76,15 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       title: 'Ascendant Profile',
       sub: 'Level 205 • Prime Collection',
       rankName: 'Ascendant',
-      rankColor: 'text-[#10b981] bg-[#10b981]/10 border-[#10b981]/30',
+      rankIcon: '/assets/hires/ranks/ascendant.png',
+      slot1RankGlow: 'border-[#10b981]/40 shadow-[0_0_8px_rgba(16,185,129,0.3)]',
       priceINR: 14999,
       originalPriceINR: 19999,
-      avatarImg: '/assets/hires/profiles/card2_reyna.jpg',
+      avatarImg: '/assets/hires/profiles/card2_ref_ascendant.png',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
         { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
         { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
-        { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/40' },
       ],
     },
     {
@@ -93,14 +93,14 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       title: 'Radiant Profile',
       sub: 'Level 420 • Full Access',
       rankName: 'Radiant',
-      rankColor: 'text-[#fbbf24] bg-[#fbbf24]/10 border-[#fbbf24]/30',
+      rankIcon: '/assets/hires/ranks/radiant.png',
+      slot1RankGlow: 'border-[#fbbf24]/40 shadow-[0_0_8px_rgba(251,191,36,0.3)]',
       priceINR: 59999,
       originalPriceINR: 89999,
-      avatarImg: '/assets/hires/profiles/card3_phoenix.jpg',
+      avatarImg: '/assets/hires/profiles/card3_ref_radiant.png',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/50' },
         { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/50' },
-        { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/50' },
         { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/50' },
       ],
     },
@@ -110,15 +110,15 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       title: 'Diamond Profile',
       sub: 'Level 180 • Multiple Skins',
       rankName: 'Diamond',
-      rankColor: 'text-[#c084fc] bg-[#c084fc]/10 border-[#c084fc]/30',
+      rankIcon: '/assets/hires/ranks/diamond.png',
+      slot1RankGlow: 'border-[#38bdf8]/40 shadow-[0_0_8px_rgba(56,189,248,0.3)]',
       priceINR: 8999,
       originalPriceINR: 14999,
-      avatarImg: '/assets/hires/profiles/card4_viper.jpg',
+      avatarImg: '/assets/hires/profiles/card4_ref_diamond.png',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
         { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
         { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
-        { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/40' },
       ],
     },
     {
@@ -127,15 +127,15 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       title: 'Ascendant Profile',
       sub: 'Level 250 • Rare Skins',
       rankName: 'Ascendant',
-      rankColor: 'text-[#10b981] bg-[#10b981]/10 border-[#10b981]/30',
+      rankIcon: '/assets/hires/ranks/ascendant.png',
+      slot1RankGlow: 'border-[#10b981]/40 shadow-[0_0_8px_rgba(16,185,129,0.3)]',
       priceINR: 16999,
       originalPriceINR: 24999,
-      avatarImg: '/assets/hires/profiles/card5_yoru.jpg',
+      avatarImg: '/assets/hires/profiles/card5_ref_ascendant.png',
       weapons: [
-        { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
-        { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/40' },
-        { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
+        { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
+        { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
       ],
     },
   ];
@@ -509,8 +509,17 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                   </button>
                 </div>
 
-                {/* 4 Weapon Skin Preview Slots (Matching Reference 1 exactly) */}
+                {/* 4 Preview Slots: Slot 1 is Rank Emblem, Slots 2-4 are Weapons (Matching Reference Exactly) */}
                 <div className="px-2.5 pt-2 grid grid-cols-4 gap-1">
+                  {/* Slot 1: Rank Emblem */}
+                  <div className={`h-7 rounded-md bg-[#131024] border ${p.slot1RankGlow} p-0.5 flex items-center justify-center overflow-hidden shadow-sm`}>
+                    <img
+                      src={p.rankIcon}
+                      alt={p.rankName}
+                      className="w-5 h-5 object-contain filter drop-shadow-[0_0_6px_currentColor]"
+                    />
+                  </div>
+                  {/* Slots 2-4: Weapons */}
                   {p.weapons.map((w, idx) => (
                     <div
                       key={idx}
@@ -525,28 +534,30 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                   ))}
                 </div>
 
-                {/* Profile Details */}
-                <div className="p-3 space-y-1.5">
+                {/* Profile Details (Matching Reference Exactly) */}
+                <div className="p-3 space-y-1">
                   <h3 className="font-extrabold text-sm text-white group-hover:text-purple-300 transition-colors font-rajdhani">
                     {p.title}
                   </h3>
                   <div className="text-[11px] text-gray-400 leading-snug">
                     {p.sub}
                   </div>
-                  <div>
-                    <span
-                      className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${p.rankColor}`}
-                    >
-                      <Crown className="w-2.5 h-2.5" />
-                      <span>{p.rankName}</span>
+                  <div className="flex items-center gap-1.5 pt-0.5">
+                    <img
+                      src={p.rankIcon}
+                      alt={p.rankName}
+                      className="w-3.5 h-3.5 object-contain"
+                    />
+                    <span className="text-[11px] font-semibold text-slate-300">
+                      {p.rankName}
                     </span>
                   </div>
                 </div>
 
-                {/* Pricing and Action Buttons */}
+                {/* Pricing and Action Buttons (Matching Reference Exactly) */}
                 <div className="p-3 pt-2 border-t border-white/5 space-y-2">
                   <div className="flex items-baseline justify-between">
-                    <span className="text-base font-black text-white font-rajdhani">
+                    <span className="text-base font-black text-[#ff2ebb] font-rajdhani">
                       {formatCurrencyPrice(p.priceINR, currency)}
                     </span>
                     <span className="text-[10px] text-gray-500 line-through font-mono">
@@ -557,7 +568,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => onOpenCheckout(p.title, p.priceINR)}
-                      className="flex-1 py-1.5 rounded-lg bg-[#2a174a] hover:bg-[#7c3aed] text-white text-xs font-bold transition-all cursor-pointer text-center border border-purple-500/30"
+                      className="flex-1 py-1.5 rounded-lg bg-gradient-to-r from-[#4c1d95] to-[#581c87] hover:from-[#6b21a8] hover:to-[#7e22ce] text-white text-xs font-bold transition-all cursor-pointer text-center border border-purple-500/40 shadow-[0_0_10px_rgba(147,51,234,0.3)]"
                     >
                       View Details
                     </button>
@@ -573,7 +584,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                           quantity: 1,
                         })
                       }
-                      className="p-1.5 rounded-lg bg-[#7c3aed] hover:bg-[#9333ea] text-white transition-colors cursor-pointer shadow-md"
+                      className="p-1.5 rounded-lg bg-[#581c87] hover:bg-[#6b21a8] text-white transition-colors cursor-pointer border border-purple-500/40 shadow-[0_0_10px_rgba(147,51,234,0.3)]"
                       title="Add to Cart"
                     >
                       <ShoppingCart className="w-4 h-4" />
@@ -595,13 +606,16 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
           <div className="absolute left-10 top-0 w-60 h-full bg-purple-600/20 blur-3xl pointer-events-none" />
 
           {/* Left side: Full-height Character cutout artwork with smooth edge fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-44 sm:w-56 overflow-hidden pointer-events-none select-none z-0">
+          <div className="absolute left-0 top-0 bottom-0 w-48 sm:w-64 overflow-hidden pointer-events-none select-none z-0">
             <img
-              src="/assets/agents/jett.png"
+              src="/assets/hires/community_agent_cinematic.png"
               alt="Community Agent"
-              className="w-full h-full object-cover object-top scale-125 transform translate-y-2 opacity-85"
+              className="w-full h-full object-cover object-left opacity-95"
+              style={{
+                maskImage: 'linear-gradient(to right, black 65%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to right, black 65%, transparent 100%)',
+              }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#120a22]/60 to-[#120a22]" />
           </div>
 
           <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-5 sm:p-6 pl-36 sm:pl-56 gap-5">
