@@ -148,12 +148,27 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Matching Reference Image media_1789878444993.jpg)       */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden min-h-[250px] sm:min-h-[280px] lg:min-h-[310px] flex items-center pt-1 pb-1">
+      <section className="relative w-full overflow-hidden min-h-[340px] sm:min-h-[380px] lg:min-h-[410px] flex items-center">
         {/* Ambient atmospheric purple lighting matching reference */}
         <div className="absolute top-1/3 right-1/4 w-[520px] h-[360px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none z-[1]" />
         <div className="absolute bottom-0 left-10 w-[350px] h-[220px] bg-fuchsia-800/15 rounded-full blur-[80px] pointer-events-none z-[1]" />
 
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-4 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        {/* Seamless Hero Art: Full-height right-aligned backdrop matching media_1789991734324.png with strictly 0 outlines */}
+        <div className="absolute top-0 right-0 bottom-0 w-full sm:w-[54%] lg:w-[50%] max-w-[700px] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-end">
+          <img
+            src="/assets/hires/hero_banner_full.jpg"
+            alt="VIB Digital Profiles Heroine"
+            className="w-full h-full object-cover object-right select-none pointer-events-none opacity-95"
+          />
+          {/* Smooth feathering gradient on the left boundary */}
+          <div className="absolute inset-y-0 left-0 w-44 sm:w-64 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 to-transparent z-[1]" />
+          {/* Soft top/bottom/right edge softening */}
+          <div className="absolute inset-x-0 top-0 h-10 sm:h-14 bg-gradient-to-b from-[#05040a] to-transparent z-[1]" />
+          <div className="absolute inset-x-0 bottom-0 h-12 sm:h-16 bg-gradient-to-t from-[#05040a] to-transparent z-[1]" />
+          <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#05040a] to-transparent z-[1]" />
+        </div>
+
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-6 sm:py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left Text Content */}
           <div className="max-w-xl lg:max-w-xl space-y-3 z-10">
             {/* Breadcrumb matching reference media_1789878444993.jpg */}
@@ -199,15 +214,6 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 <span className="font-medium text-[11px]">Dedicated Support</span>
               </div>
             </div>
-          </div>
-
-          {/* Hero Art: Cinematic blend matching media_1789991734324.png with strictly 0 outlines and unclipped graffiti */}
-          <div className="relative w-full md:w-[540px] lg:w-[620px] xl:w-[680px] h-[270px] sm:h-[300px] lg:h-[330px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
-            <img
-              src="/assets/hires/hero_banner_cinematic_blend.png"
-              alt="VIB Digital Profiles Heroine"
-              className="w-full h-full object-contain object-right select-none pointer-events-none"
-            />
           </div>
         </div>
       </section>
