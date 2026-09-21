@@ -153,24 +153,24 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         <div className="absolute top-1/3 right-1/4 w-[520px] h-[360px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none z-[1]" />
         <div className="absolute bottom-0 left-10 w-[350px] h-[220px] bg-fuchsia-800/15 rounded-full blur-[80px] pointer-events-none z-[1]" />
 
-        {/* Seamless Hero Art: Full-height backdrop tightly positioned next to text with strictly 0 outlines */}
-        <div className="absolute top-0 right-0 bottom-0 w-full sm:w-[80%] md:w-[75%] lg:w-[70%] xl:w-[66%] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-end">
+        {/* Seamless Hero Art: Full-height backdrop at natural scale slid towards the left with strictly 0 outlines */}
+        <div className="absolute top-0 right-0 sm:right-14 md:right-24 lg:right-36 xl:right-48 bottom-0 w-full sm:w-[56%] lg:w-[52%] max-w-[740px] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-end">
           <img
             src="/assets/hires/hero_banner_full.jpg"
             alt="VIB Digital Profiles Heroine"
-            className="w-full h-full object-cover object-right select-none pointer-events-none opacity-95 scale-[1.2] sm:scale-[1.25] lg:scale-[1.3] origin-right"
+            className="w-full h-full object-cover object-right select-none pointer-events-none opacity-95"
           />
           {/* Smooth feathering gradient on the left boundary */}
-          <div className="absolute inset-y-0 left-0 w-36 sm:w-56 bg-gradient-to-r from-[#05040a] via-[#05040a]/90 to-transparent z-[1]" />
+          <div className="absolute inset-y-0 left-0 w-44 sm:w-64 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 to-transparent z-[1]" />
           {/* Soft top/bottom/right edge softening */}
           <div className="absolute inset-x-0 top-0 h-10 sm:h-14 bg-gradient-to-b from-[#05040a] to-transparent z-[1]" />
           <div className="absolute inset-x-0 bottom-0 h-12 sm:h-16 bg-gradient-to-t from-[#05040a] to-transparent z-[1]" />
-          <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#05040a] to-transparent z-[1]" />
+          <div className="absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-[#05040a] to-transparent z-[1]" />
         </div>
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-6 sm:py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left Text Content */}
-          <div className="max-w-xl lg:max-w-2xl space-y-3 z-10">
+          <div className="max-w-xl lg:max-w-xl space-y-3 z-10">
             {/* Breadcrumb matching reference media_1789878444993.jpg */}
             <div className="text-xs text-gray-400 font-medium flex items-center gap-1.5 select-none">
               <span className="hover:text-gray-200 cursor-pointer transition-colors" onClick={() => onNavigate('home')}>
@@ -182,16 +182,16 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
             {/* Main Headline (2 lines matching reference exactly) */}
             <div className="space-y-0.5">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
                 EXPLORE
               </h1>
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-[#f3e8ff] via-[#d946ef] to-[#a855f7] drop-shadow-[0_0_25px_rgba(217,70,239,0.6)]">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-none font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-[#f3e8ff] via-[#d946ef] to-[#a855f7] drop-shadow-[0_0_25px_rgba(217,70,239,0.6)]">
                 DIGITAL PROFILES
               </div>
             </div>
 
             {/* Subtitle */}
-            <p className="text-gray-300 text-xs sm:text-sm lg:text-base leading-relaxed font-normal max-w-lg">
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal max-w-md">
               Find your next competitive identity. Choose a marketplace below to start browsing verified profiles or community listings.
             </p>
 
