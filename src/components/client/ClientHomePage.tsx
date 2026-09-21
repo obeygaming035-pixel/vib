@@ -144,9 +144,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       {/* 1. HERO SECTION (Matching Reference Image media_1789878444993.jpg)       */}
       {/* ========================================================================= */}
       <section className="relative w-full overflow-hidden min-h-[250px] sm:min-h-[280px] lg:min-h-[310px] flex items-center pt-1 pb-1">
-        {/* Ambient atmospheric purple lighting */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/4 w-[450px] h-[280px] bg-purple-600/20 rounded-full blur-[100px] pointer-events-none z-[1]" />
-        <div className="absolute bottom-0 left-10 w-[300px] h-[180px] bg-fuchsia-800/15 rounded-full blur-[70px] pointer-events-none z-[1]" />
+        {/* Ambient atmospheric purple lighting matching reference */}
+        <div className="absolute top-1/3 right-1/4 w-[520px] h-[360px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none z-[1]" />
+        <div className="absolute bottom-0 left-10 w-[350px] h-[220px] bg-fuchsia-800/15 rounded-full blur-[80px] pointer-events-none z-[1]" />
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-4 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left Text Content */}
@@ -187,18 +187,18 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
-          {/* Hero Art: Panoramic scene with city & graffiti, compact size close to text with STRICTLY 0 OUTLINES */}
+          {/* Hero Art: Cinematic blend matching media_1789991734324.png with current compact shape, size, and position */}
           <div className="relative w-full md:w-[480px] lg:w-[540px] xl:w-[580px] h-[250px] sm:h-[270px] lg:h-[290px] flex-shrink-0 flex items-center justify-end pointer-events-none select-none mt-2 md:mt-0">
             <img
-              src="/assets/hires/hero_banner_panoramic_blend.png"
+              src="/assets/hires/hero_banner_cinematic_blend.png"
               alt="VIB Digital Profiles Heroine"
               className="w-full h-full object-contain object-right select-none pointer-events-none opacity-95"
             />
-            {/* 4-Way Gradient Overlays ensuring mathematically zero outlines */}
-            <div className="absolute inset-y-0 left-0 w-24 sm:w-32 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent pointer-events-none z-[1]" />
-            <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-[#05040a] to-transparent pointer-events-none z-[1]" />
-            <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#05040a] to-transparent pointer-events-none z-[1]" />
-            <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#05040a] to-transparent pointer-events-none z-[1]" />
+            {/* Soft left gradient overlay matching media_1789991734324.png */}
+            <div className="absolute inset-y-0 left-0 w-24 sm:w-36 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent pointer-events-none z-[1]" />
+            {/* Subtle top/bottom edge softening */}
+            <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-[#05040a] to-transparent pointer-events-none z-[1]" />
+            <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-[#05040a] to-transparent pointer-events-none z-[1]" />
           </div>
         </div>
       </section>
