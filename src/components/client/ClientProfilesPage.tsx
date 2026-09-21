@@ -63,7 +63,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       slot1RankGlow: 'border-[#f43f5e]/40 shadow-[0_0_8px_rgba(244,63,94,0.3)]',
       priceINR: 24999,
       originalPriceINR: 32999,
-      avatarImg: '/assets/hires/profiles/card1_ref_immortal.png',
+      avatarImg: '/assets/hires/profiles/card1_exact.jpg',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
         { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
@@ -80,7 +80,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       slot1RankGlow: 'border-[#10b981]/40 shadow-[0_0_8px_rgba(16,185,129,0.3)]',
       priceINR: 14999,
       originalPriceINR: 19999,
-      avatarImg: '/assets/hires/profiles/card2_ref_ascendant.png',
+      avatarImg: '/assets/hires/profiles/card2_exact.jpg',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
         { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
@@ -97,7 +97,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       slot1RankGlow: 'border-[#fbbf24]/40 shadow-[0_0_8px_rgba(251,191,36,0.3)]',
       priceINR: 59999,
       originalPriceINR: 89999,
-      avatarImg: '/assets/hires/profiles/card3_ref_radiant.png',
+      avatarImg: '/assets/hires/profiles/card3_exact.jpg',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/50' },
         { img: '/assets/items/vandal-reaper.png', border: 'border-purple-500/50' },
@@ -114,7 +114,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       slot1RankGlow: 'border-[#38bdf8]/40 shadow-[0_0_8px_rgba(56,189,248,0.3)]',
       priceINR: 8999,
       originalPriceINR: 14999,
-      avatarImg: '/assets/hires/profiles/card4_ref_diamond.png',
+      avatarImg: '/assets/hires/profiles/card4_exact.jpg',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
         { img: '/assets/items/phantom-rgx.png', border: 'border-cyan-500/40' },
@@ -131,7 +131,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       slot1RankGlow: 'border-[#10b981]/40 shadow-[0_0_8px_rgba(16,185,129,0.3)]',
       priceINR: 16999,
       originalPriceINR: 24999,
-      avatarImg: '/assets/hires/profiles/card5_ref_ascendant.png',
+      avatarImg: '/assets/hires/profiles/card5_exact.jpg',
       weapons: [
         { img: '/assets/items/vandal-prime.png', border: 'border-amber-500/40' },
         { img: '/assets/items/vandal-rgx.png', border: 'border-emerald-500/40' },
