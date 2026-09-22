@@ -582,6 +582,286 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       </section>
 
       {/* ========================================================================= */}
+      {/* 3B. SOCIAL CONVERSION BANNERS (Matching Reference media_1790095363501.jpg) */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
+          {/* Left: Follow Our Instagram Banner */}
+          <div className="relative rounded-2xl bg-gradient-to-br from-[#180d28] via-[#10091c] to-[#0a0614] border border-pink-500/25 p-5 sm:p-6 overflow-hidden shadow-xl flex flex-col justify-between group hover:border-pink-500/40 transition-all">
+            {/* Ambient sunset glow */}
+            <div className="absolute -top-10 -right-10 w-60 h-60 bg-pink-600/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
+              <div className="space-y-3 max-w-sm">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 text-[10.5px] font-mono tracking-widest text-[#f43f5e] uppercase font-bold">
+                  <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-[#f59e0b] via-[#ec4899] to-[#8b5cf6] flex items-center justify-center text-white shadow-sm">
+                    <Instagram className="w-3 h-3" />
+                  </div>
+                  <span>FOLLOW OUR INSTAGRAM</span>
+                </div>
+
+                {/* Headline */}
+                <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-rajdhani tracking-wide leading-tight">
+                  STAY UPDATED <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-400 to-amber-300">
+                    &amp; WIN EXCITING REWARDS!
+                  </span>
+                </h3>
+
+                {/* Subtitle */}
+                <p className="text-xs text-gray-300 leading-relaxed">
+                  Follow us on Instagram to stand a chance to win giveaways of VP, Profiles and Cash Prizes!
+                </p>
+
+                {/* 4 Micro Tags */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
+                    🎁 Giveaways
+                  </span>
+                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
+                    ⚡ Exclusive Drops
+                  </span>
+                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
+                    📢 Announcements
+                  </span>
+                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
+                    🎉 Fun Events
+                  </span>
+                </div>
+              </div>
+
+              {/* Right: 3D Phone Mockup Graphic */}
+              <div className="relative w-36 sm:w-44 h-48 flex-shrink-0 flex items-center justify-center select-none pointer-events-none mx-auto sm:mx-0">
+                {/* 3D Phone Body */}
+                <div className="w-32 h-44 rounded-2xl bg-[#090710] border-2 border-pink-500/40 shadow-[0_0_25px_rgba(244,63,94,0.3)] p-2 flex flex-col justify-between transform rotate-6 group-hover:rotate-3 transition-transform duration-500">
+                  <div className="flex items-center justify-between pb-1 border-b border-white/10">
+                    <div className="w-3 h-3 rounded-full bg-pink-500/40" />
+                    <div className="text-[8px] font-mono text-gray-400">@vib_esports</div>
+                  </div>
+                  {/* Mock profile avatar & posts */}
+                  <div className="grid grid-cols-2 gap-1 py-1">
+                    <div className="aspect-square rounded bg-purple-900/40 border border-pink-500/20 flex items-center justify-center text-[8px] text-pink-300 font-bold">VP</div>
+                    <div className="aspect-square rounded bg-purple-900/40 border border-pink-500/20 flex items-center justify-center text-[8px] text-purple-300 font-bold">WIN</div>
+                  </div>
+                  {/* Glowing Follow Button */}
+                  <div className="py-1 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 text-center text-[10px] font-black text-white uppercase shadow-md">
+                    Follow
+                  </div>
+                </div>
+
+                {/* Floating Heart Reaction Badges */}
+                <div className="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-pink-600 border border-white/20 flex items-center justify-center text-white shadow-[0_0_15px_rgba(236,72,153,0.8)] animate-bounce">
+                  ❤️
+                </div>
+                <div className="absolute bottom-4 -left-2 w-6 h-6 rounded-full bg-rose-600 border border-white/20 flex items-center justify-center text-[10px] text-white shadow-md">
+                  ✨
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Button */}
+            <div className="pt-4 mt-2 border-t border-white/5 relative z-10">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-800 via-pink-700 to-rose-600 hover:from-purple-700 hover:via-pink-600 hover:to-rose-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.3)] flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Follow Us on Instagram</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Join Our WhatsApp Channel Banner */}
+          <div className="relative rounded-2xl bg-gradient-to-br from-[#0c1f19] via-[#091512] to-[#050c0a] border border-emerald-500/25 p-5 sm:p-6 overflow-hidden shadow-xl flex flex-col justify-between group hover:border-emerald-500/40 transition-all">
+            {/* Ambient emerald glow */}
+            <div className="absolute -top-10 -right-10 w-60 h-60 bg-emerald-600/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-teal-600/15 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
+              <div className="space-y-3 max-w-sm">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 text-[10.5px] font-mono tracking-widest text-[#10b981] uppercase font-bold">
+                  <div className="w-5 h-5 rounded-md bg-[#25D366] flex items-center justify-center text-white shadow-sm font-bold text-xs">
+                    💬
+                  </div>
+                  <span>JOIN OUR WHATSAPP CHANNEL</span>
+                </div>
+
+                {/* Headline */}
+                <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-rajdhani tracking-wide leading-tight">
+                  BE THE FIRST <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-green-200">
+                    TO KNOW!
+                  </span>
+                </h3>
+
+                {/* Subtitle */}
+                <p className="text-xs text-gray-300 leading-relaxed">
+                  Join our official WhatsApp channel to receive latest updates, drops, giveaway announcements, coupons and more — directly delivered to you.
+                </p>
+
+                {/* 8-Item Checklist (2 Columns) */}
+                <div className="grid grid-cols-2 gap-x-3 gap-y-1 pt-1 text-[11px] text-emerald-200">
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Latest Updates</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Special Coupons</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Instant Announcements</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Early Access</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Exclusive Drops</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Important Notices</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Giveaway Alerts</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Be the First to Get Benefits</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: 3D Phone Mockup Graphic */}
+              <div className="relative w-36 sm:w-44 h-48 flex-shrink-0 flex items-center justify-center select-none pointer-events-none mx-auto sm:mx-0">
+                {/* 3D Phone Body */}
+                <div className="w-32 h-44 rounded-2xl bg-[#05110d] border-2 border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.3)] p-2 flex flex-col justify-between transform -rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                  <div className="flex items-center justify-between pb-1 border-b border-emerald-500/20">
+                    <div className="flex items-center gap-1">
+                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                      <div className="text-[8px] font-bold text-emerald-300">VIB Official</div>
+                    </div>
+                    <div className="text-[7px] text-emerald-400 font-mono">CHANNEL</div>
+                  </div>
+                  <div className="p-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/20 space-y-1">
+                    <div className="text-[8px] font-bold text-white">🎁 New VP Drop!</div>
+                    <div className="text-[7px] text-emerald-300 leading-tight">Claim your 10% bonus today...</div>
+                  </div>
+                  {/* Glowing Join Button */}
+                  <div className="py-1 rounded-lg bg-emerald-600 text-center text-[10px] font-black text-white uppercase shadow-md flex items-center justify-center gap-1">
+                    <span>Join Now</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Button */}
+            <div className="pt-4 mt-2 border-t border-white/5 relative z-10">
+              <a
+                href="https://whatsapp.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-600 hover:from-emerald-600 hover:to-teal-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Join Our WhatsApp Channel</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3C. SELL YOUR ACCOUNT WITH VIB (Matching Reference media_1790095363501.jpg)*/}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-2xl bg-gradient-to-r from-[#140b2b] via-[#0d071c] to-[#080512] border border-purple-500/30 overflow-hidden shadow-2xl relative p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Ambient purple aura */}
+          <div className="absolute right-10 top-0 w-80 h-full bg-purple-600/20 blur-3xl pointer-events-none" />
+
+          {/* Left: Content */}
+          <div className="space-y-4 max-w-xl z-10">
+            <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#d946ef] uppercase font-bold">
+              <MessageSquare className="w-3.5 h-3.5 text-[#d946ef]" />
+              <span>SELL YOUR ACCOUNT WITH VIB</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white font-rajdhani tracking-tight leading-none">
+              Turn Your Profile Into Profit
+            </h2>
+
+            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-lg">
+              Looking to sell your account? List it with VIB and reach thousands of buyers. Choose from our flexible advertisement plans and get the exposure you deserve.
+            </p>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-1">
+              <button
+                onClick={() => onOpenCheckout('VIB Profile Advertisement Plan', 1499)}
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-700 via-fuchsia-600 to-purple-600 hover:from-purple-600 hover:to-fuchsia-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(217,70,239,0.35)] flex items-center justify-center gap-2 cursor-pointer w-fit"
+              >
+                <span>View Advertisement Plans</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+
+              <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-gray-300">
+                <div className="flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Reach Genuine Buyers</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Fast &amp; Easy Listing</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Flexible Plans</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Trusted Platform</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Cyberpunk Heroine Visual with Glowing Phone & Graffiti */}
+          <div className="relative w-72 h-56 flex-shrink-0 flex items-center justify-end select-none pointer-events-none">
+            <div className="relative w-full h-full flex items-center justify-end">
+              <img
+                src="/assets/hires/hero_banner_full.jpg"
+                alt="Sell with VIB"
+                className="w-56 h-full object-cover object-right rounded-2xl opacity-90 shadow-2xl"
+                style={{
+                  maskImage: 'linear-gradient(to left, black 70%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to left, black 70%, transparent 100%)',
+                }}
+              />
+              <div className="absolute bottom-4 right-4 text-right">
+                <div className="text-xl font-black text-[#d946ef] font-rajdhani leading-none tracking-tighter drop-shadow-[0_0_10px_rgba(217,70,239,0.8)]">
+                  LIST.
+                </div>
+                <div className="text-xl font-black text-white font-rajdhani leading-none tracking-tighter">
+                  SELL.
+                </div>
+                <div className="text-xl font-black text-purple-400 font-rajdhani leading-none tracking-tighter">
+                  EARN.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
       {/* 4. JOIN THE VIB COMMUNITY Banner (Matching Reference Image)               */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">

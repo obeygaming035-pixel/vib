@@ -66,15 +66,17 @@ if __name__ == "__main__":
         "profiles": "http://localhost:3000/?page=profiles",
         "vp-catalog": "http://localhost:3000/?page=vp-catalog",
         "vp": "http://localhost:3000/?page=vp",
+        "rankup": "http://localhost:3000/?page=rankup",
         "services": "http://localhost:3000/?page=services",
     }
     
     refs = {
-        "home": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1789878444993.jpg",
+        "home": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1790095363501.jpg",
+        "vp": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1790095371529.jpg",
+        "rankup": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1790095383028.jpg",
+        "services": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1790095391491.jpg",
         "profiles": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1789733196998.jpg",
         "vp-catalog": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1789733196988.jpg",
-        "vp": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1789733197006.jpg",
-        "services": r"C:\Users\Death\.gemini\antigravity\brain\8d86143e-3841-40b7-8797-2f8f73ba34ec\.user_uploaded\media_1789733196970.jpg",
     }
     
     target_url = urls.get(page_name, "http://localhost:3000/")

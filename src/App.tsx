@@ -20,7 +20,7 @@ export default function App() {
     try {
       const params = new URLSearchParams(window.location.search);
       const p = params.get('page') as ClientPage;
-      if (p && ['home', 'profiles', 'vp', 'vp-catalog', 'services', 'rankup'].includes(p)) {
+      if (p && ['home', 'profiles', 'vp', 'vp-catalog', 'services', 'rankup', 'rentals', 'coaching', 'auctions'].includes(p)) {
         return p;
       }
     } catch {}
@@ -36,7 +36,7 @@ export default function App() {
     const onPopState = () => {
       const params = new URLSearchParams(window.location.search);
       const p = (params.get('page') as ClientPage) || 'home';
-      if (['home', 'profiles', 'vp', 'vp-catalog', 'services', 'rankup'].includes(p)) {
+      if (['home', 'profiles', 'vp', 'vp-catalog', 'services', 'rankup', 'rentals', 'coaching', 'auctions'].includes(p)) {
         setCurrentPage(p);
       } else {
         setCurrentPage('home');
@@ -174,12 +174,13 @@ export default function App() {
           />
         )}
 
-        {currentPage === 'services' && (
+        {(currentPage === 'services' || currentPage === 'rentals' || currentPage === 'coaching' || currentPage === 'auctions') && (
           <ClientServicesPage
             currency={currency}
             onNavigate={handleNavigate}
             onAddToCart={handleAddToCart}
             onOpenCheckout={handleOpenCustomCheckout}
+            initialSection={currentPage}
           />
         )}
 

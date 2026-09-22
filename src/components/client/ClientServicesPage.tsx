@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ShieldCheck,
   Check,
@@ -8,7 +8,6 @@ import {
   Users,
   Globe,
   Megaphone,
-  RefreshCw,
   Zap,
   Lock,
   FileText,
@@ -19,8 +18,16 @@ import {
   CreditCard,
   BarChart2,
   BadgeCheck,
-  HelpCircle,
-  ExternalLink,
+  Flame,
+  Award,
+  Clock,
+  Sparkles,
+  Gavel,
+  CheckCircle2,
+  Tv,
+  Target,
+  Crosshair,
+  TrendingUp,
 } from 'lucide-react';
 import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
@@ -31,6 +38,7 @@ interface ClientServicesPageProps {
   onNavigate: (page: ClientPage) => void;
   onAddToCart: (item: CartItem) => void;
   onOpenCheckout: (title: string, priceINR: number) => void;
+  initialSection?: ClientPage;
 }
 
 export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
@@ -38,7 +46,65 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
   onNavigate,
   onAddToCart,
   onOpenCheckout,
+  initialSection,
 }) => {
+  // ---------------------------------------------------------------------------
+  // LIVE AUCTION COUNTDOWN TIMER (Real-time ticking state)
+  // ---------------------------------------------------------------------------
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 2,
+    minutes: 14,
+    seconds: 36,
+  });
+
+  const [currentBid, setCurrentBid] = useState(4850);
+  const [bidCount, setBidCount] = useState(18);
+  const [userBidInput, setUserBidInput] = useState('5000');
+  const [bidSuccessMessage, setBidSuccessMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev.seconds > 0) {
+          return { ...prev, seconds: prev.seconds - 1 };
+        } else if (prev.minutes > 0) {
+          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        } else if (prev.hours > 0) {
+          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        }
+        return { hours: 2, minutes: 30, seconds: 0 }; // Loop reset for demo
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const handlePlaceBid = (e: React.FormEvent) => {
+    e.preventDefault();
+    const bidVal = parseInt(userBidInput, 10);
+    if (isNaN(bidVal) || bidVal <= currentBid) {
+      alert(`Bid must be greater than current bid of ₹${currentBid.toLocaleString()}`);
+      return;
+    }
+    setCurrentBid(bidVal);
+    setBidCount((c) => c + 1);
+    setUserBidInput(String(bidVal + 250));
+    setBidSuccessMessage(`Bid of ₹${bidVal.toLocaleString()} placed successfully! You are the highest bidder.`);
+    setTimeout(() => setBidSuccessMessage(null), 5000);
+  };
+
+  // Scroll to initial section if provided
+  useEffect(() => {
+    if (initialSection) {
+      const el = document.getElementById(initialSection);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      }
+    }
+  }, [initialSection]);
+
   const serviceCards = [
     {
       id: 'srv-1',
@@ -50,7 +116,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
     {
       id: 'srv-2',
       title: 'Profile Access Programs',
-      desc: 'Flexible access options tailored to your needs.',
+      desc: 'Flexible access options tailored to your competitive needs.',
       icon: Users,
       action: () => onOpenCheckout('Profile Access Program Consultation', 0),
     },
@@ -85,7 +151,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
     {
       id: 'srv-7',
       title: 'Urgent Sale Evaluation',
-      desc: 'Get your profile evaluated for faster processing.',
+      desc: 'Get your profile evaluated for faster processing and instant cashout.',
       icon: Zap,
       action: () => onOpenCheckout('Urgent Profile Valuation', 0),
     },
@@ -98,30 +164,49 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
     },
   ];
 
-  const steps = [
+  const phpSteps = [
     {
       num: '01',
-      title: 'Select a Service',
-      desc: 'Choose from our range of digital services.',
-      icon: MousePointer,
+      title: 'Place Your Order',
+      desc: 'Select your preferred starting rank, region specification, and submit your request.',
     },
     {
       num: '02',
-      title: 'Submit Required Details',
-      desc: 'Provide the necessary information for processing.',
-      icon: FileText,
+      title: 'Account Set Up',
+      desc: 'Our automated system provisions a fresh, clean Philippines region account with zero prior matches.',
     },
     {
       num: '03',
-      title: 'Verification & Payment Review',
-      desc: 'We verify your details and process your payment securely.',
-      icon: ShieldCheck,
+      title: 'Receive & Verify',
+      desc: 'Receive full access login details, first-email access, and complete security credentials within 10 minutes.',
     },
     {
       num: '04',
-      title: 'Service Fulfilment',
-      desc: 'Our team completes your request as per the selected service.',
-      icon: Package,
+      title: 'Start Exploring',
+      desc: 'Enjoy 40% cheaper VP in the store forever with identical low ping on Mumbai and Singapore servers.',
+    },
+  ];
+
+  const coachingPillars = [
+    {
+      icon: Tv,
+      title: 'VOD Review & Macro Strategy',
+      desc: 'Detailed round-by-round breakdown of positioning, rotations, utility economy, and game sense.',
+    },
+    {
+      icon: Crosshair,
+      title: 'Aim Mechanics & Micro Adjustments',
+      desc: 'Crosshair placement, movement peeking drills, counter-strafing, and recoil mastery.',
+    },
+    {
+      icon: Target,
+      title: 'Agent Mastery & Ability Lineups',
+      desc: 'In-depth playbook for your main agent pool including site executes, retakes, and post-plant setups.',
+    },
+    {
+      icon: Flame,
+      title: 'Mental Game & Clutch Execution',
+      desc: 'Composure under pressure, team communication leadership, and winning high-stakes rounds.',
     },
   ];
 
@@ -197,11 +282,11 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
   ];
 
   return (
-    <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-9 sm:space-y-12 pb-16 font-sans">
+    <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-12 pb-20 font-sans">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION (Matching Reference 5)                                    */}
+      {/* 1. HERO SECTION                                                           */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden pt-4 sm:pt-6">
+      <section className="relative w-full overflow-hidden pt-6 sm:pt-8 border-b border-white/5">
         {/* Atmospheric Ambient Glows */}
         <div className="absolute top-10 right-1/4 w-[650px] h-[550px] bg-purple-700/15 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute -bottom-10 left-10 w-[450px] h-[350px] bg-fuchsia-800/10 rounded-full blur-[120px] pointer-events-none" />
@@ -224,10 +309,10 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
             </h1>
 
             <p className="text-gray-300 text-xs sm:text-sm max-w-xl leading-relaxed">
-              VIB provides digital profile services, marketplace facilitation, promotional services, access programs, and customer support through a structured service platform.
+              VIB provides digital profile services, live auctions, private coaching, marketplace facilitation, and customer support through a unified esports ecosystem.
             </p>
 
-            {/* CTAs matching Reference 5 */}
+            {/* CTAs */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 type="button"
@@ -247,11 +332,15 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
 
               <button
                 type="button"
-                onClick={() => onNavigate('profiles')}
-                className="px-6 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider text-gray-200 hover:text-white transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer border border-white/20 bg-[#0c0a18] hover:bg-white/5 flex items-center gap-2 font-rajdhani"
+                onClick={() => {
+                  const el = document.getElementById('auctions');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-6 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider text-gray-200 hover:text-white transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer border border-purple-500/40 bg-[#0c0a18] hover:bg-purple-900/20 flex items-center gap-2 font-rajdhani"
               >
-                <BarChart2 className="w-4 h-4 text-purple-400" />
-                <span>VIEW MARKETPLACE</span>
+                <Gavel className="w-4 h-4 text-purple-400" />
+                <span>LIVE AUCTIONS</span>
+                <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
               </button>
             </div>
 
@@ -281,40 +370,20 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
           </div>
 
           {/* Right Hero Graphic: 3D VIB Monolith on Rock Base */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center relative min-h-[400px]">
-            {/* Top Right Vertical Labels matching Reference 5 */}
-            <div className="absolute right-0 top-0 text-right space-y-1 pointer-events-none select-none z-20">
-              <div className="text-[9px] font-mono tracking-[0.25em] text-gray-400 font-bold uppercase">PEOPLE</div>
-              <div className="text-[9px] font-mono tracking-[0.25em] text-gray-400 font-bold uppercase">PLATFORMS</div>
-              <div className="text-[9px] font-mono tracking-[0.25em] text-gray-400 font-bold uppercase">POSSIBILITIES</div>
-            </div>
-
-            {/* Right Slide Indicators matching Reference 5 */}
-            <div className="absolute -right-2 top-1/2 -translate-y-1/2 space-y-2.5 text-right text-[10px] font-mono hidden xl:block z-20 pointer-events-none select-none">
-              <div className="text-purple-400 font-bold flex items-center justify-end gap-1">
-                <span className="w-3 h-0.5 bg-purple-500 inline-block" />
-                <span>01</span>
-              </div>
-              <div className="text-gray-600">02</div>
-              <div className="text-gray-600">03</div>
-            </div>
-
-            {/* Monolith Container */}
-            <div className="relative w-full max-w-[560px] flex flex-col items-center justify-center">
-              {/* Vertical Neon Light Tubes on sides */}
-              <div className="absolute -left-2 top-6 bottom-6 w-1 bg-purple-500/60 rounded-full blur-[2px] shadow-[0_0_12px_rgba(168,85,247,0.8)] pointer-events-none hidden sm:block" />
-              <div className="absolute -right-2 top-6 bottom-6 w-1 bg-purple-500/60 rounded-full blur-[2px] shadow-[0_0_12px_rgba(168,85,247,0.8)] pointer-events-none hidden sm:block" />
-
-              {/* 3D VIB Monolith Render */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center relative min-h-[380px]">
+            <div className="relative w-full max-w-[520px] flex flex-col items-center justify-center">
               <div className="w-full aspect-[4/3] flex items-center justify-center relative z-10">
                 <img
-                  src="/assets/hires/vib_services_monolith.png"
+                  src="/assets/client/vib-3d-monolith.png"
                   alt="VIB 3D Monolith"
                   className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(168,85,247,0.55)] scale-105"
+                  onError={(e) => {
+                    // Fallback to highres if available
+                    e.currentTarget.src = '/assets/hires/vib_services_monolith.png';
+                  }}
                 />
               </div>
 
-              {/* Monolith subtext under rock base matching Reference 5 */}
               <div className="text-[10px] font-mono tracking-[0.22em] text-purple-300 uppercase text-center mt-1 opacity-85">
                 A SAFER DIGITAL ECOSYSTEM FOR A STRONGER TOMORROW
               </div>
@@ -324,7 +393,367 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. OUR SERVICES: Everything You Need, In One Place (Matching Reference 5) */}
+      {/* 2. VIB AUCTIONS: BID. WIN. OWN. WITH WORKING LIVE COUNTDOWN TIMER [View 4] */}
+      {/* ========================================================================= */}
+      <section id="auctions" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#120826] via-[#1a0c35] to-[#0d071d] border border-fuchsia-500/40 space-y-6 shadow-2xl relative overflow-hidden">
+          {/* Ambient Glows */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-fuchsia-600/15 rounded-full blur-[110px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
+
+          {/* Header Row */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/[0.08] pb-5 relative z-10">
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
+                <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
+                <span className="text-rose-400">LIVE TIMED AUCTION</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white font-rajdhani">
+                VIB AUCTIONS: <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-pink-400 to-amber-300">BID. WIN. OWN.</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-300 max-w-xl">
+                Place competitive bids on rare, vaulted, and high-tier Valorant profile collections. Zero reserve auctions with instant transfer upon timer expiry.
+              </p>
+            </div>
+
+            {/* WORKING REAL-TIME COUNTDOWN TIMER */}
+            <div className="p-3.5 rounded-xl bg-[#090615] border border-fuchsia-500/30 flex items-center gap-3 shadow-lg">
+              <div className="text-right">
+                <div className="text-[9px] font-mono text-fuchsia-300 uppercase font-bold tracking-wider">AUCTION CLOSES IN</div>
+                <div className="text-xs text-gray-400 font-mono">Live Sync Active</div>
+              </div>
+
+              <div className="flex items-center gap-1.5 font-mono font-black text-lg sm:text-xl">
+                <div className="px-2.5 py-1 rounded-lg bg-fuchsia-950/80 border border-fuchsia-500/40 text-fuchsia-200">
+                  {String(timeLeft.hours).padStart(2, '0')}
+                  <span className="block text-[8px] text-fuchsia-400 text-center font-normal">HRS</span>
+                </div>
+                <span className="text-fuchsia-400">:</span>
+                <div className="px-2.5 py-1 rounded-lg bg-fuchsia-950/80 border border-fuchsia-500/40 text-fuchsia-200">
+                  {String(timeLeft.minutes).padStart(2, '0')}
+                  <span className="block text-[8px] text-fuchsia-400 text-center font-normal">MIN</span>
+                </div>
+                <span className="text-fuchsia-400">:</span>
+                <div className="px-2.5 py-1 rounded-lg bg-rose-950/80 border border-rose-500/50 text-rose-200 animate-pulse">
+                  {String(timeLeft.seconds).padStart(2, '0')}
+                  <span className="block text-[8px] text-rose-400 text-center font-normal">SEC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Featured Live Auction Item Showpiece */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
+            {/* Left Glass Showcase Display */}
+            <div className="lg:col-span-6 p-6 rounded-2xl bg-gradient-to-b from-[#180e33] to-[#0b0718] border border-fuchsia-500/40 relative overflow-hidden group shadow-xl">
+              <div className="flex items-center justify-between">
+                <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-fuchsia-900/80 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
+                  LOT #0881 • ULTRA RARE
+                </span>
+                <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-mono">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Verified Vaulted Item</span>
+                </div>
+              </div>
+
+              {/* Weapon Render */}
+              <div className="py-6 flex items-center justify-center relative">
+                <div className="absolute inset-0 bg-fuchsia-600/10 rounded-full blur-2xl pointer-events-none" />
+                <img
+                  src="/assets/items/vandal-prime.png"
+                  alt="Auction Showcase Vandal"
+                  className="w-[85%] max-h-[180px] object-contain filter drop-shadow-[0_0_25px_rgba(217,70,239,0.6)] group-hover:scale-105 transition-transform duration-300 relative z-10"
+                />
+              </div>
+
+              <div className="space-y-1 pt-2 border-t border-white/10">
+                <h3 className="text-xl font-black text-white font-rajdhani uppercase tracking-wide">
+                  KURONAMI VANDAL + CHAMPIONS 2024 COMBO
+                </h3>
+                <p className="text-xs text-gray-300">
+                  Includes Kuronami Vandal (Max Level + All Colors), Champions 2024 Vandal &amp; Blade, Reaver 2.0 Karambit, 1,200 VP Balance.
+                </p>
+              </div>
+            </div>
+
+            {/* Right Bidding Controls */}
+            <div className="lg:col-span-6 p-6 rounded-2xl bg-[#0a0717] border border-white/10 space-y-5">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-3.5 rounded-xl bg-[#110c26] border border-white/5 space-y-1">
+                  <div className="text-[10px] font-mono text-gray-400 uppercase">CURRENT HIGHEST BID</div>
+                  <div className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-amber-300 font-rajdhani">
+                    ₹{currentBid.toLocaleString()}
+                  </div>
+                  <div className="text-[10px] font-mono text-emerald-400">{bidCount} total bids placed</div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-[#110c26] border border-white/5 space-y-1">
+                  <div className="text-[10px] font-mono text-gray-400 uppercase">MINIMUM NEXT BID</div>
+                  <div className="text-2xl sm:text-3xl font-black text-white font-rajdhani">
+                    ₹{(currentBid + 150).toLocaleString()}
+                  </div>
+                  <div className="text-[10px] font-mono text-fuchsia-300">+₹150 minimum step</div>
+                </div>
+              </div>
+
+              {/* Bid Success Toast */}
+              {bidSuccessMessage && (
+                <div className="p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-xs font-semibold flex items-center gap-2 animate-fadeIn">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                  <span>{bidSuccessMessage}</span>
+                </div>
+              )}
+
+              {/* Interactive Bid Form */}
+              <form onSubmit={handlePlaceBid} className="space-y-3">
+                <div className="space-y-1">
+                  <label className="text-xs font-mono text-gray-300 font-bold uppercase">
+                    Enter Your Maximum Bid (INR)
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <div className="relative flex-1">
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">
+                        ₹
+                      </span>
+                      <input
+                        type="number"
+                        value={userBidInput}
+                        onChange={(e) => setUserBidInput(e.target.value)}
+                        min={currentBid + 1}
+                        className="w-full pl-8 pr-4 py-3 rounded-xl bg-[#150f2e] border border-white/15 focus:border-fuchsia-500 focus:outline-none text-white font-mono font-bold text-base"
+                        placeholder="Enter amount"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="px-6 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-xs sm:text-sm font-black font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-fuchsia-600/40 transition-all cursor-pointer whitespace-nowrap"
+                    >
+                      PLACE BID
+                    </button>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between text-[11px] text-gray-400">
+                  <span>Guaranteed Escrow Protection</span>
+                  <span>Instant SMS/WhatsApp Notification</span>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          {/* Exclusive Deals Strip */}
+          <div className="pt-2 border-t border-white/[0.08] relative z-10 space-y-3">
+            <div className="text-[10px] font-mono tracking-[0.2em] text-gray-400 uppercase font-bold">
+              EXCLUSIVE FLASH AUCTIONS
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="p-3.5 rounded-xl bg-[#0a0717] border border-white/10 hover:border-fuchsia-500/30 flex items-center justify-between transition-colors">
+                <div>
+                  <h4 className="font-bold text-xs text-white font-rajdhani">Reaver 2.0 Karambit Bundle</h4>
+                  <div className="text-[10px] text-gray-400 font-mono">Current: ₹2,900 • 00:45:12 left</div>
+                </div>
+                <button
+                  onClick={() => onOpenCheckout('Bid on Reaver 2.0 Karambit Bundle', 3100)}
+                  className="px-3 py-1.5 rounded-lg bg-fuchsia-950/60 hover:bg-fuchsia-900 border border-fuchsia-500/40 text-[11px] font-bold text-fuchsia-300 font-rajdhani uppercase cursor-pointer"
+                >
+                  Bid Now
+                </button>
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-[#0a0717] border border-white/10 hover:border-fuchsia-500/30 flex items-center justify-between transition-colors">
+                <div>
+                  <h4 className="font-bold text-xs text-white font-rajdhani">Prime Vandal + Singularity</h4>
+                  <div className="text-[10px] text-gray-400 font-mono">Current: ₹3,400 • 01:12:05 left</div>
+                </div>
+                <button
+                  onClick={() => onOpenCheckout('Bid on Prime + Singularity Combo', 3600)}
+                  className="px-3 py-1.5 rounded-lg bg-fuchsia-950/60 hover:bg-fuchsia-900 border border-fuchsia-500/40 text-[11px] font-bold text-fuchsia-300 font-rajdhani uppercase cursor-pointer"
+                >
+                  Bid Now
+                </button>
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-[#0a0717] border border-white/10 hover:border-fuchsia-500/30 flex items-center justify-between transition-colors">
+                <div>
+                  <h4 className="font-bold text-xs text-white font-rajdhani">Nocturnum Scythe Rare Drop</h4>
+                  <div className="text-[10px] text-gray-400 font-mono">Current: ₹1,800 • 03:30:00 left</div>
+                </div>
+                <button
+                  onClick={() => onOpenCheckout('Bid on Nocturnum Scythe', 2000)}
+                  className="px-3 py-1.5 rounded-lg bg-fuchsia-950/60 hover:bg-fuchsia-900 border border-fuchsia-500/40 text-[11px] font-bold text-fuchsia-300 font-rajdhani uppercase cursor-pointer"
+                >
+                  Bid Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. CREATE A FRESH PHP PROFILE: 4-STEP FLOW [View 4]                       */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#0c0a18] border border-purple-500/30 space-y-6 shadow-xl relative overflow-hidden">
+          {/* Ambient Glows */}
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-purple-600/10 rounded-full blur-[100px] pointer-events-none" />
+
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/[0.06] pb-4">
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
+                <Globe className="w-3.5 h-3.5 text-purple-400" />
+                <span>CLEAN REGIONAL PROVISIONING</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white font-rajdhani tracking-wide uppercase">
+                CREATE A FRESH PHP PROFILE
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-400 max-w-xl">
+                Start with a brand new, unranked Philippines (PHP) Valorant profile to immediately access 40% cheaper VP store prices without modifying your existing account.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onOpenCheckout('Fresh Philippines (PHP) Profile Provisioning', 499)}
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-xs sm:text-sm font-black font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-purple-600/30 transition-all cursor-pointer flex items-center gap-2 whitespace-nowrap"
+            >
+              <span>Get Fresh PHP Profile (₹499)</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* 4 Steps Timeline */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {phpSteps.map((step, idx) => (
+              <div
+                key={step.num}
+                className="p-5 rounded-xl bg-[#090714] border border-white/[0.08] hover:border-purple-500/40 transition-all space-y-3 relative group"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="w-8 h-8 rounded-full bg-purple-950/80 border border-purple-500/50 text-purple-300 font-extrabold text-xs flex items-center justify-center font-rajdhani">
+                    {step.num}
+                  </div>
+                  <span className="text-[9px] font-mono text-gray-500 uppercase">PHASE 0{idx + 1}</span>
+                </div>
+
+                <div className="space-y-1">
+                  <h3 className="font-extrabold text-sm text-white font-rajdhani tracking-wide">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* 4 Guarantees */}
+          <div className="pt-2 border-t border-white/[0.06] grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-gray-300">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <span>100% Ban-Free Guarantee</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <span>Mumbai/SG Low Ping Matchmaking</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <span>First-Email &amp; Password Changeable</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <span>Lifetime Warranty Protection</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4. COACHING PROGRAM: LEARN. IMPROVE. DOMINATE. [View 4]                   */}
+      {/* ========================================================================= */}
+      <section id="coaching" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#0e0a1f] via-[#150d2e] to-[#0e0a1f] border border-purple-500/30 space-y-6 shadow-2xl relative overflow-hidden">
+          {/* Ambient Glows */}
+          <div className="absolute top-0 right-10 w-96 h-96 bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-0 left-10 w-80 h-80 bg-fuchsia-600/10 rounded-full blur-[90px] pointer-events-none" />
+
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/[0.08] pb-5 relative z-10">
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
+                <Award className="w-3.5 h-3.5 text-purple-400" />
+                <span>TIER 1 COMPETITIVE COACHING</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white font-rajdhani">
+                COACHING PROGRAM: <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-fuchsia-300 to-pink-400">LEARN. IMPROVE. DOMINATE.</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-300 max-w-xl">
+                1-on-1 private coaching with Radiant players, VCT tier analysts, and competitive specialists. Custom drills, live VOD reviews, and tailored aim routines.
+              </p>
+            </div>
+
+            {/* Pricing Packages */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => onOpenCheckout('Valorant 1-on-1 Coaching (Single 1-Hour Session)', 799)}
+                className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-bold font-rajdhani uppercase tracking-wider text-gray-200 hover:text-white transition-colors cursor-pointer"
+              >
+                Single Session (₹799)
+              </button>
+              <button
+                onClick={() => onOpenCheckout('Valorant 5-Session Mastery Bootcamp', 3499)}
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-xs font-bold font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-purple-600/30 transition-all cursor-pointer flex items-center gap-1.5"
+              >
+                <span>5-Session Bootcamp (₹3,499)</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* 4 Skill Pillars */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10">
+            {coachingPillars.map((p, idx) => {
+              const Icon = p.icon;
+              return (
+                <div
+                  key={idx}
+                  className="p-5 rounded-xl bg-[#090716]/80 border border-white/[0.08] hover:border-purple-500/40 transition-all space-y-3 group"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-300 group-hover:scale-110 transition-transform">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-sm text-white font-rajdhani tracking-wide">
+                    {p.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    {p.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Testimonial Quote */}
+          <div className="p-4 rounded-xl bg-[#090615] border border-purple-500/20 relative z-10 flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-fuchsia-600 flex items-center justify-center text-white font-black text-sm font-rajdhani flex-shrink-0">
+              AK
+            </div>
+            <div className="space-y-0.5">
+              <p className="text-xs sm:text-sm text-gray-200 italic">
+                &ldquo;Went from Gold 2 to Ascendant 3 in 3 weeks. The round-by-round VOD breakdowns and crosshair placement routines completely transformed my game sense.&rdquo;
+              </p>
+              <div className="text-[11px] font-mono text-purple-400 font-bold">
+                — Aarav K. • Verified VIB Student (Gold 2 &rarr; Ascendant 3)
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. OUR SERVICES: Everything You Need, In One Place                        */}
       {/* ========================================================================= */}
       <section id="services-grid" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-white/[0.06] pb-3">
@@ -352,7 +781,6 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
                 className="p-5 rounded-xl bg-[#0c0a18] border border-white/[0.08] hover:border-purple-500/50 hover:bg-[#120f26] transition-all duration-300 cursor-pointer group flex flex-col justify-between min-h-[170px] shadow-md relative"
               >
                 <div className="space-y-3">
-                  {/* Top Row: Icon + Circle Arrow Button */}
                   <div className="flex items-center justify-between">
                     <div className="w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:scale-105 transition-transform">
                       <Icon className="w-4 h-4" />
@@ -362,7 +790,6 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
                     </div>
                   </div>
 
-                  {/* Title & Desc */}
                   <div className="space-y-1">
                     <h3 className="font-extrabold text-sm text-white group-hover:text-purple-300 transition-colors font-rajdhani tracking-wide">
                       {srv.title}
@@ -379,62 +806,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. HOW VIB WORKS: Simple. Secure. Seamless. (Matching Reference 5)        */}
-      {/* ========================================================================= */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-6 sm:p-7 rounded-2xl bg-[#0c0a18] border border-purple-500/25 space-y-6 shadow-md">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-white/[0.06] pb-4">
-            <div className="space-y-0.5">
-              <div className="text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
-                HOW VIB WORKS
-              </div>
-              <h2 className="text-xl sm:text-2xl font-black text-white font-rajdhani tracking-wide">
-                Simple. Secure. Seamless.
-              </h2>
-            </div>
-            <p className="text-xs text-gray-400 max-w-md md:text-right">
-              Get started in just a few steps and experience a structured service process.
-            </p>
-          </div>
-
-          {/* 4 Steps in an open horizontal timeline matching Reference 5 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative pt-2">
-            {steps.map((step, idx) => {
-              const StepIcon = step.icon;
-              return (
-                <div key={step.num} className="space-y-3 relative">
-                  {/* Step Number & Icon Row */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-950/60 border border-purple-500/50 text-purple-300 font-extrabold text-xs flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.3)] flex-shrink-0 font-rajdhani">
-                      {step.num}
-                    </div>
-                    <div className="text-purple-400">
-                      <StepIcon className="w-4 h-4" />
-                    </div>
-                    {/* Connecting line to next step on desktop */}
-                    {idx < steps.length - 1 && (
-                      <div className="hidden lg:block flex-1 h-[1px] bg-gradient-to-r from-purple-500/40 via-purple-500/20 to-transparent ml-2" />
-                    )}
-                  </div>
-
-                  <div className="space-y-1">
-                    <h3 className="font-extrabold text-sm text-white font-rajdhani tracking-wide">
-                      {step.title}
-                    </h3>
-                    <p className="text-xs text-gray-400 leading-relaxed">
-                      {step.desc}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 4. TRUST & COMPLIANCE: Your Safety Is Our Priority (Matching Reference 5) */}
+      {/* 6. TRUST & COMPLIANCE: Your Safety Is Our Priority                        */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-white/[0.06] pb-3">
@@ -478,11 +850,10 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. FEATURED LISTINGS: Explore Digital Profiles (Matching Reference 5)      */}
+      {/* 7. FEATURED LISTINGS: Explore Digital Profiles                             */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-5 sm:p-6 rounded-2xl bg-[#0c0a18] border border-purple-500/25 space-y-5 shadow-md relative">
-          {/* Header */}
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <div className="text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
@@ -501,34 +872,13 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
             </button>
           </div>
 
-          {/* Carousel Arrows */}
-          <button
-            aria-label="Previous Featured Profiles"
-            className="absolute -left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#180f2d] border border-purple-500/50 text-purple-300 hover:bg-purple-600 hover:text-white flex items-center justify-center z-20 shadow-lg cursor-pointer transition-all hidden sm:flex"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-
-          <button
-            aria-label="Next Featured Profiles"
-            className="absolute -right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#180f2d] border border-purple-500/50 text-purple-300 hover:bg-purple-600 hover:text-white flex items-center justify-center z-20 shadow-lg cursor-pointer transition-all hidden sm:flex"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-
-          {/* 4 Cards in Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {featuredListings.map((l) => (
               <div
                 key={l.id}
                 className="rounded-xl bg-[#090714] border border-white/[0.08] hover:border-purple-500/50 overflow-hidden flex flex-col justify-between group shadow-md transition-all duration-300"
               >
-                {/* 16:9 Banner Preview with Weapon Render */}
                 <div className="relative aspect-[16/9] w-full bg-gradient-to-b from-[#140e28] to-[#090714] p-3 flex items-center justify-center overflow-hidden border-b border-white/[0.06]">
-                  {/* Subtle diagonal background stripes */}
-                  <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,rgba(255,255,255,0.1)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.1)_50%,rgba(255,255,255,0.1)_75%,transparent_75%,transparent)] bg-[length:16px_16px]" />
-
-                  {/* Badge */}
                   {l.badge && (
                     <span
                       className={`absolute top-2 left-2 text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-wider font-rajdhani z-10 shadow-sm ${
@@ -541,7 +891,6 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
                     </span>
                   )}
 
-                  {/* High-Res 3D Weapon Render */}
                   <img
                     src={l.weapon}
                     alt={l.weaponName}
@@ -549,7 +898,6 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
                   />
                 </div>
 
-                {/* Card Content */}
                 <div className="p-3.5 space-y-2">
                   <div>
                     <div className="font-extrabold text-sm text-white font-rajdhani tracking-wide">
@@ -587,11 +935,10 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. READY TO GET STARTED? BOTTOM CTA (Matching Reference 5)                */}
+      {/* 8. READY TO GET STARTED? BOTTOM CTA                                       */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0d071f] via-[#160a33] to-[#0d071f] border border-purple-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
-          {/* Neon Crystal Facets in background */}
           <div className="absolute -left-10 top-0 w-60 h-60 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -right-10 bottom-0 w-60 h-60 bg-fuchsia-600/15 rounded-full blur-3xl pointer-events-none" />
 
