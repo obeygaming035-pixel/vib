@@ -7,6 +7,9 @@ import { ClientVPOverviewPage } from './components/client/ClientVPOverviewPage';
 import { ClientIndianVPPage } from './components/client/ClientIndianVPPage';
 import { ClientServicesPage } from './components/client/ClientServicesPage';
 import { ClientRankupPage } from './components/client/ClientRankupPage';
+import { ClientRentalsPage } from './components/client/ClientRentalsPage';
+import { ClientCoachingPage } from './components/client/ClientCoachingPage';
+import { ClientAuctionsPage } from './components/client/ClientAuctionsPage';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { DiscordModal } from './components/home/DiscordModal';
@@ -102,12 +105,6 @@ export default function App() {
       return;
     }
 
-    if (page === 'profiles') {
-      setCurrentPage('home');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -131,7 +128,7 @@ export default function App() {
         onToggleSound={() => setSoundEnabled((prev) => !prev)}
         onSearch={(q) => {
           setSearchQuery(q);
-          setCurrentPage('home');
+          setCurrentPage('profiles');
         }}
       />
 
@@ -174,20 +171,43 @@ export default function App() {
           />
         )}
 
-        {(currentPage === 'services' || currentPage === 'rentals' || currentPage === 'coaching' || currentPage === 'auctions') && (
-          <ClientServicesPage
-            currency={currency}
-            onNavigate={handleNavigate}
-            onAddToCart={handleAddToCart}
-            onOpenCheckout={handleOpenCustomCheckout}
-            initialSection={currentPage}
-          />
-        )}
-
         {currentPage === 'rankup' && (
           <ClientRankupPage
             currency={currency}
             onNavigate={handleNavigate}
+            onOpenCheckout={handleOpenCustomCheckout}
+          />
+        )}
+
+        {currentPage === 'rentals' && (
+          <ClientRentalsPage
+            currency={currency}
+            onNavigate={handleNavigate}
+            onOpenCheckout={handleOpenCustomCheckout}
+          />
+        )}
+
+        {currentPage === 'coaching' && (
+          <ClientCoachingPage
+            currency={currency}
+            onNavigate={handleNavigate}
+            onOpenCheckout={handleOpenCustomCheckout}
+          />
+        )}
+
+        {currentPage === 'auctions' && (
+          <ClientAuctionsPage
+            currency={currency}
+            onNavigate={handleNavigate}
+            onOpenCheckout={handleOpenCustomCheckout}
+          />
+        )}
+
+        {currentPage === 'services' && (
+          <ClientServicesPage
+            currency={currency}
+            onNavigate={handleNavigate}
+            onAddToCart={handleAddToCart}
             onOpenCheckout={handleOpenCustomCheckout}
           />
         )}

@@ -67,6 +67,9 @@ if __name__ == "__main__":
         "vp-catalog": "http://localhost:3000/?page=vp-catalog",
         "vp": "http://localhost:3000/?page=vp",
         "rankup": "http://localhost:3000/?page=rankup",
+        "rentals": "http://localhost:3000/?page=rentals",
+        "coaching": "http://localhost:3000/?page=coaching",
+        "auctions": "http://localhost:3000/?page=auctions",
         "services": "http://localhost:3000/?page=services",
     }
     

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ShieldCheck,
   Check,
@@ -20,6 +20,19 @@ import {
   Zap,
   Shield,
   CreditCard,
+  Clock,
+  Gavel,
+  TrendingUp,
+  TrendingDown,
+  Repeat,
+  Globe,
+  Award,
+  Tv,
+  Crosshair,
+  Target,
+  Flame,
+  CheckCircle2,
+  Lock,
 } from 'lucide-react';
 import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
@@ -33,6 +46,18 @@ interface ClientHomePageProps {
   onOpenCheckout: (title: string, priceINR: number) => void;
 }
 
+const RANK_TIERS = [
+  { name: 'Iron', color: 'from-gray-600 to-zinc-700', border: 'border-zinc-600', text: 'text-zinc-400', badge: 'IRON' },
+  { name: 'Bronze', color: 'from-amber-800 to-yellow-900', border: 'border-amber-700', text: 'text-amber-500', badge: 'BRONZE' },
+  { name: 'Silver', color: 'from-slate-400 to-gray-500', border: 'border-slate-400', text: 'text-slate-300', badge: 'SILVER' },
+  { name: 'Gold', color: 'from-yellow-500 to-amber-600', border: 'border-yellow-400', text: 'text-yellow-400', badge: 'GOLD' },
+  { name: 'Platinum', color: 'from-cyan-500 to-teal-600', border: 'border-cyan-400', text: 'text-cyan-400', badge: 'PLAT' },
+  { name: 'Diamond', color: 'from-purple-500 to-fuchsia-600', border: 'border-purple-400', text: 'text-purple-400', badge: 'DIAMOND' },
+  { name: 'Ascendant', color: 'from-emerald-500 to-green-600', border: 'border-emerald-400', text: 'text-emerald-400', badge: 'ASCEND' },
+  { name: 'Immortal', color: 'from-rose-500 to-red-600', border: 'border-rose-400', text: 'text-rose-400', badge: 'IMMORTAL' },
+  { name: 'Radiant', color: 'from-amber-300 via-yellow-400 to-yellow-200', border: 'border-yellow-300', text: 'text-yellow-300', badge: 'RADIANT' },
+];
+
 export const ClientHomePage: React.FC<ClientHomePageProps> = ({
   currency,
   onNavigate,
@@ -41,6 +66,50 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 }) => {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
   const [selectedMarketplace, setSelectedMarketplace] = useState<'guaranteed' | 'public'>('guaranteed');
+  const [journeyType, setJourneyType] = useState<'rankup' | 'derank'>('rankup');
+
+  // Working live auction countdown timer
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 2,
+    minutes: 14,
+    seconds: 36,
+  });
+
+  const [currentBid, setCurrentBid] = useState(4850);
+  const [bidCount, setBidCount] = useState(18);
+  const [userBidInput, setUserBidInput] = useState('5000');
+  const [bidSuccessMessage, setBidSuccessMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev.seconds > 0) {
+          return { ...prev, seconds: prev.seconds - 1 };
+        } else if (prev.minutes > 0) {
+          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        } else if (prev.hours > 0) {
+          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        }
+        return { hours: 2, minutes: 30, seconds: 0 };
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const handlePlaceBid = (e: React.FormEvent) => {
+    e.preventDefault();
+    const bidVal = parseInt(userBidInput, 10);
+    if (isNaN(bidVal) || bidVal <= currentBid) {
+      alert(`Bid must be greater than current bid of ₹${currentBid.toLocaleString()}`);
+      return;
+    }
+    setCurrentBid(bidVal);
+    setBidCount((c) => c + 1);
+    setUserBidInput(String(bidVal + 250));
+    setBidSuccessMessage(`Bid of ₹${bidVal.toLocaleString()} placed successfully! You are the highest bidder.`);
+    setTimeout(() => setBidSuccessMessage(null), 5000);
+  };
 
   const toggleFav = (id: string) => {
     soundFx.playClickSound();
@@ -582,7 +651,539 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 3B. SOCIAL CONVERSION BANNERS (Matching Reference media_1790095363501.jpg) */}
+      {/* 3B. VIB URGENT SALE OFFER & REGIONAL VP PACKS HUB (Matching Reference 2)  */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        {/* Urgent Sale Offer Dual Cards */}
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#1c0817] via-[#240a1c] to-[#12050f] border border-rose-500/40 shadow-2xl relative overflow-hidden">
+          <div className="absolute -right-10 top-0 w-80 h-full bg-rose-600/15 blur-3xl pointer-events-none" />
+
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+            <div className="space-y-2 max-w-xl">
+              <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-rose-400 uppercase font-bold">
+                <Zap className="w-3.5 h-3.5 text-rose-400" />
+                <span>SELL YOUR PROFILE • TWO WAYS TO SELL</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white font-rajdhani tracking-tight leading-none">
+                VIB URGENT SALE OFFER
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                Need to sell your profile fast? Get an urgent sale offer through VIB. Our verified buyer network gives you a rapid cashout or maximum marketplace value.
+              </p>
+
+              <div className="flex flex-wrap gap-2 pt-2 text-xs">
+                <button
+                  onClick={() => onOpenCheckout('Urgent Profile Valuation Request', 0)}
+                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold font-rajdhani uppercase tracking-wider text-xs shadow-lg shadow-rose-600/30 transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <span>Get My Profile Evaluated</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => onNavigate('vp')}
+                  className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-bold font-rajdhani uppercase tracking-wider text-gray-200 hover:text-white transition-colors cursor-pointer"
+                >
+                  Learn More
+                </button>
+              </div>
+            </div>
+
+            {/* Dual Comparison Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full lg:w-auto">
+              <div className="p-4 rounded-xl bg-[#11050e] border border-rose-500/30 space-y-2 min-w-[240px]">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold text-rose-400 uppercase">URGENT SALE</span>
+                  <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-500/40 uppercase">FASTER</span>
+                </div>
+                <div className="text-xs text-gray-300 space-y-1">
+                  <div>✓ Instant valuation within 2h</div>
+                  <div>✓ Immediate payout to UPI</div>
+                  <div>✓ Zero listing waiting period</div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-[#14081c] border border-purple-500/30 space-y-2 min-w-[240px]">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold text-purple-400 uppercase">PROMOTION METHOD</span>
+                  <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-500/40 uppercase">HIGHER VALUE</span>
+                </div>
+                <div className="text-xs text-gray-300 space-y-1">
+                  <div>✓ You set your asking price</div>
+                  <div>✓ Featured on all VIB channels</div>
+                  <div>✓ Direct buyer inquiries</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* VP Packs Regional Hub (Indian vs PHP cards + EMI strip) */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+            <div className="space-y-0.5">
+              <div className="text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
+                TOP UP &amp; PLAY WITHOUT LIMITS
+              </div>
+              <h2 className="text-xl sm:text-2xl font-black text-white font-rajdhani tracking-wide uppercase">
+                VP PACKS: MORE PLAY. MORE POSSIBILITIES.
+              </h2>
+            </div>
+            <button
+              onClick={() => onNavigate('vp')}
+              className="text-xs text-purple-400 hover:text-purple-300 font-bold flex items-center gap-1 cursor-pointer font-rajdhani"
+            >
+              <span>View All VP Packs</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Indian Region Card */}
+            <div className="p-6 rounded-2xl bg-[#0a0717] border border-white/10 hover:border-purple-500/40 space-y-4 transition-all group shadow-md">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">🇮🇳</span>
+                  <div>
+                    <h3 className="font-extrabold text-base text-white font-rajdhani">INDIAN REGION VP</h3>
+                    <div className="text-[11px] text-gray-400">Top up your Indian region account at the best rates</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-1.5 text-xs text-gray-300">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>Official Region Top Ups (475 VP to 10,000 VP)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>Instant 5-10 Minute Riot Code Delivery</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>UPI, QR &amp; NetBanking Accepted</span>
+                </div>
+              </div>
+
+              <button
+                onClick={() => onNavigate('vp-catalog')}
+                className="w-full py-2.5 rounded-xl bg-purple-600/30 hover:bg-purple-600 text-purple-200 hover:text-white border border-purple-500/40 font-bold text-xs font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2"
+              >
+                <span>View Indian VP Packs</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            {/* Philippines Region Card */}
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#120826] to-[#1c0d38] border border-fuchsia-500/40 space-y-4 transition-all group shadow-md">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">🇵🇭</span>
+                  <div>
+                    <h3 className="font-extrabold text-base text-white font-rajdhani">PHP REGION VP</h3>
+                    <div className="text-[11px] text-fuchsia-300">Save up to 40% on every VP denomination</div>
+                  </div>
+                </div>
+                <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
+                  SAVE 40%
+                </span>
+              </div>
+
+              <div className="space-y-1.5 text-xs text-gray-200">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>Massive Savings on All Bundles &amp; Passes</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>Identical Low Ping on Mumbai &amp; Singapore</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>Direct Delivery to Your PHP Account</span>
+                </div>
+              </div>
+
+              <button
+                onClick={() => onNavigate('vp')}
+                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white font-bold text-xs font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-fuchsia-600/30"
+              >
+                <span>View PHP VP Packs</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* EMI Strip */}
+          <div className="p-4 rounded-xl bg-[#090615] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2 text-gray-300">
+              <CreditCard className="w-4 h-4 text-purple-400" />
+              <span>Flexible Payment Plans: Easy EMI options available on high-tier bundles &amp; collections.</span>
+            </div>
+            <button
+              onClick={() => onOpenCheckout('EMI Payment Plan Consultation', 0)}
+              className="text-purple-400 hover:text-purple-300 font-bold font-rajdhani uppercase flex items-center gap-1 cursor-pointer whitespace-nowrap"
+            >
+              <span>Learn More &rarr;</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3C. SKIN RENTALS: PREMIUM SKINS. YOUR WAY. (Matching Reference 2)         */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#120926] via-[#1a0c35] to-[#0f0720] border border-purple-500/30 space-y-5 shadow-xl relative overflow-hidden">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-white/[0.08] pb-4">
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
+                <Sparkles className="w-3 h-3 text-purple-400" />
+                <span>VIB EXPERIENCE PROGRAM</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white font-rajdhani tracking-wide uppercase">
+                SKIN RENTALS: <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-fuchsia-400 to-pink-400">PREMIUM SKINS. YOUR WAY.</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-300 max-w-xl">
+                Experience high-end skins at affordable daily and weekly rates. Play with the looks you love without long-term commitments.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onNavigate('rentals')}
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 text-xs font-bold font-rajdhani uppercase tracking-wider text-white shadow-md shadow-purple-600/30 transition-all cursor-pointer flex items-center gap-2 whitespace-nowrap"
+            >
+              <span>Explore Rentals Catalog</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-gray-300">
+            <div className="p-3 rounded-xl bg-[#090615] border border-white/5 space-y-1">
+              <div className="font-bold text-white font-rajdhani">Wide Skin Collection</div>
+              <div className="text-[11px] text-gray-400">Kuronami, Prime, RGX &amp; Reaver</div>
+            </div>
+            <div className="p-3 rounded-xl bg-[#090615] border border-white/5 space-y-1">
+              <div className="font-bold text-white font-rajdhani">Affordable Plans</div>
+              <div className="text-[11px] text-gray-400">Starting at ₹149 / 24 Hours</div>
+            </div>
+            <div className="p-3 rounded-xl bg-[#090615] border border-white/5 space-y-1">
+              <div className="font-bold text-white font-rajdhani">Instant Access</div>
+              <div className="text-[11px] text-gray-400">Credentials delivered in 5 mins</div>
+            </div>
+            <div className="p-3 rounded-xl bg-[#090615] border border-white/5 space-y-1">
+              <div className="font-bold text-white font-rajdhani">100% Anti-Cheat Safe</div>
+              <div className="text-[11px] text-gray-400">Clean accounts with zero risk</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3D. RANKUP & DERANK SERVICES + RANK JOURNEY (Matching Reference 3)         */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#0a0717] border border-purple-500/30 space-y-6 shadow-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-white/[0.06] pb-4">
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
+                <Zap className="w-3.5 h-3.5 text-purple-400" />
+                <span>COMPETITIVE BOOSTING &amp; DERANKING</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white font-rajdhani tracking-wide uppercase">
+                RANKUP &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-rose-400">DERANK SERVICES</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-400 max-w-xl">
+                Climb to Radiant with top-500 verified players or safely lower your MMR with 100% manual gameplay, offline mode, and encrypted VPN protection.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onNavigate('rankup')}
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 via-purple-600 to-rose-600 text-xs font-bold font-rajdhani uppercase tracking-wider text-white shadow-md transition-all cursor-pointer flex items-center gap-2 whitespace-nowrap"
+            >
+              <span>Rankup Calculator</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Choose Your Journey Dual Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div
+              onClick={() => setJourneyType('rankup')}
+              className={`p-5 rounded-xl border transition-all cursor-pointer space-y-2.5 ${
+                journeyType === 'rankup'
+                  ? 'bg-gradient-to-br from-[#0a1526] to-[#070e1a] border-cyan-500/60 shadow-[0_0_20px_rgba(6,182,212,0.2)]'
+                  : 'bg-[#080b15] border-white/10 opacity-80 hover:opacity-100'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-cyan-400" />
+                  <span className="font-bold text-white font-rajdhani text-base">RANKUP SERVICES</span>
+                </div>
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30 uppercase">CLIMB</span>
+              </div>
+              <p className="text-xs text-gray-300">Top 500 Radiants, Solo/Duo queue, offline mode invisible to friends.</p>
+            </div>
+
+            <div
+              onClick={() => setJourneyType('derank')}
+              className={`p-5 rounded-xl border transition-all cursor-pointer space-y-2.5 ${
+                journeyType === 'derank'
+                  ? 'bg-gradient-to-br from-[#240a15] to-[#17060e] border-rose-500/60 shadow-[0_0_20px_rgba(244,63,94,0.2)]'
+                  : 'bg-[#15070f] border-white/10 opacity-80 hover:opacity-100'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <TrendingDown className="w-5 h-5 text-rose-400" />
+                  <span className="font-bold text-white font-rajdhani text-base">DERANK SERVICES</span>
+                </div>
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-500/30 uppercase">LOWER MMR</span>
+              </div>
+              <p className="text-xs text-gray-300">Safely lower MMR for casual play. Zero ban guarantee, no behavioral penalties.</p>
+            </div>
+          </div>
+
+          {/* 9-Tier Rank Staircase */}
+          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2 pt-1">
+            {RANK_TIERS.map((tier) => (
+              <div
+                key={tier.name}
+                className={`p-2.5 rounded-xl bg-[#070510] border ${tier.border}/30 text-center space-y-1.5 flex flex-col items-center justify-between`}
+              >
+                <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center text-black font-black text-xs font-rajdhani shadow-sm`}>
+                  {tier.badge.charAt(0)}
+                </div>
+                <div className={`font-bold text-xs ${tier.text} font-rajdhani`}>{tier.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3E. VIB LIVE AUCTIONS: WORKING REAL-TIME COUNTDOWN TIMER (Reference 4)     */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#120826] via-[#1a0c35] to-[#0d071d] border border-fuchsia-500/40 space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/[0.08] pb-5 relative z-10">
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
+                <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
+                <span className="text-rose-400">LIVE TIMED AUCTION</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black uppercase text-white font-rajdhani">
+                VIB AUCTIONS: <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-pink-400 to-amber-300">BID. WIN. OWN.</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-300 max-w-xl">
+                Place competitive bids on rare, vaulted Valorant profile collections with guaranteed escrow handover upon timer expiry.
+              </p>
+            </div>
+
+            {/* LIVE TICKING COUNTDOWN TIMER */}
+            <div className="p-3.5 rounded-xl bg-[#090615] border border-fuchsia-500/30 flex items-center gap-3 shadow-lg">
+              <div className="text-right">
+                <div className="text-[9px] font-mono text-fuchsia-300 uppercase font-bold tracking-wider">AUCTION CLOSES IN</div>
+                <div className="text-xs text-gray-400 font-mono">Live Clock Sync</div>
+              </div>
+
+              <div className="flex items-center gap-1.5 font-mono font-black text-lg sm:text-xl">
+                <div className="px-2.5 py-1 rounded-lg bg-fuchsia-950/80 border border-fuchsia-500/40 text-fuchsia-200">
+                  {String(timeLeft.hours).padStart(2, '0')}
+                  <span className="block text-[8px] text-fuchsia-400 text-center font-normal">HRS</span>
+                </div>
+                <span className="text-fuchsia-400">:</span>
+                <div className="px-2.5 py-1 rounded-lg bg-fuchsia-950/80 border border-fuchsia-500/40 text-fuchsia-200">
+                  {String(timeLeft.minutes).padStart(2, '0')}
+                  <span className="block text-[8px] text-fuchsia-400 text-center font-normal">MIN</span>
+                </div>
+                <span className="text-fuchsia-400">:</span>
+                <div className="px-2.5 py-1 rounded-lg bg-rose-950/80 border border-rose-500/50 text-rose-200 animate-pulse">
+                  {String(timeLeft.seconds).padStart(2, '0')}
+                  <span className="block text-[8px] text-rose-400 text-center font-normal">SEC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Featured Live Auction Item Showpiece */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
+            <div className="lg:col-span-6 p-5 rounded-xl bg-[#140b2a] border border-fuchsia-500/30 space-y-3">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
+                  LOT #0881 • ULTRA RARE
+                </span>
+                <span className="text-emerald-400 font-mono flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  Verified Vaulted
+                </span>
+              </div>
+
+              <div className="py-4 flex items-center justify-center">
+                <img
+                  src="/assets/items/vandal-prime.png"
+                  alt="Kuronami Vandal"
+                  className="w-[85%] max-h-[160px] object-contain filter drop-shadow-[0_0_25px_rgba(217,70,239,0.6)]"
+                />
+              </div>
+
+              <div>
+                <h3 className="text-lg font-black text-white font-rajdhani uppercase">
+                  KURONAMI VANDAL + CHAMPIONS 2024 COMBO
+                </h3>
+                <p className="text-xs text-gray-300">
+                  Includes Kuronami Vandal (Max Level + All Colors), Champions 2024 Vandal &amp; Blade, Reaver 2.0 Karambit, 1,200 VP Balance.
+                </p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6 p-6 rounded-xl bg-[#090615] border border-white/10 space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-3 rounded-lg bg-[#110c26] space-y-0.5">
+                  <div className="text-[9px] font-mono text-gray-400 uppercase">CURRENT HIGHEST BID</div>
+                  <div className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-amber-300 font-rajdhani">
+                    ₹{currentBid.toLocaleString()}
+                  </div>
+                  <div className="text-[10px] font-mono text-emerald-400">{bidCount} bids placed</div>
+                </div>
+
+                <div className="p-3 rounded-lg bg-[#110c26] space-y-0.5">
+                  <div className="text-[9px] font-mono text-gray-400 uppercase">MINIMUM NEXT BID</div>
+                  <div className="text-2xl font-black text-white font-rajdhani">
+                    ₹{(currentBid + 150).toLocaleString()}
+                  </div>
+                  <div className="text-[10px] font-mono text-fuchsia-300">+₹150 step</div>
+                </div>
+              </div>
+
+              {bidSuccessMessage && (
+                <div className="p-2.5 rounded-lg bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-xs font-semibold flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>{bidSuccessMessage}</span>
+                </div>
+              )}
+
+              <form onSubmit={handlePlaceBid} className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <div className="relative flex-1">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">₹</span>
+                    <input
+                      type="number"
+                      value={userBidInput}
+                      onChange={(e) => setUserBidInput(e.target.value)}
+                      min={currentBid + 1}
+                      className="w-full pl-8 pr-3 py-2.5 rounded-xl bg-[#150f2e] border border-white/15 focus:border-fuchsia-500 focus:outline-none text-white font-mono font-bold text-sm"
+                      placeholder="Amount"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-xs font-black font-rajdhani uppercase tracking-wider text-white shadow-lg cursor-pointer"
+                  >
+                    PLACE BID
+                  </button>
+                </div>
+              </form>
+
+              <div className="pt-2 border-t border-white/5 flex items-center justify-between text-xs">
+                <button
+                  onClick={() => onNavigate('auctions')}
+                  className="text-fuchsia-400 hover:text-fuchsia-300 font-bold font-rajdhani uppercase flex items-center gap-1 cursor-pointer"
+                >
+                  <span>View All Active Lots &rarr;</span>
+                </button>
+                <span className="text-[11px] text-gray-400 font-mono">100% Escrow Protection</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3F. FRESH PHP PROFILE & COACHING PROGRAM (Matching Reference 4)           */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {/* Fresh PHP Profile Card */}
+          <div className="p-6 rounded-2xl bg-[#0c0a18] border border-purple-500/30 space-y-4 flex flex-col justify-between shadow-xl">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
+                <Globe className="w-3.5 h-3.5 text-purple-400" />
+                <span>CLEAN REGIONAL PROVISIONING</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-white font-rajdhani uppercase">
+                CREATE A FRESH PHP PROFILE
+              </h3>
+              <p className="text-xs text-gray-400">
+                Start with a brand new, unranked Philippines (PHP) profile to immediately access 40% cheaper VP store rates without altering your main account.
+              </p>
+
+              <div className="grid grid-cols-2 gap-2 pt-2 text-xs text-gray-300">
+                <div className="p-2.5 rounded-lg bg-[#080614] border border-white/5">01 Place Order</div>
+                <div className="p-2.5 rounded-lg bg-[#080614] border border-white/5">02 Automated Setup</div>
+                <div className="p-2.5 rounded-lg bg-[#080614] border border-white/5">03 Receive &amp; Verify</div>
+                <div className="p-2.5 rounded-lg bg-[#080614] border border-white/5">04 Start Exploring</div>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+              <div>
+                <div className="text-[9px] font-mono text-gray-500">STARTING FROM</div>
+                <div className="text-lg font-black text-white font-rajdhani">₹499</div>
+              </div>
+              <button
+                onClick={() => onOpenCheckout('Fresh Philippines (PHP) Profile Provisioning', 499)}
+                className="px-5 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 text-xs font-bold font-rajdhani uppercase tracking-wider text-white shadow-md cursor-pointer flex items-center gap-1.5"
+              >
+                <span>Get Fresh Profile</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Coaching Program Card */}
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-[#100a24] to-[#0c081a] border border-purple-500/30 space-y-4 flex flex-col justify-between shadow-xl">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
+                <Award className="w-3.5 h-3.5 text-purple-400" />
+                <span>TIER 1 COMPETITIVE COACHING</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-white font-rajdhani uppercase">
+                COACHING: LEARN. IMPROVE. DOMINATE.
+              </h3>
+              <p className="text-xs text-gray-400">
+                1-on-1 private coaching with Radiant players, VCT analysts, and Tier 1 specialists. Custom drills, live VOD reviews, and tailored aim routines.
+              </p>
+
+              <div className="grid grid-cols-2 gap-2 pt-2 text-xs text-gray-300">
+                <div className="p-2.5 rounded-lg bg-[#090615] border border-white/5">🎯 Aim &amp; Peeking Drills</div>
+                <div className="p-2.5 rounded-lg bg-[#090615] border border-white/5">📺 Live VOD Reviews</div>
+                <div className="p-2.5 rounded-lg bg-[#090615] border border-white/5">🗺️ Site Executes &amp; Lineups</div>
+                <div className="p-2.5 rounded-lg bg-[#090615] border border-white/5">🧠 Clutch Game Sense</div>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+              <div>
+                <div className="text-[9px] font-mono text-gray-500">1-HOUR SESSION</div>
+                <div className="text-lg font-black text-white font-rajdhani">₹799</div>
+              </div>
+              <button
+                onClick={() => onNavigate('coaching')}
+                className="px-5 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 text-xs font-bold font-rajdhani uppercase tracking-wider text-white shadow-md cursor-pointer flex items-center gap-1.5"
+              >
+                <span>Explore Coaching</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3G. SOCIAL CONVERSION BANNERS (Matching Reference media_1790095363501.jpg) */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
