@@ -369,18 +369,14 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
             </div>
           </div>
 
-          {/* Right Hero Graphic: 3D VIB Monolith on Rock Base */}
+          {/* Right Hero Graphic: Authentic Part 27 (3D VIB Monolith Stage with Orbiting Light Trails) */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative min-h-[380px]">
             <div className="relative w-full max-w-[520px] flex flex-col items-center justify-center">
               <div className="w-full aspect-[4/3] flex items-center justify-center relative z-10">
                 <img
-                  src="/assets/client/vib-3d-monolith.png"
-                  alt="VIB 3D Monolith"
+                  src="/assets/reference_parts/part_27.png"
+                  alt="VIB 3D Monolith Stage Part 27"
                   className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(168,85,247,0.55)] scale-105"
-                  onError={(e) => {
-                    // Fallback to highres if available
-                    e.currentTarget.src = '/assets/hires/vib_services_monolith.png';
-                  }}
                 />
               </div>
 
@@ -397,9 +393,18 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       {/* ========================================================================= */}
       <section id="auctions" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
         <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#120826] via-[#1a0c35] to-[#0d071d] border border-fuchsia-500/40 space-y-6 shadow-2xl relative overflow-hidden">
-          {/* Ambient Glows */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-fuchsia-600/15 rounded-full blur-[110px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
+          {/* Authentic Reference Asset: Part 22 (Grand Live Auction Auditorium Stage with Audience & Screen) */}
+          <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden opacity-30">
+            <img
+              src="/assets/reference_parts/part_22.png"
+              alt="Live Auction Stage Part 22"
+              className="w-full h-full object-cover object-center"
+              style={{
+                maskImage: 'radial-gradient(ellipse at center, black 45%, transparent 95%)',
+                WebkitMaskImage: 'radial-gradient(ellipse at center, black 45%, transparent 95%)',
+              }}
+            />
+          </div>
 
           {/* Header Row */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/[0.08] pb-5 relative z-10">
@@ -748,6 +753,67 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
                 — Aarav K. • Verified VIB Student (Gold 2 &rarr; Ascendant 3)
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4B. VALO SKINS EXCHANGE: TRADE IN. UPGRADE. DOMINATE. (Reference 3)       */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#170a2a] via-[#10081d] to-[#0a0515] border border-purple-500/35 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="absolute right-1/4 top-0 w-80 h-full bg-purple-600/15 blur-3xl pointer-events-none" />
+
+          {/* Left Text & Actions */}
+          <div className="space-y-3 max-w-xl relative z-10">
+            <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-[#d946ef] uppercase font-bold">
+              <span className="w-2 h-2 rounded-full bg-fuchsia-500 animate-pulse" />
+              <span>VALO SKINS EXCHANGE PROGRAM</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white font-rajdhani tracking-tight leading-none">
+              TRADE IN. UPGRADE. <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-fuchsia-400 to-amber-300">DOMINATE.</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+              Bored of your current skin inventory? Trade in your existing Valorant accounts or weapon collections for instant store credit or upgrade directly to high-tier vaulted inventories with guaranteed 100% escrow protection.
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1 text-xs text-gray-300">
+              <div className="p-2.5 rounded-lg bg-[#0c0817] border border-white/5 flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-fuchsia-400" />
+                <span>Instant Valuation</span>
+              </div>
+              <div className="p-2.5 rounded-lg bg-[#0c0817] border border-white/5 flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-fuchsia-400" />
+                <span>Fair Trade Rates</span>
+              </div>
+              <div className="p-2.5 rounded-lg bg-[#0c0817] border border-white/5 flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-fuchsia-400" />
+                <span>100% Escrow Protection</span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 pt-2 text-xs">
+              <button
+                onClick={() => onOpenCheckout('Valo Skins Exchange Valuation', 0)}
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 via-purple-600 to-pink-600 hover:from-fuchsia-500 hover:to-pink-500 text-white font-bold font-rajdhani uppercase tracking-wider text-xs shadow-lg shadow-fuchsia-600/30 transition-all cursor-pointer flex items-center gap-1.5"
+              >
+                <span>Get Exchange Valuation</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Right: Authentic Part 15 (Valo Skins Exchange Cylindrical Hologram Showcase) */}
+          <div className="relative w-full lg:w-[45%] max-w-[480px] h-52 sm:h-64 flex items-center justify-center select-none pointer-events-none flex-shrink-0">
+            <img
+              src="/assets/reference_parts/part_15.png"
+              alt="Valo Skins Exchange Showcase"
+              className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(217,70,239,0.55)]"
+              style={{
+                maskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
+              }}
+            />
           </div>
         </div>
       </section>

@@ -92,22 +92,17 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
           <div className="rounded-2xl bg-gradient-to-br from-[#1c080d] via-[#120508] to-[#080204] border border-red-500/30 p-6 sm:p-8 overflow-hidden shadow-2xl relative">
-            {/* Background red floating cards & assassin visual */}
+            {/* Background authentic red hooded assassin & floating cards visual (Part 07) */}
             <div className="absolute right-0 top-0 bottom-0 w-full md:w-[48%] overflow-hidden pointer-events-none select-none z-0 flex items-center justify-end">
               <img
-                src="/assets/hires/hero_banner_full.jpg"
-                alt="Urgent Sale Hero"
-                className="w-full h-full object-cover object-right opacity-40 filter hue-rotate-[-70deg] saturate-150"
+                src="/assets/reference_parts/part_07.png"
+                alt="Urgent Sale Hero Part 07"
+                className="h-full w-auto object-contain object-right opacity-85"
                 style={{
-                  maskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                  maskImage: 'linear-gradient(to left, black 65%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to left, black 65%, transparent 100%)',
                 }}
               />
-              <div className="absolute right-8 top-12 text-right hidden sm:block">
-                <div className="text-xl sm:text-2xl font-black italic tracking-wider text-red-500 font-rajdhani drop-shadow-[0_0_15px_rgba(239,68,68,0.8)]">
-                  FAST. SECURE. REAL VALUE.
-                </div>
-              </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10">
@@ -336,12 +331,16 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
                 </div>
               </div>
 
-              {/* Right Cyberpunk Operative Graphic */}
-              <div className="relative w-40 h-44 flex-shrink-0 flex items-center justify-end select-none pointer-events-none hidden sm:flex">
+              {/* Right: Authentic Part 09 (Indian Agent + Taj Mahal Glow) */}
+              <div className="relative w-48 h-48 flex-shrink-0 flex items-center justify-end select-none pointer-events-none hidden sm:flex">
                 <img
-                  src="/assets/hires/card_public_bg.png"
-                  alt="Indian VP Operative"
-                  className="w-full h-full object-cover object-center rounded-xl opacity-85 group-hover:scale-105 transition-transform"
+                  src="/assets/reference_parts/part_09.png"
+                  alt="Indian VP Agent Part 09"
+                  className="w-full h-full object-contain object-right opacity-80 group-hover:scale-105 transition-transform"
+                  style={{
+                    maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+                  }}
                 />
               </div>
             </div>
@@ -398,15 +397,59 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
                 </div>
               </div>
 
-              {/* Right Cyberpunk Operative Graphic */}
-              <div className="relative w-40 h-44 flex-shrink-0 flex items-center justify-end select-none pointer-events-none hidden sm:flex">
+              {/* Right: Authentic Part 11 (PHP Agent + Manila Skyline) */}
+              <div className="relative w-48 h-48 flex-shrink-0 flex items-center justify-end select-none pointer-events-none hidden sm:flex">
                 <img
-                  src="/assets/hires/hero_sniper_exact.jpg"
-                  alt="PHP VP Operative"
-                  className="w-full h-full object-cover object-center rounded-xl opacity-85 group-hover:scale-105 transition-transform"
+                  src="/assets/reference_parts/part_11.png"
+                  alt="PHP VP Agent Part 11"
+                  className="w-full h-full object-contain object-right opacity-80 group-hover:scale-105 transition-transform"
+                  style={{
+                    maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+                  }}
                 />
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Dedicated "CHANGE REGION IND TO PHP" Gateway Banner (Authentic Part 18) */}
+        <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#180d2b] via-[#10081f] to-[#0a0515] border border-fuchsia-500/30 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-center justify-between gap-5">
+          <div className="absolute left-1/3 top-0 w-80 h-full bg-fuchsia-600/10 blur-3xl pointer-events-none" />
+
+          <div className="space-y-2 max-w-xl relative z-10">
+            <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-[#e879f9] uppercase font-bold">
+              <Globe className="w-3.5 h-3.5 text-fuchsia-400" />
+              <span>CROSS-REGION MIGRATION GATEWAY</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-black text-white font-rajdhani uppercase tracking-wide">
+              CHANGE REGION: <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-fuchsia-400 to-cyan-400">INDIA TO PHILIPPINES (PHP)</span>
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+              Permanently convert your existing account to the Philippines region to unlock lifetime 40% discounts on all Valorant Points while maintaining identical low ping on Mumbai and Singapore servers.
+            </p>
+            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
+              <button
+                onClick={() => onOpenCheckout('Region Change: IND to PHP Migration', 1299)}
+                className="px-5 py-2 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white font-bold font-rajdhani uppercase tracking-wider text-xs shadow-md shadow-fuchsia-600/30 transition-all cursor-pointer flex items-center gap-1.5"
+              >
+                <span>Migrate Account (₹1,299)</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Seamless Visual Cutout: Part 18 (Twin Portals Gateway with zero box outline) */}
+          <div className="relative w-full md:w-[42%] max-w-[420px] h-36 sm:h-44 flex items-center justify-center select-none pointer-events-none flex-shrink-0">
+            <img
+              src="/assets/reference_parts/part_18.png"
+              alt="Region Migration Twin Portals"
+              className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(217,70,239,0.5)]"
+              style={{
+                maskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
+              }}
+            />
           </div>
         </div>
 
@@ -496,23 +539,17 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             </div>
           </div>
 
-          {/* Right Crystalline Weapon Art & Graffiti */}
-          <div className="relative w-80 h-56 flex-shrink-0 flex items-center justify-end select-none pointer-events-none">
-            <div className="relative w-full h-full flex items-center justify-end">
-              <img
-                src="/assets/hires/hero_crystal_assassin_panoramic.png"
-                alt="Skin Rentals Weapon"
-                className="w-full h-full object-contain opacity-90 filter drop-shadow-[0_0_20px_rgba(217,70,239,0.5)]"
-              />
-              <div className="absolute top-2 right-2 text-right">
-                <div className="text-sm font-black italic text-fuchsia-400 font-rajdhani leading-none tracking-wider">
-                  PLAY. EXPERIENCE. EXPLORE.
-                </div>
-                <div className="text-2xl font-black italic text-white/90 font-rajdhani tracking-tighter mt-1">
-                  VIB <span className="text-fuchsia-500">EXPERIENCE</span>
-                </div>
-              </div>
-            </div>
+          {/* Right: Authentic Part 10 (VIB Experience Program Weapon Cases Showcase) */}
+          <div className="relative w-full md:w-[45%] max-w-[420px] h-56 sm:h-64 flex-shrink-0 flex items-center justify-end select-none pointer-events-none">
+            <img
+              src="/assets/reference_parts/part_10.png"
+              alt="Skin Rentals Showcase Part 10"
+              className="w-full h-full object-contain object-right"
+              style={{
+                maskImage: 'linear-gradient(to left, black 80%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 80%, transparent 100%)',
+              }}
+            />
           </div>
         </div>
       </section>

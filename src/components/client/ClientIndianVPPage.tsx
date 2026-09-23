@@ -176,9 +176,22 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
             </div>
           </div>
 
-          {/* Right Column: 3D Valorant Supply Crate & VP Coins with Graffiti */}
+          {/* Right Column: 3D Valorant Supply Crate & VP Coins with Graffiti and Part 09 Agent */}
           <div className="lg:col-span-5 relative flex items-center justify-center min-h-[380px]">
             <div className="absolute w-80 h-80 rounded-full bg-gradient-to-tr from-purple-600/30 via-fuchsia-500/25 to-pink-500/15 blur-[75px] pointer-events-none" />
+
+            {/* Authentic Reference Asset: Part 09 (Indian Agent + Taj Mahal glow) */}
+            <div className="absolute right-0 top-0 bottom-0 w-full pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end opacity-40">
+              <img
+                src="/assets/reference_parts/part_09.png"
+                alt="Indian Region Agent"
+                className="h-full w-auto object-contain object-right"
+                style={{
+                  maskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                }}
+              />
+            </div>
 
             {/* Stylized Graffiti Text matching Reference 2 */}
             <div className="absolute right-0 top-3 select-none pointer-events-none z-10 text-right space-y-0.5">

@@ -6,10 +6,7 @@ from PIL import Image
 
 def capture(url, output_path, width=1440, height=900, wait_time=2):
     with sync_playwright() as p:
-        browser = p.chromium.launch(
-            executable_path=r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-            headless=True
-        )
+        browser = p.chromium.launch(headless=True)
         context = browser.new_context(
             viewport={"width": width, "height": height},
             device_scale_factor=1

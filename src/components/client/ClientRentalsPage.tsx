@@ -87,7 +87,20 @@ export const ClientRentalsPage: React.FC<ClientRentalsPageProps> = ({
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-fuchsia-600/15 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 space-y-4">
-          <div className="flex items-center gap-2 text-xs text-gray-400 font-mono">
+          {/* Authentic Reference Asset: Part 10 (VIB Experience Program Weapon Cases Showcase) */}
+          <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[45%] lg:w-[38%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
+            <img
+              src="/assets/reference_parts/part_10.png"
+              alt="VIB Experience Program Weapon Cases"
+              className="h-full w-auto object-contain object-right opacity-75"
+              style={{
+                maskImage: 'linear-gradient(to left, black 65%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 65%, transparent 100%)',
+              }}
+            />
+          </div>
+
+          <div className="flex items-center gap-2 text-xs text-gray-400 font-mono relative z-10">
             <button onClick={() => onNavigate('home')} className="hover:text-purple-300 transition-colors cursor-pointer">
               Home
             </button>
@@ -95,7 +108,7 @@ export const ClientRentalsPage: React.FC<ClientRentalsPageProps> = ({
             <span className="text-purple-400 font-semibold">Skin Rentals</span>
           </div>
 
-          <div className="max-w-3xl space-y-2">
+          <div className="max-w-3xl space-y-2 relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/40 border border-purple-500/40 text-purple-300 text-xs font-semibold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-purple-400" />
               <span>VIB EXPERIENCE PROGRAM</span>

@@ -58,8 +58,21 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 space-y-6">
+          {/* Authentic Reference Asset: Part 14 (Esports Champion holding Trophy with VIB Jacket) */}
+          <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[45%] lg:w-[38%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
+            <img
+              src="/assets/reference_parts/part_14.png"
+              alt="Esports Champion Trophy"
+              className="h-full w-auto object-contain object-right opacity-70"
+              style={{
+                maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+              }}
+            />
+          </div>
+
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-xs text-gray-400 font-mono">
+          <div className="flex items-center gap-2 text-xs text-gray-400 font-mono relative z-10">
             <button
               onClick={() => onNavigate('home')}
               className="hover:text-purple-300 transition-colors cursor-pointer"
@@ -70,7 +83,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
             <span className="text-purple-400 font-semibold">Competitive Services</span>
           </div>
 
-          <div className="max-w-3xl space-y-3">
+          <div className="max-w-3xl space-y-3 relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider">
               <Zap className="w-3.5 h-3.5 text-purple-400" />
               <span>Verified Competitive Boosting &amp; Deranking</span>
@@ -86,7 +99,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
           </div>
 
           {/* CHOOSE YOUR JOURNEY: DUAL TOGGLE CARDS (Matching Reference 3) */}
-          <div className="space-y-3 pt-2">
+          <div className="space-y-3 pt-2 relative z-10">
             <div className="text-[10px] font-mono tracking-[0.25em] text-purple-300 uppercase font-bold">
               CHOOSE YOUR JOURNEY
             </div>
@@ -258,6 +271,19 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
               Express Priority
             </span>
           </div>
+        </div>
+
+        {/* Authentic Reference Asset: Part 12 (Glowing 9-Tier Rank Staircase) */}
+        <div className="relative rounded-2xl overflow-hidden p-3 bg-[#080512] border border-white/5 flex items-center justify-center shadow-lg">
+          <img
+            src="/assets/reference_parts/part_12.png"
+            alt="Rank Staircase Progression"
+            className="w-full max-h-24 object-contain filter drop-shadow-[0_0_15px_rgba(168,85,247,0.45)]"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+            }}
+          />
         </div>
 
         {/* 9-Tier Rank Cards */}

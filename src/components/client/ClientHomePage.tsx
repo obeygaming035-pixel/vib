@@ -651,12 +651,261 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       </section>
 
       {/* ========================================================================= */}
+      {/* 2B. SOCIAL CONVERSION BANNERS (Matching Reference media_1790095363501.jpg) */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
+          {/* Left: Follow Our Instagram Banner with authentic Part 03 & Part 04 */}
+          <div className="relative rounded-2xl bg-gradient-to-br from-[#180d28] via-[#10091c] to-[#0a0614] border border-pink-500/25 p-5 sm:p-6 overflow-hidden shadow-xl flex flex-col justify-between group hover:border-pink-500/40 transition-all">
+            {/* Ambient sunset glow */}
+            <div className="absolute -top-10 -right-10 w-60 h-60 bg-pink-600/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
+              <div className="space-y-3 max-w-sm">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 text-[10.5px] font-mono tracking-widest text-[#f43f5e] uppercase font-bold">
+                  <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-[#f59e0b] via-[#ec4899] to-[#8b5cf6] flex items-center justify-center text-white shadow-sm">
+                    <Instagram className="w-3 h-3" />
+                  </div>
+                  <span>FOLLOW OUR INSTAGRAM</span>
+                </div>
+
+                {/* Headline */}
+                <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-rajdhani tracking-wide leading-tight">
+                  STAY UPDATED <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-400 to-amber-300">
+                    &amp; WIN EXCITING REWARDS!
+                  </span>
+                </h3>
+
+                {/* Subtitle */}
+                <p className="text-xs text-gray-300 leading-relaxed">
+                  Follow us on Instagram to stand a chance to win giveaways of VP, Profiles and Cash Prizes!
+                </p>
+
+                {/* 4 Micro Tags */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
+                    🎁 Giveaways
+                  </span>
+                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
+                    ⚡ Exclusive Drops
+                  </span>
+                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
+                    📢 Announcements
+                  </span>
+                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
+                    🎉 Fun Events
+                  </span>
+                </div>
+              </div>
+
+              {/* Right: Authentic Part 03 Phone (3D Neon Instagram Phone with Ribbons & Notifications) */}
+              <div className="relative w-40 sm:w-48 h-56 flex-shrink-0 flex items-center justify-center select-none pointer-events-none mx-auto sm:mx-0">
+                <img
+                  src="/assets/reference_parts/part_03_phone.png"
+                  alt="3D Instagram Phone"
+                  className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(244,63,94,0.55)] group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </div>
+
+            {/* Bottom Button */}
+            <div className="pt-4 mt-2 border-t border-white/5 relative z-10">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-800 via-pink-700 to-rose-600 hover:from-purple-700 hover:via-pink-600 hover:to-rose-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.3)] flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Follow Us on Instagram</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Join Our WhatsApp Channel Banner with authentic Part 01 */}
+          <div className="relative rounded-2xl bg-gradient-to-br from-[#0c1f19] via-[#091512] to-[#050c0a] border border-emerald-500/25 p-5 sm:p-6 overflow-hidden shadow-xl flex flex-col justify-between group hover:border-emerald-500/40 transition-all">
+            {/* Ambient emerald glow */}
+            <div className="absolute -top-10 -right-10 w-60 h-60 bg-emerald-600/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-teal-600/15 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
+              <div className="space-y-3 max-w-sm">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 text-[10.5px] font-mono tracking-widest text-[#10b981] uppercase font-bold">
+                  <div className="w-5 h-5 rounded-md bg-[#25D366] flex items-center justify-center text-white shadow-sm font-bold text-xs">
+                    💬
+                  </div>
+                  <span>JOIN OUR WHATSAPP CHANNEL</span>
+                </div>
+
+                {/* Headline */}
+                <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-rajdhani tracking-wide leading-tight">
+                  BE THE FIRST <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-green-200">
+                    TO KNOW!
+                  </span>
+                </h3>
+
+                {/* Subtitle */}
+                <p className="text-xs text-gray-300 leading-relaxed">
+                  Join our official WhatsApp channel to receive latest updates, drops, giveaway announcements, coupons and more — directly delivered to you.
+                </p>
+
+                {/* 8-Item Checklist (2 Columns) */}
+                <div className="grid grid-cols-2 gap-x-3 gap-y-1 pt-1 text-[11px] text-emerald-200">
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Latest Updates</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Special Coupons</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Instant Announcements</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Early Access</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Exclusive Drops</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Important Notices</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Giveaway Alerts</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <span>Be the First to Get Benefits</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Authentic Part 01 Phone (3D Glowing Emerald WhatsApp Phone with Ribbons) */}
+              <div className="relative w-40 sm:w-48 h-56 flex-shrink-0 flex items-center justify-center select-none pointer-events-none mx-auto sm:mx-0">
+                <img
+                  src="/assets/reference_parts/part_01_phone.png"
+                  alt="3D WhatsApp Emerald Phone"
+                  className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(16,185,129,0.55)] group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </div>
+
+            {/* Bottom Button */}
+            <div className="pt-4 mt-2 border-t border-white/5 relative z-10">
+              <a
+                href="https://whatsapp.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-600 hover:from-emerald-600 hover:to-teal-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Join Our WhatsApp Channel</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 2C. SELL YOUR ACCOUNT WITH VIB (Matching Reference media_1790095363501.jpg)*/}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-2xl bg-gradient-to-r from-[#140b2b] via-[#0d071c] to-[#080512] border border-purple-500/30 overflow-hidden shadow-2xl relative p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Ambient purple aura */}
+          <div className="absolute right-10 top-0 w-80 h-full bg-purple-600/20 blur-3xl pointer-events-none" />
+
+          {/* Left: Content */}
+          <div className="space-y-4 max-w-xl z-10">
+            <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#d946ef] uppercase font-bold">
+              <MessageSquare className="w-3.5 h-3.5 text-[#d946ef]" />
+              <span>SELL YOUR ACCOUNT WITH VIB</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white font-rajdhani tracking-tight leading-none">
+              Turn Your Profile Into Profit
+            </h2>
+
+            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-lg">
+              Looking to sell your account? List it with VIB and reach thousands of buyers. Choose from our flexible advertisement plans and get the exposure you deserve.
+            </p>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-1">
+              <button
+                onClick={() => onOpenCheckout('VIB Profile Advertisement Plan', 1499)}
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-700 via-fuchsia-600 to-purple-600 hover:from-purple-600 hover:to-fuchsia-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(217,70,239,0.35)] flex items-center justify-center gap-2 cursor-pointer w-fit"
+              >
+                <span>View Advertisement Plans</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+
+              <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-gray-300">
+                <div className="flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Reach Genuine Buyers</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Fast &amp; Easy Listing</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Flexible Plans</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Trusted Platform</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Authentic Part 06 ("LIST. SELL. EARN." graffiti art cutout with cyberpunk girl & coins) */}
+          <div className="relative w-full md:w-[45%] max-w-[420px] h-56 sm:h-64 flex-shrink-0 flex items-center justify-end select-none pointer-events-none">
+            <img
+              src="/assets/reference_parts/part_06.png"
+              alt="Sell with VIB List Sell Earn"
+              className="w-full h-full object-contain object-right"
+              style={{
+                maskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
       {/* 3B. VIB URGENT SALE OFFER & REGIONAL VP PACKS HUB (Matching Reference 2)  */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         {/* Urgent Sale Offer Dual Cards */}
         <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#1c0817] via-[#240a1c] to-[#12050f] border border-rose-500/40 shadow-2xl relative overflow-hidden">
-          <div className="absolute -right-10 top-0 w-80 h-full bg-rose-600/15 blur-3xl pointer-events-none" />
+          {/* Atmospheric Crimson Glow */}
+          <div className="absolute -right-10 top-0 w-80 h-full bg-rose-600/20 blur-3xl pointer-events-none" />
+
+          {/* Authentic Reference Asset: Part 07 (Red hooded assassin & glowing cards) with smooth edge blend */}
+          <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[50%] lg:w-[42%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
+            <img
+              src="/assets/reference_parts/part_07.png"
+              alt="Urgent Sale Red Assassin"
+              className="h-full w-auto object-contain object-right opacity-80"
+              style={{
+                maskImage: 'linear-gradient(to left, black 65%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 65%, transparent 100%)',
+              }}
+            />
+          </div>
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
             <div className="space-y-2 max-w-xl">
@@ -689,8 +938,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
 
             {/* Dual Comparison Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full lg:w-auto">
-              <div className="p-4 rounded-xl bg-[#11050e] border border-rose-500/30 space-y-2 min-w-[240px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full lg:w-auto relative z-10">
+              <div className="p-4 rounded-xl bg-[#11050e]/90 backdrop-blur-sm border border-rose-500/40 space-y-2 min-w-[240px] shadow-lg">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono font-bold text-rose-400 uppercase">URGENT SALE</span>
                   <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-500/40 uppercase">FASTER</span>
@@ -702,7 +951,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#14081c] border border-purple-500/30 space-y-2 min-w-[240px]">
+              <div className="p-4 rounded-xl bg-[#14081c]/90 backdrop-blur-sm border border-purple-500/40 space-y-2 min-w-[240px] shadow-lg">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono font-bold text-purple-400 uppercase">PROMOTION METHOD</span>
                   <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-500/40 uppercase">HIGHER VALUE</span>
@@ -717,9 +966,22 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           </div>
         </div>
 
-        {/* VP Packs Regional Hub (Indian vs PHP cards + EMI strip) */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+        {/* VP Packs Regional Hub (Indian vs PHP cards + Region Switch Banner + EMI strip) */}
+        <div className="space-y-4 relative">
+          {/* Subtle Ambient VP Vault Atmosphere */}
+          <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden opacity-15">
+            <img
+              src="/assets/reference_parts/part_08.png"
+              alt="VP Vault Ambient"
+              className="w-full h-full object-cover object-center"
+              style={{
+                maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 90%)',
+                WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 90%)',
+              }}
+            />
+          </div>
+
+          <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 relative z-10">
             <div className="space-y-0.5">
               <div className="text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
                 TOP UP &amp; PLAY WITHOUT LIMITS
@@ -737,76 +999,106 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Indian Region Card */}
-            <div className="p-6 rounded-2xl bg-[#0a0717] border border-white/10 hover:border-purple-500/40 space-y-4 transition-all group shadow-md">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <span className="text-2xl">🇮🇳</span>
-                  <div>
-                    <h3 className="font-extrabold text-base text-white font-rajdhani">INDIAN REGION VP</h3>
-                    <div className="text-[11px] text-gray-400">Top up your Indian region account at the best rates</div>
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
+            {/* Indian Region Card with authentic Part 09 (Indian Agent + Taj Mahal glow) */}
+            <div className="p-6 rounded-2xl bg-[#0a0717] border border-white/10 hover:border-purple-500/40 space-y-4 transition-all group shadow-md relative overflow-hidden flex flex-col justify-between">
+              {/* Blended Reference Part 09 */}
+              <div className="absolute right-0 top-0 bottom-0 w-[55%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
+                <img
+                  src="/assets/reference_parts/part_09.png"
+                  alt="Indian Region Agent"
+                  className="h-full w-auto object-contain object-right opacity-45 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500"
+                  style={{
+                    maskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                  }}
+                />
               </div>
 
-              <div className="space-y-1.5 text-xs text-gray-300">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Official Region Top Ups (475 VP to 10,000 VP)</span>
+              <div className="space-y-3 relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-2xl">🇮🇳</span>
+                    <div>
+                      <h3 className="font-extrabold text-base text-white font-rajdhani">INDIAN REGION VP</h3>
+                      <div className="text-[11px] text-gray-400">Top up your Indian region account at the best rates</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Instant 5-10 Minute Riot Code Delivery</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>UPI, QR &amp; NetBanking Accepted</span>
+
+                <div className="space-y-1.5 text-xs text-gray-300 max-w-[280px]">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                    <span>Official Region Top Ups (475 to 10,000 VP)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                    <span>Instant 5-10 Min Riot Code Delivery</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                    <span>UPI, QR &amp; NetBanking Accepted</span>
+                  </div>
                 </div>
               </div>
 
               <button
                 onClick={() => onNavigate('vp-catalog')}
-                className="w-full py-2.5 rounded-xl bg-purple-600/30 hover:bg-purple-600 text-purple-200 hover:text-white border border-purple-500/40 font-bold text-xs font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2"
+                className="w-full py-2.5 rounded-xl bg-purple-600/30 hover:bg-purple-600 text-purple-200 hover:text-white border border-purple-500/40 font-bold text-xs font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 relative z-10 shadow-md"
               >
                 <span>View Indian VP Packs</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
-            {/* Philippines Region Card */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#120826] to-[#1c0d38] border border-fuchsia-500/40 space-y-4 transition-all group shadow-md">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <span className="text-2xl">🇵🇭</span>
-                  <div>
-                    <h3 className="font-extrabold text-base text-white font-rajdhani">PHP REGION VP</h3>
-                    <div className="text-[11px] text-fuchsia-300">Save up to 40% on every VP denomination</div>
-                  </div>
-                </div>
-                <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
-                  SAVE 40%
-                </span>
+            {/* Philippines Region Card with authentic Part 11 (Manila Skyline + Agent) */}
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#120826] to-[#1c0d38] border border-fuchsia-500/40 space-y-4 transition-all group shadow-md relative overflow-hidden flex flex-col justify-between">
+              {/* Blended Reference Part 11 */}
+              <div className="absolute right-0 top-0 bottom-0 w-[55%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
+                <img
+                  src="/assets/reference_parts/part_11.png"
+                  alt="Philippines Region Agent"
+                  className="h-full w-auto object-contain object-right opacity-45 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500"
+                  style={{
+                    maskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                  }}
+                />
               </div>
 
-              <div className="space-y-1.5 text-xs text-gray-200">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Massive Savings on All Bundles &amp; Passes</span>
+              <div className="space-y-3 relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-2xl">🇵🇭</span>
+                    <div>
+                      <h3 className="font-extrabold text-base text-white font-rajdhani">PHP REGION VP</h3>
+                      <div className="text-[11px] text-fuchsia-300">Save up to 40% on every VP denomination</div>
+                    </div>
+                  </div>
+                  <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
+                    SAVE 40%
+                  </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Identical Low Ping on Mumbai &amp; Singapore</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Direct Delivery to Your PHP Account</span>
+
+                <div className="space-y-1.5 text-xs text-gray-200 max-w-[280px]">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                    <span>Massive Savings on All Bundles &amp; Passes</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                    <span>Identical Low Ping on Mumbai &amp; Singapore</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                    <span>Direct Delivery to Your PHP Account</span>
+                  </div>
                 </div>
               </div>
 
               <button
                 onClick={() => onNavigate('vp')}
-                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white font-bold text-xs font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-fuchsia-600/30"
+                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white font-bold text-xs font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-fuchsia-600/30 relative z-10"
               >
                 <span>View PHP VP Packs</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -814,8 +1106,54 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
+          {/* Dedicated "CHANGE REGION IND TO PHP" Gateway Banner (Authentic Part 18) */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#180d2b] via-[#10081f] to-[#0a0515] border border-fuchsia-500/30 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-center justify-between gap-5">
+            <div className="absolute left-1/3 top-0 w-80 h-full bg-fuchsia-600/10 blur-3xl pointer-events-none" />
+
+            <div className="space-y-2 max-w-xl relative z-10">
+              <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-[#e879f9] uppercase font-bold">
+                <Globe className="w-3.5 h-3.5 text-fuchsia-400" />
+                <span>CROSS-REGION MIGRATION GATEWAY</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-white font-rajdhani uppercase tracking-wide">
+                CHANGE REGION: <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-fuchsia-400 to-cyan-400">INDIA TO PHILIPPINES (PHP)</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                Permanently convert your existing account to the Philippines region to unlock lifetime 40% discounts on all Valorant Points while maintaining identical low ping on Mumbai and Singapore servers.
+              </p>
+              <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                <button
+                  onClick={() => onOpenCheckout('Region Change: IND to PHP Migration', 1299)}
+                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white font-bold font-rajdhani uppercase tracking-wider text-xs shadow-md shadow-fuchsia-600/30 transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <span>Migrate Account (₹1,299)</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => onNavigate('vp')}
+                  className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-bold font-rajdhani uppercase tracking-wider text-gray-200 hover:text-white transition-colors cursor-pointer"
+                >
+                  Region FAQ
+                </button>
+              </div>
+            </div>
+
+            {/* Seamless Visual Cutout: Part 18 (Twin Portals Gateway with zero box outline) */}
+            <div className="relative w-full md:w-[42%] max-w-[420px] h-36 sm:h-44 flex items-center justify-center select-none pointer-events-none flex-shrink-0">
+              <img
+                src="/assets/reference_parts/part_18.png"
+                alt="Region Migration Twin Portals"
+                className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(217,70,239,0.5)]"
+                style={{
+                  maskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
+                }}
+              />
+            </div>
+          </div>
+
           {/* EMI Strip */}
-          <div className="p-4 rounded-xl bg-[#090615] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div className="p-4 rounded-xl bg-[#090615] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs relative z-10">
             <div className="flex items-center gap-2 text-gray-300">
               <CreditCard className="w-4 h-4 text-purple-400" />
               <span>Flexible Payment Plans: Easy EMI options available on high-tier bundles &amp; collections.</span>
@@ -835,7 +1173,20 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#120926] via-[#1a0c35] to-[#0f0720] border border-purple-500/30 space-y-5 shadow-xl relative overflow-hidden">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-white/[0.08] pb-4">
+          {/* Authentic Reference Asset: Part 10 (VIB Experience Program Showcase Weapon Cases) */}
+          <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[50%] lg:w-[45%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
+            <img
+              src="/assets/reference_parts/part_10.png"
+              alt="VIB Experience Program Weapon Cases"
+              className="h-full w-auto object-contain object-right opacity-70"
+              style={{
+                maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+              }}
+            />
+          </div>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-white/[0.08] pb-4 relative z-10">
             <div className="space-y-1">
               <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
                 <Sparkles className="w-3 h-3 text-purple-400" />
@@ -858,20 +1209,20 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-gray-300">
-            <div className="p-3 rounded-xl bg-[#090615] border border-white/5 space-y-1">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-gray-300 relative z-10">
+            <div className="p-3 rounded-xl bg-[#090615]/90 backdrop-blur-sm border border-white/5 space-y-1">
               <div className="font-bold text-white font-rajdhani">Wide Skin Collection</div>
               <div className="text-[11px] text-gray-400">Kuronami, Prime, RGX &amp; Reaver</div>
             </div>
-            <div className="p-3 rounded-xl bg-[#090615] border border-white/5 space-y-1">
+            <div className="p-3 rounded-xl bg-[#090615]/90 backdrop-blur-sm border border-white/5 space-y-1">
               <div className="font-bold text-white font-rajdhani">Affordable Plans</div>
               <div className="text-[11px] text-gray-400">Starting at ₹149 / 24 Hours</div>
             </div>
-            <div className="p-3 rounded-xl bg-[#090615] border border-white/5 space-y-1">
+            <div className="p-3 rounded-xl bg-[#090615]/90 backdrop-blur-sm border border-white/5 space-y-1">
               <div className="font-bold text-white font-rajdhani">Instant Access</div>
               <div className="text-[11px] text-gray-400">Credentials delivered in 5 mins</div>
             </div>
-            <div className="p-3 rounded-xl bg-[#090615] border border-white/5 space-y-1">
+            <div className="p-3 rounded-xl bg-[#090615]/90 backdrop-blur-sm border border-white/5 space-y-1">
               <div className="font-bold text-white font-rajdhani">100% Anti-Cheat Safe</div>
               <div className="text-[11px] text-gray-400">Clean accounts with zero risk</div>
             </div>
@@ -883,9 +1234,22 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       {/* 3D. RANKUP & DERANK SERVICES + RANK JOURNEY (Matching Reference 3)         */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
-        <div className="p-6 sm:p-8 rounded-2xl bg-[#0a0717] border border-purple-500/30 space-y-6 shadow-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-white/[0.06] pb-4">
-            <div className="space-y-1">
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#0a0717] border border-purple-500/30 space-y-6 shadow-xl relative overflow-hidden">
+          {/* Authentic Reference Asset: Part 14 (Esports Champion holding Trophy with VIB Jacket) */}
+          <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[48%] lg:w-[40%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
+            <img
+              src="/assets/reference_parts/part_14.png"
+              alt="Esports Champion Trophy"
+              className="h-full w-auto object-contain object-right opacity-65 group-hover:opacity-85 transition-opacity"
+              style={{
+                maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+              }}
+            />
+          </div>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-white/[0.06] pb-4 relative z-10">
+            <div className="space-y-1 max-w-xl">
               <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
                 <Zap className="w-3.5 h-3.5 text-purple-400" />
                 <span>COMPETITIVE BOOSTING &amp; DERANKING</span>
@@ -893,7 +1257,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               <h2 className="text-2xl sm:text-3xl font-black text-white font-rajdhani tracking-wide uppercase">
                 RANKUP &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-rose-400">DERANK SERVICES</span>
               </h2>
-              <p className="text-xs sm:text-sm text-gray-400 max-w-xl">
+              <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
                 Climb to Radiant with top-500 verified players or safely lower your MMR with 100% manual gameplay, offline mode, and encrypted VPN protection.
               </p>
             </div>
@@ -908,13 +1272,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           </div>
 
           {/* Choose Your Journey Dual Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
             <div
               onClick={() => setJourneyType('rankup')}
               className={`p-5 rounded-xl border transition-all cursor-pointer space-y-2.5 ${
                 journeyType === 'rankup'
-                  ? 'bg-gradient-to-br from-[#0a1526] to-[#070e1a] border-cyan-500/60 shadow-[0_0_20px_rgba(6,182,212,0.2)]'
-                  : 'bg-[#080b15] border-white/10 opacity-80 hover:opacity-100'
+                  ? 'bg-gradient-to-br from-[#0a1526]/90 to-[#070e1a]/90 backdrop-blur-sm border-cyan-500/60 shadow-[0_0_20px_rgba(6,182,212,0.2)]'
+                  : 'bg-[#080b15]/90 backdrop-blur-sm border-white/10 opacity-80 hover:opacity-100'
               }`}
             >
               <div className="flex items-center justify-between">
@@ -931,8 +1295,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               onClick={() => setJourneyType('derank')}
               className={`p-5 rounded-xl border transition-all cursor-pointer space-y-2.5 ${
                 journeyType === 'derank'
-                  ? 'bg-gradient-to-br from-[#240a15] to-[#17060e] border-rose-500/60 shadow-[0_0_20px_rgba(244,63,94,0.2)]'
-                  : 'bg-[#15070f] border-white/10 opacity-80 hover:opacity-100'
+                  ? 'bg-gradient-to-br from-[#240a15]/90 to-[#17060e]/90 backdrop-blur-sm border-rose-500/60 shadow-[0_0_20px_rgba(244,63,94,0.2)]'
+                  : 'bg-[#15070f]/90 backdrop-blur-sm border-white/10 opacity-80 hover:opacity-100'
               }`}
             >
               <div className="flex items-center justify-between">
@@ -946,19 +1310,106 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
-          {/* 9-Tier Rank Staircase */}
-          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2 pt-1">
-            {RANK_TIERS.map((tier) => (
-              <div
-                key={tier.name}
-                className={`p-2.5 rounded-xl bg-[#070510] border ${tier.border}/30 text-center space-y-1.5 flex flex-col items-center justify-between`}
-              >
-                <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center text-black font-black text-xs font-rajdhani shadow-sm`}>
-                  {tier.badge.charAt(0)}
+          {/* The Rank Journey with authentic Part 12 (Glowing 9-Tier Staircase) */}
+          <div className="space-y-2 pt-2 relative z-10">
+            <div className="text-[10px] font-mono text-purple-300 uppercase tracking-widest font-bold">
+              THE RANK JOURNEY • 9 TIER PROGRESSION
+            </div>
+            
+            {/* Visual Rank Progression Strip */}
+            <div className="relative rounded-xl overflow-hidden p-2 bg-[#06040d] border border-white/5 mb-3 flex items-center justify-center">
+              <img
+                src="/assets/reference_parts/part_12.png"
+                alt="Rank Staircase Progression"
+                className="w-full max-h-20 object-contain filter drop-shadow-[0_0_12px_rgba(168,85,247,0.4)]"
+                style={{
+                  maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                }}
+              />
+            </div>
+
+            {/* 9-Tier Rank Staircase Interactive Badges */}
+            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
+              {RANK_TIERS.map((tier) => (
+                <div
+                  key={tier.name}
+                  className={`p-2.5 rounded-xl bg-[#070510] border ${tier.border}/30 text-center space-y-1.5 flex flex-col items-center justify-between hover:border-purple-400 transition-colors`}
+                >
+                  <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center text-black font-black text-xs font-rajdhani shadow-sm`}>
+                    {tier.badge.charAt(0)}
+                  </div>
+                  <div className={`font-bold text-xs ${tier.text} font-rajdhani`}>{tier.name}</div>
                 </div>
-                <div className={`font-bold text-xs ${tier.text} font-rajdhani`}>{tier.name}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3DD. VALO SKINS EXCHANGE: TRADE IN. UPGRADE. DOMINATE. (Reference 3)      */}
+      {/* ========================================================================= */}
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#170a2a] via-[#10081d] to-[#0a0515] border border-purple-500/35 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="absolute right-1/4 top-0 w-80 h-full bg-purple-600/15 blur-3xl pointer-events-none" />
+
+          {/* Left Text & Actions */}
+          <div className="space-y-3 max-w-xl relative z-10">
+            <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-[#d946ef] uppercase font-bold">
+              <Repeat className="w-3.5 h-3.5 text-[#d946ef]" />
+              <span>VALO SKINS EXCHANGE PROGRAM</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white font-rajdhani tracking-tight leading-none">
+              TRADE IN. UPGRADE. <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-fuchsia-400 to-amber-300">DOMINATE.</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+              Bored of your current skin inventory? Trade in your existing Valorant accounts or weapon collections for instant store credit or upgrade directly to high-tier vaulted inventories.
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1 text-xs text-gray-300">
+              <div className="p-2 rounded-lg bg-[#0c0817] border border-white/5 flex items-center gap-1.5">
+                <Check className="w-3 h-3 text-fuchsia-400" />
+                <span>Instant Valuation</span>
               </div>
-            ))}
+              <div className="p-2 rounded-lg bg-[#0c0817] border border-white/5 flex items-center gap-1.5">
+                <Check className="w-3 h-3 text-fuchsia-400" />
+                <span>Fair Trade Rates</span>
+              </div>
+              <div className="p-2 rounded-lg bg-[#0c0817] border border-white/5 flex items-center gap-1.5">
+                <Check className="w-3 h-3 text-fuchsia-400" />
+                <span>100% Escrow Protection</span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 pt-2 text-xs">
+              <button
+                onClick={() => onOpenCheckout('Valo Skins Exchange Valuation', 0)}
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 via-purple-600 to-pink-600 hover:from-fuchsia-500 hover:to-pink-500 text-white font-bold font-rajdhani uppercase tracking-wider text-xs shadow-lg shadow-fuchsia-600/30 transition-all cursor-pointer flex items-center gap-1.5"
+              >
+                <span>Get Exchange Valuation</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={() => onNavigate('services')}
+                className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-bold font-rajdhani uppercase tracking-wider text-gray-200 hover:text-white transition-colors cursor-pointer"
+              >
+                How Trade-In Works
+              </button>
+            </div>
+          </div>
+
+          {/* Right: Authentic Part 15 (Valo Skins Exchange Cylindrical Hologram Showcase) */}
+          <div className="relative w-full lg:w-[45%] max-w-[480px] h-52 sm:h-64 flex items-center justify-center select-none pointer-events-none flex-shrink-0">
+            <img
+              src="/assets/reference_parts/part_15.png"
+              alt="Valo Skins Exchange Showcase"
+              className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(217,70,239,0.55)]"
+              style={{
+                maskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
+              }}
+            />
           </div>
         </div>
       </section>
@@ -968,6 +1419,19 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#120826] via-[#1a0c35] to-[#0d071d] border border-fuchsia-500/40 space-y-6 shadow-2xl relative overflow-hidden">
+          {/* Authentic Reference Asset: Part 22 (Grand Live Auction Auditorium Stage with Audience & Screen) */}
+          <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden opacity-30">
+            <img
+              src="/assets/reference_parts/part_22.png"
+              alt="Live Auction Auditorium Stage"
+              className="w-full h-full object-cover object-center"
+              style={{
+                maskImage: 'radial-gradient(ellipse at center, black 45%, transparent 95%)',
+                WebkitMaskImage: 'radial-gradient(ellipse at center, black 45%, transparent 95%)',
+              }}
+            />
+          </div>
+
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/[0.08] pb-5 relative z-10">
             <div className="space-y-1">
               <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
@@ -1008,10 +1472,19 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
-          {/* Featured Live Auction Item Showpiece */}
+          {/* Featured Live Auction Item Showpiece with Part 20 floating case */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
-            <div className="lg:col-span-6 p-5 rounded-xl bg-[#140b2a] border border-fuchsia-500/30 space-y-3">
-              <div className="flex items-center justify-between text-xs">
+            <div className="lg:col-span-6 p-5 rounded-xl bg-[#140b2a]/95 backdrop-blur-sm border border-fuchsia-500/35 space-y-3 relative overflow-hidden">
+              {/* Subtle Part 20 floating showcase case backdrop */}
+              <div className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end opacity-25">
+                <img
+                  src="/assets/reference_parts/part_20.png"
+                  alt="Floating Weapon Showcase"
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+
+              <div className="flex items-center justify-between text-xs relative z-10">
                 <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
                   LOT #0881 • ULTRA RARE
                 </span>
@@ -1021,7 +1494,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 </span>
               </div>
 
-              <div className="py-4 flex items-center justify-center">
+              <div className="py-4 flex items-center justify-center relative z-10">
                 <img
                   src="/assets/items/vandal-prime.png"
                   alt="Kuronami Vandal"
@@ -1029,7 +1502,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 />
               </div>
 
-              <div>
+              <div className="relative z-10">
                 <h3 className="text-lg font-black text-white font-rajdhani uppercase">
                   KURONAMI VANDAL + CHAMPIONS 2024 COMBO
                 </h3>
@@ -1039,7 +1512,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               </div>
             </div>
 
-            <div className="lg:col-span-6 p-6 rounded-xl bg-[#090615] border border-white/10 space-y-4">
+            <div className="lg:col-span-6 p-6 rounded-xl bg-[#090615]/95 backdrop-blur-sm border border-white/10 space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3 rounded-lg bg-[#110c26] space-y-0.5">
                   <div className="text-[9px] font-mono text-gray-400 uppercase">CURRENT HIGHEST BID</div>
@@ -1106,9 +1579,22 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          {/* Fresh PHP Profile Card */}
-          <div className="p-6 rounded-2xl bg-[#0c0a18] border border-purple-500/30 space-y-4 flex flex-col justify-between shadow-xl">
-            <div className="space-y-2">
+          {/* Fresh PHP Profile Card with Part 16 (Cyberpunk Skyscraper Agent) */}
+          <div className="p-6 rounded-2xl bg-[#0c0a18] border border-purple-500/30 space-y-4 flex flex-col justify-between shadow-xl relative overflow-hidden group">
+            {/* Blended Reference Part 16 */}
+            <div className="absolute right-0 top-0 bottom-0 w-[55%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
+              <img
+                src="/assets/reference_parts/part_16.png"
+                alt="Cyberpunk Neon City Agent"
+                className="h-full w-auto object-contain object-right opacity-35 group-hover:opacity-60 transition-opacity"
+                style={{
+                  maskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                }}
+              />
+            </div>
+
+            <div className="space-y-2 relative z-10">
               <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
                 <Globe className="w-3.5 h-3.5 text-purple-400" />
                 <span>CLEAN REGIONAL PROVISIONING</span>
@@ -1116,19 +1602,19 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               <h3 className="text-xl sm:text-2xl font-black text-white font-rajdhani uppercase">
                 CREATE A FRESH PHP PROFILE
               </h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-gray-400 max-w-[340px]">
                 Start with a brand new, unranked Philippines (PHP) profile to immediately access 40% cheaper VP store rates without altering your main account.
               </p>
 
-              <div className="grid grid-cols-2 gap-2 pt-2 text-xs text-gray-300">
-                <div className="p-2.5 rounded-lg bg-[#080614] border border-white/5">01 Place Order</div>
-                <div className="p-2.5 rounded-lg bg-[#080614] border border-white/5">02 Automated Setup</div>
-                <div className="p-2.5 rounded-lg bg-[#080614] border border-white/5">03 Receive &amp; Verify</div>
-                <div className="p-2.5 rounded-lg bg-[#080614] border border-white/5">04 Start Exploring</div>
+              <div className="grid grid-cols-2 gap-2 pt-2 text-xs text-gray-300 max-w-[360px]">
+                <div className="p-2.5 rounded-lg bg-[#080614]/80 backdrop-blur-sm border border-white/5">01 Place Order</div>
+                <div className="p-2.5 rounded-lg bg-[#080614]/80 backdrop-blur-sm border border-white/5">02 Automated Setup</div>
+                <div className="p-2.5 rounded-lg bg-[#080614]/80 backdrop-blur-sm border border-white/5">03 Receive &amp; Verify</div>
+                <div className="p-2.5 rounded-lg bg-[#080614]/80 backdrop-blur-sm border border-white/5">04 Start Exploring</div>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+            <div className="pt-3 border-t border-white/5 flex items-center justify-between relative z-10">
               <div>
                 <div className="text-[9px] font-mono text-gray-500">STARTING FROM</div>
                 <div className="text-lg font-black text-white font-rajdhani">₹499</div>
@@ -1143,9 +1629,22 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
-          {/* Coaching Program Card */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-[#100a24] to-[#0c081a] border border-purple-500/30 space-y-4 flex flex-col justify-between shadow-xl">
-            <div className="space-y-2">
+          {/* Coaching Program Card with Part 21 (Esports Coaching Battle Station & VOD setup) */}
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-[#100a24] to-[#0c081a] border border-purple-500/30 space-y-4 flex flex-col justify-between shadow-xl relative overflow-hidden group">
+            {/* Blended Reference Part 21 */}
+            <div className="absolute right-0 top-0 bottom-0 w-[55%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
+              <img
+                src="/assets/reference_parts/part_21.png"
+                alt="Coaching Battle Station"
+                className="h-full w-auto object-contain object-right opacity-40 group-hover:opacity-65 transition-opacity"
+                style={{
+                  maskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
+                }}
+              />
+            </div>
+
+            <div className="space-y-2 relative z-10">
               <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-[#e879f9] uppercase font-bold">
                 <Award className="w-3.5 h-3.5 text-purple-400" />
                 <span>TIER 1 COMPETITIVE COACHING</span>
@@ -1153,19 +1652,19 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               <h3 className="text-xl sm:text-2xl font-black text-white font-rajdhani uppercase">
                 COACHING: LEARN. IMPROVE. DOMINATE.
               </h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-gray-400 max-w-[340px]">
                 1-on-1 private coaching with Radiant players, VCT analysts, and Tier 1 specialists. Custom drills, live VOD reviews, and tailored aim routines.
               </p>
 
-              <div className="grid grid-cols-2 gap-2 pt-2 text-xs text-gray-300">
-                <div className="p-2.5 rounded-lg bg-[#090615] border border-white/5">🎯 Aim &amp; Peeking Drills</div>
-                <div className="p-2.5 rounded-lg bg-[#090615] border border-white/5">📺 Live VOD Reviews</div>
-                <div className="p-2.5 rounded-lg bg-[#090615] border border-white/5">🗺️ Site Executes &amp; Lineups</div>
-                <div className="p-2.5 rounded-lg bg-[#090615] border border-white/5">🧠 Clutch Game Sense</div>
+              <div className="grid grid-cols-2 gap-2 pt-2 text-xs text-gray-300 max-w-[360px]">
+                <div className="p-2.5 rounded-lg bg-[#090615]/80 backdrop-blur-sm border border-white/5">🎯 Aim &amp; Peeking Drills</div>
+                <div className="p-2.5 rounded-lg bg-[#090615]/80 backdrop-blur-sm border border-white/5">📺 Live VOD Reviews</div>
+                <div className="p-2.5 rounded-lg bg-[#090615]/80 backdrop-blur-sm border border-white/5">🗺️ Site Executes &amp; Lineups</div>
+                <div className="p-2.5 rounded-lg bg-[#090615]/80 backdrop-blur-sm border border-white/5">🧠 Clutch Game Sense</div>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+            <div className="pt-3 border-t border-white/5 flex items-center justify-between relative z-10">
               <div>
                 <div className="text-[9px] font-mono text-gray-500">1-HOUR SESSION</div>
                 <div className="text-lg font-black text-white font-rajdhani">₹799</div>
@@ -1183,299 +1682,22 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 3G. SOCIAL CONVERSION BANNERS (Matching Reference media_1790095363501.jpg) */}
-      {/* ========================================================================= */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
-          {/* Left: Follow Our Instagram Banner */}
-          <div className="relative rounded-2xl bg-gradient-to-br from-[#180d28] via-[#10091c] to-[#0a0614] border border-pink-500/25 p-5 sm:p-6 overflow-hidden shadow-xl flex flex-col justify-between group hover:border-pink-500/40 transition-all">
-            {/* Ambient sunset glow */}
-            <div className="absolute -top-10 -right-10 w-60 h-60 bg-pink-600/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
-              <div className="space-y-3 max-w-sm">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 text-[10.5px] font-mono tracking-widest text-[#f43f5e] uppercase font-bold">
-                  <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-[#f59e0b] via-[#ec4899] to-[#8b5cf6] flex items-center justify-center text-white shadow-sm">
-                    <Instagram className="w-3 h-3" />
-                  </div>
-                  <span>FOLLOW OUR INSTAGRAM</span>
-                </div>
-
-                {/* Headline */}
-                <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-rajdhani tracking-wide leading-tight">
-                  STAY UPDATED <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-400 to-amber-300">
-                    &amp; WIN EXCITING REWARDS!
-                  </span>
-                </h3>
-
-                {/* Subtitle */}
-                <p className="text-xs text-gray-300 leading-relaxed">
-                  Follow us on Instagram to stand a chance to win giveaways of VP, Profiles and Cash Prizes!
-                </p>
-
-                {/* 4 Micro Tags */}
-                <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
-                    🎁 Giveaways
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
-                    ⚡ Exclusive Drops
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
-                    📢 Announcements
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full bg-[#201133]/80 border border-pink-500/30 text-[10.5px] font-medium text-pink-200 flex items-center gap-1">
-                    🎉 Fun Events
-                  </span>
-                </div>
-              </div>
-
-              {/* Right: 3D Phone Mockup Graphic */}
-              <div className="relative w-36 sm:w-44 h-48 flex-shrink-0 flex items-center justify-center select-none pointer-events-none mx-auto sm:mx-0">
-                {/* 3D Phone Body */}
-                <div className="w-32 h-44 rounded-2xl bg-[#090710] border-2 border-pink-500/40 shadow-[0_0_25px_rgba(244,63,94,0.3)] p-2 flex flex-col justify-between transform rotate-6 group-hover:rotate-3 transition-transform duration-500">
-                  <div className="flex items-center justify-between pb-1 border-b border-white/10">
-                    <div className="w-3 h-3 rounded-full bg-pink-500/40" />
-                    <div className="text-[8px] font-mono text-gray-400">@vib_esports</div>
-                  </div>
-                  {/* Mock profile avatar & posts */}
-                  <div className="grid grid-cols-2 gap-1 py-1">
-                    <div className="aspect-square rounded bg-purple-900/40 border border-pink-500/20 flex items-center justify-center text-[8px] text-pink-300 font-bold">VP</div>
-                    <div className="aspect-square rounded bg-purple-900/40 border border-pink-500/20 flex items-center justify-center text-[8px] text-purple-300 font-bold">WIN</div>
-                  </div>
-                  {/* Glowing Follow Button */}
-                  <div className="py-1 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 text-center text-[10px] font-black text-white uppercase shadow-md">
-                    Follow
-                  </div>
-                </div>
-
-                {/* Floating Heart Reaction Badges */}
-                <div className="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-pink-600 border border-white/20 flex items-center justify-center text-white shadow-[0_0_15px_rgba(236,72,153,0.8)] animate-bounce">
-                  ❤️
-                </div>
-                <div className="absolute bottom-4 -left-2 w-6 h-6 rounded-full bg-rose-600 border border-white/20 flex items-center justify-center text-[10px] text-white shadow-md">
-                  ✨
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Button */}
-            <div className="pt-4 mt-2 border-t border-white/5 relative z-10">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-800 via-pink-700 to-rose-600 hover:from-purple-700 hover:via-pink-600 hover:to-rose-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.3)] flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <span>Follow Us on Instagram</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Right: Join Our WhatsApp Channel Banner */}
-          <div className="relative rounded-2xl bg-gradient-to-br from-[#0c1f19] via-[#091512] to-[#050c0a] border border-emerald-500/25 p-5 sm:p-6 overflow-hidden shadow-xl flex flex-col justify-between group hover:border-emerald-500/40 transition-all">
-            {/* Ambient emerald glow */}
-            <div className="absolute -top-10 -right-10 w-60 h-60 bg-emerald-600/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-teal-600/15 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
-              <div className="space-y-3 max-w-sm">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 text-[10.5px] font-mono tracking-widest text-[#10b981] uppercase font-bold">
-                  <div className="w-5 h-5 rounded-md bg-[#25D366] flex items-center justify-center text-white shadow-sm font-bold text-xs">
-                    💬
-                  </div>
-                  <span>JOIN OUR WHATSAPP CHANNEL</span>
-                </div>
-
-                {/* Headline */}
-                <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-rajdhani tracking-wide leading-tight">
-                  BE THE FIRST <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-green-200">
-                    TO KNOW!
-                  </span>
-                </h3>
-
-                {/* Subtitle */}
-                <p className="text-xs text-gray-300 leading-relaxed">
-                  Join our official WhatsApp channel to receive latest updates, drops, giveaway announcements, coupons and more — directly delivered to you.
-                </p>
-
-                {/* 8-Item Checklist (2 Columns) */}
-                <div className="grid grid-cols-2 gap-x-3 gap-y-1 pt-1 text-[11px] text-emerald-200">
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                    <span>Latest Updates</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                    <span>Special Coupons</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                    <span>Instant Announcements</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                    <span>Early Access</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                    <span>Exclusive Drops</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                    <span>Important Notices</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                    <span>Giveaway Alerts</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                    <span>Be the First to Get Benefits</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: 3D Phone Mockup Graphic */}
-              <div className="relative w-36 sm:w-44 h-48 flex-shrink-0 flex items-center justify-center select-none pointer-events-none mx-auto sm:mx-0">
-                {/* 3D Phone Body */}
-                <div className="w-32 h-44 rounded-2xl bg-[#05110d] border-2 border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.3)] p-2 flex flex-col justify-between transform -rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                  <div className="flex items-center justify-between pb-1 border-b border-emerald-500/20">
-                    <div className="flex items-center gap-1">
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                      <div className="text-[8px] font-bold text-emerald-300">VIB Official</div>
-                    </div>
-                    <div className="text-[7px] text-emerald-400 font-mono">CHANNEL</div>
-                  </div>
-                  <div className="p-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/20 space-y-1">
-                    <div className="text-[8px] font-bold text-white">🎁 New VP Drop!</div>
-                    <div className="text-[7px] text-emerald-300 leading-tight">Claim your 10% bonus today...</div>
-                  </div>
-                  {/* Glowing Join Button */}
-                  <div className="py-1 rounded-lg bg-emerald-600 text-center text-[10px] font-black text-white uppercase shadow-md flex items-center justify-center gap-1">
-                    <span>Join Now</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Button */}
-            <div className="pt-4 mt-2 border-t border-white/5 relative z-10">
-              <a
-                href="https://whatsapp.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-600 hover:from-emerald-600 hover:to-teal-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <span>Join Our WhatsApp Channel</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 3C. SELL YOUR ACCOUNT WITH VIB (Matching Reference media_1790095363501.jpg)*/}
-      {/* ========================================================================= */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-gradient-to-r from-[#140b2b] via-[#0d071c] to-[#080512] border border-purple-500/30 overflow-hidden shadow-2xl relative p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Ambient purple aura */}
-          <div className="absolute right-10 top-0 w-80 h-full bg-purple-600/20 blur-3xl pointer-events-none" />
-
-          {/* Left: Content */}
-          <div className="space-y-4 max-w-xl z-10">
-            <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#d946ef] uppercase font-bold">
-              <MessageSquare className="w-3.5 h-3.5 text-[#d946ef]" />
-              <span>SELL YOUR ACCOUNT WITH VIB</span>
-            </div>
-
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white font-rajdhani tracking-tight leading-none">
-              Turn Your Profile Into Profit
-            </h2>
-
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-lg">
-              Looking to sell your account? List it with VIB and reach thousands of buyers. Choose from our flexible advertisement plans and get the exposure you deserve.
-            </p>
-
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-1">
-              <button
-                onClick={() => onOpenCheckout('VIB Profile Advertisement Plan', 1499)}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-700 via-fuchsia-600 to-purple-600 hover:from-purple-600 hover:to-fuchsia-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(217,70,239,0.35)] flex items-center justify-center gap-2 cursor-pointer w-fit"
-              >
-                <span>View Advertisement Plans</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-
-              <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-gray-300">
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Reach Genuine Buyers</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Fast &amp; Easy Listing</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Flexible Plans</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Trusted Platform</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Cyberpunk Heroine Visual with Glowing Phone & Graffiti */}
-          <div className="relative w-72 h-56 flex-shrink-0 flex items-center justify-end select-none pointer-events-none">
-            <div className="relative w-full h-full flex items-center justify-end">
-              <img
-                src="/assets/hires/hero_banner_full.jpg"
-                alt="Sell with VIB"
-                className="w-56 h-full object-cover object-right rounded-2xl opacity-90 shadow-2xl"
-                style={{
-                  maskImage: 'linear-gradient(to left, black 70%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to left, black 70%, transparent 100%)',
-                }}
-              />
-              <div className="absolute bottom-4 right-4 text-right">
-                <div className="text-xl font-black text-[#d946ef] font-rajdhani leading-none tracking-tighter drop-shadow-[0_0_10px_rgba(217,70,239,0.8)]">
-                  LIST.
-                </div>
-                <div className="text-xl font-black text-white font-rajdhani leading-none tracking-tighter">
-                  SELL.
-                </div>
-                <div className="text-xl font-black text-purple-400 font-rajdhani leading-none tracking-tighter">
-                  EARN.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 4. JOIN THE VIB COMMUNITY Banner (Matching Reference Image)               */}
 
       {/* ========================================================================= */}
       {/* 4. JOIN THE VIB COMMUNITY Banner (Matching Reference Image)               */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-gradient-to-r from-[#190e33] via-[#120a22] to-[#0c0817] border border-purple-500/30 overflow-hidden shadow-2xl relative min-h-[105px] flex items-center">
+        <div className="rounded-2xl bg-gradient-to-r from-[#190e33] via-[#120a22] to-[#0c0817] border border-purple-500/30 overflow-hidden shadow-2xl relative min-h-[110px] flex items-center">
           {/* Ambient glow */}
           <div className="absolute left-10 top-0 w-60 h-full bg-purple-600/20 blur-3xl pointer-events-none" />
 
-          {/* Left side: Full-height Character cutout artwork with smooth edge fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-48 sm:w-64 overflow-hidden pointer-events-none select-none z-0">
+          {/* Left side: Authentic Part 26 (Team VIB championship podium with crowd and Indian flags) */}
+          <div className="absolute left-0 top-0 bottom-0 w-52 sm:w-72 overflow-hidden pointer-events-none select-none z-0">
             <img
-              src="/assets/hires/community_agent_cinematic.png"
-              alt="Community Agent"
-              className="w-full h-full object-cover object-left opacity-95"
+              src="/assets/reference_parts/part_26.png"
+              alt="Team VIB Championship Community"
+              className="w-full h-full object-cover object-left opacity-90"
               style={{
                 maskImage: 'linear-gradient(to right, black 65%, transparent 100%)',
                 WebkitMaskImage: 'linear-gradient(to right, black 65%, transparent 100%)',
@@ -1483,13 +1705,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             />
           </div>
 
-          <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-5 sm:p-6 pl-40 sm:pl-64 gap-5">
+          <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-5 sm:p-6 pl-44 sm:pl-72 gap-5">
             <div className="space-y-1 text-left">
               <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-rajdhani tracking-wide">
                 JOIN THE VIB COMMUNITY
               </h3>
               <p className="text-xs sm:text-sm text-gray-300">
-                Connect, trade, learn and grow with thousands of members.
+                Connect, trade, learn and grow with thousands of members across India &amp; SEA.
               </p>
             </div>
 
