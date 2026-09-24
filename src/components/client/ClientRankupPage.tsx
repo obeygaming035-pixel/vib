@@ -58,18 +58,14 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 space-y-6">
-          {/* Authentic Reference Asset: Part 14 (Esports Champion holding Trophy with VIB Jacket) */}
-          <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[45%] lg:w-[38%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
-            <img
-              src="/assets/reference_parts/part_14.png"
-              alt="Esports Champion Trophy"
-              className="h-full w-auto object-contain object-right opacity-70"
-              style={{
-                maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-              }}
-            />
-          </div>
+          {/* Full-bleed Reference Part 14 background with gradient overlay */}
+        <img
+          src="/assets/reference_parts/part_14.png"
+          alt="Esports Champion Trophy"
+          className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
 
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-xs text-gray-400 font-mono relative z-10">
@@ -273,17 +269,15 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
           </div>
         </div>
 
-        {/* Authentic Reference Asset: Part 12 (Glowing 9-Tier Rank Staircase) */}
-        <div className="relative rounded-2xl overflow-hidden p-3 bg-[#080512] border border-white/5 flex items-center justify-center shadow-lg">
+        {/* Full-bleed Reference Part 12 (Glowing 9-Tier Rank Staircase) */}
+        <div className="relative rounded-2xl overflow-hidden min-h-[240px] sm:min-h-[300px] bg-[#070510] shadow-2xl flex items-end">
           <img
             src="/assets/reference_parts/part_12.png"
             alt="Rank Staircase Progression"
-            className="w-full max-h-24 object-contain filter drop-shadow-[0_0_15px_rgba(168,85,247,0.45)]"
-            style={{
-              maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
-              WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
-            }}
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070510]/60 via-transparent to-transparent z-[1]" />
         </div>
 
         {/* 9-Tier Rank Cards */}

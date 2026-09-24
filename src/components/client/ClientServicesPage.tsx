@@ -393,18 +393,14 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       {/* ========================================================================= */}
       <section id="auctions" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
         <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#120826] via-[#1a0c35] to-[#0d071d] border border-fuchsia-500/40 space-y-6 shadow-2xl relative overflow-hidden">
-          {/* Authentic Reference Asset: Part 22 (Grand Live Auction Auditorium Stage with Audience & Screen) */}
-          <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden opacity-30">
-            <img
-              src="/assets/reference_parts/part_22.png"
-              alt="Live Auction Stage Part 22"
-              className="w-full h-full object-cover object-center"
-              style={{
-                maskImage: 'radial-gradient(ellipse at center, black 45%, transparent 95%)',
-                WebkitMaskImage: 'radial-gradient(ellipse at center, black 45%, transparent 95%)',
-              }}
-            />
-          </div>
+          {/* Full-bleed Reference Part 22 (Grand Live Auction Auditorium Stage) */}
+          <img
+            src="/assets/reference_parts/part_22.png"
+            alt="Live Auction Stage Part 22"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#120826] via-[#120826]/75 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#120826] via-transparent to-transparent z-[1]" />
 
           {/* Header Row */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/[0.08] pb-5 relative z-10">
@@ -761,7 +757,15 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       {/* 4B. VALO SKINS EXCHANGE: TRADE IN. UPGRADE. DOMINATE. (Reference 3)       */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#170a2a] via-[#10081d] to-[#0a0515] border border-purple-500/35 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#170a2a] via-[#10081d] to-[#0a0515] border border-purple-500/35 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 min-h-[380px]">
+          {/* Full-bleed Reference Part 15 (Valo Skins Exchange Hologram Stage) */}
+          <img
+            src="/assets/reference_parts/part_15.png"
+            alt="Valo Skins Exchange Showcase"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#170a2a] via-[#170a2a]/80 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#170a2a] via-transparent to-transparent z-[1]" />
           <div className="absolute right-1/4 top-0 w-80 h-full bg-purple-600/15 blur-3xl pointer-events-none" />
 
           {/* Left Text & Actions */}
@@ -803,18 +807,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
             </div>
           </div>
 
-          {/* Right: Authentic Part 15 (Valo Skins Exchange Cylindrical Hologram Showcase) */}
-          <div className="relative w-full lg:w-[45%] max-w-[480px] h-52 sm:h-64 flex items-center justify-center select-none pointer-events-none flex-shrink-0">
-            <img
-              src="/assets/reference_parts/part_15.png"
-              alt="Valo Skins Exchange Showcase"
-              className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(217,70,239,0.55)]"
-              style={{
-                maskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
-              }}
-            />
-          </div>
+          {/* Full-bleed Part 15 background applied above */}
         </div>
       </section>
 

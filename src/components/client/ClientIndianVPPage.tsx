@@ -129,7 +129,15 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Matching Reference 2) */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden pt-1">
+      <section className="relative w-full overflow-hidden pt-1 min-h-[440px]">
+        {/* Full-bleed Reference Part 09 (Indian Agent + India Gate) with gradient overlay */}
+        <img
+          src="/assets/reference_parts/part_09.png"
+          alt="Indian Region Agent"
+          className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-85"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/75 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
         {/* Ambient atmospheric purple glows */}
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[500px] bg-purple-700/15 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-10 left-10 w-[450px] h-[350px] bg-fuchsia-800/10 rounded-full blur-[100px] pointer-events-none" />
@@ -180,18 +188,8 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
           <div className="lg:col-span-5 relative flex items-center justify-center min-h-[380px]">
             <div className="absolute w-80 h-80 rounded-full bg-gradient-to-tr from-purple-600/30 via-fuchsia-500/25 to-pink-500/15 blur-[75px] pointer-events-none" />
 
-            {/* Authentic Reference Asset: Part 09 (Indian Agent + Taj Mahal glow) */}
-            <div className="absolute right-0 top-0 bottom-0 w-full pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end opacity-40">
-              <img
-                src="/assets/reference_parts/part_09.png"
-                alt="Indian Region Agent"
-                className="h-full w-auto object-contain object-right"
-                style={{
-                  maskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
-                }}
-              />
-            </div>
+            {/* Part 09 now applied as full-bleed hero background above */}
+            <div className="pointer-events-none select-none z-0 hidden" />
 
             {/* Stylized Graffiti Text matching Reference 2 */}
             <div className="absolute right-0 top-3 select-none pointer-events-none z-10 text-right space-y-0.5">

@@ -169,30 +169,25 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
       {/* 2. PRIMARY LIVE SHOWCASE LOT */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#130928] via-[#1c0d38] to-[#0e071e] border border-fuchsia-500/40 space-y-6 shadow-2xl relative overflow-hidden">
-          {/* Authentic Reference Asset: Part 22 (Grand Live Auction Auditorium Stage with Audience & Screen) */}
-          <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden opacity-35">
-            <img
-              src="/assets/reference_parts/part_22.png"
-              alt="Live Auction Auditorium Stage"
-              className="w-full h-full object-cover object-center"
-              style={{
-                maskImage: 'radial-gradient(ellipse at center, black 50%, transparent 95%)',
-                WebkitMaskImage: 'radial-gradient(ellipse at center, black 50%, transparent 95%)',
-              }}
-            />
-          </div>
+          {/* Full-bleed Reference Part 22 background with gradient overlays */}
+          <img
+            src="/assets/reference_parts/part_22.png"
+            alt="Live Auction Auditorium Stage"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0717] via-[#0a0717]/75 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0717] via-transparent to-transparent z-[1]" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             {/* Glass Showcase Item */}
             <div className="lg:col-span-6 p-6 rounded-2xl bg-gradient-to-b from-[#1c103b]/90 to-[#0d081e]/90 backdrop-blur-md border border-fuchsia-500/40 space-y-4 shadow-xl group relative overflow-hidden">
-              {/* Authentic Reference Asset: Part 20 (Floating Weapon Showcase Case) */}
-              <div className="absolute right-0 top-0 bottom-0 w-3/5 pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end opacity-30">
-                <img
-                  src="/assets/reference_parts/part_20.png"
-                  alt="Floating Weapon Showcase"
-                  className="h-full w-auto object-contain"
-                />
-              </div>
+              {/* Full-bleed Reference Part 20 weapon showcase backdrop */}
+              <img
+                src="/assets/reference_parts/part_20.png"
+                alt="Floating Weapon Showcase"
+                className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d081e] via-[#0d081e]/50 to-transparent z-[1]" />
 
               <div className="flex items-center justify-between relative z-10">
                 <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded bg-fuchsia-900/80 text-fuchsia-200 border border-fuchsia-500/40 uppercase">

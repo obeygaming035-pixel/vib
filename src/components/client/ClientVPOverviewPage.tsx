@@ -92,18 +92,14 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
           <div className="rounded-2xl bg-gradient-to-br from-[#1c080d] via-[#120508] to-[#080204] border border-red-500/30 p-6 sm:p-8 overflow-hidden shadow-2xl relative">
-            {/* Background authentic red hooded assassin & floating cards visual (Part 07) */}
-            <div className="absolute right-0 top-0 bottom-0 w-full md:w-[48%] overflow-hidden pointer-events-none select-none z-0 flex items-center justify-end">
-              <img
-                src="/assets/reference_parts/part_07.png"
-                alt="Urgent Sale Hero Part 07"
-                className="h-full w-auto object-contain object-right opacity-85"
-                style={{
-                  maskImage: 'linear-gradient(to left, black 65%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to left, black 65%, transparent 100%)',
-                }}
-              />
-            </div>
+            {/* Full-bleed Reference Part 07 background with gradient overlay */}
+            <img
+              src="/assets/reference_parts/part_07.png"
+              alt="Urgent Sale Hero Part 07"
+              className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1c080d] via-[#1c080d]/80 to-transparent z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1c080d] via-transparent to-transparent z-[1]" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10">
               {/* Left Column: Urgent Sale Details */}
@@ -331,18 +327,13 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
                 </div>
               </div>
 
-              {/* Right: Authentic Part 09 (Indian Agent + Taj Mahal Glow) */}
-              <div className="relative w-48 h-48 flex-shrink-0 flex items-center justify-end select-none pointer-events-none hidden sm:flex">
-                <img
-                  src="/assets/reference_parts/part_09.png"
-                  alt="Indian VP Agent Part 09"
-                  className="w-full h-full object-contain object-right opacity-80 group-hover:scale-105 transition-transform"
-                  style={{
-                    maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-                  }}
-                />
-              </div>
+              {/* Full-bleed Reference Part 09 (Indian Agent + Taj Mahal Glow) */}
+              <img
+                src="/assets/reference_parts/part_09.png"
+                alt="Indian VP Agent Part 09"
+                className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-85"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#12081f] via-[#12081f]/75 to-transparent z-[1]" />
             </div>
           </div>
 
@@ -397,24 +388,19 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
                 </div>
               </div>
 
-              {/* Right: Authentic Part 11 (PHP Agent + Manila Skyline) */}
-              <div className="relative w-48 h-48 flex-shrink-0 flex items-center justify-end select-none pointer-events-none hidden sm:flex">
-                <img
-                  src="/assets/reference_parts/part_11.png"
-                  alt="PHP VP Agent Part 11"
-                  className="w-full h-full object-contain object-right opacity-80 group-hover:scale-105 transition-transform"
-                  style={{
-                    maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-                  }}
-                />
-              </div>
+              {/* Full-bleed Reference Part 11 (PHP Agent + Manila Skyline) */}
+              <img
+                src="/assets/reference_parts/part_11.png"
+                alt="PHP VP Agent Part 11"
+                className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-85"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#090d1c] via-[#090d1c]/75 to-transparent z-[1]" />
             </div>
           </div>
         </div>
 
         {/* Dedicated "CHANGE REGION IND TO PHP" Gateway Banner (Authentic Part 18) */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#180d2b] via-[#10081f] to-[#0a0515] border border-fuchsia-500/30 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-center justify-between gap-5">
+        <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#180d2b] via-[#10081f] to-[#0a0515] border border-fuchsia-500/30 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-center justify-between gap-5 min-h-[280px]">
           <div className="absolute left-1/3 top-0 w-80 h-full bg-fuchsia-600/10 blur-3xl pointer-events-none" />
 
           <div className="space-y-2 max-w-xl relative z-10">
@@ -439,18 +425,14 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             </div>
           </div>
 
-          {/* Seamless Visual Cutout: Part 18 (Twin Portals Gateway with zero box outline) */}
-          <div className="relative w-full md:w-[42%] max-w-[420px] h-36 sm:h-44 flex items-center justify-center select-none pointer-events-none flex-shrink-0">
-            <img
-              src="/assets/reference_parts/part_18.png"
-              alt="Region Migration Twin Portals"
-              className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(217,70,239,0.5)]"
-              style={{
-                maskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to left, black 85%, transparent 100%)',
-              }}
-            />
-          </div>
+          {/* Full-bleed Reference Part 18 (Twin Portals Gateway) */}
+          <img
+            src="/assets/reference_parts/part_18.png"
+            alt="Region Migration Twin Portals"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#180d2b] via-[#180d2b]/75 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#180d2b] via-transparent to-transparent z-[1]" />
         </div>
 
         {/* Flexible Payment Plans (EMI) Strip */}
@@ -484,7 +466,15 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
       {/* 3. SKIN RENTALS SECTION (Matching Reference media_1790095371529.jpg)      */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-gradient-to-r from-[#17092c] via-[#0f061e] to-[#07030e] border border-fuchsia-500/30 overflow-hidden shadow-2xl relative p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="rounded-2xl bg-gradient-to-r from-[#17092c] via-[#0f061e] to-[#07030e] border border-fuchsia-500/30 overflow-hidden shadow-2xl relative p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 min-h-[340px]">
+          {/* Full-bleed Reference Part 10 (Weapon Cases Showcase) */}
+          <img
+            src="/assets/reference_parts/part_10.png"
+            alt="Skin Rentals Showcase Part 10"
+            className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-85"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#17092c] via-[#17092c]/80 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#17092c] via-transparent to-transparent z-[1]" />
           {/* Ambient neon purple/magenta glow */}
           <div className="absolute right-10 top-0 w-80 h-full bg-fuchsia-600/20 blur-3xl pointer-events-none" />
 
@@ -539,18 +529,7 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             </div>
           </div>
 
-          {/* Right: Authentic Part 10 (VIB Experience Program Weapon Cases Showcase) */}
-          <div className="relative w-full md:w-[45%] max-w-[420px] h-56 sm:h-64 flex-shrink-0 flex items-center justify-end select-none pointer-events-none">
-            <img
-              src="/assets/reference_parts/part_10.png"
-              alt="Skin Rentals Showcase Part 10"
-              className="w-full h-full object-contain object-right"
-              style={{
-                maskImage: 'linear-gradient(to left, black 80%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to left, black 80%, transparent 100%)',
-              }}
-            />
-          </div>
+          {/* Full-bleed Part 10 background applied above; right side free for artwork visibility */}
         </div>
       </section>
 

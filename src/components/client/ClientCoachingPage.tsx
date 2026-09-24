@@ -102,18 +102,14 @@ export const ClientCoachingPage: React.FC<ClientCoachingPageProps> = ({
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-fuchsia-600/15 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 space-y-4">
-          {/* Authentic Reference Asset: Part 21 (Esports Coaching Battle Station & VOD Analysis Room) */}
-          <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[48%] lg:w-[40%] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-end">
-            <img
-              src="/assets/reference_parts/part_21.png"
-              alt="Coaching Battle Station"
-              className="h-full w-auto object-contain object-right opacity-70"
-              style={{
-                maskImage: 'linear-gradient(to left, black 65%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to left, black 65%, transparent 100%)',
-              }}
-            />
-          </div>
+          {/* Full-bleed Reference Part 21 background with gradient overlay */}
+        <img
+          src="/assets/reference_parts/part_21.png"
+          alt="Coaching Battle Station"
+          className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
 
           <div className="flex items-center gap-2 text-xs text-gray-400 font-mono relative z-10">
             <button onClick={() => onNavigate('home')} className="hover:text-purple-300 transition-colors cursor-pointer">
