@@ -136,7 +136,7 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
           alt="Indian Region Agent"
           className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-85"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/75 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 to-[#05040a]/15 z-[1]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
         {/* Ambient atmospheric purple glows */}
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[500px] bg-purple-700/15 rounded-full blur-[120px] pointer-events-none" />

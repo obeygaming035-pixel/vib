@@ -208,10 +208,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           src="/assets/hires/hero_banner_full.jpg"
           alt="VIB Esports Heroine"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-95"
-          style={{ objectPosition: '62% 28%' }}
+          style={{ objectPosition: 'center 30%' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/70 to-transparent z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/55 to-[#05040a]/70 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/30 to-transparent z-[1]" />
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-10">
           <div className="max-w-xl space-y-4">
             <div className="text-xs text-gray-400 font-medium flex items-center gap-1.5 select-none">
@@ -472,7 +472,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5">
           {profiles.map((p) => {
             const isFav = favoriteIds.includes(p.id);
             return (
@@ -598,8 +598,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               alt="Instagram Promotion Artwork"
               className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
             <div className="relative z-10 p-6 sm:p-8 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="space-y-3 max-w-sm">
@@ -642,14 +642,6 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                   <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
-
-              <div className="relative w-40 sm:w-48 h-56 flex-shrink-0 flex items-center justify-center select-none pointer-events-none mx-auto sm:mx-0">
-                <img
-                  src="/assets/reference_parts/part_03_phone.png"
-                  alt="3D Instagram Phone"
-                  className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(244,63,94,0.55)] group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
             </div>
           </div>
 
@@ -660,8 +652,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               alt="WhatsApp Channel Artwork"
               className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
             <div className="relative z-10 p-6 sm:p-8 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="space-y-3 max-w-sm">
@@ -700,14 +692,6 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                   <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
-
-              <div className="relative w-40 sm:w-48 h-56 flex-shrink-0 flex items-center justify-center select-none pointer-events-none mx-auto sm:mx-0">
-                <img
-                  src="/assets/reference_parts/part_01_phone.png"
-                  alt="3D WhatsApp Emerald Phone"
-                  className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(16,185,129,0.55)] group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
             </div>
           </div>
         </div>
@@ -721,8 +705,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             alt="Sell Your Account Artwork"
             className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
           <div className="relative z-10 p-6 sm:p-10 max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#d946ef] uppercase font-bold">
@@ -763,8 +747,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               alt="Urgent Sale Artwork"
               className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
             <div className="relative z-10 p-6 sm:p-10 max-w-2xl space-y-4">
               <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-rose-400 uppercase font-bold">
@@ -872,8 +856,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             alt="VP Packs Artwork"
             className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
           <div className="relative z-10 p-6 sm:p-10 max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-[#e879f9] uppercase font-bold">
@@ -913,8 +897,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               alt="Indian Region VP Artwork"
               className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
             <div className="relative z-10 p-6 space-y-3.5 w-full">
               <div className="flex items-center gap-2.5">
@@ -946,8 +930,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               alt="PHP Region VP Artwork"
               className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
             <div className="relative z-10 p-6 space-y-3.5 w-full">
               <div className="flex items-center gap-2.5">
@@ -999,10 +983,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           <img
             src="/assets/reference_parts/part_10.png"
             alt="Skin Rentals Artwork"
-            className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
           <div className="relative z-10 p-6 sm:p-10 max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-[#e879f9] uppercase font-bold">
@@ -1059,8 +1043,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             alt="Rankup Champion Artwork"
             className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
           <div className="relative z-10 p-6 sm:p-10 max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-[#e879f9] uppercase font-bold">
@@ -1171,8 +1155,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             alt="Same Game Higher You Artwork"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/70 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
           <div className="relative z-10 w-full px-6 sm:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
             <img
               src="/assets/hires/vib_logo_metallic_hires.png"
@@ -1202,7 +1186,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/60 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
           <div className="relative z-10 p-6 sm:p-10 space-y-2">
             <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-cyan-300 uppercase font-bold">
@@ -1301,8 +1285,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             alt="Valo Skins Exchange Artwork"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
           <div className="relative z-10 p-6 sm:p-10 max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-[#d946ef] uppercase font-bold">
@@ -1349,7 +1333,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/60 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
           <div className="relative z-10 p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center w-full">
             <div className="space-y-4">
@@ -1394,8 +1378,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             alt="Fresh PHP Profile Artwork"
             className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
           <div className="relative z-10 p-6 sm:p-10 max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-pink-400 uppercase font-bold">
@@ -1480,8 +1464,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             alt="Coaching Program Artwork"
             className="absolute inset-0 w-full h-full object-cover object-left pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-l from-[#070510] via-[#070510]/80 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-l from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
           <div className="relative z-10 p-6 sm:p-10 max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-amber-400 uppercase font-bold">
@@ -1582,7 +1566,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             alt="Live Auction Auditorium Stage"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0717] via-[#0a0717]/75 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0717] via-[#0a0717]/85 to-[#0a0717]/15 z-[1]" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0717] via-transparent to-transparent z-[1]" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
@@ -1714,7 +1698,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               <p className="text-[11px] text-gray-400">Limited time offers. Top picks. Don't miss out.</p>
             </div>
           </div>
-          <div className="grid grid-cols-5 gap-2.5 flex-1 w-full">
+          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5 flex-1 w-full">
             {[
               '/assets/items/vandal-reaper.png',
               '/assets/hires/ranks/immortal.png',
@@ -1738,8 +1722,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             alt="Team VIB Championship Podium"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/70 to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
           <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-6 sm:p-10 gap-5">
             <div className="space-y-1.5 text-left">

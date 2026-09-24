@@ -293,7 +293,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
           alt="VIB 3D Monolith Stage Part 27"
           className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-90"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/75 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 to-[#05040a]/15 z-[1]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
         {/* Atmospheric Ambient Glows */}
         <div className="absolute top-10 right-1/4 w-[650px] h-[550px] bg-purple-700/15 rounded-full blur-[140px] pointer-events-none" />

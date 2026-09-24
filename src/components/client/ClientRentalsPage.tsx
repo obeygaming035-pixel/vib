@@ -90,10 +90,10 @@ export const ClientRentalsPage: React.FC<ClientRentalsPageProps> = ({
         <img
           src="/assets/reference_parts/part_10.png"
           alt="VIB Experience Program Weapon Cases"
-          className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-85"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-85"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 via-50% to-transparent z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/60 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 to-[#05040a]/15 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/20 to-transparent z-[1]" />
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 space-y-3">
           <div className="flex items-center gap-2 text-xs text-gray-400 font-mono">

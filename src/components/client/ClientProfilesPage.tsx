@@ -159,19 +159,14 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Matching Reference 1) */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden min-h-[420px] sm:min-h-[480px] flex items-center">
-        {/* Full-bleed Reference Heroine artwork with real baked-in neon graffiti text */}
-        <img
-          src="/assets/hires/hero_banner_full.jpg"
-          alt="VIB Digital Profiles Heroine"
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-95"
-          style={{ objectPosition: '62% 28%' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/70 to-transparent z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
+      <section className="relative w-full overflow-hidden min-h-[360px] sm:min-h-[420px] flex items-center">
+        {/* Ambient atmospheric glows — clean symmetrical hero, no image */}
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[420px] bg-purple-700/15 rounded-full blur-[120px] pointer-events-none z-0" />
+        <div className="absolute bottom-0 left-1/4 w-[450px] h-[300px] bg-fuchsia-800/10 rounded-full blur-[100px] pointer-events-none z-0" />
+        <div className="cyber-grid absolute inset-0 opacity-40 pointer-events-none z-0" />
 
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-10">
-          <div className="lg:col-span-7 space-y-4 max-w-xl">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-10 text-center">
+          <div className="space-y-4 max-w-2xl mx-auto">
             {/* Main Headline (2 lines matching reference exactly) */}
             <div className="space-y-0.5">
               <h1 className="text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] font-black uppercase tracking-tight text-white leading-tight font-rajdhani">
@@ -183,15 +178,15 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
             </div>
 
             {/* Subtitle */}
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-normal max-w-xl">
+            <p className="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto">
               Find your next competitive identity. Choose a marketplace below to start browsing verified profiles or community listings.
             </p>
 
             {/* 4 Trust Micro Pills */}
-            <div className="flex flex-wrap items-center gap-2.5 pt-2">
+            <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
               <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
-                <span className="font-medium">Safe &amp; Secure</span>
+                <span className="font-medium">Safe & Secure</span>
               </div>
               <div className="px-3.5 py-1.5 rounded-full bg-[#120f24]/90 border border-purple-500/25 text-xs text-gray-200 flex items-center gap-2 shadow-md">
                 <Check className="w-3.5 h-3.5 text-purple-400" />
@@ -568,7 +563,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
             alt="Team VIB Championship Community"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/70 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/85 to-[#070510]/15 z-[1]" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
 
           <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-5 sm:p-8 gap-5">

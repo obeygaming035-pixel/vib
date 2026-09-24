@@ -175,7 +175,7 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
             alt="Live Auction Auditorium Stage"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0717] via-[#0a0717]/75 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0717] via-[#0a0717]/85 to-[#0a0717]/15 z-[1]" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0717] via-transparent to-transparent z-[1]" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">

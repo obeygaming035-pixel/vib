@@ -64,7 +64,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
           alt="Esports Champion Trophy"
           className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-90"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 to-[#05040a]/15 z-[1]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
 
           {/* Breadcrumb */}
