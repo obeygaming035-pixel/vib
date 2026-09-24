@@ -242,15 +242,13 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                   : 'bg-[#0e0c18] border-white/10 hover:border-amber-500/50'
               }`}
             >
-              {/* Full background ambient character art (Hooded Assassin with golden rim lighting) */}
-              <div className="absolute inset-y-0 left-0 w-full sm:w-[55%] overflow-hidden pointer-events-none select-none z-0">
-                <img
-                  src="/assets/hires/card_guaranteed_agent.png"
-                  alt="Guaranteed Agent"
-                  className="w-full h-full object-cover object-left opacity-90"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#130f1c]/70 to-[#0d0914]" />
-              </div>
+              {/* Full-bleed ambient character art (Hooded Assassin with golden rim lighting) */}
+              <img
+                src="/assets/hires/card_guaranteed_agent.png"
+                alt="Guaranteed Agent"
+                className="absolute inset-0 w-full h-full object-cover object-left pointer-events-none select-none z-0 opacity-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#130f1c]/60 to-[#0d0914] z-[1]" />
 
               {/* Card Header Content */}
               <div className="space-y-4 relative z-10">
@@ -326,15 +324,13 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                   : 'bg-[#0e0c18] border-white/10 hover:border-sky-500/50'
               }`}
             >
-              {/* Full background ambient character art (Cyber Blue Agent looking over shoulder) */}
-              <div className="absolute inset-y-0 right-0 w-full sm:w-[55%] overflow-hidden pointer-events-none select-none z-0">
-                <img
-                  src="/assets/hires/card_public_agent.png"
-                  alt="Public Cyber Agent"
-                  className="w-full h-full object-cover object-right opacity-90"
-                />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#090f1d]/70 to-[#070b16]" />
-              </div>
+              {/* Full-bleed ambient character art (Cyber Blue Agent looking over shoulder) */}
+              <img
+                src="/assets/hires/card_public_agent.png"
+                alt="Public Cyber Agent"
+                className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#090f1d]/60 to-[#070b16] z-[1]" />
 
               {/* Card Header Content */}
               <div className="space-y-4 relative z-10">
@@ -565,24 +561,17 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       {/* 4. JOIN THE VIB COMMUNITY Banner (Matching Reference 1)                   */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-gradient-to-r from-[#190e33] via-[#120a22] to-[#0c0817] border border-purple-500/30 overflow-hidden shadow-2xl relative min-h-[105px] flex items-center">
-          {/* Ambient glow */}
-          <div className="absolute left-10 top-0 w-60 h-full bg-purple-600/20 blur-3xl pointer-events-none" />
+        <div className="rounded-2xl overflow-hidden shadow-2xl relative min-h-[220px] sm:min-h-[260px] flex items-center bg-[#070510]">
+          {/* Full-bleed Reference Part 26 (Team VIB Championship Podium) with gradient overlay */}
+          <img
+            src="/assets/reference_parts/part_26.png"
+            alt="Team VIB Championship Community"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/70 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
 
-          {/* Left side: Full-height Character cutout artwork with smooth edge fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-48 sm:w-64 overflow-hidden pointer-events-none select-none z-0">
-            <img
-              src="/assets/hires/community_agent_cinematic.png"
-              alt="Community Agent"
-              className="w-full h-full object-cover object-left opacity-95"
-              style={{
-                maskImage: 'linear-gradient(to right, black 65%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to right, black 65%, transparent 100%)',
-              }}
-            />
-          </div>
-
-          <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-5 sm:p-6 pl-36 sm:pl-56 gap-5">
+          <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-5 sm:p-8 gap-5">
             <div className="space-y-1 text-left">
               <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-rajdhani tracking-wide">
                 JOIN THE VIB COMMUNITY

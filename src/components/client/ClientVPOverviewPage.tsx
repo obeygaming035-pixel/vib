@@ -1103,26 +1103,22 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
       {/* 8. BOTTOM CINEMATIC COMMUNITY BANNER (Matching Reference 3)               */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-gradient-to-r from-[#0d071f] via-[#160a33] to-[#0d071f] border border-purple-500/30 overflow-hidden relative shadow-2xl flex flex-col md:flex-row items-center justify-between min-h-[160px] sm:h-[170px]">
-          {/* Background atmospheric glows */}
-          <div className="absolute right-1/3 top-0 w-80 h-80 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute left-1/4 bottom-0 w-60 h-60 bg-pink-600/10 rounded-full blur-2xl pointer-events-none" />
-
-          {/* Left: Cyber Sniper Girl Character filling banner height */}
-          <div className="h-full w-48 sm:w-60 flex-shrink-0 flex items-end justify-start overflow-hidden relative z-10 pl-2">
-            <img
-              src="/assets/hires/hero_sniper_girl_flipped.png"
-              alt="Cyber Sniper"
-              className="h-full w-auto object-contain object-left-bottom filter drop-shadow-[0_0_20px_rgba(232,121,249,0.5)]"
-            />
-          </div>
+        <div className="rounded-2xl overflow-hidden relative shadow-2xl flex flex-col md:flex-row items-center justify-between min-h-[240px] sm:min-h-[280px] bg-[#070510]">
+          {/* Full-bleed Reference Part 26 (Team VIB Championship Podium) with gradient overlay */}
+          <img
+            src="/assets/reference_parts/part_26.png"
+            alt="Team VIB Championship Podium"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070510] via-[#070510]/70 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent z-[1]" />
 
           {/* Center Typography */}
-          <div className="space-y-1 relative z-10 text-center md:text-left py-2 px-4">
-            <div className="text-xs sm:text-sm font-black tracking-[0.2em] text-white uppercase font-rajdhani">
+          <div className="space-y-1 relative z-10 text-center px-6 py-8 w-full">
+            <div className="text-sm sm:text-base font-black tracking-[0.2em] text-white uppercase font-rajdhani drop-shadow-[0_4px_18px_rgba(0,0,0,0.9)]">
               MORE THAN A TOP-UP
             </div>
-            <div className="font-marker text-lg sm:text-2xl text-[#f472b6] italic tracking-wide drop-shadow-[0_0_12px_rgba(244,114,182,0.8)]">
+            <div className="font-marker text-xl sm:text-3xl text-[#f472b6] italic tracking-wide drop-shadow-[0_0_14px_rgba(244,114,182,0.8)]">
               IT'S A BETTER EXPERIENCE.
             </div>
           </div>

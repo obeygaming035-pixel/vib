@@ -184,39 +184,8 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
             </div>
           </div>
 
-          {/* Right Column: 3D Valorant Supply Crate & VP Coins with Graffiti and Part 09 Agent */}
-          <div className="lg:col-span-5 relative flex items-center justify-center min-h-[380px]">
-            <div className="absolute w-80 h-80 rounded-full bg-gradient-to-tr from-purple-600/30 via-fuchsia-500/25 to-pink-500/15 blur-[75px] pointer-events-none" />
-
-            {/* Part 09 now applied as full-bleed hero background above */}
-            <div className="pointer-events-none select-none z-0 hidden" />
-
-            {/* Stylized Graffiti Text matching Reference 2 */}
-            <div className="absolute right-0 top-3 select-none pointer-events-none z-10 text-right space-y-0.5">
-              <div className="font-marker text-lg sm:text-xl text-[#e879f9] -rotate-8 drop-shadow-[0_0_12px_rgba(232,121,249,0.85)] tracking-wider">
-                FUEL YOUR
-              </div>
-              <div className="font-marker text-lg sm:text-xl text-[#f0abfc] -rotate-8 drop-shadow-[0_0_12px_rgba(240,171,252,0.85)] tracking-wider -mt-1 font-bold">
-                EXPERIENCE
-              </div>
-              <div className="font-marker text-sm sm:text-base text-purple-300 -rotate-8 drop-shadow-[0_0_10px_rgba(192,132,252,0.8)] tracking-wider mt-1.5">
-                SAME GAME.
-              </div>
-              <div className="font-marker text-base sm:text-lg text-[#e879f9] -rotate-8 drop-shadow-[0_0_12px_rgba(232,121,249,0.85)] tracking-wider -mt-1">
-                MORE
-              </div>
-              <div className="font-marker text-lg sm:text-xl text-[#d946ef] -rotate-8 drop-shadow-[0_0_15px_rgba(217,70,239,0.9)] tracking-wider font-bold -mt-1">
-                POSSIBILITIES.
-              </div>
-            </div>
-
-            {/* Glowing 3D Supply Crate */}
-            <img
-              src="/assets/hires/vp_hero_crate.png"
-              alt="Valorant Supply Crate & VP Coins"
-              className="relative z-0 w-full max-w-[500px] h-auto object-contain drop-shadow-[0_0_40px_rgba(168,85,247,0.5)] transform scale-105"
-            />
-          </div>
+          {/* Right Column artwork now applied as full-bleed hero background above */}
+          <div className="lg:col-span-5 hidden lg:block" />
         </div>
       </section>
 
