@@ -286,7 +286,15 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION                                                           */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden pt-6 sm:pt-8 border-b border-white/5">
+      <section className="relative w-full overflow-hidden pt-6 sm:pt-8 min-h-[440px] sm:min-h-[500px] flex items-center">
+        {/* Full-bleed Reference Part 27 (3D VIB Monolith Stage) with gradient overlay */}
+        <img
+          src="/assets/reference_parts/part_27.png"
+          alt="VIB 3D Monolith Stage Part 27"
+          className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/75 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
         {/* Atmospheric Ambient Glows */}
         <div className="absolute top-10 right-1/4 w-[650px] h-[550px] bg-purple-700/15 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute -bottom-10 left-10 w-[450px] h-[350px] bg-fuchsia-800/10 rounded-full blur-[120px] pointer-events-none" />
@@ -369,20 +377,10 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
             </div>
           </div>
 
-          {/* Right Hero Graphic: Authentic Part 27 (3D VIB Monolith Stage with Orbiting Light Trails) */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center relative min-h-[380px]">
-            <div className="relative w-full max-w-[520px] flex flex-col items-center justify-center">
-              <div className="w-full aspect-[4/3] flex items-center justify-center relative z-10">
-                <img
-                  src="/assets/reference_parts/part_27.png"
-                  alt="VIB 3D Monolith Stage Part 27"
-                  className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(168,85,247,0.55)] scale-105"
-                />
-              </div>
-
-              <div className="text-[10px] font-mono tracking-[0.22em] text-purple-300 uppercase text-center mt-1 opacity-85">
-                A SAFER DIGITAL ECOSYSTEM FOR A STRONGER TOMORROW
-              </div>
+          {/* Part 27 now applied as full-bleed hero background above */}
+          <div className="lg:col-span-5 hidden lg:flex flex-col items-center justify-center relative">
+            <div className="text-[10px] font-mono tracking-[0.22em] text-purple-300 uppercase text-center opacity-85 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+              A SAFER DIGITAL ECOSYSTEM FOR A STRONGER TOMORROW
             </div>
           </div>
         </div>

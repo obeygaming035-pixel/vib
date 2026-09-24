@@ -159,14 +159,19 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Matching Reference 1) */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden pt-1">
-        {/* Ambient atmospheric purple glows */}
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[500px] bg-purple-700/15 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute -bottom-10 left-10 w-[450px] h-[350px] bg-fuchsia-800/10 rounded-full blur-[100px] pointer-events-none" />
+      <section className="relative w-full overflow-hidden min-h-[420px] sm:min-h-[480px] flex items-center">
+        {/* Full-bleed Reference Heroine artwork with real baked-in neon graffiti text */}
+        <img
+          src="/assets/hires/hero_banner_full.jpg"
+          alt="VIB Digital Profiles Heroine"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-95"
+          style={{ objectPosition: '62% 28%' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/70 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
 
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
-          {/* Left Column: Headline, Subtitle, 4 Trust Badges */}
-          <div className="lg:col-span-7 space-y-4">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-10">
+          <div className="lg:col-span-7 space-y-4 max-w-xl">
             {/* Main Headline (2 lines matching reference exactly) */}
             <div className="space-y-0.5">
               <h1 className="text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] font-black uppercase tracking-tight text-white leading-tight font-rajdhani">
@@ -201,47 +206,6 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                 <span className="font-medium">Dedicated Support</span>
               </div>
             </div>
-          </div>
-
-          {/* Right Column: Hero Art & Stylized Angled Graffiti */}
-          <div className="lg:col-span-5 relative flex items-center justify-center min-h-[380px]">
-            {/* Glowing violet backdrops */}
-            <div className="absolute w-80 h-80 rounded-full bg-gradient-to-tr from-purple-600/30 via-fuchsia-500/25 to-pink-500/15 blur-[75px] pointer-events-none" />
-
-            {/* Stylized Graffiti Text matching Reference 1 */}
-            <div className="absolute right-0 top-3 select-none pointer-events-none z-10 text-right space-y-0.5">
-              <div className="font-marker text-lg sm:text-xl text-[#e879f9] -rotate-8 drop-shadow-[0_0_12px_rgba(232,121,249,0.85)] tracking-wider">
-                MORE
-              </div>
-              <div className="font-marker text-lg sm:text-xl text-[#f0abfc] -rotate-8 drop-shadow-[0_0_12px_rgba(240,171,252,0.85)] tracking-wider -mt-1">
-                PLAYSTYLES
-              </div>
-              <div className="font-marker text-lg sm:text-xl text-[#e879f9] -rotate-8 drop-shadow-[0_0_12px_rgba(232,121,249,0.85)] tracking-wider -mt-1">
-                MORE
-              </div>
-              <div className="font-marker text-xl sm:text-2xl text-[#d946ef] -rotate-8 drop-shadow-[0_0_15px_rgba(217,70,239,0.9)] tracking-wider font-bold -mt-1">
-                POSSIBILITIES.
-              </div>
-            </div>
-
-            <div className="absolute right-1 bottom-4 select-none pointer-events-none z-10 text-right space-y-0.5">
-              <div className="font-marker text-sm sm:text-base text-[#c084fc] -rotate-10 drop-shadow-[0_0_10px_rgba(192,132,252,0.8)]">
-                FIND.
-              </div>
-              <div className="font-marker text-sm sm:text-base text-[#c084fc] -rotate-10 drop-shadow-[0_0_10px_rgba(192,132,252,0.8)] -mt-1">
-                TRADE.
-              </div>
-              <div className="font-marker text-base sm:text-lg text-[#e879f9] -rotate-10 drop-shadow-[0_0_14px_rgba(232,121,249,0.9)] font-bold -mt-1">
-                LEVEL UP.
-              </div>
-            </div>
-
-            {/* Crystal Blade Rogue Heroine */}
-            <img
-              src="/assets/hires/profiles_heroine.png"
-              alt="VIB Digital Profiles Heroine"
-              className="relative z-0 w-full max-w-[460px] h-auto object-contain drop-shadow-[0_0_40px_rgba(168,85,247,0.5)] transform scale-105"
-            />
           </div>
         </div>
       </section>

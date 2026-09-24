@@ -203,13 +203,14 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
   return (
     <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-8 sm:space-y-10 pb-16">
       {/* 1. HERO */}
-      <section className="relative w-full overflow-hidden min-h-[360px] sm:min-h-[420px] lg:min-h-[460px] flex items-center">
+      <section className="relative w-full overflow-hidden min-h-[400px] sm:min-h-[460px] lg:min-h-[520px] flex items-center">
         <img
           src="/assets/hires/hero_banner_full.jpg"
           alt="VIB Esports Heroine"
-          className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-95"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-95"
+          style={{ objectPosition: '62% 28%' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/80 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/70 to-transparent z-[1]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-10">
           <div className="max-w-xl space-y-4">
