@@ -1048,7 +1048,7 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
       {/* 7. 4 FULL-WIDTH TRUST BADGES ROW (Matching Reference 3)                   */}
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
           <div className="p-4 rounded-xl bg-[#0c0a18] border border-white/[0.08] flex items-center gap-3.5 shadow-md">
             <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0">
               <ShieldCheck className="w-5 h-5" />

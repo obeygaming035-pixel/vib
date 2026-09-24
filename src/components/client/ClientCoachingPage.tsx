@@ -158,7 +158,7 @@ export const ClientCoachingPage: React.FC<ClientCoachingPageProps> = ({
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
           {pillars.map((p, idx) => {
             const Icon = p.icon;
             return (

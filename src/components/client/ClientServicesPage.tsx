@@ -828,7 +828,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
         </div>
 
         {/* 8 Cards in 4x2 Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
           {serviceCards.map((srv) => {
             const Icon = srv.icon;
             return (

@@ -201,7 +201,7 @@ export const ClientRentalsPage: React.FC<ClientRentalsPageProps> = ({
 
       {/* 3. 4 RENTAL GUARANTEES */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-6 rounded-2xl bg-[#0c0a18] border border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="p-6 rounded-2xl bg-[#0c0a18] border border-white/10 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2 text-purple-400">
               <Zap className="w-4 h-4" />
