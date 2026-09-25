@@ -203,17 +203,17 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
   return (
     <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-8 sm:space-y-10 pb-16">
       {/* 1. HERO */}
-      <section className="relative w-full overflow-hidden min-h-[400px] sm:min-h-[460px] lg:min-h-[520px] flex items-center">
-        <img
-          src="/assets/hires/hero_banner_full.jpg"
-          alt="VIB Esports Heroine"
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-95"
-          style={{ objectPosition: 'center 30%' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/55 to-[#05040a]/70 z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/30 to-transparent z-[1]" />
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-10">
-          <div className="max-w-xl space-y-4">
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2 w-full">
+        <div className="relative rounded-2xl overflow-hidden min-h-[420px] sm:min-h-[480px] lg:min-h-[520px] flex items-center bg-[#070510] shadow-2xl">
+          <img
+            src="/assets/hires/hero_banner_full.jpg"
+            alt="VIB Esports Heroine"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
+            style={{ objectPosition: 'center 30%' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/55 to-[#05040a]/10 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/25 to-transparent z-[1]" />
+          <div className="relative z-10 p-6 sm:p-10 max-w-xl space-y-4">
             <div className="text-xs text-gray-400 font-medium flex items-center gap-1.5 select-none">
               <span className="hover:text-gray-200 cursor-pointer transition-colors" onClick={() => onNavigate('home')}>Home</span>
               <span className="text-gray-600">{'>'}</span>
@@ -979,7 +979,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
       {/* 8. SKIN RENTALS (Reference 2) — full-bleed Part 10 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-2xl overflow-hidden min-h-[380px] sm:min-h-[440px] flex items-center bg-[#070510] shadow-2xl group">
+        <div className="relative rounded-2xl overflow-hidden min-h-[440px] sm:min-h-[520px] lg:min-h-[560px] flex items-center bg-[#070510] shadow-2xl group">
           <img
             src="/assets/reference_parts/part_10.png"
             alt="Skin Rentals Artwork"

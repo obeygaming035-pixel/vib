@@ -159,11 +159,19 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Matching Reference 1) */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden min-h-[360px] sm:min-h-[420px] flex items-center">
-        {/* Ambient atmospheric glows — clean symmetrical hero, no image */}
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[420px] bg-purple-700/15 rounded-full blur-[120px] pointer-events-none z-0" />
-        <div className="absolute bottom-0 left-1/4 w-[450px] h-[300px] bg-fuchsia-800/10 rounded-full blur-[100px] pointer-events-none z-0" />
-        <div className="cyber-grid absolute inset-0 opacity-40 pointer-events-none z-0" />
+      <section className="relative w-full overflow-hidden min-h-[420px] sm:min-h-[480px] flex items-center">
+        {/* Full-bleed Part 13 (Rank Emblems) backdrop behind the main text with heavy dark overlay */}
+        <img
+          src="/assets/reference_parts/part_13.png"
+          alt="Rank Emblems Artwork"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-55"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/90 to-[#05040a]/60 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/40 to-transparent z-[1]" />
+        {/* Ambient atmospheric glows */}
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[420px] bg-purple-700/15 rounded-full blur-[120px] pointer-events-none z-[2]" />
+        <div className="absolute bottom-0 left-1/4 w-[450px] h-[300px] bg-fuchsia-800/10 rounded-full blur-[100px] pointer-events-none z-[2]" />
+        <div className="cyber-grid absolute inset-0 opacity-40 pointer-events-none z-[2]" />
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-10 text-center">
           <div className="space-y-4 max-w-2xl mx-auto">

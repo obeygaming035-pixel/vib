@@ -82,7 +82,7 @@ export const ClientRentalsPage: React.FC<ClientRentalsPageProps> = ({
   return (
     <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-8 pb-20 font-sans">
       {/* 1. HERO HEADER */}
-      <section className="relative w-full overflow-hidden min-h-[300px] sm:min-h-[340px] flex items-center py-8 sm:py-10 border-b border-white/5 bg-[#05040a]">
+      <section className="relative w-full overflow-hidden min-h-[420px] sm:min-h-[500px] flex items-center py-8 sm:py-10 border-b border-white/5 bg-[#05040a]">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[300px] bg-purple-600/15 rounded-full blur-[110px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-fuchsia-600/15 rounded-full blur-[100px] pointer-events-none" />
 
