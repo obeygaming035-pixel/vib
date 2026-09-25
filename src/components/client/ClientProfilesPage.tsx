@@ -159,22 +159,19 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Matching Reference 1) */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden min-h-[420px] sm:min-h-[480px] flex items-center">
-        {/* Full-bleed Part 13 (Rank Emblems) backdrop behind the main text with heavy dark overlay */}
-        <img
-          src="/assets/reference_parts/part_13.png"
-          alt="Rank Emblems Artwork"
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-55"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/90 to-[#05040a]/60 z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/40 to-transparent z-[1]" />
-        {/* Ambient atmospheric glows */}
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[420px] bg-purple-700/15 rounded-full blur-[120px] pointer-events-none z-[2]" />
-        <div className="absolute bottom-0 left-1/4 w-[450px] h-[300px] bg-fuchsia-800/10 rounded-full blur-[100px] pointer-events-none z-[2]" />
-        <div className="cyber-grid absolute inset-0 opacity-40 pointer-events-none z-[2]" />
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2 w-full">
+        <div className="relative rounded-2xl overflow-hidden min-h-[420px] sm:min-h-[480px] flex items-center bg-[#070510] shadow-2xl">
+          {/* Full-bleed Part 19 (Agent at Glowing Battle Station) — same centered-card treatment as home hero */}
+          <img
+            src="/assets/reference_parts/part_19.png"
+            alt="VIB Digital Profiles Artwork"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
+            style={{ objectPosition: 'center 35%' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/55 to-[#05040a]/10 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/25 to-transparent z-[1]" />
 
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-10 text-center">
-          <div className="space-y-4 max-w-2xl mx-auto">
+          <div className="relative z-10 p-6 sm:p-10 max-w-xl space-y-4">
             {/* Main Headline (2 lines matching reference exactly) */}
             <div className="space-y-0.5">
               <h1 className="text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] font-black uppercase tracking-tight text-white leading-tight font-rajdhani">
