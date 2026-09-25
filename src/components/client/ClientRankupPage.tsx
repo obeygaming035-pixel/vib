@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
   ShieldCheck,
   Zap,
@@ -52,7 +52,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO HEADER: RANKUP & DERANK SERVICES (Matching Reference 3)            */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden min-h-[300px] sm:min-h-[340px] flex items-center pt-8 pb-6 border-b border-white/5">
+      <section className="relative w-full overflow-hidden min-h-[280px] sm:min-h-[340px] flex items-center pt-8 pb-6 border-b border-white/5">
         {/* Atmospheric Ambient Glows */}
         <div className="absolute top-1/4 left-1/4 w-[550px] h-[320px] bg-purple-600/15 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
@@ -187,7 +187,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
                     }}
                     className="hover:underline flex items-center gap-1.5"
                   >
-                    <span>Book Derank Service (From ₹499)</span>
+                    <span>Book Derank Service (From â‚¹499)</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -446,7 +446,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
             <div className="lg:col-span-5 p-5 rounded-xl bg-[#090714] border border-white/10 space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-xl">🇮🇳</span>
+                  <span className="text-xl">ðŸ‡®ðŸ‡³</span>
                   <div>
                     <h3 className="font-extrabold text-sm text-white font-rajdhani">INDIA REGION (IND)</h3>
                     <div className="text-[10px] font-mono text-gray-400">Current Standard Pricing</div>
@@ -460,11 +460,11 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
               <div className="space-y-1.5 text-xs text-gray-300 pt-1">
                 <div className="flex justify-between py-1 border-b border-white/5">
                   <span className="text-gray-400">1000 VP Price:</span>
-                  <span className="font-bold text-white">₹800 - ₹850</span>
+                  <span className="font-bold text-white">â‚¹800 - â‚¹850</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-white/5">
                   <span className="text-gray-400">Ultra Bundle (8700 VP):</span>
-                  <span className="font-bold text-white">₹7,200+</span>
+                  <span className="font-bold text-white">â‚¹7,200+</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-white/5">
                   <span className="text-gray-400">Server Latency:</span>
@@ -492,7 +492,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
             <div className="lg:col-span-5 p-5 rounded-xl bg-gradient-to-br from-[#120824] to-[#1c0d38] border border-fuchsia-500/50 space-y-3 shadow-lg shadow-fuchsia-900/20">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-xl">🇵🇭</span>
+                  <span className="text-xl">ðŸ‡µðŸ‡­</span>
                   <div>
                     <h3 className="font-extrabold text-sm text-white font-rajdhani">PHILIPPINES REGION (PHP)</h3>
                     <div className="text-[10px] font-mono text-fuchsia-300">Discounted Southeast Asia Tier</div>
@@ -506,11 +506,11 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
               <div className="space-y-1.5 text-xs text-gray-200 pt-1">
                 <div className="flex justify-between py-1 border-b border-fuchsia-500/20">
                   <span className="text-gray-300">1000 VP Price:</span>
-                  <span className="font-bold text-emerald-400">~₹520 (Save ~₹300)</span>
+                  <span className="font-bold text-emerald-400">~â‚¹520 (Save ~â‚¹300)</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-fuchsia-500/20">
                   <span className="text-gray-300">Ultra Bundle (8700 VP):</span>
-                  <span className="font-bold text-emerald-400">~₹4,300 (Save ~₹2,900)</span>
+                  <span className="font-bold text-emerald-400">~â‚¹4,300 (Save ~â‚¹2,900)</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-fuchsia-500/20">
                   <span className="text-gray-300">Server Latency:</span>
@@ -549,7 +549,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
               onClick={() => onOpenCheckout('Region Conversion Support: IND to PHP', 999)}
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-xs sm:text-sm font-bold font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-fuchsia-600/40 transition-all cursor-pointer flex items-center gap-2 whitespace-nowrap"
             >
-              <span>Order Region Switch (₹999)</span>
+              <span>Order Region Switch (â‚¹999)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

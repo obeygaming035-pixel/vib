@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
   ShieldCheck,
   Check,
@@ -95,13 +95,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
     e.preventDefault();
     const bidVal = parseInt(userBidInput, 10);
     if (isNaN(bidVal) || bidVal <= currentBid) {
-      alert(`Bid must be greater than current bid of ₹${currentBid.toLocaleString()}`);
+      alert(`Bid must be greater than current bid of â‚¹${currentBid.toLocaleString()}`);
       return;
     }
     setCurrentBid(bidVal);
     setBidCount((c) => c + 1);
     setUserBidInput(String(bidVal + 250));
-    setBidSuccessMessage(`Bid of ₹${bidVal.toLocaleString()} placed successfully! You are the highest bidder.`);
+    setBidSuccessMessage(`Bid of â‚¹${bidVal.toLocaleString()} placed successfully! You are the highest bidder.`);
     setTimeout(() => setBidSuccessMessage(null), 5000);
   };
 
@@ -117,7 +117,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       id: 'p-immortal-310',
       badge: 'FEATURED',
       title: 'Immortal Profile',
-      sub: 'Level 310 • 20+ Skins',
+      sub: 'Level 310 â€¢ 20+ Skins',
       rankName: 'Immortal',
       rankIcon: '/assets/hires/ranks/immortal.png',
       slot1RankGlow: 'border-[#f43f5e]/40 shadow-[0_0_8px_rgba(244,63,94,0.3)]',
@@ -134,7 +134,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       id: 'p-ascendant-205',
       badge: 'FEATURED',
       title: 'Ascendant Profile',
-      sub: 'Level 205 • Prime Collection',
+      sub: 'Level 205 â€¢ Prime Collection',
       rankName: 'Ascendant',
       rankIcon: '/assets/hires/ranks/ascendant.png',
       slot1RankGlow: 'border-[#10b981]/40 shadow-[0_0_8px_rgba(16,185,129,0.3)]',
@@ -151,7 +151,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       id: 'p-radiant-420',
       badge: 'FEATURED',
       title: 'Radiant Profile',
-      sub: 'Level 420 • Full Access',
+      sub: 'Level 420 â€¢ Full Access',
       rankName: 'Radiant',
       rankIcon: '/assets/hires/ranks/radiant.png',
       slot1RankGlow: 'border-[#fbbf24]/40 shadow-[0_0_8px_rgba(251,191,36,0.3)]',
@@ -168,7 +168,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       id: 'p-diamond-180',
       badge: 'FEATURED',
       title: 'Diamond Profile',
-      sub: 'Level 180 • Multiple Skins',
+      sub: 'Level 180 â€¢ Multiple Skins',
       rankName: 'Diamond',
       rankIcon: '/assets/hires/ranks/diamond.png',
       slot1RankGlow: 'border-[#38bdf8]/40 shadow-[0_0_8px_rgba(56,189,248,0.3)]',
@@ -185,7 +185,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       id: 'p-ascendant-250',
       badge: 'FEATURED',
       title: 'Ascendant Profile',
-      sub: 'Level 250 • Rare Skins',
+      sub: 'Level 250 â€¢ Rare Skins',
       rankName: 'Ascendant',
       rankIcon: '/assets/hires/ranks/ascendant.png',
       slot1RankGlow: 'border-[#10b981]/40 shadow-[0_0_8px_rgba(16,185,129,0.3)]',
@@ -228,7 +228,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               </div>
             </div>
             <p className="text-gray-200 text-xs sm:text-sm leading-relaxed max-w-md drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
-              India's most trusted esports & digital services platform. Buy, sell, top up, rank up and trade — all in one place.
+              India's most trusted esports & digital services platform. Buy, sell, top up, rank up and trade â€” all in one place.
             </p>
             <div className="flex flex-wrap items-center gap-2 pt-1">
               <div className="px-3 py-1.5 rounded-full bg-[#120f24]/80 backdrop-blur-sm border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2">
@@ -592,7 +592,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
           {/* Instagram: full-bleed Part 03 artwork + 3D phone on top */}
-          <div className="relative rounded-2xl overflow-hidden min-h-[380px] sm:min-h-[420px] flex items-center bg-[#070510] shadow-2xl group">
+          <div className="relative rounded-2xl overflow-hidden min-h-[300px] sm:min-h-[420px] flex items-center bg-[#070510] shadow-2xl group">
             <img
               src="/assets/reference_parts/part_03.png"
               alt="Instagram Promotion Artwork"
@@ -646,7 +646,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           </div>
 
           {/* WhatsApp: full-bleed Part 01 artwork + 3D phone on top */}
-          <div className="relative rounded-2xl overflow-hidden min-h-[380px] sm:min-h-[420px] flex items-center bg-[#070510] shadow-2xl group">
+          <div className="relative rounded-2xl overflow-hidden min-h-[300px] sm:min-h-[420px] flex items-center bg-[#070510] shadow-2xl group">
             <img
               src="/assets/reference_parts/part_01.png"
               alt="WhatsApp Channel Artwork"
@@ -670,7 +670,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                   </span>
                 </h3>
                 <p className="text-xs text-gray-200 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-                  Join our official WhatsApp channel to receive latest updates, drops, giveaway announcements, coupons and more — directly delivered to you.
+                  Join our official WhatsApp channel to receive latest updates, drops, giveaway announcements, coupons and more â€” directly delivered to you.
                 </p>
                 <div className="grid grid-cols-2 gap-x-3 gap-y-1 pt-1 text-[11px] text-emerald-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   <div className="flex items-center gap-1.5"><Check className="w-3 h-3 text-emerald-400 flex-shrink-0" /><span>Latest Updates</span></div>
@@ -697,7 +697,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 5. SELL YOUR ACCOUNT (Reference 1) — full-bleed Part 06 */}
+      {/* 5. SELL YOUR ACCOUNT (Reference 1) â€” full-bleed Part 06 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[380px] sm:min-h-[440px] flex items-center bg-[#070510] shadow-2xl group">
           <img
@@ -738,10 +738,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 6. VIB URGENT SALE OFFER (Reference 2) — full-bleed Part 07 + Two Ways panel */}
+      {/* 6. VIB URGENT SALE OFFER (Reference 2) â€” full-bleed Part 07 + Two Ways panel */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
-          <div className="lg:col-span-2 relative rounded-2xl overflow-hidden min-h-[420px] sm:min-h-[470px] flex items-center bg-[#070510] shadow-2xl group">
+          <div className="lg:col-span-2 relative rounded-2xl overflow-hidden min-h-[340px] sm:min-h-[470px] flex items-center bg-[#070510] shadow-2xl group">
             <img
               src="/assets/reference_parts/part_07.png"
               alt="Urgent Sale Artwork"
@@ -800,14 +800,14 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden min-h-[420px] sm:min-h-[470px] bg-gradient-to-b from-[#120826] to-[#070510] p-5 sm:p-6 flex flex-col justify-between shadow-2xl border border-purple-500/20">
+          <div className="relative rounded-2xl overflow-hidden min-h-[340px] sm:min-h-[470px] bg-gradient-to-b from-[#120826] to-[#070510] p-5 sm:p-6 flex flex-col justify-between shadow-2xl border border-purple-500/20">
             <div className="space-y-1.5">
               <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-purple-300 uppercase font-bold">
                 <Sparkles className="w-3.5 h-3.5 text-purple-400" />
                 <span>TWO WAYS TO SELL</span>
               </div>
               <h3 className="text-lg sm:text-xl font-black text-white font-rajdhani uppercase tracking-wide">
-                SPEED OR VALUE — <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-purple-300">THE CHOICE IS YOURS</span>
+                SPEED OR VALUE â€” <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-purple-300">THE CHOICE IS YOURS</span>
               </h3>
             </div>
 
@@ -848,9 +848,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 7. VP PACKS HUB (Reference 2) — full-bleed Part 08 hero + regional cards */}
+      {/* 7. VP PACKS HUB (Reference 2) â€” full-bleed Part 08 hero + regional cards */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-        <div className="relative rounded-2xl overflow-hidden min-h-[340px] sm:min-h-[400px] flex items-center bg-[#070510] shadow-2xl group">
+        <div className="relative rounded-2xl overflow-hidden min-h-[280px] sm:min-h-[380px] flex items-center bg-[#070510] shadow-2xl group">
           <img
             src="/assets/reference_parts/part_08.png"
             alt="VP Packs Artwork"
@@ -902,7 +902,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
             <div className="relative z-10 p-6 space-y-3.5 w-full">
               <div className="flex items-center gap-2.5">
-                <span className="text-3xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">🇮🇳</span>
+                <span className="text-3xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">ðŸ‡®ðŸ‡³</span>
                 <div>
                   <h3 className="font-extrabold text-lg text-white font-rajdhani uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">INDIAN REGION VP</h3>
                   <div className="text-[11px] text-gray-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Top up your Indian region account at the best rates.</div>
@@ -935,7 +935,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
             <div className="relative z-10 p-6 space-y-3.5 w-full">
               <div className="flex items-center gap-2.5">
-                <span className="text-3xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">🇵🇭</span>
+                <span className="text-3xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">ðŸ‡µðŸ‡­</span>
                 <div>
                   <h3 className="font-extrabold text-lg text-white font-rajdhani uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">PHP REGION VP</h3>
                   <div className="text-[11px] text-gray-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Top up your Philippines region account with ease.</div>
@@ -977,9 +977,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 8. SKIN RENTALS (Reference 2) — full-bleed Part 10 */}
+      {/* 8. SKIN RENTALS (Reference 2) â€” full-bleed Part 10 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-2xl overflow-hidden aspect-[5/2] min-h-[440px] flex items-center bg-[#070510] shadow-2xl group">
+        <div className="relative rounded-2xl overflow-hidden min-h-[320px] sm:min-h-[440px] lg:min-h-[544px] flex items-center bg-[#070510] shadow-2xl group">
           <img
             src="/assets/reference_parts/part_10.png"
             alt="Skin Rentals Artwork"
@@ -1035,7 +1035,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 9. RANKUP & DERANK SERVICES (Reference 3) — full-bleed Part 14 */}
+      {/* 9. RANKUP & DERANK SERVICES (Reference 3) â€” full-bleed Part 14 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[420px] sm:min-h-[480px] flex items-center bg-[#070510] shadow-2xl group">
           <img
@@ -1144,10 +1144,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </button>
           </div>
         </div>
-        <p className="text-[11px] text-gray-500 text-center pt-1">"Same game. Different goals. We support both." — VIB</p>
+        <p className="text-[11px] text-gray-500 text-center pt-1">"Same game. Different goals. We support both." â€” VIB</p>
       </section>
 
-      {/* 10. SAME GAME HIGHER YOU divider — full-bleed Part 17 */}
+      {/* 10. SAME GAME HIGHER YOU divider â€” full-bleed Part 17 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[260px] flex items-center bg-[#070510] shadow-2xl">
           <img
@@ -1177,9 +1177,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 11. THE RANK JOURNEY (Reference 3) — full-bleed Part 12 staircase */}
+      {/* 11. THE RANK JOURNEY (Reference 3) â€” full-bleed Part 12 staircase */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-2xl overflow-hidden min-h-[440px] sm:min-h-[500px] bg-[#070510] shadow-2xl flex flex-col justify-between">
+        <div className="relative rounded-2xl overflow-hidden min-h-[360px] sm:min-h-[500px] bg-[#070510] shadow-2xl flex flex-col justify-between">
           <img
             src="/assets/reference_parts/part_12.png"
             alt="Rank Journey Staircase"
@@ -1191,7 +1191,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           <div className="relative z-10 p-6 sm:p-10 space-y-2">
             <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-cyan-300 uppercase font-bold">
               <TrendingUp className="w-3.5 h-3.5 text-cyan-400" />
-              <span>THE RANK JOURNEY • 9 TIER PROGRESSION</span>
+              <span>THE RANK JOURNEY â€¢ 9 TIER PROGRESSION</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase font-rajdhani tracking-tight leading-none drop-shadow-[0_4px_22px_rgba(0,0,0,0.9)]">
               <span className="text-white">EVERY RANK</span><br />
@@ -1277,9 +1277,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 13. VALO SKINS EXCHANGE (Reference 3) — full-bleed Part 15 */}
+      {/* 13. VALO SKINS EXCHANGE (Reference 3) â€” full-bleed Part 15 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-2xl overflow-hidden min-h-[400px] sm:min-h-[460px] flex items-center bg-[#070510] shadow-2xl group">
+        <div className="relative rounded-2xl overflow-hidden min-h-[320px] sm:min-h-[460px] flex items-center bg-[#070510] shadow-2xl group">
           <img
             src="/assets/reference_parts/part_15.png"
             alt="Valo Skins Exchange Artwork"
@@ -1297,7 +1297,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               VALO SKINS <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 via-pink-400 to-purple-300">EXCHANGE</span>
             </h2>
             <p className="text-xs sm:text-sm text-gray-200 leading-relaxed max-w-lg drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-              Trade or exchange your unwanted skins with other players. Find better skins, upgrade your collection — all in one place.
+              Trade or exchange your unwanted skins with other players. Find better skins, upgrade your collection â€” all in one place.
             </p>
             <button
               onClick={() => onOpenCheckout('Valo Skins Exchange Valuation', 0)}
@@ -1324,9 +1324,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 14. REGION MIGRATION GATEWAY (Reference 3) — full-bleed Part 18 */}
+      {/* 14. REGION MIGRATION GATEWAY (Reference 3) â€” full-bleed Part 18 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-2xl overflow-hidden min-h-[440px] sm:min-h-[500px] bg-[#070510] shadow-2xl flex flex-col justify-between">
+        <div className="relative rounded-2xl overflow-hidden min-h-[360px] sm:min-h-[500px] bg-[#070510] shadow-2xl flex flex-col justify-between">
           <img
             src="/assets/reference_parts/part_18.png"
             alt="Region Migration Gateway Artwork"
@@ -1370,9 +1370,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 15. CREATE A FRESH PHP PROFILE (Reference 4) — full-bleed Part 16 */}
+      {/* 15. CREATE A FRESH PHP PROFILE (Reference 4) â€” full-bleed Part 16 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-2xl overflow-hidden min-h-[400px] sm:min-h-[460px] flex items-center bg-[#070510] shadow-2xl group">
+        <div className="relative rounded-2xl overflow-hidden min-h-[320px] sm:min-h-[460px] flex items-center bg-[#070510] shadow-2xl group">
           <img
             src="/assets/reference_parts/part_16.png"
             alt="Fresh PHP Profile Artwork"
@@ -1415,13 +1415,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 <span>Get Your PHP Profile</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <div className="text-[10px] text-gray-400 font-mono drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">STARTING FROM ₹499</div>
+              <div className="text-[10px] text-gray-400 font-mono drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">STARTING FROM â‚¹499</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 16. HOW IT WORKS — 4-step strip (Reference 4) */}
+      {/* 16. HOW IT WORKS â€” 4-step strip (Reference 4) */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-5 sm:p-6 rounded-2xl bg-[#0a0717] border border-purple-500/15 shadow-xl flex flex-col lg:flex-row items-center gap-6">
           <div className="space-y-1 text-left lg:w-52 flex-shrink-0">
@@ -1456,9 +1456,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 17. COACHING PROGRAM (Reference 4) — full-bleed Part 21, text right */}
+      {/* 17. COACHING PROGRAM (Reference 4) â€” full-bleed Part 21, text right */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-2xl overflow-hidden min-h-[420px] sm:min-h-[470px] flex items-center justify-end bg-[#070510] shadow-2xl group">
+        <div className="relative rounded-2xl overflow-hidden min-h-[340px] sm:min-h-[470px] flex items-center justify-end bg-[#070510] shadow-2xl group">
           <img
             src="/assets/reference_parts/part_21.png"
             alt="Coaching Program Artwork"
@@ -1582,7 +1582,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
               <div className="flex items-center justify-between relative z-10">
                 <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded bg-fuchsia-900/80 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
-                  LOT #0881 • VAULTED COLLECTION
+                  LOT #0881 â€¢ VAULTED COLLECTION
                 </span>
                 <div className="flex items-center gap-1 text-xs text-emerald-400 font-mono">
                   <CheckCircle2 className="w-3.5 h-3.5" />
@@ -1615,7 +1615,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 <div className="p-4 rounded-xl bg-[#120c2b] border border-white/5 space-y-1">
                   <div className="text-[10px] font-mono text-gray-400 uppercase">CURRENT HIGHEST BID</div>
                   <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-amber-300 font-rajdhani">
-                    ₹{currentBid.toLocaleString()}
+                    â‚¹{currentBid.toLocaleString()}
                   </div>
                   <div className="text-[11px] font-mono text-emerald-400">{bidCount} total bids placed</div>
                 </div>
@@ -1623,9 +1623,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 <div className="p-4 rounded-xl bg-[#120c2b] border border-white/5 space-y-1">
                   <div className="text-[10px] font-mono text-gray-400 uppercase">MINIMUM NEXT BID</div>
                   <div className="text-3xl font-black text-white font-rajdhani">
-                    ₹{(currentBid + 150).toLocaleString()}
+                    â‚¹{(currentBid + 150).toLocaleString()}
                   </div>
-                  <div className="text-[11px] font-mono text-fuchsia-300">+₹150 minimum increment</div>
+                  <div className="text-[11px] font-mono text-fuchsia-300">+â‚¹150 minimum increment</div>
                 </div>
               </div>
 
@@ -1644,7 +1644,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                   <div className="flex items-center gap-2">
                     <div className="relative flex-1">
                       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">
-                        ₹
+                        â‚¹
                       </span>
                       <input
                         type="number"
@@ -1714,7 +1714,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 20. JOIN THE VIB COMMUNITY (Reference 4) — full-bleed Part 26 */}
+      {/* 20. JOIN THE VIB COMMUNITY (Reference 4) â€” full-bleed Part 26 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[300px] sm:min-h-[340px] bg-[#070510] shadow-2xl flex items-center">
           <img

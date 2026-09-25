@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
   ShieldCheck,
   Zap,
@@ -82,20 +82,19 @@ export const ClientRentalsPage: React.FC<ClientRentalsPageProps> = ({
   return (
     <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-8 pb-20 font-sans">
       {/* 1. HERO HEADER */}
-      <section className="relative w-full overflow-hidden aspect-[5/2] min-h-[440px] flex items-center py-8 sm:py-10 bg-[#05040a]">
-        {/* Full-bleed reference background at natural ratio — top/bottom reach outer edges, zero crop */}
-        <img
-          src="/assets/reference_parts/part_10.png"
-          alt="VIB Experience Program Weapon Cases"
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 to-[#05040a]/15 z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/20 to-transparent z-[1]" />
-
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2 w-full">
+        <div className="relative rounded-2xl overflow-hidden min-h-[320px] sm:min-h-[440px] lg:min-h-[544px] flex items-center bg-[#070510] shadow-2xl">
+          {/* Full-bleed reference background at natural ratio — top/bottom reach outer edges, zero crop */}
+          <img
+            src="/assets/reference_parts/part_10.png"
+            alt="VIB Experience Program Weapon Cases"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 to-[#05040a]/15 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/20 to-transparent z-[1]" />
 
           {/* Foreground content: Breadcrumbs, Title, Subtitle, Duration Selector */}
-          <div className="relative z-10 space-y-3.5">
+          <div className="relative z-10 p-6 sm:p-10 w-full space-y-3.5">
             <div className="flex items-center gap-2 text-xs text-gray-400 font-mono">
               <button onClick={() => onNavigate('home')} className="hover:text-purple-300 transition-colors cursor-pointer">
                 Home

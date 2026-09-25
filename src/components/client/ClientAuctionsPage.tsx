@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
   Gavel,
   Clock,
@@ -60,13 +60,13 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
     e.preventDefault();
     const bidVal = parseInt(userBidInput, 10);
     if (isNaN(bidVal) || bidVal <= currentBid) {
-      alert(`Bid must be greater than current bid of ₹${currentBid.toLocaleString()}`);
+      alert(`Bid must be greater than current bid of â‚¹${currentBid.toLocaleString()}`);
       return;
     }
     setCurrentBid(bidVal);
     setBidCount((c) => c + 1);
     setUserBidInput(String(bidVal + 250));
-    setBidSuccessMessage(`Bid of ₹${bidVal.toLocaleString()} placed successfully! You are currently the highest bidder.`);
+    setBidSuccessMessage(`Bid of â‚¹${bidVal.toLocaleString()} placed successfully! You are currently the highest bidder.`);
     setTimeout(() => setBidSuccessMessage(null), 5000);
   };
 
@@ -112,7 +112,7 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
   return (
     <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-12 pb-20 font-sans">
       {/* 1. HERO HEADER */}
-      <section className="relative w-full overflow-hidden min-h-[280px] sm:min-h-[320px] flex items-center pt-8 pb-6 border-b border-white/5">
+      <section className="relative w-full overflow-hidden min-h-[240px] sm:min-h-[300px] flex items-center pt-8 pb-6 border-b border-white/5">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[300px] bg-fuchsia-600/15 rounded-full blur-[110px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
 
@@ -191,7 +191,7 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
 
               <div className="flex items-center justify-between relative z-10">
                 <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded bg-fuchsia-900/80 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
-                  LOT #0881 • VAULTED COLLECTION
+                  LOT #0881 â€¢ VAULTED COLLECTION
                 </span>
                 <div className="flex items-center gap-1 text-xs text-emerald-400 font-mono">
                   <CheckCircle2 className="w-3.5 h-3.5" />
@@ -224,7 +224,7 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
                 <div className="p-4 rounded-xl bg-[#120c2b] border border-white/5 space-y-1">
                   <div className="text-[10px] font-mono text-gray-400 uppercase">CURRENT HIGHEST BID</div>
                   <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-amber-300 font-rajdhani">
-                    ₹{currentBid.toLocaleString()}
+                    â‚¹{currentBid.toLocaleString()}
                   </div>
                   <div className="text-[11px] font-mono text-emerald-400">{bidCount} total bids placed</div>
                 </div>
@@ -232,9 +232,9 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
                 <div className="p-4 rounded-xl bg-[#120c2b] border border-white/5 space-y-1">
                   <div className="text-[10px] font-mono text-gray-400 uppercase">MINIMUM NEXT BID</div>
                   <div className="text-3xl font-black text-white font-rajdhani">
-                    ₹{(currentBid + 150).toLocaleString()}
+                    â‚¹{(currentBid + 150).toLocaleString()}
                   </div>
-                  <div className="text-[11px] font-mono text-fuchsia-300">+₹150 minimum increment</div>
+                  <div className="text-[11px] font-mono text-fuchsia-300">+â‚¹150 minimum increment</div>
                 </div>
               </div>
 
@@ -253,7 +253,7 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
                   <div className="flex items-center gap-2">
                     <div className="relative flex-1">
                       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">
-                        ₹
+                        â‚¹
                       </span>
                       <input
                         type="number"
@@ -327,7 +327,7 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
               <div className="pt-2 border-t border-white/5 flex items-center justify-between">
                 <div>
                   <div className="text-[9px] font-mono text-gray-500">CURRENT BID</div>
-                  <div className="font-black text-base text-white font-rajdhani">₹{lot.currentBid.toLocaleString()}</div>
+                  <div className="font-black text-base text-white font-rajdhani">â‚¹{lot.currentBid.toLocaleString()}</div>
                 </div>
                 <button
                   onClick={() => onOpenCheckout(`Place Bid on ${lot.title}`, lot.currentBid + 150)}
