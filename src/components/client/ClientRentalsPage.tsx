@@ -82,66 +82,72 @@ export const ClientRentalsPage: React.FC<ClientRentalsPageProps> = ({
   return (
     <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-8 pb-20 font-sans">
       {/* 1. HERO HEADER */}
-      <section className="relative w-full overflow-hidden min-h-[280px] sm:min-h-[320px] flex items-center pt-8 pb-6 border-b border-white/5">
+      <section className="relative w-full overflow-hidden flex items-center py-6 sm:py-8 border-b border-white/5 bg-[#05040a]">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[300px] bg-purple-600/15 rounded-full blur-[110px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-fuchsia-600/15 rounded-full blur-[100px] pointer-events-none" />
 
-        {/* Full-bleed Reference Part 10 background with even gradient overlay */}
-        <img
-          src="/assets/reference_parts/part_10.png"
-          alt="VIB Experience Program Weapon Cases"
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0 opacity-85"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 to-[#05040a]/15 z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/20 to-transparent z-[1]" />
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+          {/* Centered reference background image with exact original positioning */}
+          <img
+            src="/assets/reference_parts/part_10.png"
+            alt="VIB Experience Program Weapon Cases"
+            className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0 opacity-80"
+          />
 
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 space-y-3">
-          <div className="flex items-center gap-2 text-xs text-gray-400 font-mono">
-            <button onClick={() => onNavigate('home')} className="hover:text-purple-300 transition-colors cursor-pointer">
-              Home
-            </button>
-            <ChevronRight className="w-3.5 h-3.5 text-gray-600" />
-            <span className="text-purple-400 font-semibold">Skin Rentals</span>
-          </div>
+          {/* Even dark tint film covering entire image - completely even, no bright bottom strip or seams */}
+          <div className="absolute inset-0 bg-[#05040a]/65 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/85 via-50% to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/85 via-35% to-transparent z-[1]" />
 
-          <div className="max-w-3xl space-y-1.5">
-            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-purple-950/40 border border-purple-500/40 text-purple-300 text-xs font-semibold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-              <span>VIB EXPERIENCE PROGRAM</span>
+          {/* Foreground content: Breadcrumbs, Title, Subtitle, Duration Selector */}
+          <div className="relative z-10 space-y-2.5">
+            <div className="flex items-center gap-2 text-xs text-gray-400 font-mono">
+              <button onClick={() => onNavigate('home')} className="hover:text-purple-300 transition-colors cursor-pointer">
+                Home
+              </button>
+              <ChevronRight className="w-3.5 h-3.5 text-gray-600" />
+              <span className="text-purple-400 font-semibold">Skin Rentals</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
-              SKIN RENTALS: <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-fuchsia-400 to-pink-400">PREMIUM SKINS. YOUR WAY.</span>
-            </h1>
-            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
-              Experience the rarest Valorant skins at affordable daily and weekly rates. Play with the looks you love without long-term commitments.
-            </p>
-          </div>
 
-          {/* DURATION SELECTOR - Compact, clearly organized & fully visible */}
-          <div className="pt-1 flex flex-wrap items-center gap-2.5">
-            <span className="text-xs font-mono text-gray-400 uppercase font-bold tracking-wider">
-              Select Duration:
-            </span>
-            <div className="inline-flex flex-wrap items-center gap-2">
-              {[
-                { key: '24h', label: '24 Hours' },
-                { key: '3d', label: '3 Days' },
-                { key: '7d', label: '7 Days (Popular)' },
-                { key: '30d', label: '30 Days (Best Value)' },
-              ].map((d) => (
-                <button
-                  key={d.key}
-                  type="button"
-                  onClick={() => setSelectedDuration(d.key as any)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold font-rajdhani uppercase tracking-wider transition-all cursor-pointer ${
-                    selectedDuration === d.key
-                      ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-md shadow-purple-600/40 border border-purple-400/50'
-                      : 'bg-[#0e0a1f]/90 hover:bg-[#1a1236] border border-white/10 text-gray-300 hover:text-white'
-                  }`}
-                >
-                  {d.label}
-                </button>
-              ))}
+            <div className="max-w-3xl space-y-1.5">
+              <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-purple-950/40 border border-purple-500/40 text-purple-300 text-xs font-semibold uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+                <span>VIB EXPERIENCE PROGRAM</span>
+              </div>
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-none font-rajdhani">
+                SKIN RENTALS: <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-fuchsia-400 to-pink-400">PREMIUM SKINS. YOUR WAY.</span>
+              </h1>
+              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
+                Experience the rarest Valorant skins at affordable daily and weekly rates. Play with the looks you love without long-term commitments.
+              </p>
+            </div>
+
+            {/* DURATION SELECTOR - Compact, clearly organized & fully visible */}
+            <div className="pt-1 flex flex-wrap items-center gap-2.5">
+              <span className="text-xs font-mono text-gray-400 uppercase font-bold tracking-wider">
+                Select Duration:
+              </span>
+              <div className="inline-flex flex-wrap items-center gap-2">
+                {[
+                  { key: '24h', label: '24 Hours' },
+                  { key: '3d', label: '3 Days' },
+                  { key: '7d', label: '7 Days (Popular)' },
+                  { key: '30d', label: '30 Days (Best Value)' },
+                ].map((d) => (
+                  <button
+                    key={d.key}
+                    type="button"
+                    onClick={() => setSelectedDuration(d.key as any)}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold font-rajdhani uppercase tracking-wider transition-all cursor-pointer ${
+                      selectedDuration === d.key
+                        ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-md shadow-purple-600/40 border border-purple-400/50'
+                        : 'bg-[#0e0a1f]/90 hover:bg-[#1a1236] border border-white/10 text-gray-300 hover:text-white'
+                    }`}
+                  >
+                    {d.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
