@@ -286,7 +286,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION                                                           */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden pt-6 sm:pt-8 min-h-[360px] sm:min-h-[500px] flex items-center">
+      <section className="relative w-full pt-6 sm:pt-8 min-h-[360px] sm:min-h-[500px] flex items-center">
         {/* Full-bleed Reference Part 27 (3D VIB Monolith Stage) with gradient overlay */}
         <img
           src="/assets/reference_parts/part_27.png"
@@ -297,7 +297,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
         {/* Atmospheric Ambient Glows */}
         <div className="absolute top-10 right-1/4 w-[650px] h-[550px] bg-purple-700/15 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute -bottom-10 left-10 w-[450px] h-[350px] bg-fuchsia-800/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-[450px] h-[350px] bg-fuchsia-800/10 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
           {/* Left Hero Details */}

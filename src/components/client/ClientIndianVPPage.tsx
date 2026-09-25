@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
   ShieldCheck,
   Check,
@@ -129,7 +129,7 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (Matching Reference 2) */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden pt-1 min-h-[440px]">
+      <section className="relative w-full pt-1 min-h-[440px]">
         {/* Full-bleed Reference Part 09 (Indian Agent + India Gate) with gradient overlay */}
         <img
           src="/assets/reference_parts/part_09.png"
@@ -140,7 +140,7 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-transparent to-transparent z-[1]" />
         {/* Ambient atmospheric purple glows */}
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[500px] bg-purple-700/15 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute -bottom-10 left-10 w-[450px] h-[350px] bg-fuchsia-800/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-[450px] h-[350px] bg-fuchsia-800/10 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
           {/* Left Column */}
@@ -160,7 +160,7 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
 
             {/* Subtitle */}
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-normal max-w-xl">
-              Official top-up • Safe &amp; Secure • Instant Processing
+              Official top-up â€¢ Safe &amp; Secure â€¢ Instant Processing
             </p>
 
             {/* 4 Trust Micro Pills */}
@@ -249,7 +249,7 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
                   className="w-full accent-purple-500 cursor-pointer h-1.5 bg-white/10 rounded-lg"
                 />
                 <div className="text-[11px] font-mono text-purple-300">
-                  ₹0 – ₹{priceMax >= 150000 ? '20,000+' : priceMax.toLocaleString('en-IN')}
+                  â‚¹0 â€“ â‚¹{priceMax >= 150000 ? '20,000+' : priceMax.toLocaleString('en-IN')}
                 </div>
               </div>
 
@@ -337,7 +337,7 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
                 className="w-full py-2 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md"
               >
                 <MessageSquare className="w-3.5 h-3.5 fill-black" />
-                <span>WhatsApp Us →</span>
+                <span>WhatsApp Us â†’</span>
               </a>
             </div>
 
@@ -347,7 +347,7 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
                 <Headphones className="w-4 h-4 text-purple-400" />
                 <div>
                   <div className="text-[10px] font-mono tracking-wider text-gray-400 uppercase">WE ARE ONLINE</div>
-                  <div className="font-extrabold text-xs text-white">9 AM – 9 PM</div>
+                  <div className="font-extrabold text-xs text-white">9 AM â€“ 9 PM</div>
                 </div>
               </div>
               <p className="text-[11px] text-gray-400 leading-snug">
@@ -359,7 +359,7 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
                 rel="noreferrer"
                 className="w-full py-1.5 rounded-lg bg-[#261545] hover:bg-purple-600 text-purple-200 hover:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors border border-purple-500/30 cursor-pointer"
               >
-                <span>WhatsApp Us →</span>
+                <span>WhatsApp Us â†’</span>
               </a>
             </div>
 
@@ -519,7 +519,7 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
                 className="px-4 py-2 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-xs whitespace-nowrap cursor-pointer shadow-md flex items-center gap-1.5 transition-all"
               >
                 <MessageSquare className="w-3.5 h-3.5 fill-black" />
-                <span>Request on WhatsApp →</span>
+                <span>Request on WhatsApp â†’</span>
               </a>
             </div>
           </div>

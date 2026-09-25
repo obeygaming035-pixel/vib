@@ -52,7 +52,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
       {/* ========================================================================= */}
       {/* 1. HERO HEADER: RANKUP & DERANK SERVICES (Matching Reference 3)            */}
       {/* ========================================================================= */}
-      <section className="relative w-full overflow-hidden min-h-[280px] sm:min-h-[340px] flex items-center pt-8 pb-6 border-b border-white/5">
+      <section className="relative w-full min-h-[280px] sm:min-h-[340px] flex items-center pt-8 pb-6 border-b border-white/5">
         {/* Atmospheric Ambient Glows */}
         <div className="absolute top-1/4 left-1/4 w-[550px] h-[320px] bg-purple-600/15 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />

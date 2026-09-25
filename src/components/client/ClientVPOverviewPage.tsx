@@ -885,7 +885,7 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="w-full flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-2">
               <span className="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs text-gray-300 flex items-center gap-1.5 font-medium">
                 <span className="w-3.5 h-2.5 rounded-sm inline-flex flex-col overflow-hidden border border-white/20">

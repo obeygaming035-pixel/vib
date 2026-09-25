@@ -97,7 +97,7 @@ export const ClientCoachingPage: React.FC<ClientCoachingPageProps> = ({
   return (
     <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-12 pb-20 font-sans">
       {/* 1. HERO HEADER */}
-      <section className="relative w-full overflow-hidden min-h-[280px] sm:min-h-[340px] flex items-center pt-8 pb-6 border-b border-white/5">
+      <section className="relative w-full min-h-[280px] sm:min-h-[340px] flex items-center pt-8 pb-6 border-b border-white/5">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[300px] bg-purple-600/15 rounded-full blur-[110px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-fuchsia-600/15 rounded-full blur-[100px] pointer-events-none" />
 

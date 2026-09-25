@@ -1511,7 +1511,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       </section>
 
       {/* 18. VIB LIVE AUCTIONS (Matching ClientAuctionsPage exactly) */}
-      <section className="relative w-full overflow-hidden flex items-center pt-8 pb-4">
+      <section className="relative w-full flex items-center pt-8 pb-4">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[300px] bg-fuchsia-600/15 rounded-full blur-[110px] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
 
