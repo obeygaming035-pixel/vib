@@ -979,7 +979,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
       {/* 8. SKIN RENTALS (Reference 2) — full-bleed Part 10 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-2xl overflow-hidden min-h-[440px] sm:min-h-[520px] lg:min-h-[560px] flex items-center bg-[#070510] shadow-2xl group">
+        <div className="relative rounded-2xl overflow-hidden aspect-[5/2] min-h-[440px] flex items-center bg-[#070510] shadow-2xl group">
           <img
             src="/assets/reference_parts/part_10.png"
             alt="Skin Rentals Artwork"
