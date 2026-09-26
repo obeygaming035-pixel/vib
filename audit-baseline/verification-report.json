@@ -1,0 +1,45 @@
+{
+  "url": "http://localhost:3001",
+  "timestamp": "2026-09-26T00:37:07.451Z",
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 375,
+      "height": 812,
+      "screenshot": "D:\\VIB_Website\\audit-baseline\\screenshot-mobile-375px.png",
+      "overflow": {
+        "scrollWidth": 375,
+        "clientWidth": 375,
+        "hasOverflow": false,
+        "overflowDelta": 0
+      }
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024,
+      "screenshot": "D:\\VIB_Website\\audit-baseline\\screenshot-tablet-768px.png",
+      "overflow": {
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "hasOverflow": false,
+        "overflowDelta": 0
+      }
+    },
+    {
+      "name": "desktop",
+      "width": 1280,
+      "height": 800,
+      "screenshot": "D:\\VIB_Website\\audit-baseline\\screenshot-desktop-1280px.png",
+      "overflow": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "hasOverflow": false,
+        "overflowDelta": 0
+      }
+    }
+  ],
+  "consoleErrors": [],
+  "networkFailures": [],
+  "passed": true
+}
