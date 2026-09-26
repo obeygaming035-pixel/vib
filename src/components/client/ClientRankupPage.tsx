@@ -22,6 +22,7 @@ import { Currency } from '../../types';
 import { ClientPage } from './Header';
 import { RankProgressionCalculator } from '../home/RankProgressionCalculator';
 import { FlagIcon } from '../common/FlagIcon';
+import { useRankBadges, getRankBadgeUrl } from '../../utils/valorantRanks';
 
 interface ClientRankupPageProps {
   currency: Currency;
@@ -47,6 +48,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
   onOpenCheckout,
 }) => {
   const [journeyType, setJourneyType] = useState<'rankup' | 'derank'>('rankup');
+  const rankBadges = useRankBadges();
 
   return (
     <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-12 pb-20 font-sans">
@@ -283,23 +285,34 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
 
         {/* 9-Tier Rank Cards */}
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2.5 pt-1">
-          {RANK_TIERS.map((tier, idx) => (
-            <div
-              key={tier.name}
-              className={`p-3 rounded-xl bg-[#0a0815] border ${tier.border}/30 hover:${tier.border} transition-all duration-200 text-center space-y-2 group shadow-sm flex flex-col items-center justify-between`}
-            >
-              <div className="text-[9px] font-mono text-gray-500">0{idx + 1}</div>
-              <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center text-black font-black text-xs shadow-md font-rajdhani group-hover:scale-110 transition-transform`}>
-                {tier.badge.charAt(0)}
-              </div>
-              <div>
-                <div className={`font-bold text-xs ${tier.text} font-rajdhani tracking-wide`}>
-                  {tier.name}
+          {RANK_TIERS.map((tier, idx) => {
+            const rankIconUrl = rankBadges[tier.name as keyof typeof rankBadges] || getRankBadgeUrl(tier.name);
+            return (
+              <div
+                key={tier.name}
+                className={`p-3 rounded-xl bg-[#0a0815] border ${tier.border}/30 hover:${tier.border} transition-all duration-200 text-center space-y-2 group shadow-sm flex flex-col items-center justify-between hover:shadow-[0_0_15px_rgba(147,51,234,0.25)]`}
+              >
+                <div className="text-[9px] font-mono text-gray-500">0{idx + 1}</div>
+                <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center relative">
+                  <img
+                    src={rankIconUrl}
+                    alt={`${tier.name} Rank Badge`}
+                    className="w-10 h-10 sm:w-11 sm:h-11 object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = getRankBadgeUrl(tier.name);
+                    }}
+                  />
                 </div>
-                <div className="text-[9px] text-gray-500 uppercase font-mono">1 - 3</div>
+                <div>
+                  <div className={`font-bold text-xs ${tier.text} font-rajdhani tracking-wide`}>
+                    {tier.name}
+                  </div>
+                  <div className="text-[9px] text-gray-500 uppercase font-mono">1 - 3</div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 

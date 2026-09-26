@@ -76,9 +76,28 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
       >
         {/* Top Accent Line */}
         <div
-          className="absolute top-0 left-0 right-0 h-1.5"
+          className="absolute top-0 left-0 right-0 h-1.5 z-20"
           style={{ backgroundColor: activePkg.theme.primaryColor }}
         />
+
+        {/* LAYER 1: Background Character Artwork (Clearly visible, contained inside card, behind UI) */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 rounded-2xl select-none">
+          {/* Ambient luminous backlight glow */}
+          <div
+            className="absolute -top-12 -left-12 w-80 h-80 rounded-full blur-[100px] opacity-35 pointer-events-none"
+            style={{ backgroundColor: activePkg.theme.primaryColor }}
+          />
+          {/* Character artwork with boosted brightness & contrast so suit/face details pop */}
+          <img
+            src={activePkg.characterAsset}
+            alt={activePkg.agentName}
+            className="absolute -bottom-10 -left-6 sm:-left-2 h-[85%] sm:h-[95%] max-w-[50%] sm:max-w-[42%] object-contain object-bottom filter brightness-125 contrast-110 drop-shadow-[0_0_25px_rgba(0,0,0,0.85)] opacity-30 sm:opacity-40 transition-all pointer-events-none"
+            referrerPolicy="no-referrer"
+          />
+          {/* Readability gradient overlays: transparent near character edge, rich dark solid over form area */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0b1018]/85 to-[#0b1018] z-[1] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b1018] via-transparent to-transparent z-[1] pointer-events-none" />
+        </div>
 
         {/* Close Button */}
         <button
@@ -86,17 +105,17 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           type="button"
           onClick={handleReset}
           aria-label="Close checkout modal"
-          className="absolute top-4 right-4 min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-gray-400 hover:text-white rounded-lg transition-colors cursor-pointer hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
+          className="absolute top-4 right-4 z-20 min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-gray-400 hover:text-white rounded-lg transition-colors cursor-pointer hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
         >
           <X className="w-5 h-5" />
         </button>
 
         {orderState === 'form' && (
-          <div>
+          <div className="relative z-10">
             {/* Header */}
             <div className="flex items-center gap-3 mb-5">
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center border"
+                className="w-10 h-10 rounded-xl flex items-center justify-center border shrink-0"
                 style={{
                   backgroundColor: `${activePkg.theme.primaryColor}20`,
                   borderColor: activePkg.theme.primaryColor,
@@ -115,14 +134,26 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
             </div>
 
             {/* Selected Package Banner */}
-            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between mb-5">
+            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between mb-5 relative z-10 backdrop-blur-sm">
               <div className="flex items-center gap-3">
-                <img
-                  src={activePkg.characterAsset}
-                  alt={activePkg.agentName}
-                  className="w-12 h-12 object-contain filter drop-shadow"
-                  referrerPolicy="no-referrer"
-                />
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center p-1 relative shrink-0 overflow-hidden border"
+                  style={{
+                    backgroundColor: `${activePkg.theme.primaryColor}15`,
+                    borderColor: `${activePkg.theme.primaryColor}40`,
+                  }}
+                >
+                  <div
+                    className="absolute inset-0 rounded-xl blur-md opacity-30 pointer-events-none"
+                    style={{ backgroundColor: activePkg.theme.primaryColor }}
+                  />
+                  <img
+                    src={activePkg.characterAsset}
+                    alt={activePkg.agentName}
+                    className="w-full h-full object-contain filter brightness-125 contrast-115 drop-shadow-[0_0_8px_rgba(0,0,0,0.9)] relative z-10"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
                 <div>
                   <div className="font-chakra font-bold text-sm text-white">
                     {currentTitle}
@@ -133,7 +164,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 </div>
               </div>
               <div
-                className="font-rajdhani font-bold text-xl"
+                className="font-rajdhani font-bold text-xl shrink-0"
                 style={{ color: activePkg.theme.primaryColor }}
               >
                 {priceText}
@@ -230,8 +261,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 type="submit"
                 className="w-full py-3.5 rounded-xl font-chakra font-bold text-base text-black flex items-center justify-center gap-2 transition-all duration-200 transform active:scale-98 shadow-lg cursor-pointer hover:brightness-110 mt-2"
                 style={{
-                  background: pkg.theme.ctaGradient,
-                  boxShadow: `0 0 20px ${pkg.theme.accentGlow}`,
+                  background: activePkg.theme.ctaGradient,
+                  boxShadow: `0 0 20px ${activePkg.theme.accentGlow}`,
                 }}
               >
                 <span>Proceed to Pay {priceText}</span>

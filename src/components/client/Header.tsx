@@ -60,7 +60,64 @@ export const Header: React.FC<HeaderProps> = ({
   const [moreOpen, setMoreOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [closedHeaderHeight, setClosedHeaderHeight] = useState(64);
+  const headerRef = useRef<HTMLElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
+
+  // Measure closed header height dynamically on mount & resize
+  useEffect(() => {
+    const updateHeight = () => {
+      if (headerRef.current && !mobileMenuOpen) {
+        setClosedHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, [mobileMenuOpen]);
+
+  // Direction-aware auto-hiding scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY || document.documentElement.scrollTop;
+          const delta = currentScrollY - lastScrollY.current;
+
+          // If mobile drawer is open, keep header visible
+          if (mobileMenuOpen) {
+            setIsHeaderVisible(true);
+            lastScrollY.current = Math.max(0, currentScrollY);
+            ticking.current = false;
+            return;
+          }
+
+          // Top of page: always visible
+          if (currentScrollY <= 40) {
+            setIsHeaderVisible(true);
+          }
+          // Scrolled down beyond threshold (> 12px downward movement past 60px): smoothly hide
+          else if (delta > 12 && currentScrollY > 60) {
+            setIsHeaderVisible(false);
+          }
+          // Scrolled up beyond threshold (> 10px upward movement anywhere on page): smoothly show
+          else if (delta < -10) {
+            setIsHeaderVisible(true);
+          }
+
+          lastScrollY.current = Math.max(0, currentScrollY);
+          ticking.current = false;
+        });
+        ticking.current = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
@@ -107,7 +164,13 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#07070d]/95 backdrop-blur-xl border-b border-white/10 px-4 sm:px-6 lg:px-8 py-2.5 transition-colors">
+    <>
+      <header
+        ref={headerRef}
+        className={`fixed top-0 left-0 right-0 z-50 w-full bg-[#07070d]/95 backdrop-blur-xl border-b border-white/10 px-4 sm:px-6 lg:px-8 py-2.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${
+          isHeaderVisible ? 'translate-y-0 shadow-lg' : '-translate-y-full pointer-events-none'
+        }`}
+      >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-4">
         {/* Left: Brand & Navigation Links grouped together */}
         <div className="flex items-center gap-3 sm:gap-4 xl:gap-6">
@@ -565,5 +628,12 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       )}
     </header>
+    {/* Flow spacer so page content never jumps or shifts during auto-hide transitions */}
+    <div
+      style={{ height: closedHeaderHeight }}
+      aria-hidden="true"
+      className="w-full flex-shrink-0 pointer-events-none"
+    />
+  </>
   );
 };

@@ -40,6 +40,7 @@ import { formatCurrencyPrice } from '../../utils/format';
 import { ClientPage } from './Header';
 import { soundFx } from '../../utils/audio';
 import { FlagIcon } from '../common/FlagIcon';
+import { useRankBadges, getRankBadgeUrl } from '../../utils/valorantRanks';
 
 interface ClientHomePageProps {
   currency: Currency;
@@ -66,6 +67,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
   onAddToCart,
   onOpenCheckout,
 }) => {
+  const rankBadges = useRankBadges();
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
   const [selectedMarketplace, setSelectedMarketplace] = useState<'guaranteed' | 'public'>('guaranteed');
   const [journeyType, setJourneyType] = useState<'rankup' | 'derank'>('rankup');
@@ -1209,17 +1211,28 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
           <div className="relative z-10 px-3 sm:px-8 pb-6">
             <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-1.5 sm:gap-2">
-              {RANK_TIERS.map((tier) => (
-                <div
-                  key={tier.name}
-                  className={`p-1.5 sm:p-2.5 rounded-xl bg-[#070510]/90 backdrop-blur-sm border ${tier.border ?? ''}/30 text-center space-y-1 sm:space-y-1.5 flex flex-col items-center justify-between hover:border-purple-400 transition-colors ${tier.text}`}
-                >
-                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center text-black font-black text-[11px] sm:text-xs font-rajdhani shadow-md`}>
-                    {tier.badge.charAt(0)}
+              {RANK_TIERS.map((tier) => {
+                const rankIconUrl = rankBadges[tier.name as keyof typeof rankBadges] || getRankBadgeUrl(tier.name);
+                return (
+                  <div
+                    key={tier.name}
+                    className={`p-1.5 sm:p-2.5 rounded-xl bg-[#070510]/90 backdrop-blur-sm border ${tier.border ?? ''}/30 text-center space-y-1 sm:space-y-1.5 flex flex-col items-center justify-between hover:border-purple-400 transition-colors ${tier.text}`}
+                  >
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center relative">
+                      <img
+                        src={rankIconUrl}
+                        alt={`${tier.name} Rank Badge`}
+                        className="w-8 h-8 sm:w-9 sm:h-9 object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] hover:scale-110 transition-transform"
+                        loading="lazy"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = getRankBadgeUrl(tier.name);
+                        }}
+                      />
+                    </div>
+                    <div className={`font-bold text-[10px] sm:text-[11px] font-rajdhani uppercase tracking-wide truncate max-w-full`}>{tier.name}</div>
                   </div>
-                  <div className={`font-bold text-[10px] sm:text-[11px] font-rajdhani uppercase tracking-wide truncate max-w-full`}>{tier.name}</div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
