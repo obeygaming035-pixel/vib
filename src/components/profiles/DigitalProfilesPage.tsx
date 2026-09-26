@@ -14,6 +14,7 @@ import {
   RefreshCw,
   Eye,
   ShoppingBag,
+  X,
 } from 'lucide-react';
 import { Currency, DigitalProfile, CartItem } from '../../types';
 import { MARKETPLACE_PROFILES_IMAGE_1 } from '../../data/mockData';
@@ -519,10 +520,12 @@ export const DigitalProfilesPage: React.FC<DigitalProfilesPageProps> = ({
                 </span>
               </div>
               <button
+                type="button"
                 onClick={() => setInspectingProfile(null)}
-                className="text-gray-400 hover:text-white p-1 rounded-lg hover:bg-white/5"
+                aria-label="Close profile inspection modal"
+                className="text-gray-400 hover:text-white min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               >
-                ✕
+                <X className="w-5 h-5" />
               </button>
             </div>
 
@@ -544,8 +547,9 @@ export const DigitalProfilesPage: React.FC<DigitalProfilesPageProps> = ({
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   {inspectingProfile.skins.map((s, idx) => (
-                    <div key={idx} className="p-2.5 rounded-lg bg-[#111728] border border-white/5 text-xs text-gray-200">
-                      ⚡ {s}
+                    <div key={idx} className="p-2.5 rounded-lg bg-[#111728] border border-white/5 text-xs text-gray-200 flex items-center gap-1.5">
+                      <Zap className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                      <span>{s}</span>
                     </div>
                   ))}
                 </div>

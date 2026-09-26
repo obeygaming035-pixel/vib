@@ -7,18 +7,35 @@ interface DiscordModalProps {
 }
 
 export const DiscordModal: React.FC<DiscordModalProps> = ({ isOpen, onClose }) => {
+  // Close on Escape key press
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-      <div className="relative w-full max-w-md rounded-2xl border border-indigo-500/30 bg-[#0c101c] p-6 shadow-2xl overflow-hidden">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="discord-modal-title"
+        className="relative w-full max-w-md rounded-2xl border border-indigo-500/30 bg-[#0c101c] p-6 shadow-2xl overflow-hidden"
+      >
         {/* Ambient Top Glow */}
         <div className="absolute top-0 right-0 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
 
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-lg text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+          aria-label="Close Discord dialog"
+          className="absolute top-4 right-4 min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-lg text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
         >
           <X className="w-5 h-5" />
         </button>
@@ -61,7 +78,7 @@ export const DiscordModal: React.FC<DiscordModalProps> = ({ isOpen, onClose }) =
             window.open('https://discord.gg', '_blank', 'noopener,noreferrer');
             onClose();
           }}
-          className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-chakra font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all cursor-pointer"
+          className="w-full min-h-[44px] py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-chakra font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
         >
           <span>Accept Discord Invite</span>
           <ExternalLink className="w-4 h-4" />

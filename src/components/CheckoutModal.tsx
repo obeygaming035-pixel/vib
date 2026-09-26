@@ -25,6 +25,17 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const [orderState, setOrderState] = useState<'form' | 'processing' | 'success'>('form');
   const [copied, setCopied] = useState(false);
 
+  // Close on Escape key press
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        handleReset();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const activePkg = pkg || VP_PACKAGES[0];
@@ -55,6 +66,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-all">
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="checkout-title"
         className="relative w-full max-w-lg rounded-2xl bg-[#0b1018] border border-white/15 p-6 sm:p-8 shadow-2xl overflow-hidden"
         style={{
           boxShadow: `0 0 50px ${activePkg.theme.accentGlow}`,
@@ -71,7 +85,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           id="close-checkout-modal"
           type="button"
           onClick={handleReset}
-          className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white rounded-lg transition-colors cursor-pointer"
+          aria-label="Close checkout modal"
+          className="absolute top-4 right-4 min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-gray-400 hover:text-white rounded-lg transition-colors cursor-pointer hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
         >
           <X className="w-5 h-5" />
         </button>
@@ -140,7 +155,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     placeholder="e.g. PhoenixAim"
                     value={riotId}
                     onChange={(e) => setRiotId(e.target.value)}
-                    className="col-span-2 px-3.5 py-2.5 rounded-lg bg-black/50 border border-white/15 text-white placeholder-gray-500 text-sm font-chakra focus:outline-none focus:border-white/40"
+                    className="col-span-2 px-3.5 py-2.5 rounded-lg bg-black/50 border border-white/15 text-white placeholder-gray-500 text-base sm:text-sm font-chakra focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400"
                   />
                   <div className="relative flex items-center">
                     <span className="absolute left-3 text-gray-500 font-mono">#</span>
@@ -151,7 +166,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                       placeholder="IND1"
                       value={tagline}
                       onChange={(e) => setTagline(e.target.value)}
-                      className="w-full pl-7 pr-3 py-2.5 rounded-lg bg-black/50 border border-white/15 text-white placeholder-gray-500 text-sm font-chakra focus:outline-none focus:border-white/40"
+                      className="w-full pl-7 pr-3 py-2.5 rounded-lg bg-black/50 border border-white/15 text-white placeholder-gray-500 text-base sm:text-sm font-chakra focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400"
                     />
                   </div>
                 </div>
@@ -171,7 +186,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   placeholder="yourname@domain.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-black/50 border border-white/15 text-white placeholder-gray-500 text-sm font-chakra focus:outline-none focus:border-white/40"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-black/50 border border-white/15 text-white placeholder-gray-500 text-base sm:text-sm font-chakra focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400"
                 />
               </div>
 
@@ -190,7 +205,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                       key={method.id}
                       type="button"
                       onClick={() => setPaymentMethod(method.id as 'upi' | 'card' | 'netbanking')}
-                      className={`p-2.5 rounded-lg border text-left transition-all ${
+                      className={`min-h-[44px] p-2.5 rounded-lg border text-left transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
                         paymentMethod === method.id
                           ? 'bg-white/15 border-white text-white shadow'
                           : 'bg-black/40 border-white/10 text-gray-400 hover:border-white/20'

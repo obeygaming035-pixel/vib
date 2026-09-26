@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import {
   Award,
   Tv,
@@ -226,8 +226,9 @@ export const ClientCoachingPage: React.FC<ClientCoachingPageProps> = ({
 
               <div className="pt-6">
                 <button
+                  type="button"
                   onClick={() => onOpenCheckout(`Coaching: ${pkg.title}`, pkg.price)}
-                  className={`w-full py-3 rounded-xl text-xs font-bold font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 ${
+                  className={`w-full min-h-[44px] py-3 rounded-xl text-xs font-bold font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 ${
                     pkg.popular
                       ? 'bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white shadow-lg shadow-fuchsia-600/30'
                       : 'bg-white/10 hover:bg-white/15 text-white border border-white/15'

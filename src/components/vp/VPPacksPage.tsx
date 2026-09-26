@@ -12,10 +12,12 @@ import {
   ChevronDown,
   Sparkles,
   Award,
+  Globe,
 } from 'lucide-react';
 import { Currency, VPStoreItem, CartItem } from '../../types';
 import { INDIAN_VP_PACKS, PHILIPPINES_VP_PACKS } from '../../data/mockData';
 import { formatCurrencyPrice } from '../../utils/format';
+import { FlagIcon } from '../common/FlagIcon';
 
 interface VPPacksPageProps {
   currency: Currency;
@@ -187,38 +189,41 @@ export const VPPacksPage: React.FC<VPPacksPageProps> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-10">
         <div className="flex flex-wrap items-center gap-3 border-b border-white/10 pb-4">
           <button
+            type="button"
             onClick={() => setSelectedRegion('india')}
-            className={`px-5 py-2.5 rounded-xl font-chakra font-bold text-xs sm:text-sm tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
+            className={`min-h-[44px] px-5 py-2.5 rounded-xl font-chakra font-bold text-xs sm:text-sm tracking-wider flex items-center gap-2 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
               selectedRegion === 'india'
                 ? 'bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white shadow-[0_0_15px_rgba(192,38,211,0.4)] border border-fuchsia-400'
                 : 'bg-[#0d1220] text-gray-400 hover:text-white border border-white/10'
             }`}
           >
-            <span className="text-base">🇮🇳</span>
+            <FlagIcon country="IN" size="sm" />
             <span>Indian VP (Instant)</span>
           </button>
 
           <button
+            type="button"
             onClick={() => setSelectedRegion('philippines')}
-            className={`px-5 py-2.5 rounded-xl font-chakra font-bold text-xs sm:text-sm tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
+            className={`min-h-[44px] px-5 py-2.5 rounded-xl font-chakra font-bold text-xs sm:text-sm tracking-wider flex items-center gap-2 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
               selectedRegion === 'philippines'
                 ? 'bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white shadow-[0_0_15px_rgba(192,38,211,0.4)] border border-fuchsia-400'
                 : 'bg-[#0d1220] text-gray-400 hover:text-white border border-white/10'
             }`}
           >
-            <span className="text-base">🇵🇭</span>
+            <FlagIcon country="PH" size="sm" />
             <span>Philippines VP</span>
           </button>
 
           <button
+            type="button"
             onClick={() => setSelectedRegion('other')}
-            className={`px-5 py-2.5 rounded-xl font-chakra font-bold text-xs sm:text-sm tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
+            className={`min-h-[44px] px-5 py-2.5 rounded-xl font-chakra font-bold text-xs sm:text-sm tracking-wider flex items-center gap-2 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
               selectedRegion === 'other'
                 ? 'bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white shadow-[0_0_15px_rgba(192,38,211,0.4)] border border-fuchsia-400'
                 : 'bg-[#0d1220] text-gray-400 hover:text-white border border-white/10'
             }`}
           >
-            <span className="text-base">🌐</span>
+            <Globe className="w-4 h-4 text-cyan-400" />
             <span>Other Regions (On Request)</span>
           </button>
         </div>

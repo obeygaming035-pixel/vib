@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import {
   ShieldCheck,
   Check,
@@ -19,6 +19,7 @@ import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
 import { ClientPage } from './Header';
 import { soundFx } from '../../utils/audio';
+import { FlagIcon } from '../common/FlagIcon';
 
 interface ClientIndianVPPageProps {
   currency: Currency;
@@ -84,23 +85,11 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
   });
 
   const IndiaFlag = ({ className = "w-4 h-3" }: { className?: string }) => (
-    <span className={`${className} rounded-sm inline-flex flex-col overflow-hidden border border-white/20 shadow-sm flex-shrink-0`}>
-      <span className="h-1/3 bg-[#FF9933] w-full" />
-      <span className="h-1/3 bg-white w-full flex items-center justify-center relative">
-        <span className="w-1.5 h-1.5 rounded-full border-[0.5px] border-[#000080] bg-[#000080]/30 flex items-center justify-center" />
-      </span>
-      <span className="h-1/3 bg-[#128807] w-full" />
-    </span>
+    <FlagIcon country="IN" size="sm" className={className} />
   );
 
   const PhilippinesFlag = ({ className = "w-4 h-3" }: { className?: string }) => (
-    <span className={`${className} rounded-sm inline-flex relative overflow-hidden border border-white/20 shadow-sm flex-shrink-0`}>
-      <span className="h-1/2 bg-[#0038A8] w-full" />
-      <span className="h-1/2 bg-[#CE1126] w-full" />
-      <span className="absolute left-0 top-0 bottom-0 w-[45%] bg-white [clip-path:polygon(0_0,100%_50%,0_100%)] flex items-center justify-center">
-        <span className="w-1 h-1 rounded-full bg-[#FCD116]" />
-      </span>
-    </span>
+    <FlagIcon country="PH" size="sm" className={className} />
   );
 
   return (
@@ -457,10 +446,11 @@ export const ClientIndianVPPage: React.FC<ClientIndianVPPageProps> = ({
 
                   {/* Buy Now Button */}
                   <button
+                    type="button"
                     onClick={() => handleBuy(pack)}
-                    className="w-full mt-2.5 py-1 rounded-lg bg-[#251342] hover:bg-[#7c3aed] text-white font-extrabold text-[11px] transition-colors cursor-pointer border border-purple-500/30 flex items-center justify-center gap-1.5 shadow-sm font-rajdhani uppercase tracking-wider"
+                    className="w-full mt-2.5 min-h-[38px] py-1.5 px-3 rounded-lg bg-[#251342] hover:bg-[#7c3aed] text-white font-extrabold text-xs transition-colors cursor-pointer border border-purple-500/30 flex items-center justify-center gap-1.5 shadow-sm font-rajdhani uppercase tracking-wider focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
                   >
-                    <ShoppingCart className="w-3 h-3" />
+                    <ShoppingCart className="w-3.5 h-3.5" />
                     <span>Buy Now</span>
                   </button>
                 </div>

@@ -212,8 +212,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
             style={{ objectPosition: 'center 30%' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/55 to-[#05040a]/10 z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/25 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/90 sm:via-[#05040a]/55 to-[#05040a]/80 sm:to-[#05040a]/10 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/50 sm:via-[#05040a]/25 to-transparent z-[1]" />
           <div className="relative z-10 p-6 sm:p-10 max-w-xl space-y-4">
             <div className="text-xs text-gray-400 font-medium flex items-center gap-1.5 select-none">
               <span className="hover:text-gray-200 cursor-pointer transition-colors" onClick={() => onNavigate('home')}>Home</span>
@@ -229,12 +229,12 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               </div>
             </div>
             <p className="text-gray-200 text-xs sm:text-sm leading-relaxed max-w-md drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
-              India's most trusted esports & digital services platform. Buy, sell, top up, rank up and trade — all in one place.
+              India's most trusted esports &amp; digital services platform. Buy, sell, top up, rank up and trade — all in one place.
             </p>
             <div className="flex flex-wrap items-center gap-2 pt-1">
               <div className="px-3 py-1.5 rounded-full bg-[#120f24]/80 backdrop-blur-sm border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
-                <span className="font-medium text-[11px]">Safe & Secure</span>
+                <span className="font-medium text-[11px]">Safe &amp; Secure</span>
               </div>
               <div className="px-3 py-1.5 rounded-full bg-[#120f24]/80 backdrop-blur-sm border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2">
                 <Check className="w-3.5 h-3.5 text-purple-400" />
@@ -251,18 +251,20 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
+                type="button"
                 onClick={() => {
                   const el = document.getElementById('featured-profiles');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-purple-600/30 hover:scale-105 transition-all cursor-pointer flex items-center gap-2"
+                className="min-h-[44px] px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-purple-600/30 hover:scale-105 transition-all cursor-pointer flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               >
                 <span>Browse Profiles</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button
+                type="button"
                 onClick={() => onNavigate('services')}
-                className="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-sm text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
+                className="min-h-[44px] px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-sm text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               >
                 All Services
               </button>
@@ -782,15 +784,17 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               </div>
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
+                  type="button"
                   onClick={() => onOpenCheckout('Urgent Profile Valuation Request', 0)}
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold font-rajdhani uppercase tracking-wider text-xs shadow-lg shadow-rose-600/30 hover:scale-105 transition-all cursor-pointer flex items-center gap-2"
+                  className="min-h-[44px] px-6 py-3 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold font-rajdhani uppercase tracking-wider text-xs shadow-lg shadow-rose-600/30 hover:scale-105 transition-all cursor-pointer flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
                 >
                   <span>Get My Profile Evaluated</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
+                  type="button"
                   onClick={() => onNavigate('services')}
-                  className="px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-sm text-xs font-bold font-rajdhani uppercase tracking-wider text-gray-200 hover:text-white transition-colors cursor-pointer"
+                  className="min-h-[44px] px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-sm text-xs font-bold font-rajdhani uppercase tracking-wider text-gray-200 hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
                 >
                   Learn More
                 </button>
@@ -1203,17 +1207,17 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </p>
           </div>
 
-          <div className="relative z-10 px-4 sm:px-8 pb-6">
-            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
+          <div className="relative z-10 px-3 sm:px-8 pb-6">
+            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-1.5 sm:gap-2">
               {RANK_TIERS.map((tier) => (
                 <div
                   key={tier.name}
-                  className={`p-2.5 rounded-xl bg-[#070510]/90 backdrop-blur-sm border ${tier.border ?? ''}/30 text-center space-y-1.5 flex flex-col items-center justify-between hover:border-purple-400 transition-colors ${tier.text}`}
+                  className={`p-1.5 sm:p-2.5 rounded-xl bg-[#070510]/90 backdrop-blur-sm border ${tier.border ?? ''}/30 text-center space-y-1 sm:space-y-1.5 flex flex-col items-center justify-between hover:border-purple-400 transition-colors ${tier.text}`}
                 >
-                  <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center text-black font-black text-xs font-rajdhani shadow-md`}>
+                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center text-black font-black text-[11px] sm:text-xs font-rajdhani shadow-md`}>
                     {tier.badge.charAt(0)}
                   </div>
-                  <div className={`font-bold text-[11px] font-rajdhani uppercase tracking-wide`}>{tier.name}</div>
+                  <div className={`font-bold text-[10px] sm:text-[11px] font-rajdhani uppercase tracking-wide truncate max-w-full`}>{tier.name}</div>
                 </div>
               ))}
             </div>
@@ -1532,23 +1536,23 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
 
             {/* REAL-TIME COUNTDOWN TIMER CARD */}
-            <div className="p-4 rounded-2xl bg-[#090615] border border-fuchsia-500/40 flex items-center gap-3.5 shadow-xl">
-              <div className="text-right">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-[#090615] border border-fuchsia-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-3.5 shadow-xl w-full md:w-auto">
+              <div className="text-left sm:text-right">
                 <div className="text-[9px] font-mono text-fuchsia-300 uppercase font-bold tracking-wider">PRIMARY LOT CLOSES IN</div>
                 <div className="text-xs text-gray-400 font-mono">Live Clock Sync</div>
               </div>
               <div className="flex items-center gap-1.5 font-mono font-black text-xl sm:text-2xl">
-                <div className="px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
+                <div className="px-2.5 sm:px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
                   {String(timeLeft.hours).padStart(2, '0')}
                   <span className="block text-[8px] text-fuchsia-400 text-center font-normal">HRS</span>
                 </div>
                 <span className="text-fuchsia-400">:</span>
-                <div className="px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
+                <div className="px-2.5 sm:px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
                   {String(timeLeft.minutes).padStart(2, '0')}
                   <span className="block text-[8px] text-fuchsia-400 text-center font-normal">MIN</span>
                 </div>
                 <span className="text-fuchsia-400">:</span>
-                <div className="px-3 py-1 rounded-xl bg-rose-950/80 border border-rose-500/60 text-rose-200 animate-pulse">
+                <div className="px-2.5 sm:px-3 py-1 rounded-xl bg-rose-950/80 border border-rose-500/60 text-rose-200 animate-pulse">
                   {String(timeLeft.seconds).padStart(2, '0')}
                   <span className="block text-[8px] text-rose-400 text-center font-normal">SEC</span>
                 </div>
@@ -1642,9 +1646,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                   <label className="text-xs font-mono text-gray-300 font-bold uppercase">
                     Enter Your Maximum Bid (INR)
                   </label>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
                     <div className="relative flex-1">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">
+                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">
                         ₹
                       </span>
                       <input
@@ -1652,13 +1656,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                         value={userBidInput}
                         onChange={(e) => setUserBidInput(e.target.value)}
                         min={currentBid + 1}
-                        className="w-full pl-8 pr-4 py-3.5 rounded-xl bg-[#150f2e] border border-white/15 focus:border-fuchsia-500 focus:outline-none text-white font-mono font-bold text-base"
+                        className="w-full pl-8 pr-4 py-3 sm:py-3.5 rounded-xl bg-[#150f2e] border border-white/15 focus:border-fuchsia-500 focus:outline-none text-white font-mono font-bold text-base"
                         placeholder="Enter amount"
                       />
                     </div>
                     <button
                       type="submit"
-                      className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-xs sm:text-sm font-black font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-fuchsia-600/40 transition-all cursor-pointer whitespace-nowrap"
+                      className="min-h-[44px] px-8 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-xs sm:text-sm font-black font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-fuchsia-600/40 transition-all cursor-pointer whitespace-nowrap flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400"
                     >
                       PLACE BID
                     </button>
