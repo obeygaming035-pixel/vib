@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import {
   ShieldCheck,
   Check,
@@ -57,7 +57,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       id: 'p-immortal-310',
       badge: 'FEATURED',
       title: 'Immortal Profile',
-      sub: 'Level 310 â€¢ 20+ Skins',
+      sub: 'Level 310 • 20+ Skins',
       rankName: 'Immortal',
       rankIcon: '/assets/hires/ranks/immortal.png',
       slot1RankGlow: 'border-[#f43f5e]/40 shadow-[0_0_8px_rgba(244,63,94,0.3)]',
@@ -74,7 +74,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       id: 'p-ascendant-205',
       badge: 'FEATURED',
       title: 'Ascendant Profile',
-      sub: 'Level 205 â€¢ Prime Collection',
+      sub: 'Level 205 • Prime Collection',
       rankName: 'Ascendant',
       rankIcon: '/assets/hires/ranks/ascendant.png',
       slot1RankGlow: 'border-[#10b981]/40 shadow-[0_0_8px_rgba(16,185,129,0.3)]',
@@ -91,7 +91,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       id: 'p-radiant-420',
       badge: 'FEATURED',
       title: 'Radiant Profile',
-      sub: 'Level 420 â€¢ Full Access',
+      sub: 'Level 420 • Full Access',
       rankName: 'Radiant',
       rankIcon: '/assets/hires/ranks/radiant.png',
       slot1RankGlow: 'border-[#fbbf24]/40 shadow-[0_0_8px_rgba(251,191,36,0.3)]',
@@ -108,7 +108,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       id: 'p-diamond-180',
       badge: 'FEATURED',
       title: 'Diamond Profile',
-      sub: 'Level 180 â€¢ Multiple Skins',
+      sub: 'Level 180 • Multiple Skins',
       rankName: 'Diamond',
       rankIcon: '/assets/hires/ranks/diamond.png',
       slot1RankGlow: 'border-[#38bdf8]/40 shadow-[0_0_8px_rgba(56,189,248,0.3)]',
@@ -125,7 +125,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       id: 'p-ascendant-250',
       badge: 'FEATURED',
       title: 'Ascendant Profile',
-      sub: 'Level 250 â€¢ Rare Skins',
+      sub: 'Level 250 • Rare Skins',
       rankName: 'Ascendant',
       rankIcon: '/assets/hires/ranks/ascendant.png',
       slot1RankGlow: 'border-[#10b981]/40 shadow-[0_0_8px_rgba(16,185,129,0.3)]',
@@ -161,7 +161,7 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
       {/* ========================================================================= */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-2 w-full">
         <div className="relative rounded-2xl overflow-hidden min-h-[340px] sm:min-h-[480px] flex items-center bg-[#070510] shadow-2xl">
-          {/* Full-bleed Part 19 (Agent at Glowing Battle Station) â€” same centered-card treatment as home hero */}
+          {/* Full-bleed Part 19 (Agent at Glowing Battle Station) — same centered-card treatment as home hero */}
           <img
             src="/assets/reference_parts/part_19.png"
             alt="VIB Digital Profiles Artwork"
@@ -458,12 +458,14 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
 
                   {/* Top Right: Heart Toggle */}
                   <button
+                    type="button"
                     onClick={() => toggleFav(p.id)}
-                    className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/50 hover:bg-black/80 text-white transition-colors cursor-pointer border border-white/10 backdrop-blur-sm"
+                    aria-label={isFav ? `Remove ${p.title} from favorites` : `Add ${p.title} to favorites`}
+                    className="absolute top-2 right-2 min-w-[36px] min-h-[36px] flex items-center justify-center rounded-lg bg-black/60 hover:bg-black/90 text-white transition-colors cursor-pointer border border-white/15 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
                   >
                     <Heart
-                      className={`w-3.5 h-3.5 ${
-                        isFav ? 'fill-rose-500 text-rose-500' : 'text-gray-300'
+                      className={`w-4 h-4 ${
+                        isFav ? 'fill-rose-500 text-rose-500' : 'text-gray-200'
                       }`}
                     />
                   </button>
@@ -527,12 +529,14 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
 
                   <div className="flex items-center gap-1.5">
                     <button
+                      type="button"
                       onClick={() => onOpenCheckout(p.title, p.priceINR)}
-                      className="flex-1 py-1.5 rounded-lg bg-gradient-to-r from-[#4c1d95] to-[#581c87] hover:from-[#6b21a8] hover:to-[#7e22ce] text-white text-xs font-bold transition-all cursor-pointer text-center border border-purple-500/40 shadow-[0_0_10px_rgba(147,51,234,0.3)]"
+                      className="flex-1 min-h-[40px] px-3 py-2 rounded-lg bg-gradient-to-r from-[#4c1d95] to-[#581c87] hover:from-[#6b21a8] hover:to-[#7e22ce] text-white text-xs font-bold transition-all cursor-pointer text-center border border-purple-500/40 shadow-[0_0_10px_rgba(147,51,234,0.3)] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
                     >
                       View Details
                     </button>
                     <button
+                      type="button"
                       onClick={() =>
                         onAddToCart({
                           id: p.id,
@@ -544,7 +548,8 @@ export const ClientProfilesPage: React.FC<ClientProfilesPageProps> = ({
                           quantity: 1,
                         })
                       }
-                      className="p-1.5 rounded-lg bg-[#581c87] hover:bg-[#6b21a8] text-white transition-colors cursor-pointer border border-purple-500/40 shadow-[0_0_10px_rgba(147,51,234,0.3)]"
+                      aria-label={`Add ${p.title} to cart`}
+                      className="min-w-[40px] min-h-[40px] p-2 rounded-lg bg-[#581c87] hover:bg-[#6b21a8] text-white transition-colors cursor-pointer border border-purple-500/40 shadow-[0_0_10px_rgba(147,51,234,0.3)] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
                       title="Add to Cart"
                     >
                       <ShoppingCart className="w-4 h-4" />

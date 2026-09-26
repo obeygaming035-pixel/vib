@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import {
   Award,
   Tv,
@@ -211,7 +211,7 @@ export const ClientCoachingPage: React.FC<ClientCoachingPageProps> = ({
                 </div>
 
                 <div className="text-3xl font-black text-white font-rajdhani">
-                  â‚¹{pkg.price.toLocaleString()}
+                  ₹{pkg.price.toLocaleString()}
                 </div>
 
                 <div className="space-y-2 pt-2 border-t border-white/10">
@@ -226,8 +226,9 @@ export const ClientCoachingPage: React.FC<ClientCoachingPageProps> = ({
 
               <div className="pt-6">
                 <button
+                  type="button"
                   onClick={() => onOpenCheckout(`Coaching: ${pkg.title}`, pkg.price)}
-                  className={`w-full py-3 rounded-xl text-xs font-bold font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 ${
+                  className={`w-full min-h-[44px] py-3 rounded-xl text-xs font-bold font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 ${
                     pkg.popular
                       ? 'bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white shadow-lg shadow-fuchsia-600/30'
                       : 'bg-white/10 hover:bg-white/15 text-white border border-white/15'
@@ -257,21 +258,21 @@ export const ClientCoachingPage: React.FC<ClientCoachingPageProps> = ({
               <p className="text-xs text-gray-300 italic">
                 &ldquo;Went from Gold 2 to Ascendant 3 in 3 weeks. The round-by-round VOD breakdowns and crosshair placement routines completely transformed my game sense.&rdquo;
               </p>
-              <div className="text-[11px] font-mono text-purple-400 font-bold">â€” Aarav K. (Gold 2 &rarr; Ascendant 3)</div>
+              <div className="text-[11px] font-mono text-purple-400 font-bold">— Aarav K. (Gold 2 &rarr; Ascendant 3)</div>
             </div>
 
             <div className="p-4 rounded-xl bg-[#090615] border border-white/5 space-y-2">
               <p className="text-xs text-gray-300 italic">
                 &ldquo;Coach pinpointed my bad peek timings within 15 minutes. Improved my K/D from 0.85 to 1.34 in competitive lobbies.&rdquo;
               </p>
-              <div className="text-[11px] font-mono text-fuchsia-400 font-bold">â€” Rohan M. (Silver 3 &rarr; Diamond 2)</div>
+              <div className="text-[11px] font-mono text-fuchsia-400 font-bold">— Rohan M. (Silver 3 &rarr; Diamond 2)</div>
             </div>
 
             <div className="p-4 rounded-xl bg-[#090615] border border-white/5 space-y-2">
               <p className="text-xs text-gray-300 italic">
                 &ldquo;The post-plant lineups and retake communication drills made ranking up feel effortless. Reached Immortal for the first time!&rdquo;
               </p>
-              <div className="text-[11px] font-mono text-cyan-400 font-bold">â€” Priya S. (Platinum 1 &rarr; Immortal 1)</div>
+              <div className="text-[11px] font-mono text-cyan-400 font-bold">— Priya S. (Platinum 1 &rarr; Immortal 1)</div>
             </div>
           </div>
         </div>

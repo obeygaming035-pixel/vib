@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Gavel,
   Clock,
@@ -60,13 +60,13 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
     e.preventDefault();
     const bidVal = parseInt(userBidInput, 10);
     if (isNaN(bidVal) || bidVal <= currentBid) {
-      alert(`Bid must be greater than current bid of â‚¹${currentBid.toLocaleString()}`);
+      alert(`Bid must be greater than current bid of ₹${currentBid.toLocaleString()}`);
       return;
     }
     setCurrentBid(bidVal);
     setBidCount((c) => c + 1);
     setUserBidInput(String(bidVal + 250));
-    setBidSuccessMessage(`Bid of â‚¹${bidVal.toLocaleString()} placed successfully! You are currently the highest bidder.`);
+    setBidSuccessMessage(`Bid of ₹${bidVal.toLocaleString()} placed successfully! You are currently the highest bidder.`);
     setTimeout(() => setBidSuccessMessage(null), 5000);
   };
 
@@ -140,23 +140,23 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
             </div>
 
             {/* REAL-TIME COUNTDOWN TIMER CARD */}
-            <div className="p-4 rounded-2xl bg-[#090615] border border-fuchsia-500/40 flex items-center gap-3.5 shadow-xl">
-              <div className="text-right">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-[#090615] border border-fuchsia-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-3.5 shadow-xl w-full md:w-auto">
+              <div className="text-left sm:text-right">
                 <div className="text-[9px] font-mono text-fuchsia-300 uppercase font-bold tracking-wider">PRIMARY LOT CLOSES IN</div>
                 <div className="text-xs text-gray-400 font-mono">Live Clock Sync</div>
               </div>
               <div className="flex items-center gap-1.5 font-mono font-black text-xl sm:text-2xl">
-                <div className="px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
+                <div className="px-2.5 sm:px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
                   {String(timeLeft.hours).padStart(2, '0')}
                   <span className="block text-[8px] text-fuchsia-400 text-center font-normal">HRS</span>
                 </div>
                 <span className="text-fuchsia-400">:</span>
-                <div className="px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
+                <div className="px-2.5 sm:px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
                   {String(timeLeft.minutes).padStart(2, '0')}
                   <span className="block text-[8px] text-fuchsia-400 text-center font-normal">MIN</span>
                 </div>
                 <span className="text-fuchsia-400">:</span>
-                <div className="px-3 py-1 rounded-xl bg-rose-950/80 border border-rose-500/60 text-rose-200 animate-pulse">
+                <div className="px-2.5 sm:px-3 py-1 rounded-xl bg-rose-950/80 border border-rose-500/60 text-rose-200 animate-pulse">
                   {String(timeLeft.seconds).padStart(2, '0')}
                   <span className="block text-[8px] text-rose-400 text-center font-normal">SEC</span>
                 </div>
@@ -191,7 +191,7 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
 
               <div className="flex items-center justify-between relative z-10">
                 <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded bg-fuchsia-900/80 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
-                  LOT #0881 â€¢ VAULTED COLLECTION
+                  LOT #0881 • VAULTED COLLECTION
                 </span>
                 <div className="flex items-center gap-1 text-xs text-emerald-400 font-mono">
                   <CheckCircle2 className="w-3.5 h-3.5" />
@@ -224,7 +224,7 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
                 <div className="p-4 rounded-xl bg-[#120c2b] border border-white/5 space-y-1">
                   <div className="text-[10px] font-mono text-gray-400 uppercase">CURRENT HIGHEST BID</div>
                   <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-amber-300 font-rajdhani">
-                    â‚¹{currentBid.toLocaleString()}
+                    ₹{currentBid.toLocaleString()}
                   </div>
                   <div className="text-[11px] font-mono text-emerald-400">{bidCount} total bids placed</div>
                 </div>
@@ -232,9 +232,9 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
                 <div className="p-4 rounded-xl bg-[#120c2b] border border-white/5 space-y-1">
                   <div className="text-[10px] font-mono text-gray-400 uppercase">MINIMUM NEXT BID</div>
                   <div className="text-3xl font-black text-white font-rajdhani">
-                    â‚¹{(currentBid + 150).toLocaleString()}
+                    ₹{(currentBid + 150).toLocaleString()}
                   </div>
-                  <div className="text-[11px] font-mono text-fuchsia-300">+â‚¹150 minimum increment</div>
+                  <div className="text-[11px] font-mono text-fuchsia-300">+₹150 minimum increment</div>
                 </div>
               </div>
 
@@ -250,23 +250,23 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
                   <label className="text-xs font-mono text-gray-300 font-bold uppercase">
                     Enter Your Maximum Bid (INR)
                   </label>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
                     <div className="relative flex-1">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">
-                        â‚¹
+                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">
+                        ₹
                       </span>
                       <input
                         type="number"
                         value={userBidInput}
                         onChange={(e) => setUserBidInput(e.target.value)}
                         min={currentBid + 1}
-                        className="w-full pl-8 pr-4 py-3.5 rounded-xl bg-[#150f2e] border border-white/15 focus:border-fuchsia-500 focus:outline-none text-white font-mono font-bold text-base"
+                        className="w-full pl-8 pr-4 py-3 sm:py-3.5 rounded-xl bg-[#150f2e] border border-white/15 focus:border-fuchsia-500 focus:outline-none text-white font-mono font-bold text-base"
                         placeholder="Enter amount"
                       />
                     </div>
                     <button
                       type="submit"
-                      className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-xs sm:text-sm font-black font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-fuchsia-600/40 transition-all cursor-pointer whitespace-nowrap"
+                      className="min-h-[44px] px-8 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-xs sm:text-sm font-black font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-fuchsia-600/40 transition-all cursor-pointer whitespace-nowrap flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400"
                     >
                       PLACE BID
                     </button>
@@ -327,11 +327,12 @@ export const ClientAuctionsPage: React.FC<ClientAuctionsPageProps> = ({
               <div className="pt-2 border-t border-white/5 flex items-center justify-between">
                 <div>
                   <div className="text-[9px] font-mono text-gray-500">CURRENT BID</div>
-                  <div className="font-black text-base text-white font-rajdhani">â‚¹{lot.currentBid.toLocaleString()}</div>
+                  <div className="font-black text-base text-white font-rajdhani">₹{lot.currentBid.toLocaleString()}</div>
                 </div>
                 <button
+                  type="button"
                   onClick={() => onOpenCheckout(`Place Bid on ${lot.title}`, lot.currentBid + 150)}
-                  className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-fuchsia-600 to-purple-600 text-xs font-bold font-rajdhani uppercase text-white shadow-md cursor-pointer hover:brightness-110"
+                  className="min-h-[38px] px-4 py-1.5 rounded-lg bg-gradient-to-r from-fuchsia-600 to-purple-600 text-xs font-bold font-rajdhani uppercase text-white shadow-md cursor-pointer hover:brightness-110 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400"
                 >
                   Bid Now
                 </button>

@@ -12,6 +12,17 @@ export const EscrowModal: React.FC<EscrowModalProps> = ({ isOpen, onClose }) => 
   const [amount, setAmount] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
+  // Close on Escape key press
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -25,13 +36,19 @@ export const EscrowModal: React.FC<EscrowModalProps> = ({ isOpen, onClose }) => 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-      <div className="relative w-full max-w-lg rounded-2xl border border-amber-500/30 bg-[#0c0f17] p-6 shadow-2xl overflow-hidden">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="escrow-modal-title"
+        className="relative w-full max-w-lg rounded-2xl border border-amber-500/30 bg-[#0c0f17] p-6 shadow-2xl overflow-hidden"
+      >
         <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
 
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-lg text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+          aria-label="Close escrow dialog"
+          className="absolute top-4 right-4 min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-lg text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
         >
           <X className="w-5 h-5" />
         </button>

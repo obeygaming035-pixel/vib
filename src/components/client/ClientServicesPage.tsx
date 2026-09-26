@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ShieldCheck,
   Check,
@@ -83,13 +83,13 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
     e.preventDefault();
     const bidVal = parseInt(userBidInput, 10);
     if (isNaN(bidVal) || bidVal <= currentBid) {
-      alert(`Bid must be greater than current bid of â‚¹${currentBid.toLocaleString()}`);
+      alert(`Bid must be greater than current bid of ₹${currentBid.toLocaleString()}`);
       return;
     }
     setCurrentBid(bidVal);
     setBidCount((c) => c + 1);
     setUserBidInput(String(bidVal + 250));
-    setBidSuccessMessage(`Bid of â‚¹${bidVal.toLocaleString()} placed successfully! You are the highest bidder.`);
+    setBidSuccessMessage(`Bid of ₹${bidVal.toLocaleString()} placed successfully! You are the highest bidder.`);
     setTimeout(() => setBidSuccessMessage(null), 5000);
   };
 
@@ -244,7 +244,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       badge: 'FEATURED',
       badgeColor: 'amber',
       code: 'Profile #A1023',
-      sub: 'Level Ready â€¢ Multiple Features',
+      sub: 'Level Ready • Multiple Features',
       priceINR: 4999,
       weapon: '/assets/items/vandal-prime.png',
       weaponName: 'Prime Vandal Edition',
@@ -254,7 +254,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       badge: 'POPULAR',
       badgeColor: 'amber',
       code: 'Profile #B4481',
-      sub: 'Well Configured â€¢ Great Value',
+      sub: 'Well Configured • Great Value',
       priceINR: 3499,
       weapon: '/assets/items/vandal-rgx.png',
       weaponName: 'RGX 11z Pro Vandal',
@@ -264,7 +264,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       badge: '',
       badgeColor: '',
       code: 'Profile #C7710',
-      sub: 'Premium Setup â€¢ Ready to Use',
+      sub: 'Premium Setup • Ready to Use',
       priceINR: 5999,
       weapon: '/assets/items/phantom-rgx.png',
       weaponName: 'RGX 11z Pro Phantom',
@@ -274,7 +274,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
       badge: 'NEW',
       badgeColor: 'cyan',
       code: 'Profile #D3091',
-      sub: 'Balanced Profile â€¢ Smooth Progress',
+      sub: 'Balanced Profile • Smooth Progress',
       priceINR: 2499,
       weapon: '/assets/items/vandal-reaper.png',
       weaponName: 'Reaver Vandal Spec',
@@ -447,7 +447,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
             <div className="lg:col-span-6 p-6 rounded-2xl bg-gradient-to-b from-[#180e33] to-[#0b0718] border border-fuchsia-500/40 relative overflow-hidden group shadow-xl">
               <div className="flex items-center justify-between">
                 <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-fuchsia-900/80 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
-                  LOT #0881 â€¢ ULTRA RARE
+                  LOT #0881 • ULTRA RARE
                 </span>
                 <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-mono">
                   <CheckCircle2 className="w-3.5 h-3.5" />
@@ -481,7 +481,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
                 <div className="p-3.5 rounded-xl bg-[#110c26] border border-white/5 space-y-1">
                   <div className="text-[10px] font-mono text-gray-400 uppercase">CURRENT HIGHEST BID</div>
                   <div className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-amber-300 font-rajdhani">
-                    â‚¹{currentBid.toLocaleString()}
+                    ₹{currentBid.toLocaleString()}
                   </div>
                   <div className="text-[10px] font-mono text-emerald-400">{bidCount} total bids placed</div>
                 </div>
@@ -489,9 +489,9 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
                 <div className="p-3.5 rounded-xl bg-[#110c26] border border-white/5 space-y-1">
                   <div className="text-[10px] font-mono text-gray-400 uppercase">MINIMUM NEXT BID</div>
                   <div className="text-2xl sm:text-3xl font-black text-white font-rajdhani">
-                    â‚¹{(currentBid + 150).toLocaleString()}
+                    ₹{(currentBid + 150).toLocaleString()}
                   </div>
-                  <div className="text-[10px] font-mono text-fuchsia-300">+â‚¹150 minimum step</div>
+                  <div className="text-[10px] font-mono text-fuchsia-300">+₹150 minimum step</div>
                 </div>
               </div>
 
@@ -512,7 +512,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
                   <div className="flex items-center gap-2">
                     <div className="relative flex-1">
                       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">
-                        â‚¹
+                        ₹
                       </span>
                       <input
                         type="number"
@@ -549,7 +549,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
               <div className="p-3.5 rounded-xl bg-[#0a0717] border border-white/10 hover:border-fuchsia-500/30 flex items-center justify-between transition-colors">
                 <div>
                   <h4 className="font-bold text-xs text-white font-rajdhani">Reaver 2.0 Karambit Bundle</h4>
-                  <div className="text-[10px] text-gray-400 font-mono">Current: â‚¹2,900 â€¢ 00:45:12 left</div>
+                  <div className="text-[10px] text-gray-400 font-mono">Current: ₹2,900 • 00:45:12 left</div>
                 </div>
                 <button
                   onClick={() => onOpenCheckout('Bid on Reaver 2.0 Karambit Bundle', 3100)}
@@ -562,7 +562,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
               <div className="p-3.5 rounded-xl bg-[#0a0717] border border-white/10 hover:border-fuchsia-500/30 flex items-center justify-between transition-colors">
                 <div>
                   <h4 className="font-bold text-xs text-white font-rajdhani">Prime Vandal + Singularity</h4>
-                  <div className="text-[10px] text-gray-400 font-mono">Current: â‚¹3,400 â€¢ 01:12:05 left</div>
+                  <div className="text-[10px] text-gray-400 font-mono">Current: ₹3,400 • 01:12:05 left</div>
                 </div>
                 <button
                   onClick={() => onOpenCheckout('Bid on Prime + Singularity Combo', 3600)}
@@ -575,7 +575,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
               <div className="p-3.5 rounded-xl bg-[#0a0717] border border-white/10 hover:border-fuchsia-500/30 flex items-center justify-between transition-colors">
                 <div>
                   <h4 className="font-bold text-xs text-white font-rajdhani">Nocturnum Scythe Rare Drop</h4>
-                  <div className="text-[10px] text-gray-400 font-mono">Current: â‚¹1,800 â€¢ 03:30:00 left</div>
+                  <div className="text-[10px] text-gray-400 font-mono">Current: ₹1,800 • 03:30:00 left</div>
                 </div>
                 <button
                   onClick={() => onOpenCheckout('Bid on Nocturnum Scythe', 2000)}
@@ -616,7 +616,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
               onClick={() => onOpenCheckout('Fresh Philippines (PHP) Profile Provisioning', 499)}
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-xs sm:text-sm font-black font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-purple-600/30 transition-all cursor-pointer flex items-center gap-2 whitespace-nowrap"
             >
-              <span>Get Fresh PHP Profile (â‚¹499)</span>
+              <span>Get Fresh PHP Profile (₹499)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -699,13 +699,13 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
                 onClick={() => onOpenCheckout('Valorant 1-on-1 Coaching (Single 1-Hour Session)', 799)}
                 className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-bold font-rajdhani uppercase tracking-wider text-gray-200 hover:text-white transition-colors cursor-pointer"
               >
-                Single Session (â‚¹799)
+                Single Session (₹799)
               </button>
               <button
                 onClick={() => onOpenCheckout('Valorant 5-Session Mastery Bootcamp', 3499)}
                 className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-xs font-bold font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-purple-600/30 transition-all cursor-pointer flex items-center gap-1.5"
               >
-                <span>5-Session Bootcamp (â‚¹3,499)</span>
+                <span>5-Session Bootcamp (₹3,499)</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -744,7 +744,7 @@ export const ClientServicesPage: React.FC<ClientServicesPageProps> = ({
                 &ldquo;Went from Gold 2 to Ascendant 3 in 3 weeks. The round-by-round VOD breakdowns and crosshair placement routines completely transformed my game sense.&rdquo;
               </p>
               <div className="text-[11px] font-mono text-purple-400 font-bold">
-                â€” Aarav K. â€¢ Verified VIB Student (Gold 2 &rarr; Ascendant 3)
+                — Aarav K. • Verified VIB Student (Gold 2 &rarr; Ascendant 3)
               </div>
             </div>
           </div>

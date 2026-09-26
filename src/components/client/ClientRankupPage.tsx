@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import {
   ShieldCheck,
   Zap,
@@ -21,6 +21,8 @@ import {
 import { Currency } from '../../types';
 import { ClientPage } from './Header';
 import { RankProgressionCalculator } from '../home/RankProgressionCalculator';
+import { FlagIcon } from '../common/FlagIcon';
+import { useRankBadges, getRankBadgeUrl } from '../../utils/valorantRanks';
 
 interface ClientRankupPageProps {
   currency: Currency;
@@ -46,6 +48,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
   onOpenCheckout,
 }) => {
   const [journeyType, setJourneyType] = useState<'rankup' | 'derank'>('rankup');
+  const rankBadges = useRankBadges();
 
   return (
     <div className="w-full bg-[#05040a] text-white selection:bg-purple-600 selection:text-white space-y-12 pb-20 font-sans">
@@ -187,7 +190,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
                     }}
                     className="hover:underline flex items-center gap-1.5"
                   >
-                    <span>Book Derank Service (From â‚¹499)</span>
+                    <span>Book Derank Service (From ₹499)</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -282,23 +285,34 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
 
         {/* 9-Tier Rank Cards */}
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2.5 pt-1">
-          {RANK_TIERS.map((tier, idx) => (
-            <div
-              key={tier.name}
-              className={`p-3 rounded-xl bg-[#0a0815] border ${tier.border}/30 hover:${tier.border} transition-all duration-200 text-center space-y-2 group shadow-sm flex flex-col items-center justify-between`}
-            >
-              <div className="text-[9px] font-mono text-gray-500">0{idx + 1}</div>
-              <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center text-black font-black text-xs shadow-md font-rajdhani group-hover:scale-110 transition-transform`}>
-                {tier.badge.charAt(0)}
-              </div>
-              <div>
-                <div className={`font-bold text-xs ${tier.text} font-rajdhani tracking-wide`}>
-                  {tier.name}
+          {RANK_TIERS.map((tier, idx) => {
+            const rankIconUrl = rankBadges[tier.name as keyof typeof rankBadges] || getRankBadgeUrl(tier.name);
+            return (
+              <div
+                key={tier.name}
+                className={`p-3 rounded-xl bg-[#0a0815] border ${tier.border}/30 hover:${tier.border} transition-all duration-200 text-center space-y-2 group shadow-sm flex flex-col items-center justify-between hover:shadow-[0_0_15px_rgba(147,51,234,0.25)]`}
+              >
+                <div className="text-[9px] font-mono text-gray-500">0{idx + 1}</div>
+                <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center relative">
+                  <img
+                    src={rankIconUrl}
+                    alt={`${tier.name} Rank Badge`}
+                    className="w-10 h-10 sm:w-11 sm:h-11 object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = getRankBadgeUrl(tier.name);
+                    }}
+                  />
                 </div>
-                <div className="text-[9px] text-gray-500 uppercase font-mono">1 - 3</div>
+                <div>
+                  <div className={`font-bold text-xs ${tier.text} font-rajdhani tracking-wide`}>
+                    {tier.name}
+                  </div>
+                  <div className="text-[9px] text-gray-500 uppercase font-mono">1 - 3</div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -446,7 +460,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
             <div className="lg:col-span-5 p-5 rounded-xl bg-[#090714] border border-white/10 space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-xl">ðŸ‡®ðŸ‡³</span>
+                  <FlagIcon country="IN" size="md" />
                   <div>
                     <h3 className="font-extrabold text-sm text-white font-rajdhani">INDIA REGION (IND)</h3>
                     <div className="text-[10px] font-mono text-gray-400">Current Standard Pricing</div>
@@ -460,11 +474,11 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
               <div className="space-y-1.5 text-xs text-gray-300 pt-1">
                 <div className="flex justify-between py-1 border-b border-white/5">
                   <span className="text-gray-400">1000 VP Price:</span>
-                  <span className="font-bold text-white">â‚¹800 - â‚¹850</span>
+                  <span className="font-bold text-white">₹800 - ₹850</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-white/5">
                   <span className="text-gray-400">Ultra Bundle (8700 VP):</span>
-                  <span className="font-bold text-white">â‚¹7,200+</span>
+                  <span className="font-bold text-white">₹7,200+</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-white/5">
                   <span className="text-gray-400">Server Latency:</span>
@@ -492,7 +506,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
             <div className="lg:col-span-5 p-5 rounded-xl bg-gradient-to-br from-[#120824] to-[#1c0d38] border border-fuchsia-500/50 space-y-3 shadow-lg shadow-fuchsia-900/20">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-xl">ðŸ‡µðŸ‡­</span>
+                  <FlagIcon country="PH" size="md" />
                   <div>
                     <h3 className="font-extrabold text-sm text-white font-rajdhani">PHILIPPINES REGION (PHP)</h3>
                     <div className="text-[10px] font-mono text-fuchsia-300">Discounted Southeast Asia Tier</div>
@@ -506,11 +520,11 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
               <div className="space-y-1.5 text-xs text-gray-200 pt-1">
                 <div className="flex justify-between py-1 border-b border-fuchsia-500/20">
                   <span className="text-gray-300">1000 VP Price:</span>
-                  <span className="font-bold text-emerald-400">~â‚¹520 (Save ~â‚¹300)</span>
+                  <span className="font-bold text-emerald-400">~₹520 (Save ~₹300)</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-fuchsia-500/20">
                   <span className="text-gray-300">Ultra Bundle (8700 VP):</span>
-                  <span className="font-bold text-emerald-400">~â‚¹4,300 (Save ~â‚¹2,900)</span>
+                  <span className="font-bold text-emerald-400">~₹4,300 (Save ~₹2,900)</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-fuchsia-500/20">
                   <span className="text-gray-300">Server Latency:</span>
@@ -549,7 +563,7 @@ export const ClientRankupPage: React.FC<ClientRankupPageProps> = ({
               onClick={() => onOpenCheckout('Region Conversion Support: IND to PHP', 999)}
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-xs sm:text-sm font-bold font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-fuchsia-600/40 transition-all cursor-pointer flex items-center gap-2 whitespace-nowrap"
             >
-              <span>Order Region Switch (â‚¹999)</span>
+              <span>Order Region Switch (₹999)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

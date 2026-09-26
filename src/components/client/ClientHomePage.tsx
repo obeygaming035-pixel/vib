@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ShieldCheck,
   Check,
@@ -39,6 +39,8 @@ import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
 import { ClientPage } from './Header';
 import { soundFx } from '../../utils/audio';
+import { FlagIcon } from '../common/FlagIcon';
+import { useRankBadges, getRankBadgeUrl } from '../../utils/valorantRanks';
 
 interface ClientHomePageProps {
   currency: Currency;
@@ -65,6 +67,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
   onAddToCart,
   onOpenCheckout,
 }) => {
+  const rankBadges = useRankBadges();
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
   const [selectedMarketplace, setSelectedMarketplace] = useState<'guaranteed' | 'public'>('guaranteed');
   const [journeyType, setJourneyType] = useState<'rankup' | 'derank'>('rankup');
@@ -95,13 +98,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
     e.preventDefault();
     const bidVal = parseInt(userBidInput, 10);
     if (isNaN(bidVal) || bidVal <= currentBid) {
-      alert(`Bid must be greater than current bid of â‚¹${currentBid.toLocaleString()}`);
+      alert(`Bid must be greater than current bid of ₹${currentBid.toLocaleString()}`);
       return;
     }
     setCurrentBid(bidVal);
     setBidCount((c) => c + 1);
     setUserBidInput(String(bidVal + 250));
-    setBidSuccessMessage(`Bid of â‚¹${bidVal.toLocaleString()} placed successfully! You are the highest bidder.`);
+    setBidSuccessMessage(`Bid of ₹${bidVal.toLocaleString()} placed successfully! You are the highest bidder.`);
     setTimeout(() => setBidSuccessMessage(null), 5000);
   };
 
@@ -117,7 +120,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       id: 'p-immortal-310',
       badge: 'FEATURED',
       title: 'Immortal Profile',
-      sub: 'Level 310 â€¢ 20+ Skins',
+      sub: 'Level 310 • 20+ Skins',
       rankName: 'Immortal',
       rankIcon: '/assets/hires/ranks/immortal.png',
       slot1RankGlow: 'border-[#f43f5e]/40 shadow-[0_0_8px_rgba(244,63,94,0.3)]',
@@ -134,7 +137,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       id: 'p-ascendant-205',
       badge: 'FEATURED',
       title: 'Ascendant Profile',
-      sub: 'Level 205 â€¢ Prime Collection',
+      sub: 'Level 205 • Prime Collection',
       rankName: 'Ascendant',
       rankIcon: '/assets/hires/ranks/ascendant.png',
       slot1RankGlow: 'border-[#10b981]/40 shadow-[0_0_8px_rgba(16,185,129,0.3)]',
@@ -151,7 +154,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       id: 'p-radiant-420',
       badge: 'FEATURED',
       title: 'Radiant Profile',
-      sub: 'Level 420 â€¢ Full Access',
+      sub: 'Level 420 • Full Access',
       rankName: 'Radiant',
       rankIcon: '/assets/hires/ranks/radiant.png',
       slot1RankGlow: 'border-[#fbbf24]/40 shadow-[0_0_8px_rgba(251,191,36,0.3)]',
@@ -168,7 +171,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       id: 'p-diamond-180',
       badge: 'FEATURED',
       title: 'Diamond Profile',
-      sub: 'Level 180 â€¢ Multiple Skins',
+      sub: 'Level 180 • Multiple Skins',
       rankName: 'Diamond',
       rankIcon: '/assets/hires/ranks/diamond.png',
       slot1RankGlow: 'border-[#38bdf8]/40 shadow-[0_0_8px_rgba(56,189,248,0.3)]',
@@ -185,7 +188,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
       id: 'p-ascendant-250',
       badge: 'FEATURED',
       title: 'Ascendant Profile',
-      sub: 'Level 250 â€¢ Rare Skins',
+      sub: 'Level 250 • Rare Skins',
       rankName: 'Ascendant',
       rankIcon: '/assets/hires/ranks/ascendant.png',
       slot1RankGlow: 'border-[#10b981]/40 shadow-[0_0_8px_rgba(16,185,129,0.3)]',
@@ -211,8 +214,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
             style={{ objectPosition: 'center 30%' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/55 to-[#05040a]/10 z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/25 to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05040a] via-[#05040a]/90 sm:via-[#05040a]/55 to-[#05040a]/80 sm:to-[#05040a]/10 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05040a] via-[#05040a]/50 sm:via-[#05040a]/25 to-transparent z-[1]" />
           <div className="relative z-10 p-6 sm:p-10 max-w-xl space-y-4">
             <div className="text-xs text-gray-400 font-medium flex items-center gap-1.5 select-none">
               <span className="hover:text-gray-200 cursor-pointer transition-colors" onClick={() => onNavigate('home')}>Home</span>
@@ -228,12 +231,12 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               </div>
             </div>
             <p className="text-gray-200 text-xs sm:text-sm leading-relaxed max-w-md drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
-              India's most trusted esports & digital services platform. Buy, sell, top up, rank up and trade â€” all in one place.
+              India's most trusted esports &amp; digital services platform. Buy, sell, top up, rank up and trade — all in one place.
             </p>
             <div className="flex flex-wrap items-center gap-2 pt-1">
               <div className="px-3 py-1.5 rounded-full bg-[#120f24]/80 backdrop-blur-sm border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
-                <span className="font-medium text-[11px]">Safe & Secure</span>
+                <span className="font-medium text-[11px]">Safe &amp; Secure</span>
               </div>
               <div className="px-3 py-1.5 rounded-full bg-[#120f24]/80 backdrop-blur-sm border border-purple-500/35 text-xs text-gray-200 flex items-center gap-2">
                 <Check className="w-3.5 h-3.5 text-purple-400" />
@@ -250,18 +253,20 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
+                type="button"
                 onClick={() => {
                   const el = document.getElementById('featured-profiles');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-purple-600/30 hover:scale-105 transition-all cursor-pointer flex items-center gap-2"
+                className="min-h-[44px] px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-purple-600/30 hover:scale-105 transition-all cursor-pointer flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               >
                 <span>Browse Profiles</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button
+                type="button"
                 onClick={() => onNavigate('services')}
-                className="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-sm text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
+                className="min-h-[44px] px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-sm text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               >
                 All Services
               </button>
@@ -670,7 +675,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                   </span>
                 </h3>
                 <p className="text-xs text-gray-200 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-                  Join our official WhatsApp channel to receive latest updates, drops, giveaway announcements, coupons and more â€” directly delivered to you.
+                  Join our official WhatsApp channel to receive latest updates, drops, giveaway announcements, coupons and more — directly delivered to you.
                 </p>
                 <div className="grid grid-cols-2 gap-x-3 gap-y-1 pt-1 text-[11px] text-emerald-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   <div className="flex items-center gap-1.5"><Check className="w-3 h-3 text-emerald-400 flex-shrink-0" /><span>Latest Updates</span></div>
@@ -697,7 +702,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 5. SELL YOUR ACCOUNT (Reference 1) â€” full-bleed Part 06 */}
+      {/* 5. SELL YOUR ACCOUNT (Reference 1) — full-bleed Part 06 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[380px] sm:min-h-[440px] flex items-center bg-[#070510] shadow-2xl group">
           <img
@@ -738,7 +743,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 6. VIB URGENT SALE OFFER (Reference 2) â€” full-bleed Part 07 + Two Ways panel */}
+      {/* 6. VIB URGENT SALE OFFER (Reference 2) — full-bleed Part 07 + Two Ways panel */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
           <div className="lg:col-span-2 relative rounded-2xl overflow-hidden min-h-[340px] sm:min-h-[470px] flex items-center bg-[#070510] shadow-2xl group">
@@ -781,15 +786,17 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               </div>
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
+                  type="button"
                   onClick={() => onOpenCheckout('Urgent Profile Valuation Request', 0)}
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold font-rajdhani uppercase tracking-wider text-xs shadow-lg shadow-rose-600/30 hover:scale-105 transition-all cursor-pointer flex items-center gap-2"
+                  className="min-h-[44px] px-6 py-3 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold font-rajdhani uppercase tracking-wider text-xs shadow-lg shadow-rose-600/30 hover:scale-105 transition-all cursor-pointer flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
                 >
                   <span>Get My Profile Evaluated</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
+                  type="button"
                   onClick={() => onNavigate('services')}
-                  className="px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-sm text-xs font-bold font-rajdhani uppercase tracking-wider text-gray-200 hover:text-white transition-colors cursor-pointer"
+                  className="min-h-[44px] px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-sm text-xs font-bold font-rajdhani uppercase tracking-wider text-gray-200 hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
                 >
                   Learn More
                 </button>
@@ -807,7 +814,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 <span>TWO WAYS TO SELL</span>
               </div>
               <h3 className="text-lg sm:text-xl font-black text-white font-rajdhani uppercase tracking-wide">
-                SPEED OR VALUE â€” <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-purple-300">THE CHOICE IS YOURS</span>
+                SPEED OR VALUE — <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-purple-300">THE CHOICE IS YOURS</span>
               </h3>
             </div>
 
@@ -848,7 +855,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 7. VP PACKS HUB (Reference 2) â€” full-bleed Part 08 hero + regional cards */}
+      {/* 7. VP PACKS HUB (Reference 2) — full-bleed Part 08 hero + regional cards */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <div className="relative rounded-2xl overflow-hidden min-h-[280px] sm:min-h-[380px] flex items-center bg-[#070510] shadow-2xl group">
           <img
@@ -901,8 +908,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
             <div className="relative z-10 p-6 space-y-3.5 w-full">
-              <div className="flex items-center gap-2.5">
-                <span className="text-3xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">ðŸ‡®ðŸ‡³</span>
+              <div className="flex items-center gap-3">
+                <FlagIcon country="IN" size="lg" className="shadow-lg" />
                 <div>
                   <h3 className="font-extrabold text-lg text-white font-rajdhani uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">INDIAN REGION VP</h3>
                   <div className="text-[11px] text-gray-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Top up your Indian region account at the best rates.</div>
@@ -934,8 +941,8 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/20 to-transparent z-[1]" />
 
             <div className="relative z-10 p-6 space-y-3.5 w-full">
-              <div className="flex items-center gap-2.5">
-                <span className="text-3xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">ðŸ‡µðŸ‡­</span>
+              <div className="flex items-center gap-3">
+                <FlagIcon country="PH" size="lg" className="shadow-lg" />
                 <div>
                   <h3 className="font-extrabold text-lg text-white font-rajdhani uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">PHP REGION VP</h3>
                   <div className="text-[11px] text-gray-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Top up your Philippines region account with ease.</div>
@@ -977,7 +984,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 8. SKIN RENTALS (Reference 2) â€” full-bleed Part 10 */}
+      {/* 8. SKIN RENTALS (Reference 2) — full-bleed Part 10 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[320px] sm:min-h-[440px] lg:min-h-[544px] flex items-center bg-[#070510] shadow-2xl group">
           <img
@@ -1035,7 +1042,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 9. RANKUP & DERANK SERVICES (Reference 3) â€” full-bleed Part 14 */}
+      {/* 9. RANKUP & DERANK SERVICES (Reference 3) — full-bleed Part 14 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[420px] sm:min-h-[480px] flex items-center bg-[#070510] shadow-2xl group">
           <img
@@ -1144,10 +1151,10 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </button>
           </div>
         </div>
-        <p className="text-[11px] text-gray-500 text-center pt-1">"Same game. Different goals. We support both." â€” VIB</p>
+        <p className="text-[11px] text-gray-500 text-center pt-1">"Same game. Different goals. We support both." — VIB</p>
       </section>
 
-      {/* 10. SAME GAME HIGHER YOU divider â€” full-bleed Part 17 */}
+      {/* 10. SAME GAME HIGHER YOU divider — full-bleed Part 17 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[220px] sm:min-h-[260px] flex items-center bg-[#070510] shadow-2xl">
           <img
@@ -1177,7 +1184,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 11. THE RANK JOURNEY (Reference 3) â€” full-bleed Part 12 staircase */}
+      {/* 11. THE RANK JOURNEY (Reference 3) — full-bleed Part 12 staircase */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[360px] sm:min-h-[500px] bg-[#070510] shadow-2xl flex flex-col justify-between">
           <img
@@ -1191,7 +1198,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
           <div className="relative z-10 p-6 sm:p-10 space-y-2">
             <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest text-cyan-300 uppercase font-bold">
               <TrendingUp className="w-3.5 h-3.5 text-cyan-400" />
-              <span>THE RANK JOURNEY â€¢ 9 TIER PROGRESSION</span>
+              <span>THE RANK JOURNEY • 9 TIER PROGRESSION</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase font-rajdhani tracking-tight leading-none drop-shadow-[0_4px_22px_rgba(0,0,0,0.9)]">
               <span className="text-white">EVERY RANK</span><br />
@@ -1202,19 +1209,30 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </p>
           </div>
 
-          <div className="relative z-10 px-4 sm:px-8 pb-6">
-            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
-              {RANK_TIERS.map((tier) => (
-                <div
-                  key={tier.name}
-                  className={`p-2.5 rounded-xl bg-[#070510]/90 backdrop-blur-sm border ${tier.border ?? ''}/30 text-center space-y-1.5 flex flex-col items-center justify-between hover:border-purple-400 transition-colors ${tier.text}`}
-                >
-                  <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center text-black font-black text-xs font-rajdhani shadow-md`}>
-                    {tier.badge.charAt(0)}
+          <div className="relative z-10 px-3 sm:px-8 pb-6">
+            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-1.5 sm:gap-2">
+              {RANK_TIERS.map((tier) => {
+                const rankIconUrl = rankBadges[tier.name as keyof typeof rankBadges] || getRankBadgeUrl(tier.name);
+                return (
+                  <div
+                    key={tier.name}
+                    className={`p-1.5 sm:p-2.5 rounded-xl bg-[#070510]/90 backdrop-blur-sm border ${tier.border ?? ''}/30 text-center space-y-1 sm:space-y-1.5 flex flex-col items-center justify-between hover:border-purple-400 transition-colors ${tier.text}`}
+                  >
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center relative">
+                      <img
+                        src={rankIconUrl}
+                        alt={`${tier.name} Rank Badge`}
+                        className="w-8 h-8 sm:w-9 sm:h-9 object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] hover:scale-110 transition-transform"
+                        loading="lazy"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = getRankBadgeUrl(tier.name);
+                        }}
+                      />
+                    </div>
+                    <div className={`font-bold text-[10px] sm:text-[11px] font-rajdhani uppercase tracking-wide truncate max-w-full`}>{tier.name}</div>
                   </div>
-                  <div className={`font-bold text-[11px] font-rajdhani uppercase tracking-wide`}>{tier.name}</div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -1277,7 +1295,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 13. VALO SKINS EXCHANGE (Reference 3) â€” full-bleed Part 15 */}
+      {/* 13. VALO SKINS EXCHANGE (Reference 3) — full-bleed Part 15 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[320px] sm:min-h-[460px] flex items-center bg-[#070510] shadow-2xl group">
           <img
@@ -1297,7 +1315,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
               VALO SKINS <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 via-pink-400 to-purple-300">EXCHANGE</span>
             </h2>
             <p className="text-xs sm:text-sm text-gray-200 leading-relaxed max-w-lg drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-              Trade or exchange your unwanted skins with other players. Find better skins, upgrade your collection â€” all in one place.
+              Trade or exchange your unwanted skins with other players. Find better skins, upgrade your collection — all in one place.
             </p>
             <button
               onClick={() => onOpenCheckout('Valo Skins Exchange Valuation', 0)}
@@ -1324,7 +1342,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 14. REGION MIGRATION GATEWAY (Reference 3) â€” full-bleed Part 18 */}
+      {/* 14. REGION MIGRATION GATEWAY (Reference 3) — full-bleed Part 18 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[360px] sm:min-h-[500px] bg-[#070510] shadow-2xl flex flex-col justify-between">
           <img
@@ -1370,7 +1388,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 15. CREATE A FRESH PHP PROFILE (Reference 4) â€” full-bleed Part 16 */}
+      {/* 15. CREATE A FRESH PHP PROFILE (Reference 4) — full-bleed Part 16 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[320px] sm:min-h-[460px] flex items-center bg-[#070510] shadow-2xl group">
           <img
@@ -1415,13 +1433,13 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 <span>Get Your PHP Profile</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <div className="text-[10px] text-gray-400 font-mono drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">STARTING FROM â‚¹499</div>
+              <div className="text-[10px] text-gray-400 font-mono drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">STARTING FROM ₹499</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 16. HOW IT WORKS â€” 4-step strip (Reference 4) */}
+      {/* 16. HOW IT WORKS — 4-step strip (Reference 4) */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-5 sm:p-6 rounded-2xl bg-[#0a0717] border border-purple-500/15 shadow-xl flex flex-col lg:flex-row items-center gap-6">
           <div className="space-y-1 text-left lg:w-52 flex-shrink-0">
@@ -1456,7 +1474,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 17. COACHING PROGRAM (Reference 4) â€” full-bleed Part 21, text right */}
+      {/* 17. COACHING PROGRAM (Reference 4) — full-bleed Part 21, text right */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[340px] sm:min-h-[470px] flex items-center justify-end bg-[#070510] shadow-2xl group">
           <img
@@ -1531,23 +1549,23 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
             </div>
 
             {/* REAL-TIME COUNTDOWN TIMER CARD */}
-            <div className="p-4 rounded-2xl bg-[#090615] border border-fuchsia-500/40 flex items-center gap-3.5 shadow-xl">
-              <div className="text-right">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-[#090615] border border-fuchsia-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-3.5 shadow-xl w-full md:w-auto">
+              <div className="text-left sm:text-right">
                 <div className="text-[9px] font-mono text-fuchsia-300 uppercase font-bold tracking-wider">PRIMARY LOT CLOSES IN</div>
                 <div className="text-xs text-gray-400 font-mono">Live Clock Sync</div>
               </div>
               <div className="flex items-center gap-1.5 font-mono font-black text-xl sm:text-2xl">
-                <div className="px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
+                <div className="px-2.5 sm:px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
                   {String(timeLeft.hours).padStart(2, '0')}
                   <span className="block text-[8px] text-fuchsia-400 text-center font-normal">HRS</span>
                 </div>
                 <span className="text-fuchsia-400">:</span>
-                <div className="px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
+                <div className="px-2.5 sm:px-3 py-1 rounded-xl bg-fuchsia-950/80 border border-fuchsia-500/50 text-fuchsia-200">
                   {String(timeLeft.minutes).padStart(2, '0')}
                   <span className="block text-[8px] text-fuchsia-400 text-center font-normal">MIN</span>
                 </div>
                 <span className="text-fuchsia-400">:</span>
-                <div className="px-3 py-1 rounded-xl bg-rose-950/80 border border-rose-500/60 text-rose-200 animate-pulse">
+                <div className="px-2.5 sm:px-3 py-1 rounded-xl bg-rose-950/80 border border-rose-500/60 text-rose-200 animate-pulse">
                   {String(timeLeft.seconds).padStart(2, '0')}
                   <span className="block text-[8px] text-rose-400 text-center font-normal">SEC</span>
                 </div>
@@ -1582,7 +1600,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
 
               <div className="flex items-center justify-between relative z-10">
                 <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded bg-fuchsia-900/80 text-fuchsia-200 border border-fuchsia-500/40 uppercase">
-                  LOT #0881 â€¢ VAULTED COLLECTION
+                  LOT #0881 • VAULTED COLLECTION
                 </span>
                 <div className="flex items-center gap-1 text-xs text-emerald-400 font-mono">
                   <CheckCircle2 className="w-3.5 h-3.5" />
@@ -1615,7 +1633,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 <div className="p-4 rounded-xl bg-[#120c2b] border border-white/5 space-y-1">
                   <div className="text-[10px] font-mono text-gray-400 uppercase">CURRENT HIGHEST BID</div>
                   <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-amber-300 font-rajdhani">
-                    â‚¹{currentBid.toLocaleString()}
+                    ₹{currentBid.toLocaleString()}
                   </div>
                   <div className="text-[11px] font-mono text-emerald-400">{bidCount} total bids placed</div>
                 </div>
@@ -1623,9 +1641,9 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                 <div className="p-4 rounded-xl bg-[#120c2b] border border-white/5 space-y-1">
                   <div className="text-[10px] font-mono text-gray-400 uppercase">MINIMUM NEXT BID</div>
                   <div className="text-3xl font-black text-white font-rajdhani">
-                    â‚¹{(currentBid + 150).toLocaleString()}
+                    ₹{(currentBid + 150).toLocaleString()}
                   </div>
-                  <div className="text-[11px] font-mono text-fuchsia-300">+â‚¹150 minimum increment</div>
+                  <div className="text-[11px] font-mono text-fuchsia-300">+₹150 minimum increment</div>
                 </div>
               </div>
 
@@ -1641,23 +1659,23 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
                   <label className="text-xs font-mono text-gray-300 font-bold uppercase">
                     Enter Your Maximum Bid (INR)
                   </label>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
                     <div className="relative flex-1">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">
-                        â‚¹
+                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 font-mono font-bold">
+                        ₹
                       </span>
                       <input
                         type="number"
                         value={userBidInput}
                         onChange={(e) => setUserBidInput(e.target.value)}
                         min={currentBid + 1}
-                        className="w-full pl-8 pr-4 py-3.5 rounded-xl bg-[#150f2e] border border-white/15 focus:border-fuchsia-500 focus:outline-none text-white font-mono font-bold text-base"
+                        className="w-full pl-8 pr-4 py-3 sm:py-3.5 rounded-xl bg-[#150f2e] border border-white/15 focus:border-fuchsia-500 focus:outline-none text-white font-mono font-bold text-base"
                         placeholder="Enter amount"
                       />
                     </div>
                     <button
                       type="submit"
-                      className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-xs sm:text-sm font-black font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-fuchsia-600/40 transition-all cursor-pointer whitespace-nowrap"
+                      className="min-h-[44px] px-8 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-xs sm:text-sm font-black font-rajdhani uppercase tracking-wider text-white shadow-lg shadow-fuchsia-600/40 transition-all cursor-pointer whitespace-nowrap flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400"
                     >
                       PLACE BID
                     </button>
@@ -1714,7 +1732,7 @@ export const ClientHomePage: React.FC<ClientHomePageProps> = ({
         </div>
       </section>
 
-      {/* 20. JOIN THE VIB COMMUNITY (Reference 4) â€” full-bleed Part 26 */}
+      {/* 20. JOIN THE VIB COMMUNITY (Reference 4) — full-bleed Part 26 */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden min-h-[300px] sm:min-h-[340px] bg-[#070510] shadow-2xl flex items-center">
           <img

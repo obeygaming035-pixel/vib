@@ -15,10 +15,13 @@ import {
   ChevronRight,
   MessageSquare,
   Sparkles,
+  Clock,
+  Shield,
 } from 'lucide-react';
 import { Currency, CartItem } from '../../types';
 import { formatCurrencyPrice } from '../../utils/format';
 import { ClientPage } from './Header';
+import { FlagIcon } from '../common/FlagIcon';
 
 interface ClientVPOverviewPageProps {
   currency: Currency;
@@ -448,13 +451,26 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
           </div>
 
           <div className="flex flex-wrap items-center gap-2 text-[11px] text-gray-300">
-            <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">⚡ Easy EMI Options</span>
-            <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">💰 Low Initial Payment</span>
-            <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">🔒 Secure &amp; Verified</span>
-            <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">⏱️ Quick Approval</span>
+            <span className="px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
+              <Zap className="w-3.5 h-3.5 text-amber-400" />
+              <span>Easy EMI Options</span>
+            </span>
+            <span className="px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
+              <CreditCard className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Low Initial Payment</span>
+            </span>
+            <span className="px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
+              <span>Secure &amp; Verified</span>
+            </span>
+            <span className="px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-sky-400" />
+              <span>Quick Approval</span>
+            </span>
             <button
+              type="button"
               onClick={() => onOpenCheckout('Flexible Payment Plan Inquiry', 0)}
-              className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold transition-colors cursor-pointer text-xs ml-2"
+              className="min-h-[38px] px-3.5 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold transition-colors cursor-pointer text-xs ml-2 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
             >
               Learn More →
             </button>
@@ -499,30 +515,36 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             {/* 4 Feature Badges */}
             <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-gray-200">
               <div className="px-3 py-1.5 rounded-full bg-[#200d33]/80 border border-fuchsia-500/30 flex items-center gap-1.5 shadow-sm">
-                <span className="text-[11px]">🔫 Wide Skin Collection</span>
+                <Sparkles className="w-3.5 h-3.5 text-fuchsia-400" />
+                <span className="text-[11px]">Wide Skin Collection</span>
               </div>
               <div className="px-3 py-1.5 rounded-full bg-[#200d33]/80 border border-fuchsia-500/30 flex items-center gap-1.5 shadow-sm">
-                <span className="text-[11px]">💳 Affordable Plans</span>
+                <CreditCard className="w-3.5 h-3.5 text-purple-400" />
+                <span className="text-[11px]">Affordable Plans</span>
               </div>
               <div className="px-3 py-1.5 rounded-full bg-[#200d33]/80 border border-fuchsia-500/30 flex items-center gap-1.5 shadow-sm">
-                <span className="text-[11px]">⚡ Instant Access</span>
+                <Zap className="w-3.5 h-3.5 text-amber-400" />
+                <span className="text-[11px]">Instant Access</span>
               </div>
               <div className="px-3 py-1.5 rounded-full bg-[#200d33]/80 border border-fuchsia-500/30 flex items-center gap-1.5 shadow-sm">
-                <span className="text-[11px]">⏳ Flexible Durations</span>
+                <Clock className="w-3.5 h-3.5 text-cyan-400" />
+                <span className="text-[11px]">Flexible Durations</span>
               </div>
             </div>
 
             {/* Buttons */}
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
+                type="button"
                 onClick={() => onNavigate('rentals')}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-rose-700 via-fuchsia-600 to-purple-600 hover:from-rose-600 hover:to-purple-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(217,70,239,0.35)] cursor-pointer"
+                className="min-h-[44px] px-6 py-2.5 rounded-xl bg-gradient-to-r from-rose-700 via-fuchsia-600 to-purple-600 hover:from-rose-600 hover:to-purple-500 text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(217,70,239,0.35)] cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400"
               >
                 Explore Rentals →
               </button>
               <button
+                type="button"
                 onClick={() => onOpenCheckout('Skin Rentals Program Inquiry', 0)}
-                className="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-gray-300 hover:text-white text-xs font-bold transition-all cursor-pointer"
+                className="min-h-[44px] px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-gray-300 hover:text-white text-xs font-bold transition-all cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               >
                 How It Works →
               </button>
@@ -551,7 +573,7 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             }`}
           >
             <div className="w-9 h-9 rounded-full bg-purple-900/40 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
-              <IndiaFlag className="w-5 h-3.5" />
+              <FlagIcon country="IN" size="md" />
             </div>
             <div>
               <div className="font-black text-sm text-white font-rajdhani tracking-wide">
@@ -575,7 +597,7 @@ export const ClientVPOverviewPage: React.FC<ClientVPOverviewPageProps> = ({
             }`}
           >
             <div className="w-9 h-9 rounded-full bg-purple-900/40 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
-              <PhilippinesFlag className="w-5 h-3.5" />
+              <FlagIcon country="PH" size="md" />
             </div>
             <div>
               <div className="font-black text-sm text-white font-rajdhani tracking-wide">

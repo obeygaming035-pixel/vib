@@ -1,0 +1,21 @@
+========================================================
+             VIB ESPORTS WEBSITE - COMPLETE PROJECT     
+========================================================
+
+Everything is fully packaged and ready:
+- Full Source Code (/src)
+- All HD Assets & Artwork (/public)
+- Pre-built Production Website (/dist)
+- All Dependencies Pre-installed (/node_modules)
+
+HOW TO USE (ZERO SETUP NEEDED):
+-------------------------------
+Method 1 (Instant 1-Click - Recommended):
+  Double-click: CLICK_TO_START_WEBSITE.bat
+  (Starts the website and opens it in your browser automatically!)
+
+Method 2 (Manual Dev Server):
+  1. Open a terminal in this folder.
+  2. Run: npm run dev
+  3. Open http://localhost:3000 in your browser.
+========================================================

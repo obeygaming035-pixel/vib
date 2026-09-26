@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import {
   ShieldCheck,
   Zap,
@@ -132,7 +132,7 @@ export const ClientRentalsPage: React.FC<ClientRentalsPageProps> = ({
                     key={d.key}
                     type="button"
                     onClick={() => setSelectedDuration(d.key as any)}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold font-rajdhani uppercase tracking-wider transition-all cursor-pointer ${
+                    className={`min-h-[40px] px-3.5 py-2 rounded-xl text-xs font-bold font-rajdhani uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
                       selectedDuration === d.key
                         ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-md shadow-purple-600/40 border border-purple-400/50'
                         : 'bg-[#0e0a1f]/90 hover:bg-[#1a1236] border border-white/10 text-gray-300 hover:text-white'
@@ -186,8 +186,9 @@ export const ClientRentalsPage: React.FC<ClientRentalsPageProps> = ({
                   </div>
 
                   <button
+                    type="button"
                     onClick={() => onOpenCheckout(`Rent ${item.title} (${selectedDuration})`, price)}
-                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-xs font-bold font-rajdhani uppercase tracking-wider text-white shadow-md shadow-purple-600/30 transition-all cursor-pointer flex items-center gap-1.5"
+                    className="min-h-[44px] px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-xs font-bold font-rajdhani uppercase tracking-wider text-white shadow-md shadow-purple-600/30 transition-all cursor-pointer flex items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400"
                   >
                     <span>Rent Now</span>
                     <ArrowRight className="w-3.5 h-3.5" />
